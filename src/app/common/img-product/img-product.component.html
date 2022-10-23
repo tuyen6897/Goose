@@ -1,0 +1,33 @@
+<div class="product-content">
+    <div class="product-item">
+        <div class="product-img">
+            <a target="_self" href="/chi-tiet-san-pham">
+                <img id="1026970643" class="lazyload" [src]="imgSrc" alt="Bột Sắn Dây Ông Hòa 700gr">
+            </a>
+            <div *ngIf="sale" class="product-tags">
+                <span class="tag-saleoff text-center">
+                    {{sale}}
+                </span>
+            </div>
+        </div>
+        <div class="product-info">
+            <div class="product-title">
+                <a target="_self" href="/chi-tiet-san-pham">Mật Trà Kombucha Cốt Chuối</a>
+            </div>
+            <div class="starbaprv-widget starbaprv-preview-badge starbaprv-preview-badge--with-link"
+                data-id="1026970643" data-url="bot-san-day-ong-hoa-700gr">
+            </div>
+            <div class="product-tag-bonus">
+            </div>
+            <div class="product-price clearfix">
+                <span class="current-price">155,000 ₫</span>
+            </div>
+            <div class="product-actions text-center clearfix">
+                <div>
+                    <button class="btn-add" (click)="addCart($event)">Thêm vào giỏ hàng</button>
+                    <button class="btn-buy" (click)="openDialog()">Mua Ngay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

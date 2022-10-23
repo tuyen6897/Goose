@@ -1,0 +1,415 @@
+<app-header #header></app-header>
+<div class="container chi-tiet-san-pham">
+    <div class="breadcrumb-small">
+        <a target="_self" href="/" title="Quay trở về trang chủ">Trang chủ</a>
+        <span aria-hidden="true">/</span>
+        <span>Danh mục sản phẩm</span>
+        <span aria-hidden="true">/</span>
+        <span>Chi tiết sản phẩm</span>
+    </div>
+    <div style="width: 100%;">
+        <div class="header-chi-tiet">
+            <div>
+                <img src="../../../../assets/image/main/call-removebg-preview.png" />
+                <span>DỊCH VỤ TỐI ƯU</span>
+            </div>
+            <div>
+                <img src="../../../../assets/image/main/gio-hang1-removebg-preview.png" />
+                <span>HÀNG HÓA ĐA DẠNG</span>
+            </div>
+            <div>
+                <img src="../../../../assets/image/main/san-pham-removebg-preview.png" />
+                <span>SẢN PHẨM CHÍNH HÃNG</span>
+            </div>
+            <div>
+                <img src="../../../../assets/image/main/gia-removebg-preview.png" />
+                <span>GIÁ CẢ CẠNH TRANH</span>
+            </div>
+            <div>
+                <img src="../../../../assets/image/main/giao-hang-removebg-preview.png" />
+                <span>GIAO HÀNG TOÀN QUỐC</span>
+            </div>
+        </div>
+        <div class="product-single">
+            <div class="product-single-content">
+                <div class="product-image">
+                    <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [(activeIndex)]="activeIndex"
+                        [showThumbnailNavigators]="false" [containerStyle]="{'max-width': '640px'}" [numVisible]="5">
+                        <ng-template pTemplate="item" let-item>
+                            <img [src]="item.previewImageSrc" style="width: 100%; border: 3px solid #87b83b;" />
+                        </ng-template>
+                        <ng-template pTemplate="thumbnail" let-item let-index>
+                            <div class="grid grid-nogutter justify-content-center">
+                                <img [src]="item.thumbnailImageSrc" (click)="onActive(index)"
+                                    style="height: 60px; border: 1px solid #ccc; border-radius: 5px;" />
+                            </div>
+                        </ng-template>
+                    </p-galleria>
+                </div>
+                <div class="product-content">
+                    <div class="pro-content-head">
+                        <h2 itemprop="name">Mật Trà Kombucha Thảo Mộc</h2>
+                        <div class="review-sold">
+                            <div class="starbaprv-widget">
+                                <span>Xuất xứ:</span>
+                                <span class="origin">Hàn Quốc</span>
+                                <span>Tình trạng:</span>
+                                <span class="status">Còn hàng</span>
+                                <div class="starbap-prev-badge" data-average-rating="5.0" data-number-of-reviews="83">
+                                    <span>Đánh giá:</span>
+                                    <a class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
+                                            style="color:#dfe519!important"></i></a><a
+                                        class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
+                                            style="color:#dfe519!important"></i></a><a
+                                        class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
+                                            style="color:#dfe519!important"></i></a><a
+                                        class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
+                                            style="color:#dfe519!important"></i></a><a
+                                        class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
+                                            style="color:#dfe519!important"></i></a>(83)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pro-price">
+                        <span style="margin-right: 20px;">Giá bán:</span>
+                        <span class="product-price">250,000 ₫</span>
+                        <span class="product-orifinnal">250,000 ₫</span>
+                        <span class="product-sale">(-10%)</span>
+                    </div>
+                    <div class="product-variants-wrapper">
+                        <div id="product-select-watch" class="select-swatch">
+                            <div id="variant-swatch" class="swatch swatch-product-single " data-option="option1"
+                                data-option-index="0">
+                                <div class="header">Loại</div>
+                                <div class="select-swap">
+                                    <div data-value="500 ml" class="n-sd swatch-element 500-ml">
+                                        <input class="variant-0 input-product" id="swatch-0-500-ml" type="radio"
+                                            name="option1" value="500" (click)="onCheck($event)">
+                                        <label for="swatch-0-500-ml" class="sp" #option500>
+                                            500 ml
+                                            <!-- <img class="crossed-out"
+                                                src="//theme.hstatic.net/200000170631/1000660112/14/soldout.png?v=3075"> -->
+                                            <img class="img-check"
+                                                src="//theme.hstatic.net/200000170631/1000660112/14/select-pro.png?v=3075">
+                                        </label>
+                                    </div>
+                                    <div data-value="100 ml" class="n-sd swatch-element 100-ml">
+                                        <input class="variant-0 input-product" id="swatch-0-100-ml" type="radio"
+                                            name="option1" value="100" (click)="onCheck($event)">
+                                        <label for="swatch-0-100-ml" #option100>
+                                            100 ml
+                                            <!-- <img class="crossed-out"
+                                                src="//theme.hstatic.net/200000170631/1000660112/14/soldout.png?v=3075"> -->
+                                            <img class="img-check" style="display: none;"
+                                                src="//theme.hstatic.net/200000170631/1000660112/14/select-pro.png?v=3075">
+                                        </label>
+                                    </div>
+                                    <!-- <div data-value="5 lít" class="n-sd swatch-element 5-lit soldout">
+                                        <input class="variant-0 input-product" id="swatch-0-5-lit" type="radio"
+                                            name="option1" value="5 lít">
+                                        <label for="swatch-0-5-lit">
+                                            5 lít
+                                            <img class="crossed-out"
+                                                src="//theme.hstatic.net/200000170631/1000660112/14/soldout.png?v=3075">
+                                            <img class="img-check"
+                                                src="//theme.hstatic.net/200000170631/1000660112/14/select-pro.png?v=3075">
+                                        </label>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quantity">
+                        <span style="margin-right: 10px;">Số lượng </span>
+                        <p-inputNumber [(ngModel)]="inputQuantity" [showButtons]="true" [size]="1" [min]="1"
+                            buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
+                            decrementButtonClass="btn-input-number" incrementButtonClass="btn-input-number"
+                            incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+                        </p-inputNumber>
+                    </div>
+                    <div class="product-actions">
+                        <button name="buy" id="buy-now" (click)="onClickBuyNew($event)" class="btnHome btnBuyNow">MUA
+                            NGAY</button>
+                        <button name="add" (click)="addCart($event)" id="AddToCart2" class="btnHome btnAddToCart">
+                            <img src="../../../../assets/image/main/gio-hang3-removebg-preview.png" />THÊM VÀO GIỎ
+                            HÀNG</button>
+                        <a href="tel:0945348008" name="add" id="AddToCart2" class="btnHome btnCall"><img
+                                src="../../../../assets/image/main/190fac1a5fd71e2297e7e278f0be9f25-removebg-preview.png" /><span>LIÊN
+                                HỆ MUA
+                                HÀNG</span></a>
+                    </div>
+                    <div class="selector-buyxgety">
+                        <span>Gọi đặt mua:</span>
+                        <span class="call">0945.348.008</span>
+                        <span> (7:30-22:00)-</span>
+                        <span class="call">0945.348.008</span>
+                        <span> (7:30-22:00)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-group">
+                <div class="product-group-container" style="border: 1px solid #ccc;padding: 5px;">
+                    <div class="product-group-title">
+                        <label style="font-size: 22px; font-weight: bold;">Sản Phẩm Khuyến Mãi</label>
+                    </div>
+                    <div class="product-group-cotent">
+                        <div *ngFor="let image of imagesProductGroup" class="article-item-list">
+                            <div class="article-image">
+                                <a target="_self" href="/chi-tiet-san-pham"><img style="width: 90px;" [src]="image"></a>
+                            </div>
+                            <div class="article-info">
+                                <a class="article-title">
+                                    Gạo ST25 sát trắng
+                                </a>
+                                <div style="position: relative;">
+                                    <span>30,000₫</span>
+                                    <div class="product-tags">
+                                        <span class="tag-saleoff">
+                                            SALE 30%
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-fix" #productFix>
+                    <div class="product-fix-title">
+                        <h2 itemprop="name">Mật Trà Kombucha Thảo Mộc</h2>
+                    </div>
+                    <div class="product-fix-reviews">
+                        <span>Xuất xứ: Hàn Quốc |</span>
+                        <span>Tình trạng: Còn hàng |</span>
+                        <div class="starbap-rev-total">
+                            <span class="starbap-rev-total-point">Đánh giá</span>
+                            <div class="starbap-rev-widg__summary-stars"><a class="starbap-star starbap--on"><i
+                                        class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a><a
+                                    class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
+                                        style="color:#dfe519!important"></i></a><a class="starbap-star starbap--on"><i
+                                        class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a><a
+                                    class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
+                                        style="color:#dfe519!important"></i></a><a class="starbap-star starbap--on"><i
+                                        class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a></div>
+                            <div class="starbap-rev-widg__summary-text">(83)</div>
+                        </div>
+                        <div class="pro-price">
+                            <span style="margin-right: 10px;">Giá bán:</span>
+                            <span class="current-price ProductPrice">210,000 ₫</span>
+                            <span class="original-price ComparePrice"><s style="display: inline;">265,000 ₫</s></span>
+                            <div class="sale-percentage"><span class="PriceSaving" style="display: inline;">(-10
+                                    %)</span></div>
+                        </div>
+                        <div class="product-quantity">
+                            <div class="qty-addcart">
+                                <span style="margin-right: 5px;">Số lượng </span>
+                                <div class="js-qty">
+                                    <p-inputNumber [(ngModel)]="inputQuantity" [showButtons]="true" [size]="1" [min]="1"
+                                        buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
+                                        decrementButtonClass="btn-input-number" incrementButtonClass="btn-input-number"
+                                        incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+                                    </p-inputNumber>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-fix-button">
+                            <button name="buy" id="buy-now" (click)="onClickBuyNew($event)"
+                                class="btnHome btnBuyNow">MUA
+                                NGAY</button>
+                            <button name="add" (click)="addCart($event)" id="AddToCart2"
+                                class="btnHome btnAddToCart"><img
+                                    src="../../../../assets/image/main/gio-hang3-removebg-preview.png" />THÊM
+                                VÀO GIỎ HÀNG</button>
+                            <a href="tel:0945348008" name="add" id="AddToCart2" class="btnHome btnCall"><img
+                                    src="../../../../assets/image/main/190fac1a5fd71e2297e7e278f0be9f25-removebg-preview.png" />LIÊN
+                                HỆ MUA
+                                HÀNG</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-description-wrapper">
+        <div>
+            <label class="lbl-h1">THÀNH PHẦN DINH DƯỠNG</label>
+        </div>
+        <div class="group" style="border-top: 2px solid #ccc;">
+            <div class="content">
+                <div class="ToggleContent__Wrapper-sc-1dbmfaw-1 cqXrJr">
+                    <div class="ToggleContent__View-sc-1dbmfaw-0 wyACs">
+                        <ul></ul>
+                        Model: LISA 25 CURVED
+                        Kích thước cáp sử dụng: 940*400mm. Loại 18 thanh sấy.
+                        Sử dụng nước và điện có thể option.
+                        Công suất tỏa nhiệt: 388W, đầu kết nối D20 Pipe.
+                        Bộ điều khiển tay gắn ngoài. chức năng đóng mở nước cấp.
+                        Thép mạ siêu đẹp, màu trắng sang trọng, không bám bụi, thép đuc nguyên khối.
+                        Nhiệt độ bề mặt lên 110oC, nhiệt độ liên tục duy trì đảm bảo khô khăn, không ẩm mốc, diệt khuẩn,
+                        không độ ồn, an toàn
+                        tuyệt đối khi sử dụng.
+                        Trọng lượng: 9kg
+                        Loại gắn tường. được thiết kế theo chuẩn Eco disgner của Ý.
+                        Tai treo, hoặc âm trần, bắt lên tường.
+                        Ứng dụng : vách tường, văn phòng, phòng ngủ, khác, không gian sử dụng công cộng. phù hợp cho
+                        khách sạn, resort, villa..
+                        Nhập khẩu: Italia
+                        <p><span><strong style="color: rgb(17, 90, 226);">Quạt thông gió âm trần TFV-D15
+                                    ZPD:</strong>hút thông gió không gian tĩnh phòng
+                                khách, phòng ngủ, nhà bếp, phòng vệ sinh, nhà tắm, văn phòng, phòng hút thuốc... thông
+                                gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p>
+                        <p><em>
+                                <picture class="webpimg-container">
+                                    <img src="https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png"
+                                        alt="" class="WebpImg__StyledImg-sc-h3ozu8-0 fWjUGo">
+                                </picture><br>
+                            </em></p>
+                        <p *ngIf="isShow"><span><strong>Quạt thông gió âm trần TFV-D15 ZPD:</strong>hút thông gió không
+                                gian tĩnh phòng
+                                khách, phòng ngủ, nhà bếp, phòng vệ sinh, nhà tắm, văn phòng, phòng hút thuốc... thông
+                                gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p>
+                        <div *ngIf="!isShow" class="gradient"></div>
+                    </div>
+                    <button class="btn-more" (click)="isShow = !isShow" data-view-id="pdp_view_description_button">
+                        {{!isShow ? 'Xem thêm thông số' : 'Thu gọn thông số'}}</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <label class="lbl-h1">MÔ TẢ SẢN PHẨM</label>
+        </div>
+        <div class="group" style="border-top: 2px solid #ccc;">
+            <div class="content">
+                <div class="ToggleContent__Wrapper-sc-1dbmfaw-1 cqXrJr">
+                    <div class="ToggleContent__View-sc-1dbmfaw-0 wyACs">
+                        <p><span><strong style="color: rgb(17, 90, 226);">Quạt thông gió âm trần TFV-D15
+                                    ZPD:</strong>hút thông gió không gian tĩnh phòng
+                                khách, phòng ngủ, nhà bếp, phòng vệ sinh, nhà tắm, văn phòng, phòng hút thuốc... thông
+                                gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p>
+                        <p><em>
+                                <picture class="webpimg-container">
+                                    <img src="https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png"
+                                        alt="" class="WebpImg__StyledImg-sc-h3ozu8-0 fWjUGo">
+                                </picture><br>
+                            </em></p>
+                        <p *ngIf="isShow"><span><strong>Quạt thông gió âm trần TFV-D15 ZPD:</strong>hút thông gió không
+                                gian tĩnh phòng
+                                khách, phòng ngủ, nhà bếp, phòng vệ sinh, nhà tắm, văn phòng, phòng hút thuốc... thông
+                                gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p>
+                        <div *ngIf="!isShow" class="gradient"></div>
+                    </div>
+                    <button class="btn-more" (click)="isShow = !isShow" data-view-id="pdp_view_description_button">
+                        {{!isShow ? 'Xem thêm mô tả' : 'Thu gọn mô tả'}}</button>
+                </div>
+            </div>
+        </div>
+        <div #reviews class="startbap_product_reviews">
+            <div class="startbap_product_title">
+                <label>ĐÁNH GIÁ SẢN PHẨM</label>
+            </div>
+            <div class="startbap_product_content">
+                <div class="starbap-rev-widg__summary">
+                    <div class="starbap-rev-total">
+                        <span class="starbap-rev-total-point">5.0 /5</span>
+                        <div class="starbap-rev-widg__summary-stars"><a class="starbap-star starbap--on"><i
+                                    class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a><a
+                                class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
+                                    style="color:#dfe519!important"></i></a><a class="starbap-star starbap--on"><i
+                                    class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a><a
+                                class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
+                                    style="color:#dfe519!important"></i></a><a class="starbap-star starbap--on"><i
+                                    class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a></div>
+                        <div class="starbap-rev-widg__summary-text"> 83 đánh giá</div>
+                    </div>
+                    <div class="starbap-histogram starbap-temp-hidden">
+                        <div class="starbap-histogram__row" data-rating="5" data-frequency="83" data-percentage="100.0">
+                            <div class="starbap-histogram__star">5 <a class="starbap-star starbap--on"><i
+                                        class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a>
+                            </div>
+                            <div class="starbap-histogram__bar">
+                                <div class="starbap-histogram__bar">
+                                    <p-progressBar [value]="150" [showValue]="false"
+                                        [style]="{'width': '200px', 'height': '15px'}">
+                                    </p-progressBar>
+                                </div>
+                            </div>
+                            <div class="starbap-histogram__percentage">100.0%</div>
+                        </div>
+                        <div class="starbap-histogram__row" data-rating="4" data-frequency="0" data-percentage="0.0">
+                            <div class="starbap-histogram__star">4 <a class="starbap-star starbap--on"><i
+                                        class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a>
+                            </div>
+                            <div class="starbap-histogram__bar">
+                                <p-progressBar [value]="0" [showValue]="false"
+                                    [style]="{'width': '200px', 'height': '15px'}">
+                                </p-progressBar>
+                            </div>
+                            <div class="starbap-histogram__percentage">0.0%</div>
+                        </div>
+                        <div class="starbap-histogram__row" data-rating="3" data-frequency="0" data-percentage="0.0">
+                            <div class="starbap-histogram__star">3 <a class="starbap-star starbap--on"><i
+                                        class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a>
+
+                            </div>
+                            <div class="starbap-histogram__bar">
+                                <p-progressBar [value]="0" [showValue]="false"
+                                    [style]="{'width': '200px', 'height': '15px'}">
+                                </p-progressBar>
+                            </div>
+                            <div class="starbap-histogram__percentage">0.0%</div>
+                        </div>
+                        <div class="starbap-histogram__row" data-rating="2" data-frequency="0" data-percentage="0.0">
+                            <div class="starbap-histogram__star">2 <a class="starbap-star starbap--on"><i
+                                        class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a>
+                            </div>
+                            <div class="starbap-histogram__bar">
+                                <p-progressBar [value]="0" [showValue]="false"
+                                    [style]="{'width': '200px', 'height': '15px'}">
+                                </p-progressBar>
+                            </div>
+                            <div class="starbap-histogram__percentage">0.0%</div>
+                        </div>
+                        <div class="starbap-histogram__row" data-rating="1" data-frequency="0" data-percentage="0.0">
+                            <div class="starbap-histogram__star">1 <a class="starbap-star starbap--on"><i
+                                        class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a>
+                            </div>
+                            <div class="starbap-histogram__bar">
+                                <p-progressBar [value]="0" [showValue]="false"
+                                    [style]="{'width': '200px', 'height': '15px'}">
+                                </p-progressBar>
+                            </div>
+                            <div class="starbap-histogram__percentage">0.0%</div>
+                        </div>
+                        <div class="starbap-histogram__row starbap-histogram__clear-filter" data-rating="null"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div style="width: 100%;" class="related-products">
+        <div class="collection-head" style="width: 100%;">
+            <label class="lbl-h1 collection-title">SẢN PHẨM KHUYẾN MẠI</label>
+        </div>
+        <div style="width: 100%;" class="product-watch">
+            <app-carousel [datas]="datasProductSale" [showButton]="false" [product]="true"
+                [responsiveOptions]="responsiveOptions2">
+            </app-carousel>
+        </div>
+    </div>
+    <div style="width: 100%;" class="seen-products">
+        <div class="collection-head" style="width: 100%;">
+            <label class="lbl-h1 collection-title">SẢN PHẨM ĐÃ XEM</label>
+        </div>
+        <div style="width: 100%;" class="product-watch">
+            <app-carousel [datas]="datasProductSeen" [showButton]="false" [product]="true"
+                [responsiveOptions]="responsiveOptions2">
+            </app-carousel>
+        </div>
+    </div>
+    <div style="width: 100%;">
+        <img style="width: 100%;" src="../../../../assets/image/main/ms_banner_img1.jpg">
+    </div>
+</div>
+<app-footer></app-footer>

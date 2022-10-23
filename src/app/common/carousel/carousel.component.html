@@ -1,0 +1,181 @@
+<!-- product -->
+<p-carousel *ngIf="product" [value]="datas" styleClass="custom-carousel" [autoplayInterval]="3000"
+    [numVisible]="numVisible" [numScroll]="1" [circular]="true" [showIndicators]="false"
+    [responsiveOptions]="responsiveOptions">
+    <ng-template let-data pTemplate="item">
+        <div *ngIf="product" class="product-content">
+            <div class="product-item">
+                <div class="product-img">
+                    <a target="_self" href="/chi-tiet-san-pham">
+                        <img id="1026970643" class="lazyload" [src]="data.image">
+                    </a>
+                    <div *ngIf="data.sale" class="product-tags">
+                        <img class="product-tags-img" src="../../../assets/image/main/km.png">
+                        <span class="tag-saleoff">
+                            {{data.sale}}%
+                        </span>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-title">
+                        <a target="_self" href="/chi-tiet-san-pham">{{data.title}}</a>
+                    </div>
+                    <div class="product-price clearfix">
+                        <span class="current-price">{{data.money}} ₫</span>
+                        <span class="current-price-original" *ngIf="data.moneyoriginal">{{data.moneyoriginal}}</span>
+                    </div>
+                    <div class="product-actions">
+                        <div>
+                            <button *ngIf="showButton" class="btn-add" (click)="addCart($event)">Thêm vào giỏ
+                                hàng</button>
+                            <button *ngIf="showButton" class="btn-buy" (click)="openDialog()">Mua Ngay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>
+<!-- feedback -->
+<p-carousel *ngIf="feedback" [value]="datas" styleClass="custom-carousel" [numVisible]="3" [showIndicators]="false"
+    [numScroll]="1" [circular]="true" [autoplayInterval]="33000" [responsiveOptions]="responsiveOptions">
+    <ng-template let-data pTemplate="item">
+        <div class="feedback-item">
+            <div class="feedback-img">
+                <img [src]="data.image">
+                <div>{{data.title}}</div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>
+<!-- icon -->
+<p-carousel *ngIf="i_con" [value]="datas" styleClass="custom-carousel" [numVisible]="numVisible"
+    [showIndicators]="false" [numScroll]="1" [circular]="true" [autoplayInterval]="3000"
+    [responsiveOptions]="responsiveOptions">
+    <ng-template let-data pTemplate="item">
+        <div class="icon-item">
+            <div class="icon-img">
+                <img [src]="data.image">
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>
+
+<p-carousel *ngIf="news" [num] [value]="datas" styleClass="custom-carousel" [numVisible]="numVisible" [numScroll]="1"
+    [circular]="true" [showIndicators]="false" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
+    <ng-template let-data pTemplate="item">
+        <div class="picsum-content">
+            <div class="picsum-img">
+                <div class="article-item">
+                    <div class="article-img">
+                        <a href="/chuyen-ngong">
+                            <img [src]="data.image" alt="4 chữ tự thay đổi cuộc chơi">
+                            <div class="overlay">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="article-info">
+                        <a href="/chuyen-ngong" class="article-title">
+                            4 Chữ "TỰ" thay đổi cuộc chơi
+                        </a>
+                        <div class="article-desc">
+                            Trên hàng trình ngông ngược của Ngỗng, team gặp những nông dân, nông sản
+                            tuyệt vời như
+                            Cam chú Phúc, Bột
+                            sắn giây ông Hòa và.... rồi chúng nó cảm mến và cảm phục những người
+                            nôn...
+                        </div>
+                        <a href="/chuyen-ngong" class="article-readmore">Xem
+                            thêm <i class="fas fa-long-arrow-alt-right"></i></a>
+                        <div class="article-info-relate">
+                            <div class="article-published-at">
+                                <i class="fa fa-calendar"></i> 23/02/2021
+                            </div>
+                            <div class="aricle-comment">
+                                <i class="fa fa-comment"></i> <span
+                                    class="fb-comments-count fb_comments_count_zero_fluid_desktop" href="/chuyen-ngong"
+                                    fb-xfbml-state="parsed"
+                                    fb-iframe-plugin-query="app_id=&amp;container_width=0&amp;count=true&amp;height=100&amp;href=https%3A%2F%2Fngong.vn%2Fblogs%2Fnews%2F4-chu-tu-thay-doi-cuoc-choi&amp;locale=vi_VN&amp;sdk=joey&amp;version=v8.0&amp;width=550"><span
+                                        class="fb_comments_count">0</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>
+
+<p-carousel *ngIf="newspapers" [num] [value]="datas" styleClass="custom-carousel" [numVisible]="numVisible"
+    [numScroll]="1" [circular]="true" [showIndicators]="false" [autoplayInterval]="3500"
+    [responsiveOptions]="responsiveOptions">
+    <ng-template let-data pTemplate="item">
+        <div class="picsum-content">
+            <div class="picsum-img">
+                <div class="article-item">
+                    <div class="article-img">
+                        <a
+                            href="/blogs/bao-chi-noi-gi-ve-ngong/chang-trai-dat-mua-tieu-ban-so-gao-cho-hang-van-dan-viet">
+                            <img [src]="data.image" alt="Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt">
+                            <div class="overlay">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="article-info">
+                        <a href="/blogs/bao-chi-noi-gi-ve-ngong/chang-trai-dat-mua-tieu-ban-so-gao-cho-hang-van-dan-viet"
+                            class="article-title">
+                            Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt
+                        </a>
+                        <div class="article-desc">
+
+                            Tấm sổ gạo của Bùi Ngọc Cường - Giám đốc Công ty CP Thực Phẩm An Biên (489
+                            đường
+                            Hoàng Quốc Việt, TP Hà
+                            Nội) có sự kết nối với quá khứ bằng bức tranh cổ động các nhân vật đại di...
+
+                        </div>
+                        <a href="/blogs/bao-chi-noi-gi-ve-ngong/chang-trai-dat-mua-tieu-ban-so-gao-cho-hang-van-dan-viet"
+                            class="article-readmore">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>
+
+<p-carousel *ngIf="prize" [num] [value]="datas" styleClass="custom-carousel" [numVisible]="numVisible" [numScroll]="1"
+    [circular]="true" [showIndicators]="false" [autoplayInterval]="3500" [responsiveOptions]="responsiveOptions">
+    <ng-template let-data pTemplate="item">
+        <div class="prize-content">
+            <div class="achievement-content">
+                <div class="achievement">
+                    Doanh nghiệp tạo tác động trong dự án EFD của Oxfarm CSIP
+                </div>
+                <div class="tag-year">2018</div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>
+
+<p-carousel *ngIf="form" [num] [value]="datas" styleClass="custom-carousel" [numVisible]="numVisible" [numScroll]="1"
+    [circular]="true" [showIndicators]="false" [autoplayInterval]="3500" [responsiveOptions]="responsiveOptions">
+    <ng-template let-data pTemplate="item">
+        <div class="betaviet-content">
+            <div style="display: flex;">
+                <div class="betaviet" [class]="data.sub === '2' ? 'sub' : ''">
+                    <div
+                        style="height: 90px;font-size: 28px;border-bottom: 1px solid #ccc;margin-bottom: 10px;padding: 10px; display: flex;">
+                        <div class="arrow"></div>
+                        <div
+                            style="display: flex; align-items: center; height: 100%; color: #790505; font-weight: bold;">
+                            {{data.date}}</div>
+                    </div>
+                    <div style="padding: 10px; font-size: 18px;">
+                        <span style="font-weight: bold; font-size: 18px;">{{data.title}}</span><br>
+                        {{data.content}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>

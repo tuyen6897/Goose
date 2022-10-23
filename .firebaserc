@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ngong-3826f": {
+      "hosting": {
+        "project_goose": [
+          "ngong-3826f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ngong-3826f"
+  }
+}

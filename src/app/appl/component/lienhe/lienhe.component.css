@@ -1,0 +1,165 @@
+.address-content {
+    width: 100%;
+    display: flex;
+}
+
+.address-map {
+    width: 100%;
+}
+
+.address-cont {
+    height: 383px;
+    overflow: auto;
+}
+
+.address-cont a {
+    color: #333;
+    text-decoration: none;
+}
+
+.h-box {
+    display: flex;
+    margin-top: 24px;
+}
+
+.quesion {
+    width: 100%;
+    border-left: 1px solid #ccc;
+    margin-left: 20px;
+    padding-left: 20px;
+    margin-top: 60px;
+}
+
+.quesion input {
+    height: 40px;
+}
+
+.quesion input,
+.quesion textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.quesion textarea {
+    height: 262px;
+    margin-bottom: 55px;
+}
+
+button {
+    width: 100px;
+    height: 45px;
+    position: relative;
+    border-radius: 30px;
+    border-color: transparent;
+    background-color: #fff;
+    font-weight: bold;
+}
+
+button::before {
+    border-radius: 30px;
+    content: "";
+    background-image: linear-gradient(to left, #b2ff59, #00c853);
+    top: -5px;
+    left: -5px;
+    bottom: -5px;
+    right: -5px;
+    position: absolute;
+    z-index: -1;
+}
+
+textarea:focus {
+    outline: #ccc;
+}
+
+.div-email,
+.div-phone {
+    display: flex;
+    margin: 10px 0;
+
+}
+
+.phone {
+    content: url('../../../../assets/image/main/toppng.com-website-phone-email-icons-1574x1573.png');
+    width: 25px;
+    height: 25px;
+    float: left;
+    margin-right: 10px;
+}
+
+.email {
+    content: url('../../../../assets/image/main/pngegg.png');
+    width: 30px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.vitri {
+    content: url('../../../../assets/image/main/mua_o_dau.png');
+    margin-right: 10px;
+    float: left;
+    height: 45px;
+}
+
+.required {
+    color: red;
+    padding: 10px 0px;
+    padding-left: 5px;
+}
+
+.lbl-h2,
+.lbl-h3 {
+    color: #000;
+}
+
+.lbl-h1,
+.lbl-h2,
+.lbl-h3 {
+    margin: 10px 0;
+}
+
+@media only screen and (min-width: 769px) {
+    .large--six-twelfths {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1800px) {
+    .container {
+        padding: 30px 5em !important;
+        align-items: flex-start;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        padding: 30px 1em !important;
+        align-items: flex-start;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 991px) {
+    .container {
+        padding: 30px 10px !important;
+        margin: 0 !important;
+        margin: 15px 0;
+        font-size: 16px;
+    }
+
+    .address-content {
+        display: block;
+    }
+
+    .grid__item {
+        margin-top: 20px;
+        padding-left: 0px;
+    }
+
+    .quesion {
+        border: none;
+        margin-left: 0;
+        padding-left: 0;
+        margin-top: 20px;
+    }
+}

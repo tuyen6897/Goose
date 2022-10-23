@@ -1,0 +1,173 @@
+<app-header #header></app-header>
+<div class="container">
+    <div class="breadcrumb-small">
+        <a target="_self" href="/" title="Quay trở về trang chủ">Trang chủ</a>
+        <span aria-hidden="true">/</span>
+        <span>Tài khoản</span>
+    </div>
+    <div class="main-account">
+        <div class="main-account-option">
+            <div class="user">
+                <img class="avatar" alt="Ngỗng - Đồng Hành Xây Dựng Sinh Thái Nông Nghiệp Bền Vững"
+                    src="../../../../assets/image/main/logo.webp">
+                <span>{{account.username}}</span>
+            </div>
+            <span (click)="accountClick()">Thông tin tài khoản</span>
+            <span>Thông báo</span>
+            <ul>
+                <li>
+                    <a (click)="processClick()">Danh sách đơn hàng
+                        <i class="fa fa-angle-down" aria-hidden="true" (click)="isProcess = !isProcess"></i></a>
+                    <ul *ngIf="isProcess">
+                        <li (click)="aprrClick()">Chờ xác nhận</li>
+                        <li (click)="runClick()">Đang giao</li>
+                        <li (click)="cancelClick()">Đã hủy</li>
+                        <li (click)="successClick()">Đã hoàn thành</li>
+                    </ul>
+                </li>
+            </ul>
+            <span>Thông tin sổ gạo</span>
+            <span>Mã giảm giá</span>
+            <span>Đăng Xuất</span>
+        </div>
+        <div class="main-account-content">
+            <label class="lbl-h1">Tài Khoản Của Bạn</label>
+            <div class="account" *ngIf="isAccount">
+                <label class="lbl-h2">Thông Tin Tài Khoản</label>
+                <div class="information">
+                    <div class="item">
+                        <span>Họ và tên:</span>
+                        <span>{{account.username}}</span>
+                    </div>
+                    <div class="item">
+                        <span *ngIf="!isUpdate">Email:</span>
+                        <span *ngIf="!isUpdate">{{account.email}}</span>
+                        <input type="email" *ngIf="isUpdate" pInputText placeholder="Email của bạn" />
+                    </div>
+                    <div class="item">
+                        <span *ngIf="!isUpdate">Địa chỉ:</span>
+                        <span *ngIf="!isUpdate">{{account.address}}</span>
+                        <input class="address-txt" type="text" *ngIf="isUpdate" pInputText placeholder="Địa chỉ" />
+                    </div>
+                    <div class="item">
+                        <span *ngIf="!isUpdate">Điện thoại:</span>
+                        <span *ngIf="!isUpdate">{{account.phone}}</span>
+                        <input type="tel" *ngIf="isUpdate" pInputText placeholder="Số điện thoại" />
+                    </div>
+                    <div class="button-box">
+                        <button class="pay" (click)="isPay = !isPay">Phương Thức Thanh Toán</button>
+                        <button class="update" (click)="isUpdate = !isUpdate">
+                            {{!isUpdate ? 'Chỉnh Sửa Thông Tin' : 'Cập Nhật Thông Tin Mới'}}
+                        </button>
+                    </div>
+                    <div class="pay-account" *ngIf="isPay">
+                        <div>
+                            <label class="two-page" for="payment_method_id_1002478030">
+                                <div class="radio-input payment-method-checkbox">
+                                    <input type-id="2" id="payment_method_id_1002478030" class="input-radio"
+                                        name="payment-method" type="radio" value="1002478030">
+                                </div>
+                                <div class="radio-content-input">
+                                    <img class="main-img"
+                                        src="https://hstatic.net/0/0/global/design/seller/image/payment/other.svg?v=1">
+                                    <div class="content-wrapper">
+                                        <span class="radio-label-primary">Chuyển khoản qua ngân hàng</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="two-page" for="payment_method_id_1002742948">
+                                <div class="radio-input payment-method-checkbox">
+                                    <input type-id="1" id="payment_method_id_1002742948" class="input-radio"
+                                        name="payment-method" type="radio" value="1002742948">
+                                </div>
+                                <div class="radio-content-input">
+                                    <img class="main-img"
+                                        src="https://hstatic.net/0/0/global/design/seller/image/payment/cod.svg?v=1">
+                                    <div class="content-wrapper">
+                                        <span class="radio-label-primary">Thanh toán khi giao hàng (COD)</span>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        <div style="width: 100%;">
+                            <label for="payment-momo" class="payment-method__item"><span
+                                    class="payment-method__item-custom-checkbox custom-radio"><input type="radio"
+                                        id="payment-momo" name="payment-method" autocomplete="off" value="momo">
+                                    <span class="checkmark"></span></span> <span
+                                    class="payment-method__item-icon-wrapper"><img style="height: 30px;"
+                                        src="https://www.coolmate.me/images/momo-icon.png" alt="Thanh Toán MoMo"></span>
+                                <span class="payment-method__item-name">Thanh Toán
+                                    MoMo</span></label>
+                        </div>
+                        <div style="width: 100%;">
+                            <label class="payment-method__item payment-zalopay"><span
+                                    class="payment-method__item-custom-checkbox custom-radio"><input type="radio"
+                                        name="payment-method" autocomplete="off" value="zalopay">
+                                    <span class="checkmark"></span></span> <span
+                                    class="payment-method__item-icon-wrapper"><img
+                                        src="https://www.coolmate.me/images/logo-zalopay.svg"
+                                        alt="Ví điện tử ZaloPay"></span>
+                                <span class="payment-method__item-name">Ví điện tử ZaloPay</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product" *ngIf="isProduct">
+                <label class="lbl-h2">Danh Sách Đơn Hàng</label>
+                <span style="margin: 0 5px" aria-hidden="true" *ngIf="isAprr || isRun || isCancel || isSuccess">></span>
+                <span class="lbl-h2" *ngIf="isAprr">Chờ xác nhận</span>
+                <span class="lbl-h2" *ngIf="isRun">Đang giao</span>
+                <span class="lbl-h2" *ngIf="isCancel">Đã hủy</span>
+                <span class="lbl-h2" *ngIf="isSuccess">Đã hoàn thành</span>
+                <div>
+                    <div class="tr-cart" *ngFor="let item of product; let i = index">
+                        <div class="image">
+                            <div class="product_image">
+                                <a target="_self" href="/chi-tiet-san-pham">
+                                    <img src="  //product.hstatic.net/200000170631/product/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_medium.jpg"
+                                        alt="Mật Trà Kombucha Cốt Chuối">
+                                </a>
+                                <div class="item-content">
+                                    <a target="_self" href="/chi-tiet-san-pham">{{item.title}}
+                                    </a><br>
+                                    <span class="variant_title">{{item.variant}}</span>
+                                    <div class="product-price">
+                                        <span class="pri">{{formatCash(item.price)}} ₫</span>
+                                        <span class="quantity">X {{item.quantity}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="total">
+                            <span class="price">
+                                <span class="line-item-total">{{formatCash(item.totalPrice)}} ₫</span>
+                            </span>
+                            <div class="button-box">
+                                <button class="re-Buy" href="/gio-hang">Mua Lại</button>
+                                <button class="show-product" href="/chi-tiet-san-pham">Chi tiết sản
+                                    phẩm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rice-book">
+
+            </div>
+            <div class="voucher">
+
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%; margin: 30px 0;">
+        <label class="lbl-title">Danh Sách Sản Phẩm Khuyến Mại</label>
+        <div class="sale" style="width: 100%;">
+            <app-carousel [datas]="datasSale" (eventClick)="header.visibleSidebar = true" [product]="true">
+            </app-carousel>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

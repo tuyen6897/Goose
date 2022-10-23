@@ -1,0 +1,253 @@
+<!--component html goes here -->
+<app-header></app-header>
+<div id="LADI-WRAPER">
+    <div class="container">
+        <div id="SECTION1">
+            <div class="breadcrumb-small">
+                <a target="_self" href="/" title="Quay trở về trang chủ">Trang chủ</a>
+                <span aria-hidden="true">/</span>
+                <span>Hệ thống Đại lý và CTV</span>
+            </div>
+        </div>
+
+        <div class="headline">
+            <div class="labelStore text-center">
+                <i class="fa fa-map-marker"></i> Hệ thống đại lý và Cộng tác viên
+            </div>
+        </div>
+
+        <div id="SECTION2">
+            <div class="address-content">
+                <div class="address-map">
+                    <select name="change-tinh" class="change-tinh">
+                        <option value="tat-ca-tinh-thanh">Tất cả tỉnh/thành</option>
+                        <option value="ha-noi">Hà Nội</option>
+                        <option value="vinh-phuc">Vĩnh Phúc</option>
+                        <option value="da-nang">Đà Nẵng</option>
+                        <option value="tp-ho-chi-minh">TP Hồ Chí Minh</option>
+                        <option value="05c69cc8-87d0-4758-846a-4b9b71902811">Lào Cai</option>
+                        <option value="all" class="hide">Tất cả</option>
+                    </select>
+                    <select name="change-quan" class="change-quan">
+                        <option data-tinh="tat-ca-tinh-thanh" value="8b4b5a30-73fb-4d50-8ba1-b20439355ed0"
+                            style="display: block;">Đại lý</option>
+                        <option data-tinh="tat-ca-tinh-thanh" value="518f1a55-08e6-4b15-89b5-25ed3837b613"
+                            style="display: block;">Công tác viên</option>
+                    </select>
+                    <div class="address-cont">
+                        <div class="address-detail">
+                            <ul>
+                                <li data-tinh="tat-ca-tinh-thanh" data-quan="8b4b5a30-73fb-4d50-8ba1-b20439355ed0"
+                                    style="display: list-item;">
+                                    <div>
+                                        <a (click)="onChangeFoodmap()">
+                                            <p>
+                                                <u><strong>Foodmap-Hồ Chí Minh</strong></u>
+                                            </p>
+                                            <ul>
+                                                <li>
+                                                    284/5B Lũy Bán Bích, Hoà Thanh, Tân Phú, Thành phố Hồ Chí
+                                                    Minh&nbsp;
+                                                </li>
+                                                <li style="display: none;">028 7770 2614</li>
+                                            </ul>
+                                        </a>
+                                        <div class="mota-link-fb">
+                                            <img
+                                                src="//theme.hstatic.net/200000170631/1000660112/14/icon-facebook.png?v=3046" />
+                                            <span></span>
+                                            <p></p>
+                                            <p>
+                                                <a
+                                                    href="https://www.facebook.com/raubactom">https://www.facebook.com/raubactom</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <a (click)="onChangeFoodmap()" style="
+                          margin-bottom: 15px;
+                          display: block;
+                          padding-left: 15px;
+                          color: #333333;
+                          font-weight: 500;
+                          letter-spacing: 1.5px;
+                        ">CHỈ ĐƯỜNG <i class="fa fa-angle-right"></i></a>
+                                </li>
+                                <li data-tinh="tat-ca-tinh-thanh" data-quan="8b4b5a30-73fb-4d50-8ba1-b20439355ed0"
+                                    style="display: list-item;">
+                                    <div>
+                                        <a (click)="onChangeHomefood()">
+                                            <p>
+                                                <u><strong>Homefood Trúc Khê</strong></u>
+                                            </p>
+                                            <ul>
+                                                <li>Số 19 Trúc Khê, Đống Đa, HN</li>
+                                                <li>0982014988</li>
+                                            </ul>
+                                        </a>
+                                        <div class="mota-link-fb">
+                                            <img
+                                                src="//theme.hstatic.net/200000170631/1000660112/14/icon-facebook.png?v=3046" />
+                                            <span>
+                                                <p></p>
+                                                <p>
+                                                    <a
+                                                        href="https://www.facebook.com/thucduong.homefood">https://www.facebook.com/thucduong.homefood</a>
+                                                </p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <a (click)="onChangeHomefood()" style="
+                          margin-bottom: 15px;
+                          display: block;
+                          padding-left: 15px;
+                          color: #333333;
+                          font-weight: 500;
+                          letter-spacing: 1.5px;
+                        ">CHỈ ĐƯỜNG <i class="fa fa-angle-right"></i></a>
+                                </li>
+                                <li data-tinh="tat-ca-tinh-thanh" data-quan="8b4b5a30-73fb-4d50-8ba1-b20439355ed0"
+                                    style="display: list-item;">
+                                    <div>
+                                        <a (click)="onChangeSaphang()">
+                                            <p>
+                                                <u><strong>Sạp hàng Chàng Sen</strong></u>
+                                            </p>
+                                            <ul>
+                                                <li>
+                                                    Phòng 103C4 - Ngõ&nbsp;4 Vũ Ngọc Phan, Láng Hạ, Đống Đa,
+                                                    Hà Nội
+                                                </li>
+                                                <li style="display: none;">0969728642</li>
+                                            </ul>
+                                        </a>
+                                        <div class="mota-link-fb">
+                                            <img
+                                                src="//theme.hstatic.net/200000170631/1000660112/14/icon-facebook.png?v=3046" />
+                                            <span>
+                                                <p></p>
+                                                <p>
+                                                    <a
+                                                        href="https://www.facebook.com/SapChangSen">https://www.facebook.com/SapChangSen</a>
+                                                </p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <a (click)="onChangeSaphang()" style="
+                          margin-bottom: 15px;
+                          display: block;
+                          padding-left: 15px;
+                          color: #333333;
+                          font-weight: 500;
+                          letter-spacing: 1.5px;
+                        ">CHỈ ĐƯỜNG <i class="fa fa-angle-right"></i></a>
+                                </li>
+                                <li data-tinh="tat-ca-tinh-thanh" data-quan="8b4b5a30-73fb-4d50-8ba1-b20439355ed0"
+                                    style="display: list-item;">
+
+                                    <div>
+                                        <a (click)="onChangeTamdat()">
+                                            <p><strong>Tâm Đạt Dịch Vọng</strong></p>
+                                            <ul>
+                                                <li>Số N06B2 Khu đô thị Dịch Vọng, Cầu Giấy, Hà Nội</li>
+                                                <li style="display: none;">0963 321 022 | 0936 246 196</li>
+                                            </ul>
+                                        </a>
+                                        <p><a href="/products/tam-dat-dich-vong-1"> </a></p>
+                                        <div class="mota-link-fb">
+                                            <img
+                                                src="//theme.hstatic.net/200000170631/1000660112/14/icon-facebook.png?v=3046" />
+                                            <span>
+                                                <p></p>
+                                                <p>
+                                                    <a
+                                                        href="https://www.facebook.com/HuuCoTamDat">https://www.facebook.com/HuuCoTamDat</a>
+                                                </p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <a (click)="onChangeTamdat()" style="
+                          margin-bottom: 15px;
+                          display: block;
+                          padding-left: 15px;
+                          color: #333333;
+                          font-weight: 500;
+                          letter-spacing: 1.5px;
+                        ">CHỈ ĐƯỜNG <i class="fa fa-angle-right"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-100 img-cont grid__item large--six-twelfths page-content page-content-right pd-left0">
+                    <div class="w-100">
+                        <div #home>
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.6771565182685!2d105.7929539148324!3d21.045599985989245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab296cdd3acf%3A0x170b8111f48645d5!2zR-G6oW8gTmfhu5duZyAtIEPDtG5nIFR5IEPhu5UgUGjhuqduIFRo4buxYyBQaOG6qW0gQW4gQmnDqm4!5e0!3m2!1sen!2s!4v1599124373989!5m2!1sen!2s"
+                                class="w-100" height="500" width="500" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <div #foodmap style="display: none;">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15677.989834927239!2d106.6328582!3d10.7731599!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2973472b1e61f72c!2sFOODMAP!5e0!3m2!1svi!2s!4v1649412056590!5m2!1svi!2s"
+                                class="w-100" height="500" width="500" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <div #homefood style="display: none;">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.423739960736!2d105.80601841483193!3d21.01572458600542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab60e0b40381%3A0x81c5fd22740b5483!2zMTkgVHLDumMgS2jDqiwgTMOhbmcgSOG6oSwgxJDhu5FuZyDEkGEsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1599107547825!5m2!1sen!2s"
+                                class="w-100" height="500" width="500" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+
+                        <div #saphang style="display: none;">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.464808765613!2d105.80927826440714!3d21.014079993656356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab622a9b4f47%3A0xc9bb6ba93244efd!2zNCBWxakgTmfhu41jIFBoYW4sIEzDoW5nIEjhuqEsIMSQ4buRbmcgxJBhLCBIw6AgTuG7mWksIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1607661375023!5m2!1sen!2s"
+                                class="w-100" height="500" width="500" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <div #tamdat style="display: none;">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7447.899005996481!2d105.7879620265292!3d21.034706419902715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab4f5b472005%3A0x451ef92ef0fcd7ed!2sBuilding%20N06B1!5e0!3m2!1sen!2s!4v1601261179928!5m2!1sen!2s"
+                                class="w-100" height="500" width="500" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="SECTION3">
+            <div class="box-contact-s3">
+                <div class="regis-contact">
+                    <div class="child-regis-contact">
+                        <h1>Đăng kí làm đại lý - ctv</h1>
+                        <input name="name" class="regis-name" type="text" placeholder="Họ và tên" value="">
+                        <input name="phone" class="regis-phone" type="number" placeholder="Số điện thoại" value="">
+                        <input name="email" class="regis-email" type="email" placeholder="Email" value="">
+                        <textarea name="message" class="ladi-form-control"
+                            placeholder="Bạn quan tâm đến chuyến đi nào?"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="SECTION4">
+            <div class="headline">
+                <h3 class="ladi-headline">Kênh bán hàng Online<br></h3>
+            </div>
+            <div class="div-thuonghieu">
+
+                <div class="social-icon">
+                    <a href="https://shopee.vn/gaongong"><img
+                            src="//theme.hstatic.net/200000170631/1000660112/14/ft-social-icon-1.png?v=3046"
+                            alt="icon"></a>
+                    <a href="https://tiki.vn/cua-hang/cong-ty-co-phan-thuc-pham-an-bien"><img
+                            src="//theme.hstatic.net/200000170631/1000660112/14/ft-social-icon-2.png?v=3046"
+                            alt="icon"></a>
+                    <div class="thuonghieu"><a ng-reflect-router-link="/" href="/"><img
+                                alt="Ngỗng - Đồng Hành Xây Dựng Sinh Thái Nông Nghiệp Bền Vững"
+                                src="../../../../assets/image/main/logo.webp"></a>
+                    </div>
+                    <a href="https://ngong.vn/collections/tat-ca-san-pham"><img
+                            src="../../../../assets/image/icons/facebook-icon-1024x1024.png" alt="icon"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

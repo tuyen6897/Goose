@@ -1,0 +1,279 @@
+<app-header #header></app-header>
+<div class="container product-list">
+    <div class="breadcrumb-small">
+        <a target="_self" href="/" title="Quay trở về trang chủ">Trang chủ</a>
+        <span aria-hidden="true">/</span>
+        <span>Danh mục sản phẩm</span>
+    </div>
+    <div class="collection-head" style="width: 100%;">
+        <label class="lbl-h1 collection-title">Tất Cả Sản Phẩm</label>
+        <div class="collection-head-content">
+            <span>Sắp xếp theo</span>
+            <button>Bán chạy</button>
+            <button>Giá cao đến thấp</button>
+            <button>Giá thấp đến cao</button>
+        </div>
+    </div>
+    <div style="width: 100%;">
+        <div class="product-content">
+            <div style="float: left;">
+                <div *ngFor="let product of productList"
+                    class="grid__item large--one-whole medium--one-whole small--one-whole">
+                    <div class="product-item">
+                        <div class="product-img">
+                            <div class="product-item-countdown"></div><a (click)="detailProduct(product.id)"><img
+                                    id="1026970643" alt="Bột Sắn Dây Ông Hòa 700gr" [src]="product.image"></a>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title"><a (click)="detailProduct(product.id)">Mật Trà Kombucha Cốt
+                                    Chuối</a></div>
+                            <div data-id="1026970643" data-url="bot-san-day-ong-hoa-700gr"
+                                class="starbaprv-widget starbaprv-preview-badge starbaprv-preview-badge--with-link">
+                            </div>
+                            <div class="product-tag-bonus"></div>
+                            <div class="product-price clearfix"><span class="current-price">155,000₫</span></div>
+                            <div class="product-actions text-center clearfix">
+                                <div style="margin: -5px;padding: 0;">
+                                    <button class="btn-add" (click)="addCart($event)">Thêm vào giỏ hàng</button>
+                                    <button (click)="openDialog()" class="btn-buy">Mua Ngay</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-show-products"><button *ngIf="isShowbutton" class="btn-show-products"
+                        (click)="show()">Xem thêm ({{imagesProduct.length - productList.length}}) sản phẩm</button>
+                </div>
+            </div>
+            <div class="pro-tabcontent" style="display: block;">
+                <div class="group" style="border-top: 2px solid #ccc;">
+                    <div class="content">
+                        <div class="ToggleContent__Wrapper-sc-1dbmfaw-1 cqXrJr">
+                            <div class="ToggleContent__View-sc-1dbmfaw-0 wyACs">
+                                <p style="text-align: justify;"><span><span><span
+                                                style="line-height:normal"><span><span><span><span>Ngỗng sử dụng giống
+                                                                gạo ST25- Hồ Quang Cua,&nbsp;được canh tác
+                                                                theo tiêu chuẩn hữu cơ USDA. <em><strong>Gạo Ngỗng sinh
+                                                                        thái ST25 xát
+                                                                        trắng</strong></em> giữ 10 - 20% cám nên đặc
+                                                                biệt có mùi thơm và
+                                                                giàu dinh
+                                                                dưỡng. Mặc dù là xát trắng nhưng không hề xát kỹ như
+                                                                ngoài thị trường
+                                                                nên cơm vẫn
+                                                                rất đậm vị. Sản phẩm đặc biệt phù hợp với đối tượng
+                                                                khách hàng đã quen
+                                                                ăn cơm gạo
+                                                                trắng nhưng muốn sử dụng gạo sạch an toàn với hàm lượng
+                                                                dinh dưỡng cao
+                                                                và tốt cho
+                                                                sức
+                                                                khỏe.&nbsp;</span></span></span></span></span></span></span>
+                                </p>
+                                <p style="text-align: center"><img
+                                        src="//file.hstatic.net/200000170631/file/gao-sinh-thai-ngong_dd72ceab1e9040f680e1906be066332d.jpg">
+                                </p>
+                                <h3 *ngIf="isShow" style="text-align: justify;"><strong><span><span><span
+                                                    style="line-height:normal"><span><span><span>Gạo
+                                                                Ngỗng được sản xuất ở
+                                                                đâu&nbsp;</span></span></span></span></span></span></strong>
+                                </h3>
+                                <p *ngIf="isShow" style="text-align: justify;"><span><span><span
+                                                style="line-height:normal"><span><span><span><span>Hiện tại, vùng
+                                                                nguyên
+                                                                liệu sản xuất chủ yếu tập trung tại vùng
+                                                                lúa rươi Hải Phòng và lúa tôm Sóc Trăng. Để đảm bảo
+                                                                khách hàng luôn có
+                                                                gạo mới quanh
+                                                                năm, Ngỗng có ba mùa vụ trong
+                                                                năm.&nbsp;</span></span></span></span></span></span></span>
+                                </p>
+                                <ul *ngIf="isShow">
+                                    <li style="text-align: justify;"><span><span><span
+                                                    style="line-height:normal"><span><span><span><span>Vào tháng 6 và
+                                                                    tháng 10 là vụ chiêm, vụ mùa của gạo ruộng
+                                                                    rươi Hải
+                                                                    Phòng.&nbsp;</span></span></span></span></span></span></span>
+                                    </li>
+                                    <li style="text-align: justify;"><span><span><span
+                                                    style="line-height:normal"><span><span><span><span>Từ
+                                                                    tháng 12 đến tháng 2 là vụ lúa ruộng tôm Sóc
+                                                                    Trăng.&nbsp;</span></span></span></span></span></span></span>
+                                    </li>
+                                </ul>
+                                <p *ngIf="isShow" style="text-align: justify;"><span><span><span
+                                                style="line-height:normal"><span><span><span><span>Trong tương lai,
+                                                                Ngỗng sẽ tiếp tục mở rộng vùng nguyên liệu
+                                                                nhằm cung cấp nhu cầu ngày càng lớn của khách hàng
+                                                                về&nbsp;gạo sinh thái
+                                                                Ngỗng.&nbsp;</span></span></span></span></span></span></span>
+                                </p>
+                                <div *ngIf="!isShow" class="gradient"></div>
+                            </div>
+                            <button class="btn-more" (click)="isShow = !isShow"
+                                data-view-id="pdp_view_description_button">
+                                {{!isShow ? 'Xem thêm thông số' : 'Thu gọn thông số'}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="collection-sidebar">
+            <div class="grid__item">
+                <div style="margin: 10px 0 10px 0;border: 1px solid #ccc;padding: 5px;">
+                    <div style="position: sticky; height: 440px; top: 80px; background: #fff; z-index: 3;">
+                        <div class="grid__item large--one-whole medium--one-half small--one-whole">
+                            <div class="collection-filter-price">
+                                <button class="accordion cs-title col-sb-trigger panel-sort active">
+                                    <span>KHOẢNG GIÁ</span>
+                                </button>
+                                <div class="panel  sidebar-sort" style="max-height: 228px;">
+                                    <ul class="no-bullets filter-price clearfix">
+                                        <li>
+                                            <label>
+                                                <input type="radio" name="price-filter">
+                                                <span>Tất cả</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="radio" name="price-filter">
+                                                <span>Nhỏ hơn 100,000₫</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="radio" name="price-filter">
+                                                <span>Từ 100,000₫ - 200,000₫</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="radio" name="price-filter">
+                                                <span>Từ 200,000₫ - 300,000₫</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="radio" name="price-filter">
+                                                <span>Từ 300,000₫ - 400,000₫</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="radio" name="price-filter">
+                                                <span>Từ 400,000₫ - 500,000₫</span>
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="radio" name="price-filter">
+                                                <span>Lớn hơn 500,000₫</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid__item large--one-whole medium--one-half small--one-whole">
+                            <div class="collection-filter-vendor">
+                                <button class="accordion cs-title col-sb-trigger active">
+                                    <span>THƯƠNG HIỆU</span>
+                                </button>
+                                <div class="panel sidebar-sort" style="max-height: 286px;">
+                                    <ul class="no-bullets filter-vendor clearfix">
+                                        <li class="">
+                                            <label data-filter="NGỖNG" class="filter-vendor__item ngong">
+                                                <input type="checkbox">
+                                                <span>NGỖNG</span>
+                                            </label>
+                                        </li>
+                                        <li class="">
+                                            <label data-filter="Karose" class="filter-vendor__item karose">
+                                                <input type="checkbox">
+                                                <span>Karose</span>
+                                            </label>
+                                        </li>
+                                        <li class="">
+                                            <label data-filter="Ngỗng" class="filter-vendor__item ngong">
+                                                <input type="checkbox">
+                                                <span>Ngỗng</span>
+                                            </label>
+                                        </li>
+                                        <li class="">
+                                            <label data-filter="Tôi Là Thảo Mộc - Tuệ Viên"
+                                                class="filter-vendor__item toi-la-thao-moc-tue-vien">
+                                                <input type="checkbox">
+                                                <span>Tôi Là Thảo Mộc - Tuệ Viên</span>
+                                            </label>
+                                        </li>
+                                        <li class="">
+                                            <label data-filter="Cô Cà Chua" class="filter-vendor__item co-ca-chua">
+                                                <input type="checkbox">
+                                                <span>Cô Cà Chua</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="san-pham-kuyen-mai">
+                        <label style="font-size: 22px; font-weight: bold;">Sản Phẩm Khuyến Mãi</label>
+                    </div>
+                    <div class="product-sale">
+                        <div *ngFor="let image of imagesProductSale" class="article-item article-item-list">
+                            <div class="article-image">
+                                <a target="_self" href="/chi-tiet-san-pham"><img style="width: 100px;"
+                                        [src]="image"></a>
+                            </div>
+                            <div class="article-info">
+                                <a class="article-title">
+                                    Gạo ST25 sát trắng
+                                </a>
+                                <div style="position: relative;">
+                                    <span>30,000₫</span>
+                                    <div class="product-tags">
+                                        <span class="tag-saleoff">
+                                            SALE 30%
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img style="width: 98%;" src="../../../../assets/image/main/new4.png" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="collection-head" style="width: 100%;">
+        <label class="lbl-h1 collection-title">Sản Phẩm Đã Xem</label>
+    </div>
+    <div style="width: 100%;" class="product-watch">
+        <app-carousel [datas]="datasProductSeen" [showButton]="false" [product]="true"
+            [responsiveOptions]="responsiveOptions">
+        </app-carousel>
+    </div>
+    <div class="comment-box">
+        <div class="cmt_form">
+            <textarea #comment placeholder="Mời bạn để lại bình luận... "></textarea>
+            <div class="boxemotion">
+                <a class="btnCmtUpload" (click)="selectFile.click()">
+                    <i class="iconcom-pict"></i>
+                    <span>Gửi ảnh</span>
+                </a>
+                <div class="cmt_right">
+                    <a class="btnSend" id="btnSendCmt" (click)="openDialogComment()">Gửi</a>
+                </div>
+            </div>
+            <input style="display: none;" multiple #selectFile type="file" value="select"
+                (change)="selectFileChange($event)">
+            <div class="files">
+                <img *ngFor="let item of imageList" class="image-file" [src]="item ? item.url : ''">
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,295 @@
+/* You can add global styles to this file, and also import other style files */
+
+body>* {
+    font-family: "Arial" !important;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #87b83b;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #87b83b;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 30px;
+    align-items: flex-start;
+    font-size: 18px;
+    margin-top: 20px !important;
+}
+
+.lbl-title {
+    font-size: 30px;
+}
+
+.breadcrumb-small {
+    text-align: left;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.breadcrumb-small a {
+    color: #87b83b;
+    text-decoration: none;
+}
+
+.breadcrumb-small span {
+    margin-left: 2px;
+}
+
+.lbl-h1 {
+    font-size: 30px;
+
+}
+
+.lbl-h2 {
+    font-size: 20px;
+}
+
+.lbl-h3 {
+    font-size: 16px;
+}
+
+.lbl-h1,
+.lbl-h2,
+.lbl-h3 {
+    color: #790505;
+}
+
+a {
+    text-decoration: none !important;
+    color: #87b83b;
+    background: transparent;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    width: 2em !important;
+    height: 2em !important;
+}
+
+.carousel-indicators {
+    display: none !important;
+}
+
+.carousel-control-next {
+    right: 44px !important;
+}
+
+.carousel-control-prev {
+
+    left: 30px !important;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    width: auto !important;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #87b83b;
+}
+
+.w100 {
+    width: 100%
+}
+
+@media (max-width: 768px) {
+    .lbl-title {
+        font-size: 18px;
+    }
+
+    .lbl-h1 {
+        font-size: 18px;
+    }
+
+    .lbl-h2 {
+        font-size: 14px;
+    }
+
+    .lbl-h3 {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 576px) {
+
+    .container {
+        max-width: 540px !important;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .container {
+        max-width: 740px !important;
+    }
+}
+
+@media (min-width: 992px) {
+
+    .container {
+        max-width: 980px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .container {
+        max-width: 1150px !important;
+    }
+}
+
+@media (min-width: 1400px) {
+
+    .container {
+        max-width: 1400px !important;
+    }
+}
+
+
+// dialog
+
+@keyframes ball-spin-fade-loader {
+
+    from,
+    40% {
+        opacity: 0;
+        width: 5px;
+        height: 5px;
+    }
+
+    50% {
+        opacity: 0.5;
+        width: 10px;
+        height: 10px;
+    }
+
+    80%,
+    to {
+        opacity: 1;
+        width: 15px;
+        height: 15px;
+    }
+}
+
+.ball-spin-fade-loader {
+    position: relative;
+    top: -10px;
+    left: -10px;
+}
+
+.loading_mask {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #e8e8e8;
+    justify-content: center;
+    align-items: center;
+}
+
+.ball-spin-fade-loader>div {
+    background-color: #000;
+}
+
+.loading_mask_trans {
+    opacity: 0;
+}
+
+.loading_mask_normal {
+    opacity: 0.7;
+}
+
+.loading {
+    z-index: 99999;
+    top: 0;
+}
+
+.ball-spin-fade-loader>div:nth-child(1) {
+    top: 25px;
+    left: 0;
+    -webkit-animation: ball-spin-fade-loader 1s -.96s infinite linear;
+    animation: ball-spin-fade-loader 1s -.96s infinite linear;
+}
+
+.ball-spin-fade-loader>div:nth-child(2) {
+    top: 17.05px;
+    left: 17.05px;
+    -webkit-animation: ball-spin-fade-loader 1s -.84s infinite linear;
+    animation: ball-spin-fade-loader 1s -.84s infinite linear;
+}
+
+.ball-spin-fade-loader>div:nth-child(3) {
+    top: 0;
+    left: 25px;
+    -webkit-animation: ball-spin-fade-loader 1s -.72s infinite linear;
+    animation: ball-spin-fade-loader 1s -.72s infinite linear;
+}
+
+.ball-spin-fade-loader>div:nth-child(4) {
+    top: -17.05px;
+    left: 17.05px;
+    -webkit-animation: ball-spin-fade-loader 1s -.6s infinite linear;
+    animation: ball-spin-fade-loader 1s -.6s infinite linear;
+}
+
+.ball-spin-fade-loader>div:nth-child(5) {
+    top: -25px;
+    left: 0;
+    -webkit-animation: ball-spin-fade-loader 1s -.48s infinite linear;
+    animation: ball-spin-fade-loader 1s -.48s infinite linear;
+}
+
+.ball-spin-fade-loader>div:nth-child(6) {
+    top: -17.05px;
+    left: -17.05px;
+    -webkit-animation: ball-spin-fade-loader 1s -.36s infinite linear;
+    animation: ball-spin-fade-loader 1s -.36s infinite linear;
+}
+
+.ball-spin-fade-loader>div:nth-child(7) {
+    top: 0;
+    left: -25px;
+    -webkit-animation: ball-spin-fade-loader 1s -.24s infinite linear;
+    animation: ball-spin-fade-loader 1s -.24s infinite linear;
+}
+
+.ball-spin-fade-loader>div:nth-child(8) {
+    top: 17.05px;
+    left: -17.05px;
+    -webkit-animation: ball-spin-fade-loader 1s -.12s infinite linear;
+    animation: ball-spin-fade-loader 1s -.12s infinite linear;
+}
+
+.ball-spin-fade-loader>div {
+    margin: 2px;
+    animation-fill-mode: both;
+}
+
+.ball-spin-fade-loader>div,
+.ball-spin-loader>div {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+}

@@ -1,0 +1,266 @@
+<app-header #header [banner]="true"></app-header>
+<div class="home-slide">
+    <ngb-carousel *ngIf="imagesHome">
+        <ng-template ngbSlide interval="1000" *ngFor="let image of imagesHome">
+            <div class="picsum-img-wrapper" (click)="onClick(image.url)">
+                <img [src]="image.img" alt="">
+            </div>
+        </ng-template>
+    </ngb-carousel>
+</div>
+<div class="main container">
+    <label class="lbl-title">Sản Phẩm Khuyến Mãi</label>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="sale" style="width: 100%;">
+        <app-carousel [datas]="datasSale" (eventClick)="header.visibleSidebar = true" [product]="true"
+            [responsiveOptions]="responsiveOptions"></app-carousel>
+    </div>
+    <label class="lbl-title">Sản Phẩm</label>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div *ngIf="isMobile">
+        <div class="products">
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+        </div>
+        <div class="products">
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+        </div>
+        <div class="products">
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+        </div>
+        <div class="products">
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+        </div>
+        <div class="products">
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+        </div>
+    </div>
+    <div *ngIf="!isMobile">
+        <div class="products">
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+        </div>
+    </div>
+    <div class="image">
+        <img src="../../../../assets/image/main/rice.png" alt="">
+    </div>
+    <div class="image so-gao-mobile" style="width: 80%; margin-top: 10px;">
+        <div>
+            <img src="../../../../assets/image/main/so-gao_compressed.jpg" alt="" style="width: 250px;">
+        </div>
+        <div>
+            <div style="margin-bottom: 20px;">
+                <div style="display: flex;/* justify-content: e;width: 83%;;3%; */justify-content: space-around;">
+                    <div style=" font-weight: bold;"><img src="../../../../assets/image/main/money.png" alt=""
+                            style="width: 80px;"><br> Ưu Đãi<br>22% - 35% </div>
+                    <div style="font-weight: bold; "><img src="../../../../assets/image/main/money2.png" alt=""
+                            style="width: 80px;"><br> Luôn<br>Tươi Ngon </div>
+                    <div style="font-weight: bold;"><img src="../../../../assets/image/main/money3.png" alt=""
+                            style="width: 80px;margin-bottom: 6px;"><br>
+                        Luôn<br>Tươi
+                        Ngon </div>
+                </div>
+                <div style=" border: 1px solid;border-radius: 10px;">
+                    <div style="align-items: center;align-content: center;">
+                        <div
+                            style="display: flex;flex-direction: column;justify-content: center;text-align: center;font-weight: bold;">
+                            Sổ Gạo <div class="line" style="width: 100%;"></div>
+                            <div class="line" style=" width: 100%;"></div>
+                        </div>
+                        <div><button
+                                style="background: red;width: 200px;border: 2px solid #fff;border-radius: 15px;color: #fff;font-weight: bold;align-items: center;">ĐẶT
+                                NGAY</button></div>
+                    </div>
+                    <div style="font-size: 12px;padding-left: 15px;text-align: left;padding-right: 15px;"> Sổ gạo là
+                        hình thức "Mua trước trả sau" nằm trong dự án "Cánh Đồng Sẻ
+                        Chia" do Ngỗng triển khai nhằm mang lại
+                        lợi
+                        ích cân bằng cho cả khác hàng và người nông dân.<br>
+                        ............................................................<br>
+                        ............................................................<br></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="image so-gao-desktop"
+        style="margin-top: 30px;margin-bottom: -100px;justify-content: center;height: auto;">
+        <div style="position: relative; z-index: 2; left: 15px; top: -30px;"><img
+                src="../../../../assets/image/main/so-gao_compressed.jpg" alt=""
+                style="width: 255px;transform: rotate(355deg);"></div>
+        <div style="width: 62%;position: relative;">
+            <div style="position: relative; ">
+                <div style="display: flex; justify-content: space-around; margin-bottom: 25px;">
+                    <div style="font-weight: bold; text-align: center;"><img
+                            src="../../../../assets/image/main/money.png" alt="" style="width: 80px;"><br> Ưu Đãi<br>22%
+                        - 35% </div>
+                    <div style="font-weight: bold; text-align: center;"><img
+                            src="../../../../assets/image/main/money2.png" alt="" style="width: 80px;"><br> Luôn<br>Tươi
+                        Ngon </div>
+                    <div style="font-weight: bold; text-align: center;"><img
+                            src="../../../../assets/image/main/money3.png" alt=""
+                            style="width: 80px; margin-bottom: 6px;"><br> Luôn<br>Tươi Ngon </div>
+                </div>
+                <div class="dat-hang-so-gao">
+                    <div style="display: flex; margin: 15px 0px; width: 90%; margin-left: 30px;">
+                        <div
+                            style="align-items: center; display: flex; flex-direction: column; justify-content: center; font-weight: bold; width: 40%; font-size: 22px; margin-right: 6px;">
+                            Sổ Gạo <div class="line" style="width: 100px;"></div>
+                            <div class="line" style="width: 100px;"></div>
+                        </div>
+                        <div><button
+                                style="background: linear-gradient(to bottom, red 0, #b32323 100%); width: 200px; border: 2px solid #fff; border-radius: 30px; font-weight: bold; align-items: center; height: 40px; color: #fff; box-shadow: 0px 2px 10px 0px rgb(145 147 150 / 75%);">ĐẶT
+                                NGAY</button></div>
+                    </div>
+                    <div
+                        style="font-size: 20px; padding-left: 60px; text-align: left; padding-right: 15px; word-break: break-word;">
+                        Sổ gạo là
+                        hình thức "Mua trước trả sau" nằm trong dự án "Cánh Đồng Sẻ Chia" do NGỗng triển khai nhằm mang
+                        lại
+                        lợi ích cân bằng cho cả khác hàng và người nông dân.<br>
+                        ............................................................<br>
+                        ............................................................<br></div>
+                </div>
+                <div style="
+        position: relative; 
+        transform: rotate(18deg);
+        width: fit-content;
+        bottom: 155px;
+        left: 79%;
+    "><img src="../../../../assets/image/main/anh bong gao - duoi jpg.png" alt="" style="width: 200px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="title-color">
+        <label class="lbl-title">Dự Án Của Ngỗng</label>
+    </div>
+    <div class="w100" style="margin-top: 20px; margin-bottom: 50px;">
+        <div class="w100" style="width: 95%; margin-left: 27px;">
+            <div class="w100 project">
+                <div class="w100" style="margin-right: 25px;">
+                    <a href="/du-an-trung-vang">
+                        <div class="trung-vang">
+                            <div>Dự Án Trứng Vàng</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="w100 canva">
+                    <a href="/vuon-dong-hanh">
+                        <div class="dong-hanh">
+                            <div>Vườn Đồng Hành</div>
+                        </div>
+                    </a>
+                    <a href="/canh-dong-chia-se">
+                        <div class="canh-dong">
+                            <div>Cánh Đồng Chia Sẻ</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="w100" style="width: 100%;">
+                <a href="/chuyen-di-cua-ngong">
+                    <div class="chuyen-di">
+                        <div>Chuyến Đi Của Ngỗng</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <label class="lbl-title">Tin Mới Nhất Của Ngỗng</label>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="w100" style="margin-bottom: 50px; margin-top: 30px;padding-left: 25px;padding-right: 40px; ">
+        <div class="w100">
+            <div class="w100 news-content">
+                <div class="w100 news-content-left">
+                    <a target="_self" href="/chi-tiet-tin-tuc">
+                        <div class="nong-san">
+                            <div>
+                                <span class="title-nong-san">Nông Sản Việt Nam 2022</span><br>
+                                <span>Sau khi kim ngạch xuất khẩu kim ngạch sụt giảm mạnh trong tháng 1, thì sang tháng
+                                    2 đã
+                                    thăng trưởng 2 con số</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="w100 news-content-right">
+                    <div class="w100 news-content-right-img">
+                        <a target="_self" href="/chi-tiet-tin-tuc"><img *ngIf="!isMobile"
+                                style="width: 194px;height: 194px; border-radius: 20px; border: 5px solid #87b83b; "
+                                src="../../../../assets/image/main/canva5.png" alt=""></a>
+                        <div class="txt-news">
+                            <div><a target="_self" href="/chi-tiet-tin-tuc">Bột Sữa Hạt Dinh Dưỡng Vui Khỏe Đẹp Vị Cacao
+                                    Hạnh Bột Sữa
+                                    Hạt Dinh Dưỡng Vui Khỏe Đẹp Vị Cacao Hạnh
+                                    Nhân</a></div>
+                            <span>Bột sữa hạt Vui Khỏe Đẹp làm ra từ các loại đậu hạt ưu tiên tuyển chọn từ những vùng
+                                nguyên Bột sữa hạt Vui Khỏe Đẹp làm ra từ các loại đậu hạt ưu tiên tuyển chọn từ những
+                                vùng
+                                nguyên</span>
+                        </div>
+                    </div>
+                    <div class="w100 news-content-right-img" style="height: 30%;">
+                        <a target="_self" href="/chi-tiet-tin-tuc"><img *ngIf="!isMobile"
+                                style="width: 194px;height: 194px; border-radius: 20px; border: 5px solid #87b83b;"
+                                src="../../../../assets/image/main/PNG-0000002201-png-bong-lua.png" alt=""></a>
+                        <div class="txt-news">
+                            <div style="font-size: 20px;"><a target="_self" href="/chi-tiet-tin-tuc">Thành phần dinh
+                                    dưỡng
+                                    của gạo có gì? Nên ưu tiên sử
+                                    dụng</a></div>
+                            <span>Bột sữa hạt Vui Khỏe Đẹp làm ra từ các loại đậu hạt ưu tiên tuyển chọn từ những vùng
+                                nguyên</span>
+                        </div>
+                    </div>
+                    <div class="w100 news-content-right-img" style="height: 30%;">
+                        <a target="_self" href="/chi-tiet-tin-tuc"><img *ngIf="!isMobile"
+                                style="width: 194px;height: 194px; border-radius: 20px; border: 5px solid #87b83b;"
+                                src="../../../../assets/image/main/canva7.png" alt=""></a>
+                        <div class="txt-news">
+                            <div style="font-size: 20px;"><a target="_self" href="/chi-tiet-tin-tuc">Thành phần dinh
+                                    dưỡng
+                                    của gạo có gì? Nên ưu tiên sử
+                                    dụng</a></div>
+                            <span>Bột sữa hạt Vui Khỏe Đẹp làm ra từ các loại đậu hạt ưu tiên tuyển chọn từ những vùng
+                                nguyên</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="title-color">
+        <label class="lbl-title">Feedback Từ Khách Hàng</label>
+    </div>
+    <div style="width: 100%;" class="member">
+        <app-carousel [feedback]="true" [numVisible]="3" [datas]="imagesMember" [responsiveOptions]="responsiveOptions">
+        </app-carousel>
+
+    </div>
+    <div class="title-color">
+        <label class="lbl-title">Đối Tác Chiến Lược Của Ngỗng</label>
+    </div>
+    <!-- <div class="partner-box">
+        <app-carousel prod="image" [size]="!isMobile ? 6 : 2" className="partner" [slideItems]="imagetrademark">
+        </app-carousel>
+    </div> -->
+
+    <div class="partner-box">
+        <app-carousel [i_con]="true" [numVisible]="numVisible" [datas]="imagetrademark"
+            [responsiveOptions]="responsiveOptions">
+        </app-carousel>
+    </div>
+</div>
+<app-footer></app-footer>

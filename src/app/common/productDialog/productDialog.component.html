@@ -1,0 +1,166 @@
+<div class="product-dialog">
+    <div class="product-reviews">
+        <div class="product_image">
+            <a target="_self" href="/chi-tiet-san-pham">
+                <img src="  //product.hstatic.net/200000170631/product/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_medium.jpg"
+                    alt="Mật Trà Kombucha Cốt Chuối">
+            </a>
+            <div class="item-content">
+                <div class="item-title">
+                    <a target="_self" href="/chi-tiet-san-pham" (click)="ref.close()">{{data ?
+                        data.title:
+                        ''}}
+                    </a><br>
+                </div>
+                <div class="pro-price">
+                    <span>Giá bán:</span>
+                    <span class="current-price ProductPrice">210,000 ₫</span>
+                    <span class="original-price ComparePrice"><s style="display: inline;">265,000 ₫</s></span>
+                    <span class="PriceSaving" style="display: inline;">(-10
+                        %)</span>
+                </div>
+                <div id="variant-swatch" class="swatch swatch-product-single " data-option="option1"
+                    data-option-index="0">
+                    <div class="header">Loại</div>
+                    <div class="select-swap">
+                        <div data-value="500 ml" class="n-sd swatch-element 500-ml">
+                            <input class="variant-0 input-product" id="swatch-0-500-ml" type="radio" name="option1"
+                                value="500 ml" checked="">
+                            <label for="swatch-0-500-ml" class="sp">
+                                500 ml
+                                <img class="img-check"
+                                    src="//theme.hstatic.net/200000170631/1000660112/14/select-pro.png?v=3075">
+                            </label>
+                        </div>
+                        <div data-value="100 ml" class="n-sd swatch-element 100-ml">
+                            <input class="variant-0 input-product" id="swatch-0-100-ml" type="radio" name="option1"
+                                value="100 ml">
+                            <label for="swatch-0-100-ml">
+                                100 ml
+                                <img class="img-check"
+                                    src="//theme.hstatic.net/200000170631/1000660112/14/select-pro.png?v=3075">
+                            </label>
+                        </div>
+                        <!-- <div data-value="5 lít" class="n-sd swatch-element 5-lit soldout">
+                                                                <input class="variant-0 input-product" id="swatch-0-5-lit" type="radio"
+                                                                    name="option1" value="5 lít">
+                                                                <label for="swatch-0-5-lit">
+                                                                    5 lít
+                                                                    <img class="crossed-out"
+                                                                        src="//theme.hstatic.net/200000170631/1000660112/14/soldout.png?v=3075">
+                                                                    <img class="img-check"
+                                                                        src="//theme.hstatic.net/200000170631/1000660112/14/select-pro.png?v=3075">
+                                                                </label>
+                                                            </div> -->
+                    </div>
+                </div>
+                <div class="product-quantity">
+                    <div class="qty-addcart">
+                        <span>Số lượng </span>
+                        <div class="js-qty">
+                            <p-inputNumber [(ngModel)]="inputQuantity" [showButtons]="true" [size]="3" [min]="1"
+                                buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
+                                decrementButtonClass="btn-input-number" incrementButtonClass="btn-input-number"
+                                incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+                            </p-inputNumber>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-button">
+                    <button name="buy" id="buy-now" (click)="onClickBuyNew($event)" class="btnHome btnBuyNow">MUA
+                        NGAY</button>
+                    <button class="show-product" href="/chi-tiet-san-pham">Chi tiết sản
+                        phẩm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 380px">
+        <p-tabMenu [model]="scrollableItems" [activeItem]="activeItem" [scrollable]="true"></p-tabMenu>
+        <p-tabView>
+            <p-tabPanel header="THÀNH PHẦN DINH DƯỠNG">
+                <div class="group">
+                    <div class="content">
+                        <div class="ToggleContent__Wrapper-sc-1dbmfaw-1 cqXrJr">
+                            <div class="ToggleContent__View-sc-1dbmfaw-0 wyACs"
+                                [style.overflow]="isShow ? 'auto' : 'hidden'">
+                                <p><span><strong style="color: rgb(17, 90, 226);">thành phần dinh dưỡng</strong>hút
+                                        thông gió không gian tĩnh phòng
+                                        khách, phòng ngủ, nhà bếp, phòng vệ sinh, nhà tắm, văn phòng, phòng hút thuốc...
+                                        thông
+                                        gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p>
+                                <p><em>
+                                        <picture class="webpimg-container">
+                                            <img src="https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png"
+                                                alt="" class="WebpImg__StyledImg-sc-h3ozu8-0 fWjUGo">
+                                        </picture><br>
+                                    </em></p>
+                                <p *ngIf="isShow"><span><strong>Quạt thông gió âm trần TFV-D15 ZPD:</strong>hút thông
+                                        gió không
+                                        gian tĩnh phòng
+                                        khách, phòng ngủ, nhà bếp, phòng vệ sinh, nhà tắm, văn phòng, phòng hút thuốc...
+                                        thông
+                                        gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p>
+                                <div *ngIf="!isShow" class="gradient"></div>
+                            </div>
+                            <button class="btn-more" (click)="isShow = !isShow"
+                                data-view-id="pdp_view_description_button">
+                                {{!isShow ? 'Xem thêm thông số' : 'Thu gọn thông số'}}</button>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="MÔ TẢ SẢN PHẨM">
+                <div class="group">
+                    <div class="content">
+                        <div class="ToggleContent__Wrapper-sc-1dbmfaw-1 cqXrJr">
+                            <div class="ToggleContent__View-sc-1dbmfaw-0 wyACs"
+                                [style.overflow]="isShow ? 'auto' : 'hidden'">
+                                <p><span><strong style="color: rgb(17, 90, 226);">mô tả sản phẩm</strong>hút thông gió
+                                        không gian tĩnh phòng
+                                        khách, phòng ngủ, nhà bếp, phòng vệ sinh, nhà tắm, văn phòng, phòng hút thuốc...
+                                        thông
+                                        gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p>
+                                <p><em>
+                                        <picture class="webpimg-container">
+                                            <img src="https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png"
+                                                alt="" class="WebpImg__StyledImg-sc-h3ozu8-0 fWjUGo">
+                                        </picture><br>
+                                    </em></p>
+                                <p *ngIf="isShow"><span><strong>Quạt thông gió âm trần TFV-D15 ZPD:</strong>hút thông
+                                        gió không
+                                        gian tĩnh phòng
+                                        khách, phòng ngủ, nhà bếp, phòng vệ sinh, nhà tắm, văn phòng, phòng hút thuốc...
+                                        thông
+                                        gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p>
+                                <div *ngIf="!isShow" class="gradient"></div>
+                            </div>
+                            <button class="btn-more" (click)="isShow = !isShow"
+                                data-view-id="pdp_view_description_button">
+                                {{!isShow ? 'Xem thêm thông số' : 'Thu gọn thông số'}}</button>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+        </p-tabView>
+    </div>
+    <div style="width: 100%;" class="seen-products">
+        <div class="collection-head" style="width: 100%;">
+            <label class="lbl-h1 collection-title">SẢN PHẨM CÙNG LOẠI</label>
+        </div>
+        <div style="width: 100%;" class="product-watch">
+            <div *ngFor="let item of imagesProductWatch" class="article-item article-item-list">
+                <div class="article-image">
+                    <a target="_self" href="/chi-tiet-san-pham" (click)="ref.close()"><img [src]="item"></a>
+                </div>
+                <div class="article-info">
+                    <a target="_self" href="/chi-tiet-san-pham" (click)="ref.close()" class="article-title">
+                        Mật Trà Kombucha Cốt
+                        Chuối
+                    </a>
+                    <div class="product-price "><span class="current-price">155,000 ₫</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

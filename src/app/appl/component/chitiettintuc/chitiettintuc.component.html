@@ -1,0 +1,93 @@
+<app-header></app-header>
+<div class="container chitiettintuc">
+    <div class="breadcrumb-small">
+        <a target="_self" href="/" title="Quay trở về trang chủ">Trang chủ</a>
+        <span aria-hidden="true">/</span>
+        <span>Tin tức</span>
+        <span aria-hidden="true">/</span>
+        <span>Chia sẻ kinh nghiêm</span>
+        <div>
+            <label class="lbl-h1">Chia sẻ công nghiệp</label>
+        </div>
+    </div>
+    <div>
+        <div class="blog-content">
+            <article class="blog_entry clearfix">
+                <header class="blog_entry-header clearfix">
+                    <div class="blog_entry-header-inner">
+                        <label class="lbl-h1">{{post.postTitle}}</label>
+                        <header class="entry-meta"><span class="entry-date">{{post.postDate}}</span></header>
+                        <div style="
+                            display: flex;
+                            margin-top: 20px; margin-bottom: 5px;">
+                            <div style="
+                            width: 80px;
+                            border: 1px solid blue;
+                            background: blue;"></div>
+                            <div style="
+                            width: 80px;
+                            margin-left: 10px;
+                            background: orange;"></div>
+                        </div>
+                    </div>
+                    <!--blog_entry-header-inner-->
+                </header>
+                <!--blog_entry-header clearfix-->
+                <div class="entry-content">
+                    <div #content class="entry-content">
+                    </div>
+                </div>
+            </article>
+            <div style="display: flex; justify-content: flex-end;">
+                <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width=""
+                    data-layout="button" data-action="like" data-size="small" data-share="true"></div>
+            </div>
+            <div style="width: 100%;">
+                <div class="fb-comments"
+                    data-href="https://ngong.vn/blogs/chuyen-ngong/ruong-ruoi-va-chuyen-chon-giong-thuan-viet-st25"
+                    data-width="" data-numposts="5" width="100%"></div>
+            </div>
+            <div>
+                <div class="related-articles-body">
+                    <label class="lbl-h2" style="margin-left: -20px; margin-bottom: 20px;">CÁC BÀI VIẾT LIÊN
+                        QUAN</label>
+                    <ul class="no-bullets">
+                        <li>
+                            <a target="_self" href="">Gạo ST25 Lúa Tôm Vụ Tân Xuân</a>
+                        </li>
+                        <li>
+                            <a target="_self" href="">Khi Khách Hàng Đóng Vai Trò Quan Trọng Trong Sản Xuất Nông Sản Bền
+                                Vững</a>
+                        </li>
+                        <li>
+                            <a target="_self" href="">Lịch Thười Vụ Trồng Lúa Năm 2022 của Ngỗng</a>
+                        </li>
+                        <li>
+                            <a target="_self" href="">Vườn Đồng Hành Và Giải Pháp Ngỗng Mang Đến Cho Người Nông Dân</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tin-tuc-content">
+            <div class="box-tin-tuc grid__item">
+                <div style="margin: 10px 0 10px 0;border: 1px solid #ccc;padding: 5px;">
+                    <div style="border-bottom: 2px solid #790505; margin-bottom: 10px;">
+                        <label style="font-size: 22px; font-weight: bold;">BÀI VIẾT XEM NHIỀU</label>
+                    </div>
+                    <div *ngFor="let item of listTinTuc; let i = index"
+                        style="display: flex;margin-bottom: 10px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
+                        <div class="ribbon down" style="--color: #fd9c2e;">
+                            <div class="content">
+                                {{i + 1}}
+                            </div>
+                        </div>
+                        <a>{{item}}</a>
+                    </div>
+                    <img style="width: 98%;" src="../../../../assets/image/main/new4.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="order">
+        <div class="information">
+            <span style="font-weight: bold;">
+                Cảm ơn bạn đã ủng hộ Ngỗng, đơn hàng của bạn đã được chuyển sang bộ phận xử lý đơn hàng.
+                Ngỗng sẽ nhanh chóng gửi hàng sớm nhất cho bạn. Mọi thắc mắc hoặc cần hỗ trợ xin vui lòng liên hệ
+                hotline:
+            </span>
+            <a href="tel:0945348008" style="font-weight: bold;">0945348008</a>
+            <div class="information-content">
+                <span>Đặt hàng thành công</span>
+                <span>Mã đơn hàng</span>
+                <div style="display: flex; flex-direction: column;">
+                    <span>Thông tin đơn hàng</span>
+                    <span>Họ và tên:</span>
+                    <span>Số điện thoại:</span>
+                    <span>Email:</span>
+                    <span>Địa chỉ:</span>
+                    <span>Ghi chú:</span>
+                    <div class="button-box">
+                        <span>Bạn chưa có tài khoản, đăng ký để cập nhật trạng thái đơn hàng của bạn? </span>
+                        <span class="register" (click)="openDialogLogin()">Đăng ký</span>
+                        <button href="/danh-muc-san-pham">Mua thêm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <div class="tr-cart" *ngFor="let item of product; let i = index">
+                <div class="image">
+                    <div class="product_image">
+                        <a target="_self" href="/chi-tiet-san-pham">
+                            <img src="  //product.hstatic.net/200000170631/product/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_medium.jpg"
+                                alt="Mật Trà Kombucha Cốt Chuối">
+                        </a>
+                        <div class="item-content">
+                            <a target="_self" href="/chi-tiet-san-pham">{{item.title}}
+                            </a><br>
+                            <span class="variant_title">{{item.variant}}</span>
+                            <div class="product-price">
+                                <span class="pri">{{formatCash(item.price)}} ₫</span>
+                                <span class="quantity">X {{item.quantity}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="total">
+                    <span class="price">
+                        <span class="line-item-total">{{formatCash(item.totalPrice)}} ₫</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="">
+                <div style="display: flex; justify-content: space-between;">
+                    <span>Tổng</span>
+                    <span>100,000 ₫</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>Mã ưu đãi</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>Phí giao hàng</span>
+                    <span>100,000 ₫</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>Phương thức thanh toán</span>
+                    <span>Thanh toán khi nhận hàng</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>Tổng cộng</span>
+                    <span>100,000 ₫</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

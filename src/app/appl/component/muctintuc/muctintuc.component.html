@@ -1,0 +1,77 @@
+<app-header></app-header>
+<div class="container">
+    <div class="breadcrumb-small">
+        <a target="_self" href="/" title="Quay trở về trang chủ">Trang chủ</a>
+        <span aria-hidden="true">/</span>
+        <span>Tin tức</span>
+        <span aria-hidden="true">/</span>
+        <span>Chia sẻ kinh nghiêm</span>
+        <div>
+            <label class="lbl-h1">Chia Sẻ Công Nghiệp</label>
+        </div>
+    </div>
+    <div style="text-align: center;">
+        <div *ngFor="let item of postList" class="article-item article-item-list">
+            <div class="article-image">
+                <a (click)="detailPost(item['id'])" target="_self"><img [src]="item['postImage']"></a>
+            </div>
+            <div class="article-info">
+                <a (click)="detailPost(item['id'])" target="_self" class="article-title">
+                    {{item['postTitle']}}
+                </a>
+                <div>
+                    Gạo ST25 sát trắng ruộng rươi nguyên cám 100%
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="paging">
+        <span *ngIf="isShowButton">Xem thêm</span>
+    </div>
+    <div>
+        <div class="group">
+            <div class="content">
+                <div class="ToggleContent__Wrapper-sc-1dbmfaw-1 cqXrJr">
+                    <div class="ToggleContent__View-sc-1dbmfaw-0 wyACs">
+                        <p><span><strong style="color: rgb(17, 90, 226);">Quạt thông gió âm trần TFV-D15
+                                    ZPD:</strong>hút thông gió không gian tĩnh phòng
+                                khách, phòng ngủ, nhà bếp, phòng vệ sinh, nhà tắm, văn phòng, phòng hút thuốc... thông
+                                gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p>
+                        <p><em>
+                                <picture class="webpimg-container">
+                                    <img src="https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png"
+                                        alt="" class="WebpImg__StyledImg-sc-h3ozu8-0 fWjUGo">
+                                </picture><br>
+                            </em></p>
+                        <p *ngIf="isShow"><span><strong>Quạt thông gió âm trần TFV-D15 ZPD:</strong>hút thông gió không
+                                gian tĩnh phòng
+                                khách, phòng ngủ, nhà bếp, phòng vệ sinh, nhà tắm, văn phòng, phòng hút thuốc... thông
+                                gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p>
+                        <div *ngIf="!isShow" class="gradient"></div>
+                    </div><button class="btn-more" (click)="isShow = !isShow"
+                        data-view-id="pdp_view_description_button">{{!isShow ? 'Xem thêm mô tả' : 'Thu gọn mô
+                        tả'}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <label style="margin-left: 20px;" class="lbl-h1">Báo Chí Nói Gì Về Ngỗng</label>
+        <div>
+            <div *ngFor="let item of baochiList" class="article-item article-item-list">
+                <div class="article-image">
+                    <a target="_self" href="/chi-tiet-tin-tuc" target="_self"><img [src]="item"></a>
+                </div>
+                <div class="article-info">
+                    <a target="_self" href="/chi-tiet-tin-tuc" target="_self" class="article-title">
+                        Bản tin thị trường Nông Lâm Thủy sản
+                    </a>
+                    <div>
+                        mô tả ngắng mô tả ngắng mô tả ngắng
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

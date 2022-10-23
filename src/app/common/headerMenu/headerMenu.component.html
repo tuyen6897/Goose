@@ -1,0 +1,159 @@
+<div class="hd-menu-desktop" [class]="slide ? 'menu-scrolling' : ''">
+    <div class="hd-navbar">
+        <ul class="no-bullets">
+            <li class="active">
+                <a target="_self" target="_self" href="/">trang chủ</a>
+            </li>
+            <li class="dropdown">
+                <span>về ngỗng<i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                <ul class="no-bullets dropdown-menu">
+                    <li>
+                        <a target="_self" href="/introduce">sơ lược về ngỗng</a>
+                    </li>
+                    <li>
+                        <a target="_self" href="/news">báo chí nói gì về ngỗng</a>
+                    </li>
+                    <li>
+                        <a target="_self" href="/production-system">hệ thống sản xuất và quản lý</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" dropdown">
+                <a target="_self" href="/danh-muc-san-pham">sản phẩm<i class="fa fa-angle-down"
+                        aria-hidden="true"></i></a>
+                <ul class="no-bullets dropdown-menu">
+                    <li>
+                        <a target="_self" href="/danh-muc-san-pham">danh mục sản phẩm 1</a>
+                    </li>
+                    <li>
+                        <a target="_self" href="/danh-muc-san-pham">danh mục sản phẩm 2</a>
+                    </li>
+                    <li>
+                        <a target="_self" href="/danh-muc-san-pham">danh mục sản phẩm 3</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a target="_self" href="/trang-chu-du-an">dự án<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <ul class="no-bullets dropdown-menu">
+                    <li>
+                        <a target="_self" href="/chuyen-di-cua-ngong">chuyến đi của ngỗng</a>
+                    </li>
+                    <li>
+                        <a target="_self" href="/du-an-khac">dự án khác</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" dropdown">
+                <a target="_self" href="/chuyen-cua-ngong">chuyện của ngỗng<i class="fa fa-angle-down"
+                        aria-hidden="true"></i></a>
+                <ul class="no-bullets dropdown-menu">
+                    <li>
+                        <a target="_self" href="/chuyen-ngong">chuyện ngỗng</a>
+                    </li>
+                    <li>
+                        <a target="_self" href="/chuyen-ngong">chuyện xưởng</a>
+                    </li>
+                    <li>
+                        <a target="_self" href="/chuyen-ngong">chuyện vườn</a>
+                    </li>
+                    <li>
+                        <a target="_self" href="/chuyen-ngong">chuyện tiêu dùng</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" dropdown">
+                <a target="_self" href="/chi-tiet-tuyen-dung">hợp tác<i class="fa fa-angle-down"
+                        aria-hidden="true"></i></a>
+                <ul class="no-bullets dropdown-menu">
+                    <li>
+                        <a target="_self" href="/chinh-sach-dai-ly-ctv">chính sách đại lý CTV - new</a>
+                    </li>
+                    <li>
+                        <a target="_self" href="/he-thong-doi-tac-new">hệ thống đối tác</a>
+                    </li>
+                    <li>
+                        <a target="_self" href="/chi-tiet-tuyen-dung">Chi tiết tuyển dụng</a>
+                    </li>
+                    <li>
+                        <a target="_self" href="/tuyen-dung-new">tuyển dụng new</a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" ">
+                <a target="_self" href="/lien-he">liên hệ</a>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="slide" class="header-func">
+        <div class="searchBox">
+            <input class="searchInput" type="text" name="" placeholder="Search here...">
+            <button class="searchButton" href="#">
+                <i class="material-icons">
+                    search
+                </i>
+            </button>
+        </div>
+        <img src="../../../../assets/image/main/icon search.png" />
+        <a (click)="onAccountClick($event)"><img src="../../../../assets/image/main/tai-khoan.png" /></a>
+        <a (click)="onCartClick($event)"><img src="../../../../assets/image/main/gio-hang.png" /></a>
+    </div>
+</div>
+
+<div class="hd-menu-mobile">
+    <div id="menuToggle">
+        <input type="checkbox" />
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="menu">
+            <li>
+                <a target="_self" target="_self" href="/">Trang chủ</a>
+            </li>
+            <li>
+                <span>Về Ngỗng</span>
+                <ul>
+                    <li><a target="_self" href="/introduce">Sơ lược về Ngỗng</a></li>
+                    <li><a target="_self" href="/news">Báo chí nói gì về ngỗng</a></li>
+                    <li><a target="_self" href="/production-system">Hệ thống sản xuất và quản lý</a></li>
+                </ul>
+            </li>
+            <li>
+                <a target="_self" href="/danh-muc-san-pham">Sản phẩm</a>
+                <ul>
+                    <li><a target="_self" href="/danh-muc-san-pham">Danh mục sản phẩm 1</a></li>
+                    <li><a target="_self" href="/danh-muc-san-pham">Danh mục sản phẩm 2</a></li>
+                    <li><a target="_self" href="/danh-muc-san-pham">Danh mục sản phẩm 1</a></li>
+                </ul>
+            </li>
+            <li>
+                <a target="_self" href="/danh-muc-du-an">Dự Án</a>
+                <ul>
+                    <li><a target="_self" href="/chuyen-di-cua-ngong">Chuyến đi của Ngỗng</a></li>
+                    <li><a target="_self" href="/du-an-khac">Dự án khác</a></li>
+                </ul>
+            </li>
+            <li>
+                <a target="_self" href="/chuyen-cua-ngong">Chuyện của Ngỗng</a>
+            </li>
+            <li>
+                <span>Hợp Tác</span>
+                <ul>
+                    <li><a target="_self" href="/chinh-sach-dai-ly-ctv">Chính sách đại lý ctv-new</a></li>
+                    <li><a target="_self" href="/he-thong-doi-tac">Hệ thống đối tác</a></li>
+                    <li><a target="_self" href="/tuyen-dung">Tuyển dụng new</a></li>
+                </ul>
+            </li>
+            <li>
+                <a target="_self" href="/lien-he">Liên Hệ</a>
+            </li>
+        </ul>
+    </div>
+    <div class="header-func">
+        <div class="header-mobile-search"><input type="search" placeholder="Bạn đang tìm kiếm gì?"
+                style="width: 95%;border: 1px solid #ccc;border-radius: 5px;"></div>
+        <img class="header-link" class="tai-khoan" src="../../../../assets/image/main/tai-khoan.png"
+            (click)="onAccountClick($event)" />
+        <a (click)="visibleSidebar2 = true"><img src="../../../../assets/image/main/gio-hang.png" /></a>
+    </div>
+</div>

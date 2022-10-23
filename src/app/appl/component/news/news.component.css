@@ -1,0 +1,238 @@
+.container a,
+.container span {
+    font-size: 18px;
+}
+
+
+.grid,
+.grid--rev,
+.grid--full,
+.grid-uniform {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: -30px;
+}
+
+.grid__item {
+    box-sizing: border-box;
+    float: left;
+    min-height: 1px;
+    padding-left: 30px;
+    vertical-align: top;
+    width: 100%;
+    text-align: left;
+}
+
+.box-bao-chi {
+    width: 70%;
+    padding-left: 0 !important;
+    margin-top: 30px;
+}
+
+.box-tin-tuc {
+    width: 30%;
+}
+
+.article-item-half {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.news .article-item {
+    background: #fbfbfb;
+    margin-bottom: 30px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.article-item-half .article-img {
+    width: 100%;
+}
+
+.article-item .article-img {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 66.67%;
+}
+
+.article-item .article-img a {
+    display: block;
+    overflow: hidden;
+}
+
+.article-item .article-img a img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    object-fit: cover;
+    object-position: center center;
+    right: 0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+img,
+iframe {
+    max-width: 100%;
+}
+
+.article-item .article-img a .overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+}
+
+.article-readmore {
+    color: #87b83b;
+}
+
+.article-item:hover {
+    background: #ffffff;
+    box-shadow: 3.5px 6px 18px 0 rgb(0 0 0 / 10%);
+    -moz-box-shadow: 0px 0px 10px rgba(140, 140, 140, 0.32);
+    -webkit-box-shadow: 0px 0px 10px rgb(140 140 140 / 32%);
+    box-shadow: 0px 0px 10px rgb(140 140 140 / 32%);
+    border: 1px solid #87b83b;
+}
+
+
+.large--one-half .article-info .article-title {
+    color: #000;
+    font-weight: bold;
+    font-weight: bold;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+}
+
+.large--one-half .article-info .article-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.show-news {
+    cursor: pointer;
+}
+
+.show-news:hover {
+    color: #b90d0d;
+}
+
+@media only screen and (max-width: 768px) {
+    .large--one-half {
+        width: 100%;
+    }
+
+    .box-bao-chi {
+        width: 100%;
+    }
+
+    .box-tin-tuc {
+        width: 100%;
+    }
+}
+
+.news .ribbon {
+    margin-right: 5px;
+}
+
+.news .ribbon>.content {
+    color: white;
+    font-size: 1.25rem;
+    text-align: center;
+    font-weight: 400;
+    background: #b90d0d linear-gradient(45deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.25) 100%);
+    padding: 8px 2px 4px;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%, 0 100%);
+    width: var(--width, 32px);
+    min-height: var(--height, 36px);
+    transition: clip-path 1s, padding 1s, background 1s;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 2px 0px;
+}
+
+.news .ribbon.down>.content {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), 50% 100%, 0 calc(100% - 8px));
+}
+
+@media only screen and (max-width: 970px) {
+
+    .box-bao-chi {
+        width: 100%;
+    }
+
+    .box-tin-tuc {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .large--one-half {
+        width: 50%;
+    }
+
+    .large--one-quarter {
+        width: 33%;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1800px) {
+    .container {
+        padding: 30px 5em !important;
+        align-items: flex-start;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container {
+        padding: 30px 1em !important;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 991px) {
+    .container {
+        padding: 30px 10px !important;
+        margin: 0 !important;
+        margin: 15px 0;
+    }
+
+    .grid__item {
+        padding-left: 30px;
+    }
+
+    .container a,
+    .container span {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 1399px) {
+    .wrapper {
+        max-width: 1400px;
+    }
+}
+
+@media screen and (min-width: 480px) {
+    .wrapper {
+        padding: 0 30px;
+    }
+}

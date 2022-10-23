@@ -1,0 +1,62 @@
+<div class="login">
+    <div class="title">
+        <label class="h1" *ngIf="!isLogin && !isRecover">Đăng Ký Tài Khoản</label>
+        <label class="h1" *ngIf="isLogin && !isRecover">Đăng Nhập Tài Khoản</label>
+        <label class="h1" *ngIf="isRecover">Quên mật khẩu</label>
+    </div>
+    <div class="error-box"><span #message class="error-message"></span></div>
+    <div class="summit">
+        <span class="p-float-label" *ngIf="!isLogin && !isRecover">
+            <input #name type="text" id="name" name="name" pInputText pInputText cher />
+            <label for="name">Họ và tên<span style="color: red;"> *</span></label>
+        </span>
+        <span class="p-float-label" *ngIf="isLogin && !isRecover">
+            <input #accountLogin type="text" name="account" id="account" *ngIf="isLogin && !isRecover" pInputText />
+            <label for="account">Tên đăng nhập/Số điện thoại<span style="color: red;"> *</span></label>
+        </span>
+
+        <span class="p-float-label" *ngIf="!isLogin && !isRecover">
+            <input #phone type="tel" name="tel" id="tel" pInputText />
+            <label for="tel">Số điện thoại<span style="color: red;"> *</span></label>
+        </span>
+
+        <span class="p-float-label" *ngIf="!isLogin && !isRecover">
+            <input #email type="email" name="email" id="email" pInputText />
+            <label for="email">Email của bạn</label>
+        </span>
+
+        <span class="p-float-label" *ngIf="!isLogin && !isRecover">
+            <input #address type="text" name="address" id="address" pInputText />
+            <label for="address">Địa chỉ...</label>
+        </span>
+
+        <span class="p-float-label" *ngIf="!isLogin && !isRecover">
+            <input #passRegist type="password" name="password-regist" id="password-regist" pInputText />
+            <label for="password-regist">Mật khẩu<span style="color: red;"> *</span></label>
+        </span>
+
+        <span class="p-float-label" *ngIf="isLogin && !isRecover">
+            <input #passLogin type="password" name="password-login" id="password-login" pInputText />
+            <label for="password-login">Mật khẩu<span style="color: red;"> *</span></label>
+        </span>
+        <span toggle="#password-field" (click)="togglePassword()"
+            class="fa fa-fw fa-eye field-icon toggle-icon toggle-password" [class.fa-eye-slash]="isHidenPassWord" style="float: right;
+            margin-top: -60px;
+            position: relative;
+            z-index: 2;
+            right: 20px;"></span>
+        <span *ngIf="isRecover" style="color: #87b83b; font-weight: bold; font-size: 28px;">Vui lòng liên hệ hotline:
+            0945348008 để được
+            hỗ trợ</span>
+        <button (click)="onRigister()" *ngIf="!isLogin && !isRecover">Đăng ký</button>
+        <button (click)="onLogin()" *ngIf="isLogin && !isRecover">Đăng nhập</button>
+        <a *ngIf="!isLogin && !isRecover" (click)="isLogin = true; clearMessage()">Đăng nhập</a>
+        <div style="display: flex; justify-content: space-between;" *ngIf="isLogin && !isRecover">
+            <a (click)="isLogin = false; clearMessage()">Đăng ký tài khoản mới</a>
+            <a (click)="isRecover = true; isLogin = false; clearMessage()">Quên mật khẩu</a>
+        </div>
+        <div style="text-align: left; position: relative; bottom: -30px;">
+            <a *ngIf="isRecover" (click)="isLogin = true; isRecover = false; clearMessage()">Quay lại</a>
+        </div>
+    </div>
+</div>

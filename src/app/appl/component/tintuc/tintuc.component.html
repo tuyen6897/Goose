@@ -1,0 +1,105 @@
+<app-header></app-header>
+<div class="container">
+    <div class="breadcrumb-small">
+        <a target="_self" href="/" title="Quay trở về trang chủ">Trang chủ</a>
+        <span aria-hidden="true">/</span>
+        <span>Tin tức</span>
+        <span aria-hidden="true">/</span>
+        <span>Chia sẻ kinh nghiêm</span>
+        <div>
+            <label class="lbl-h1">Chia Sẻ Công Nghiệp</label>
+        </div>
+    </div>
+    <div style="text-align: center; width: 100%;">
+        <div>
+            <label class="lbl-h1">CHUYỆN CỦA NGỖNG</label>
+            <div class="banner-wrapper">
+                <div class="wrapper">
+                    <div class="grid">
+                        <div class="banner-wrapper-slider123">
+                            <div class="grid__item-content">
+                                <div class="banner-item">
+                                    <div class="banner-item-image">
+                                        <a href="/chuyen-ngong">
+                                            <picture>
+                                                <source media="(max-width:767px)"
+                                                    srcset="//theme.hstatic.net/200000170631/1000660112/14/page_banner_item_image_mb_1.jpg?v=3046" />
+                                                <img src="//theme.hstatic.net/200000170631/1000660112/14/page_banner_item_image_1.jpg?v=3046"
+                                                    alt="" />
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <a class="banner-item-content" href="/chuyen-ngong">Chuyện Ngỗng</a>
+                                    <a href="/chuyen-ngong">
+                                        <p class="banner-item-desc">
+                                            Các sự kiện, hoạt động, sản phẩm mới và khuyến mãi của
+                                            Ngỗng
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__item-content">
+                                <div class="banner-item">
+                                    <div class="banner-item-image">
+                                        <a href="/chuyen-ngong">
+                                            <picture>
+                                                <source media="(max-width:767px)"
+                                                    srcset="//theme.hstatic.net/200000170631/1000660112/14/page_banner_item_image_mb_1.jpg?v=3046" />
+                                                <img src="//theme.hstatic.net/200000170631/1000660112/14/page_banner_item_image_1.jpg?v=3046"
+                                                    alt="" />
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <a class="banner-item-content" href="/chuyen-ngong">Chuyện Ngỗng</a>
+                                    <a href="/chuyen-ngong">
+                                        <p class="banner-item-desc">
+                                            Các sự kiện, hoạt động, sản phẩm mới và khuyến mãi của
+                                            Ngỗng
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="grid__item-content">
+                                <div class="banner-item">
+                                    <div class="banner-item-image">
+                                        <a href="/chuyen-ngong">
+                                            <picture>
+                                                <source media="(max-width:767px)"
+                                                    srcset="//theme.hstatic.net/200000170631/1000660112/14/page_banner_item_image_mb_1.jpg?v=3046" />
+                                                <img src="//theme.hstatic.net/200000170631/1000660112/14/page_banner_item_image_1.jpg?v=3046"
+                                                    alt="" />
+                                            </picture>
+                                        </a>
+                                    </div>
+                                    <a class="banner-item-content" href="/chuyen-ngong">Chuyện Ngỗng</a>
+                                    <a href="/chuyen-ngong">
+                                        <p class="banner-item-desc">
+                                            Các sự kiện, hoạt động, sản phẩm mới và khuyến mãi của
+                                            Ngỗng
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%;">
+            <label class="lbl-h1">TIN TỨC NỔI BẬT</label>
+            <div style="width: 100%;">
+                <app-carousel [news]="true" [numVisible]="4" [datas]="tintucList"
+                    [responsiveOptions]="responsiveOptions">
+                </app-carousel>
+            </div>
+            <label class="lbl-h1">BÁO CHÍ NÓI GÌ VỀ NGỖNG</label>
+
+            <div style="width: 100%;">
+                <app-carousel [newspapers]="true" [numVisible]="4" [datas]="baochiList"
+                    [responsiveOptions]="responsiveOptions">
+                </app-carousel>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

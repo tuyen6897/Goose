@@ -1,0 +1,29 @@
+.comment-dialog {
+    border-top: 1px solid #ccc;
+    padding: 10px 0;
+
+    .radio {
+        label {
+            margin-right: 10px;
+            margin-left: 5px;
+        }
+    }
+
+    .register {
+        input {
+            width: 100%;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            background-color: rgb(43, 107, 226);
+            border: 1px solid rgb(43, 107, 226);
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    }
+}

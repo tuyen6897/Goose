@@ -1,0 +1,72 @@
+.produdction-system .lbl-h1 {
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.div-content {
+    display: flex;
+    height: 180px;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+}
+
+.produdction-system .content {
+    display: flex;
+}
+
+.reward {
+    width: 250px;
+    height: 250px;
+    margin: 10px 0 30px 84px;
+}
+
+.carousel-indicators {
+    display: none !important;
+}
+
+.carousel-eward .carousel-control-prev {
+    margin-left: 55px;
+}
+
+.carousel-eward .carousel-control-next {
+    margin-right: -44px;
+}
+
+.outstanding {
+    text-align: center;
+    width: 100%;
+}
+
+.carousel-eward>div {
+    margin-left: -86px;
+}
+
+@media (max-width: 991px) {
+    .container {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .lbl-h2 {
+        font-size: 14px;
+    }
+
+    .div-content {
+        height: 120px;
+        font-size: 12px;
+        padding: 1px;
+    }
+
+    .produdction-system .content {
+        display: block;
+    }
+
+    .reward {
+        width: 165px;
+        height: 155px;
+        margin: 10px 0 30px 5px;
+    }
+}
