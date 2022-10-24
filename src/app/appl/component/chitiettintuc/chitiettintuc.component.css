@@ -48,8 +48,7 @@ a,
 }
 
 .blog-content {
-    width: 63%;
-    margin-right: 7%;
+    width: 70%;
     float: left;
 }
 
@@ -60,6 +59,14 @@ a,
 
 .chitiettintuc .ribbon {
     margin-right: 5px;
+}
+
+.chitiettintuc img {
+    width: 100%;
+}
+
+.entry-content {
+    font-size: 16px;
 }
 
 .chitiettintuc .ribbon>.content {

@@ -27,6 +27,10 @@ export class HttpService {
             url = `${this._url}/products`;
         }
 
+        if (api === 'carts') {
+            url = `${this._url}/carts`;
+        }
+
         return this._httpClient.post(url, params, { headers: header });
     }
 
@@ -34,8 +38,7 @@ export class HttpService {
         let url = '';
         let header = new HttpHeaders({
             'accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwOTAwMDAwMDAwIiwiZXhwIjoxNjY2MjkwNTU4LCJpYXQiOjE2NjYyNzI1NTh9.c7OWakNWzyCeRl2_fwMSJ6DT9CjW1vzDPxW2DD-V8_EA5UCIK54bA4Jw-YuhWFcI5CgOtPwxb3gfAQr_HNAsZQ'
+            'Content-Type': 'application/json'
         });
 
         switch (api) {
@@ -49,7 +52,7 @@ export class HttpService {
                 url = `${this._url}/product_categories`;
                 break;
             case 'posts':
-                url = `${this._url}/posts?menuCode=chuyen-ngong&pageIndex=1&pageSize=100`;
+                url = `${this._url}/posts?menuCode=chuyen-ngong&pageIndex=1&pageSize=10`;
                 break;
             default:
                 break;
