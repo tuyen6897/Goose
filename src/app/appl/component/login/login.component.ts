@@ -68,6 +68,8 @@ export class LoginComponent extends ComponentBaseComponent implements OnInit {
             errorMessage['innerText'] = error.error.desc;
         }
         // Return an observable with a user-facing error message.
+        const dialog: any = document.body.querySelector('#printLoadMask');
+        dialog['style'].display = 'none';
         return throwError(() => new Error('Something bad happened; please try again later.'));
     }
 

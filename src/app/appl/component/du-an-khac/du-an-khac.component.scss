@@ -39,6 +39,7 @@
             text-align: center;
             text-transform: uppercase;
             margin-top: 13px;
+            font-size: 35px;
         }
     }
 
@@ -56,7 +57,7 @@
     #SECTION4 {
         width: 100%;
         height: 750px;
-        min-width: 750px;
+        // min-width: 750px;
         float: left;
         margin-bottom: 30px;
 
@@ -207,13 +208,14 @@
             color: #8B4513;
             font-weight: bold;
             text-transform: uppercase;
+            font-size: 30px;
         }
     }
 
     #SECTION7 {
         width: 100%;
         height: 790px;
-        min-width: 790px;
+        min-height: 790px;
         float: left;
 
         .ladi-container {
@@ -259,12 +261,17 @@
                     padding-top: 30px;
                     margin-left: 15px;
 
-                    p {
+                    .titleRergister {
                         font-size: 22px;
                         color: #000;
-                        margin-left: 40px;
+                        margin: 0 auto;
                         font-weight: bold;
                         text-align: left;
+                        width: 85%; 
+                        text-align: justify; 
+                        color: #ffffff; 
+                        font-weight: bold; 
+                        margin-bottom: 40px;
                     }
 
                     input,
@@ -337,5 +344,142 @@
             width: 100%;
             height: 100%;
         }
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    li{
+        font-size: 11px !important;
+    }
+
+    .ladi-headline{
+        font-size: 28px !important;
+    }
+
+    .titleRergister{
+        font-size: 17px !important;
+    }
+
+    .ladi-ct {
+        font-size: 25px !important;
+    }
+
+    #SECTION7 {
+        .img-contact {
+            .regis-contact {
+                .child-regis-contact {
+                    input,
+                    select,
+                    textarea {
+                        height: 50px !important;
+                    }
+
+                    textarea {
+                        height: 150px !important;
+                    }
+
+                    .article-schedule {
+                        .btn-kp {
+                            width: 80% !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    li{
+        font-size: 12px !important;
+    }
+
+    .ladi-headline{
+        font-size: 29px !important;
+    }
+
+    .titleRergister{
+        font-size: 18px !important;
+    }
+
+    .ladi-ct {
+        font-size: 26px !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    li{
+        font-size: 14px !important;
+    }
+
+    .ladi-headline{
+        font-size: 31px !important;
+    }
+
+    .titleRergister{
+        font-size: 20px !important;
+    }
+
+    .ladi-ct {
+        font-size: 28px !important;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+    li{
+        font-size: 16px !important;
+    }
+
+    .ladi-headline{
+        font-size: 33px !important;
+    }
+
+    .titleRergister{
+        font-size: 22px !important;
+    }
+
+    .ladi-ct {
+        font-size: 30px !important;
+    }
+}
+
+@media (min-width: 1400px) {
+    li{
+        font-size: 18px !important;
+    }
+}
+
+@media (min-width: 576px) {
+
+    .container {
+        max-width: 540px !important;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .container {
+        max-width: 740px !important;
+    }
+}
+
+@media (min-width: 992px) {
+
+    .container {
+        max-width: 980px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .container {
+        max-width: 1150px !important;
+    }
+}
+
+@media (min-width: 1400px) {
+
+    .container {
+        max-width: 1400px !important;
     }
 }

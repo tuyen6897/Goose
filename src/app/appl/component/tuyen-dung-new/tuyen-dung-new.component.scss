@@ -398,6 +398,7 @@
                         margin-left: 90px;
                         margin-top: 15px;
                         text-transform: uppercase;
+                        padding: 8px;
                     }
 
                     .button-9:disabled {
@@ -414,6 +415,7 @@
                 }
             }
         }
+
         .btn-more {
             cursor: pointer;
             display: block;
@@ -422,7 +424,8 @@
             margin: 10px auto 0px;
             color: orange;
             text-align: center;
-            border: 1px solid #ccc;;
+            border: 1px solid #ccc;
+            ;
             background-color: #fff;
             margin-bottom: 15px;
             border-radius: 5px;
@@ -525,6 +528,7 @@
                     vertical-align: top;
                     width: 100%;
                     text-align: left;
+                    margin-bottom: 30px;
                 }
 
                 .box-bao-chi {
@@ -577,7 +581,7 @@
                     left: 0;
                     bottom: 0;
                     right: 0;
-                    
+
                 }
 
                 img,
@@ -592,7 +596,7 @@
                     bottom: 0px;
                     right: 0px;
                     background: rgba(0, 0, 0, 0.4);
-                    opacity: 0;                   
+                    opacity: 0;
                 }
 
                 .large--one-half .article-info {

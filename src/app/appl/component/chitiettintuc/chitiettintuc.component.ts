@@ -12,7 +12,7 @@ import { Utils } from 'src/app/common/util/utils';
 })
 export class ChitiettintucComponent extends ComponentBaseComponent implements OnInit {
     @ViewChild('content', { static: true }) content!: ElementRef;
-    listTinTuc = [
+    listTinTuc: any = [
         'Mật trà Kombucha thảo mộc 500ml',
         'Mật trà Kombucha thảo mộc 500ml',
         'Mật trà Kombucha thảo mộc 500ml',
@@ -31,10 +31,16 @@ export class ChitiettintucComponent extends ComponentBaseComponent implements On
 
     ngOnInit() {
         this.showDialog('on');
-        const id = window.location.search.split('?code=')[1];
-        this.httpService.reqeustApiget('posts').subscribe((response: any) => {
+        let params = null;
+        const sub = window.location.search.split('=')[0];
+        if (sub === '?tin-tuc') {
+            params = 'menuCode=tin-tuc&pageIndex=1&pageSize=10';
+        }
+        const name = window.location.search.split('=')[1];
+        this.httpService.reqeustApiget('posts', params).subscribe((response: any) => {
             console.log(response.postList);
-            this.post = (response.postList as []).find(x => x['id'] === +(id));
+            this.post = (response.postList as []).find(x => x['postName'] === name);
+            this.listTinTuc = response.postList.slice(0, 10);
             this.post.postDate = Utils.timeStempToDateFormat(this.post.postDate);
             this.content.nativeElement.innerHTML = this.post.postContent;
             this.showDialog('off');

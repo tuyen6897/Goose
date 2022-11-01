@@ -9,8 +9,9 @@ declare let $: any;
     styleUrls: ['chuyen-di-cua-ngong.component.scss']
 })
 export class ChuyenDiCuaNgongComponent {
-    numVisible: number = 0;
 
+    images = [1, 2, 3, 4];
+    
     responsiveOptions = [
         {
             breakpoint: '1024px',
@@ -30,10 +31,8 @@ export class ChuyenDiCuaNgongComponent {
     ];
     
     constructor(
-        private scroller: ViewportScroller, 
-        private router: Router,
+        private scroller: ViewportScroller
     ) {
-        this.numVisible = 6;
     }
     ngOnInit() {
 

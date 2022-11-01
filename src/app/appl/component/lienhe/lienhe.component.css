@@ -126,24 +126,18 @@ textarea:focus {
 
 @media (min-width: 1200px) and (max-width: 1800px) {
     .container {
-        padding: 30px 5em !important;
         align-items: flex-start;
     }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
     .container {
-        padding: 30px 1em !important;
-        align-items: flex-start;
         font-size: 16px;
     }
 }
 
 @media (max-width: 991px) {
     .container {
-        padding: 30px 10px !important;
-        margin: 0 !important;
-        margin: 15px 0;
         font-size: 16px;
     }
 

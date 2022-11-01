@@ -32,9 +32,11 @@
             <!-- Cánh đồng sẻ chia -->
             <div>
                 <div class="gradient-border">
-                    <a target="_self" href="#"><img class="img-left"
+                    <div class="img-right-1">
+                        <a target="_self" href="#"><img class="img-left"
                             src="https://file.hstatic.net/200000170631/file/canhngongdonghanhcungnongdansinhthai__12__5b1dc0e746084e3e9b8a9ad6ee545100_grande.jpg"
                             alt=""></a>
+                    </div>
                     <div class="content-left">
                         <a style="margin-left:-2px; " href="#">Cánh đồng sẻ chia</a>
                         <span style="font-size: 16px;">
@@ -72,9 +74,11 @@
 
                 <!-- Vườn đồng hành -->
                 <div class="gradient-border">
-                    <a target="_self" href="#"><img class="img-left"
-                            src="https://file.hstatic.net/200000170631/file/chatluongnongsan-nanglucsanxuat__4__2fa8a750c2854db1a31de717fbfac80d_grande.jpg"
-                            alt=""></a>
+                    <div class="img-right-1">
+                        <a target="_self" href="#"><img class="img-left"
+                                src="https://file.hstatic.net/200000170631/file/chatluongnongsan-nanglucsanxuat__4__2fa8a750c2854db1a31de717fbfac80d_grande.jpg"
+                                alt=""></a>
+                    </div>
                     <div class="content-left">
                         <a style="margin-left:-2px;" href="#">Vườn đồng hành</a>
                         <span style="font-size: 16px;">
@@ -114,7 +118,7 @@
                 <div class="news-project ladi-element">
                     <h3 class="ladi-headline">Tin tức về dự án của Ngỗng<br></h3>
                 </div>
-                <div style="text-align: center;">
+                <div style="text-align: center; display: inline-block;">
                     <div *ngFor="let item of tintucList" class="article-item article-item-list">
                         <div class="article-image">
                             <a target="_self" href="/chi-tiet-tin-tuc"><img [src]="item"></a>
@@ -123,7 +127,7 @@
                             <a target="_self" href="/chi-tiet-tin-tuc" class="article-title">
                                 Tin nông nghiệp VN số 1 ruộng rươi
                             </a>
-                            <div>
+                            <div class="article-title-content">
                                 Gạo ST25 sát trắng ruộng rươi nguyên cám 100%
                             </div>
                         </div>
@@ -138,7 +142,7 @@
                                 <a target="_self" href="/chi-tiet-tin-tuc" class="article-title">
                                     Tin nông nghiệp VN số 1 ruộng rươi
                                 </a>
-                                <div>
+                                <div class="article-title-content">
                                     Gạo ST25 sát trắng ruộng rươi nguyên cám 100%
                                 </div>
                             </div>

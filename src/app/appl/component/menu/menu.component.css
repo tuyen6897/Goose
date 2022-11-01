@@ -10,8 +10,9 @@
     margin-bottom: 10px;
 }
 
-.products {
-    margin-left: -25px;
+app-img-product .product-content {
+    width: 25%;
+    padding: 29px;
 }
 
 .sale .carousel-control-next {

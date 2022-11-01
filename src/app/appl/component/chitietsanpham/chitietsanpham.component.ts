@@ -1,13 +1,18 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Renderer2, ElementRef, ViewEncapsulation } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { CommentDialogComponent } from 'src/app/common/commentDialog/commentDialog.component';
 import { HeaderComponent } from 'src/app/common/header/header.component';
+import { FileModel } from 'src/app/common/model/file.model';
 import { HttpService } from 'src/app/common/service/http-service';
 
 @Component({
     selector: 'app-chitietsanpham',
     templateUrl: './chitietsanpham.component.html',
     styleUrls: ['./chitietsanpham.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    providers: [DialogService]
 })
 export class ChitietsanphamComponent implements OnInit {
 
@@ -15,12 +20,19 @@ export class ChitietsanphamComponent implements OnInit {
     @ViewChild('productFix', { static: true }) productFix!: ElementRef;
     @ViewChild('option100', { static: false }) option100!: ElementRef;
     @ViewChild('option500', { static: false }) option500!: ElementRef;
+    @ViewChild('comment', { static: false }) comment!: ElementRef;
+    @ViewChild('commentTitle', { static: false }) commentTitle!: ElementRef;
     @ViewChild('reviews', { static: true }) reviews!: ElementRef;
+    val2: number = 5;
     @Input() value: unknown
     @Output() valueChange = new EventEmitter<unknown>();
     isShow: boolean = false;
     isSlide: boolean = false;
     inputQuantity: number = 1;
+    ref!: DynamicDialogRef;
+    imageList: FileModel[] = [];
+    imageList2: number = 10;
+    product: any;
     images: { previewImageSrc: string; thumbnailImageSrc: string; }[] = [{
         "previewImageSrc": '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
         "thumbnailImageSrc": '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
@@ -43,6 +55,8 @@ export class ChitietsanphamComponent implements OnInit {
     }];
 
     imagesProductGroup = [
+        '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
+        '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
         '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
         '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
         '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
@@ -279,11 +293,16 @@ export class ChitietsanphamComponent implements OnInit {
         }
     ];
 
-    constructor(private router: Router, private render: Renderer2, private httpService: HttpService) { }
+    constructor(private router: Router
+        , private render: Renderer2
+        , private httpService: HttpService
+        , private dialogService: DialogService
+        , private sanitizen: DomSanitizer) { }
 
     ngOnInit() {
         this.httpService.reqeustApiget('productDetails', window.location.search.split('?code=')[1]).subscribe((response: any) => {
             console.log(response);
+            this.product = response;
         });
         this.render.listen(document, 'scroll', (e) => {
             const scrollTop = (window.pageYOffset || document.documentElement.scrollTop) - (document.documentElement.clientTop || 0);
@@ -377,6 +396,36 @@ export class ChitietsanphamComponent implements OnInit {
         }
         sessionStorage.setItem('productList', JSON.stringify(product));
         this.router.navigate(['gio-hang']);
+    }
+
+    openDialogComment(): void {
+        this.ref = this.dialogService.open(CommentDialogComponent, {
+            width: '25%',
+            contentStyle: { "height": "auto", "overflow": "auto" },
+            header: 'Thông tin người gửi',
+            baseZIndex: 10000,
+            dismissableMask: true,
+            data: {
+                'files': this.imageList,
+                'comment': this.comment.nativeElement.value,
+                'commentTitle': this.commentTitle.nativeElement.value,
+            }
+        });
+    }
+
+    selectFileChange(event: any) {
+        if (event.target.files) {
+            const file = event.target.files[0];
+
+            const fileModel: FileModel = {
+                file: file,
+                url: this.sanitizen.bypassSecurityTrustUrl(
+                    window.URL.createObjectURL(file)
+                )
+            }
+
+            this.imageList.push(fileModel);
+        }
     }
 
 }

@@ -54,6 +54,7 @@ import { ComponentBaseComponent } from '../common/componentBase/componentBase.co
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
+import { RatingModule } from 'primeng/rating';
 @NgModule({
     imports: [
         BrowserModule,
@@ -79,7 +80,8 @@ import { ToastModule } from 'primeng/toast';
         TabViewModule,
         MessagesModule,
         MessageModule,
-        ToastModule
+        ToastModule,
+        RatingModule
     ],
     declarations: [
         MenuComponent,

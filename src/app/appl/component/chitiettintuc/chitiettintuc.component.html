@@ -10,13 +10,13 @@
             <label class="lbl-h1">Chia sẻ công nghiệp</label>
         </div>
     </div>
-    <div>
+    <div style="width: 100%;">
         <div class="blog-content">
             <article class="blog_entry clearfix">
                 <header class="blog_entry-header clearfix">
                     <div class="blog_entry-header-inner">
-                        <label class="lbl-h1">{{post.postTitle}}</label>
-                        <header class="entry-meta"><span class="entry-date">{{post.postDate}}</span></header>
+                        <label class="lbl-h1">{{post?.postTitle}}</label>
+                        <header class="entry-meta"><span class="entry-date">{{post?.postDate}}</span></header>
                         <div style="
                             display: flex;
                             margin-top: 20px; margin-bottom: 5px;">
@@ -82,7 +82,7 @@
                                 {{i + 1}}
                             </div>
                         </div>
-                        <a>{{item}}</a>
+                        <a>{{item?.postTitle}}</a>
                     </div>
                     <img style="width: 98%;" src="../../../../assets/image/main/new4.png" />
                 </div>

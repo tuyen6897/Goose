@@ -229,23 +229,18 @@ a.hide {
 
 @media (min-width: 1200px) and (max-width: 1800px) {
     .container {
-        padding: 30px 5em !important;
         align-items: flex-start;
     }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
     .container {
-        padding: 30px 1em !important;
         align-items: flex-start;
     }
 }
 
 @media (max-width: 991px) {
     .container {
-        padding: 30px 10px !important;
-        margin: 0 !important;
-        margin: 15px 0;
         font-size: 16px;
     }
 
@@ -264,5 +259,13 @@ a.hide {
 
     .container .lbl-h2 {
         margin: 15px 0;
+    }
+
+    .container .lbl-h1 {
+        margin: 10px 0;
+    }
+
+    .hotline .lbl-h2 {
+        font-size: 18px !important;
     }
 }

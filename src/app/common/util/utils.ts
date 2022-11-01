@@ -23,4 +23,10 @@ export class Utils {
         return `${year}/${month}/${day}`;
     }
 
+    static formatCash(str: string) {
+        return str.split('').reverse().reduce((prev, next, index) => {
+            return ((index % 3) ? next : (next + ',')) + prev
+        })
+    }
+
 }

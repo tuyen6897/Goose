@@ -19,39 +19,15 @@
     <label class="lbl-title">Sản Phẩm</label>
     <div class="line"></div>
     <div class="line"></div>
-    <div *ngIf="isMobile">
-        <div class="products">
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-        </div>
-        <div class="products">
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-        </div>
-        <div class="products">
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-        </div>
-        <div class="products">
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-        </div>
-        <div class="products">
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-        </div>
-    </div>
-    <div *ngIf="!isMobile">
-        <div class="products">
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-            <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-        </div>
+    <div class="products">
+        <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+        <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+        <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+        <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+        <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+        <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+        <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+        <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
     </div>
     <div class="image">
         <img src="../../../../assets/image/main/rice.png" alt="">

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, HostListener, ViewChild } from '@angular/core';
 import { HeaderComponent } from 'src/app/common/header/header.component';
+import { HttpService } from 'src/app/common/service/http-service';
 import { Utils } from 'src/app/common/util/utils';
 @Component({
     selector: 'app-menu',
@@ -14,21 +15,24 @@ export class MenuComponent implements OnInit {
     imageGroup: any[] = [];
     sizeProduct: number = 0;
     datasSale: any[] = [];
+    productList: any[] = [];
+    postList: any[] = [];
+    postNewsList: any[] = [];
     numVisible: number = 0;
     responsiveOptions = [
         {
-            breakpoint: '1024px',
+            breakpoint: '1400px',
+            numVisible: 4,
+            numScroll: 1
+        },
+        {
+            breakpoint: '1000px',
+            numVisible: 3,
+            numScroll: 1
+        },
+        {
+            breakpoint: '680px',
             numVisible: 2,
-            numScroll: 1
-        },
-        {
-            breakpoint: '800px',
-            numVisible: 1,
-            numScroll: 1
-        },
-        {
-            breakpoint: '560px',
-            numVisible: 1,
             numScroll: 1
         }
     ];
@@ -122,11 +126,42 @@ export class MenuComponent implements OnInit {
     image: string = "../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp"
 
     slides: any = [];
-    constructor() {
+    constructor(private httpService: HttpService) {
         this.numVisible = 6;
     }
 
     ngOnInit() {
+
+        this.httpService.reqeustApiget('newest-sale', '10').subscribe((data: any) => {
+            if (data.detailProduct) {
+                this.datasSale = data.detailProduct;
+            }
+        });
+
+        this.httpService.reqeustApiget('productDetails', {
+            "categoryId": 0,
+            "minPrice": 0,
+            "maxPrice": -1,
+            "pageIndex": 1,
+            "pageSize": 8
+        }).subscribe((data: any) => {
+            if (data.detailProduct) {
+                this.productList = data.detailProduct;
+            }
+        });
+
+        this.httpService.reqeustApiget('post', 'menuCode=du-an-khac&pageIndex=1&pageSize=4').subscribe((data: any) => {
+            if (data.postList) {
+                this.postList = data.postList;
+            }
+        });
+
+        this.httpService.reqeustApiget('post', 'menuCode=tin-tuc&pageIndex=1&pageSize=4').subscribe((data: any) => {
+            if (data.postList) {
+                this.postNewsList = data.postList;
+            }
+        });
+
         Utils.sha256('129313').then(hash => console.log(hash));
         if (window.innerWidth <= 991) {
             this.isMobile = true;

@@ -38,13 +38,15 @@
                         <ng-template pTemplate="item" let-item>
                             <img [src]="item.previewImageSrc" style="width: 100%; border: 3px solid #87b83b;" />
                         </ng-template>
-                        <ng-template pTemplate="thumbnail" let-item let-index>
+                        <!-- <ng-template pTemplate="thumbnail" let-item let-index>
                             <div class="grid grid-nogutter justify-content-center">
                                 <img [src]="item.thumbnailImageSrc" (click)="onActive(index)"
                                     style="height: 60px; border: 1px solid #ccc; border-radius: 5px;" />
                             </div>
-                        </ng-template>
+                        </ng-template> -->
                     </p-galleria>
+                    <app-carousel [datas]="images" [thumbnail]="true" [responsiveOptions]="responsiveOptions">
+                    </app-carousel>
                 </div>
                 <div class="product-content">
                     <div class="pro-content-head">
@@ -58,15 +60,15 @@
                                 <div class="starbap-prev-badge" data-average-rating="5.0" data-number-of-reviews="83">
                                     <span>Đánh giá:</span>
                                     <a class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
-                                            style="color:#dfe519!important"></i></a><a
+                                            style="color:#ffa03f!important"></i></a><a
                                         class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
-                                            style="color:#dfe519!important"></i></a><a
+                                            style="color:#ffa03f!important"></i></a><a
                                         class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
-                                            style="color:#dfe519!important"></i></a><a
+                                            style="color:#ffa03f!important"></i></a><a
                                         class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
-                                            style="color:#dfe519!important"></i></a><a
+                                            style="color:#ffa03f!important"></i></a><a
                                         class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
-                                            style="color:#dfe519!important"></i></a>(83)
+                                            style="color:#ffa03f!important"></i></a>(83)
                                 </div>
                             </div>
                         </div>
@@ -184,13 +186,13 @@
                         <div class="starbap-rev-total">
                             <span class="starbap-rev-total-point">Đánh giá</span>
                             <div class="starbap-rev-widg__summary-stars"><a class="starbap-star starbap--on"><i
-                                        class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a><a
+                                        class="fa fa-star fa-fw" style="color:#ffa03f!important"></i></a><a
                                     class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
-                                        style="color:#dfe519!important"></i></a><a class="starbap-star starbap--on"><i
-                                        class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a><a
+                                        style="color:#ffa03f!important"></i></a><a class="starbap-star starbap--on"><i
+                                        class="fa fa-star fa-fw" style="color:#ffa03f!important"></i></a><a
                                     class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
-                                        style="color:#dfe519!important"></i></a><a class="starbap-star starbap--on"><i
-                                        class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a></div>
+                                        style="color:#ffa03f!important"></i></a><a class="starbap-star starbap--on"><i
+                                        class="fa fa-star fa-fw" style="color:#ffa03f!important"></i></a></div>
                             <div class="starbap-rev-widg__summary-text">(83)</div>
                         </div>
                         <div class="pro-price">
@@ -312,24 +314,24 @@
                     <div class="starbap-rev-total">
                         <span class="starbap-rev-total-point">5.0 /5</span>
                         <div class="starbap-rev-widg__summary-stars"><a class="starbap-star starbap--on"><i
-                                    class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a><a
+                                    class="fa fa-star fa-fw" style="color:#ffa03f!important"></i></a><a
                                 class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
-                                    style="color:#dfe519!important"></i></a><a class="starbap-star starbap--on"><i
-                                    class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a><a
+                                    style="color:#ffa03f!important"></i></a><a class="starbap-star starbap--on"><i
+                                    class="fa fa-star fa-fw" style="color:#ffa03f!important"></i></a><a
                                 class="starbap-star starbap--on"><i class="fa fa-star fa-fw"
-                                    style="color:#dfe519!important"></i></a><a class="starbap-star starbap--on"><i
-                                    class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a></div>
+                                    style="color:#ffa03f!important"></i></a><a class="starbap-star starbap--on"><i
+                                    class="fa fa-star fa-fw" style="color:#ffa03f!important"></i></a></div>
                         <div class="starbap-rev-widg__summary-text"> 83 đánh giá</div>
                     </div>
                     <div class="starbap-histogram starbap-temp-hidden">
                         <div class="starbap-histogram__row" data-rating="5" data-frequency="83" data-percentage="100.0">
                             <div class="starbap-histogram__star">5 <a class="starbap-star starbap--on"><i
-                                        class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a>
+                                        class="fa fa-star fa-fw" style="color:#ffa03f!important"></i></a>
                             </div>
                             <div class="starbap-histogram__bar">
                                 <div class="starbap-histogram__bar">
                                     <p-progressBar [value]="150" [showValue]="false"
-                                        [style]="{'width': '200px', 'height': '15px'}">
+                                        [style]="{'width': '200px', 'height': '10px', 'background': '#ffa03f'}">
                                     </p-progressBar>
                                 </div>
                             </div>
@@ -337,45 +339,45 @@
                         </div>
                         <div class="starbap-histogram__row" data-rating="4" data-frequency="0" data-percentage="0.0">
                             <div class="starbap-histogram__star">4 <a class="starbap-star starbap--on"><i
-                                        class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a>
+                                        class="fa fa-star fa-fw" style="color:#ffa03f!important"></i></a>
                             </div>
                             <div class="starbap-histogram__bar">
                                 <p-progressBar [value]="0" [showValue]="false"
-                                    [style]="{'width': '200px', 'height': '15px'}">
+                                    [style]="{'width': '200px', 'height': '10px', 'background': '#ffa03f'}">
                                 </p-progressBar>
                             </div>
                             <div class="starbap-histogram__percentage">0.0%</div>
                         </div>
                         <div class="starbap-histogram__row" data-rating="3" data-frequency="0" data-percentage="0.0">
                             <div class="starbap-histogram__star">3 <a class="starbap-star starbap--on"><i
-                                        class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a>
+                                        class="fa fa-star fa-fw" style="color:#ffa03f!important"></i></a>
 
                             </div>
                             <div class="starbap-histogram__bar">
                                 <p-progressBar [value]="0" [showValue]="false"
-                                    [style]="{'width': '200px', 'height': '15px'}">
+                                    [style]="{'width': '200px', 'height': '10px', 'background': '#ffa03f'}">
                                 </p-progressBar>
                             </div>
                             <div class="starbap-histogram__percentage">0.0%</div>
                         </div>
                         <div class="starbap-histogram__row" data-rating="2" data-frequency="0" data-percentage="0.0">
                             <div class="starbap-histogram__star">2 <a class="starbap-star starbap--on"><i
-                                        class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a>
+                                        class="fa fa-star fa-fw" style="color:#ffa03f!important"></i></a>
                             </div>
                             <div class="starbap-histogram__bar">
                                 <p-progressBar [value]="0" [showValue]="false"
-                                    [style]="{'width': '200px', 'height': '15px'}">
+                                    [style]="{'width': '200px', 'height': '10px', 'background': '#ffa03f'}">
                                 </p-progressBar>
                             </div>
                             <div class="starbap-histogram__percentage">0.0%</div>
                         </div>
                         <div class="starbap-histogram__row" data-rating="1" data-frequency="0" data-percentage="0.0">
                             <div class="starbap-histogram__star">1 <a class="starbap-star starbap--on"><i
-                                        class="fa fa-star fa-fw" style="color:#dfe519!important"></i></a>
+                                        class="fa fa-star fa-fw" style="color:#ffa03f!important"></i></a>
                             </div>
                             <div class="starbap-histogram__bar">
                                 <p-progressBar [value]="0" [showValue]="false"
-                                    [style]="{'width': '200px', 'height': '15px'}">
+                                    [style]="{'width': '200px', 'height': '10px', 'background': '#ffa03f'}">
                                 </p-progressBar>
                             </div>
                             <div class="starbap-histogram__percentage">0.0%</div>
@@ -384,8 +386,68 @@
                     </div>
 
                 </div>
+                <div class="start-progress">
+                    <div>Theo tiêu chí (84) đánh giá</div>
+                    <div style="display: flex;">
+                        <div style="max-width: 150px; text-align: center;">
+                            <div class="RadialProgress" role="progressbar" aria-valuenow="25" aria-valuemin="0"
+                                aria-valuemax="100">30%</div>
+                            <span>Nước sau lọc sạch</span>
+                        </div>
+                        <div style="max-width: 150px; text-align: center;">
+                            <div class="RadialProgress" role="progressbar" aria-valuenow="25" aria-valuemin="0"
+                                aria-valuemax="100">30%</div>
+                            <span>Nước sau lọc sạch</span>
+                        </div>
+                        <div style="max-width: 150px; text-align: center;">
+                            <div class="RadialProgress" role="progressbar" aria-valuenow="25" aria-valuemin="0"
+                                aria-valuemax="100">30%</div>
+                            <span>Nước sau lọc sạch</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="rating-img-list">
+                <div class="rating-img-box" *ngFor="let item of imagesProductGroup; let i = index">
+                    <img class="rating-img" src="" alt="image">
+                    <p class="rating-img-rd" *ngIf="i === imagesProductGroup.length - 1">Xem 2 ảnh từ KH</p>
+                </div>
+            </div>
+            <div class="comment-content">
+                <div class="comment-form">
+                    <div class="start-vote">
+                        <label>Đánh giá</label>
+                        <p-rating [(ngModel)]="val2" [cancel]="false" [iconOnStyle]="{'color': '#ffa03f'}"></p-rating>
+                    </div>
+                    <div class="title">
+                        <label>Tiêu đề đánh giá</label>
+                        <input type="text" #commentTitle placeholder="Nhập tiêu đề đánh giá của bạn"
+                            style="width: 100%;" />
+                    </div>
+                    <div class="content">
+                        <label>Nội dung</label>
+                        <textarea #comment placeholder="Viết nội dung đánh giá của bạn" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="boxemotion">
+                        <a class="btnCmtUpload" (click)="selectFile.click()">
+                            <i class="iconcom-pict"></i>
+                            <span>Gửi ảnh</span>
+                        </a>
+                        <div class="cmt_right">
+                            <a class="btnSend" id="btnSendCmt" (click)="openDialogComment()">Gửi đánh giá</a>
+                        </div>
+                    </div>
+                    <input style="display: none;" multiple #selectFile type="file" value="select"
+                        (change)="selectFileChange($event)">
+                    <div class="files">
+                        <img class="image-file" *ngFor="let item of imageList" class="image-file"
+                            [src]="item ? item.url : ''">
+                    </div>
+                    <div>
 
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div style="width: 100%;" class="related-products">

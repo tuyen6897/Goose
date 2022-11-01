@@ -12,6 +12,7 @@ export class MuctintucComponent extends ComponentBaseComponent implements OnInit
 
     isShow: boolean = false;
     isShowButton: boolean = false;
+    postName = '';
     tintucList = [
         'https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png',
         'https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png',
@@ -44,22 +45,27 @@ export class MuctintucComponent extends ComponentBaseComponent implements OnInit
 
     ngOnInit() {
         this.showDialog('on');
-        this.httpService.reqeustApiget('posts').subscribe((response: any) => {
+
+        this.postName = window.location.pathname.split('/')[1];
+        const param = `menuCode=${this.postName}&pageIndex=1&pageSize=10`;
+        this.httpService.reqeustApiget('posts', param).subscribe((response: any) => {
             this.postList = response.postList;
-            console.log(response.postList);
-            this.postList.forEach((item: any) => {
-                item.postImage = 'https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png';
-            });
-            if (this.postList.length <= 12) {
-                this.isShowButton = true;
+            if (response.postList) {
+                this.postList.forEach((item: any) => {
+                    item.postImage = 'https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png';
+                });
+                if (this.postList.length <= 12) {
+                    this.isShowButton = true;
+                }
+                this.isShowButton = this.postList.length <= 12 ? false : true;
             }
-            this.isShowButton = this.postList.length <= 12 ? false : true;
             this.showDialog('off');
         });
     }
 
     detailPost(id: string) {
-        window.open(`${window.location.origin}/chi-tiet-tin-tuc?code=${id}`, "_self");
+
+        window.open(`${window.location.origin}/blogs?${this.postName}=${id}`, "_self");
     }
 
 }

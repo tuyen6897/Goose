@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef } from '@angular/core';
 
 @Component({
     selector: 'app-footer',
@@ -8,7 +8,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 export class FooterComponent implements OnInit {
 
     isMobile: boolean = false;
-    constructor() { }
+    constructor(ele: ElementRef) { }
 
     ngOnInit() {
         if (window.innerWidth <= 991) {

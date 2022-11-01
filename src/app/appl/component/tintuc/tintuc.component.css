@@ -30,7 +30,6 @@
     overflow: hidden;
     clear: both;
     margin-bottom: 15px;
-    margin-left: 10px;
 }
 
 .wrapper {
@@ -44,8 +43,8 @@
     min-height: 1px;
     vertical-align: top;
     text-align: left;
-    padding: 18px;
-    width: 33.1%;
+    padding: 15px;
+    width: 25%;
 }
 
 .banner-item {

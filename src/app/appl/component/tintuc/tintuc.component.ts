@@ -25,12 +25,11 @@ export class TintucComponent implements OnInit {
         }
     ];
 
+
+    featuredNews: any[] = [];
+
     baochiList = [
-        { image: '//file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885_large.jpg' },
-        { image: '//file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885_large.jpg' },
-        { image: '//file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885_large.jpg' },
-        { image: '//file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885_large.jpg' },
-        { image: '//file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885_large.jpg' }
+
     ]
 
     tintucList = [
@@ -56,8 +55,12 @@ export class TintucComponent implements OnInit {
     constructor(private httpService: HttpService) { }
 
     ngOnInit() {
-        this.httpService.reqeustApiget('posts').subscribe(response => {
-            console.log(response);
+        this.httpService.reqeustApiget('posts', 'menuCode=tin-tuc&pageIndex=1&pageSize=10').subscribe((response: any) => {
+            response.postList.forEach((item: any) => {
+                item.url = `${window.location.origin}/blogs?tin-tuc=${item.postName}`;
+            })
+            this.featuredNews = response.postList;
+            this.baochiList = response.postList;
         });
     }
 

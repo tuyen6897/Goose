@@ -8,7 +8,7 @@ a {
     font-size: 20px;
 }
 
-span{
+span {
     font-size: 18px;
 }
 
@@ -19,21 +19,19 @@ span{
     overflow: hidden;
     margin: 0 auto;
     position: relative;
-    padding-left: 55px;
     padding-right: 35px;
-    margin-top: 70px;
 
     #SECTION1 {
-        width: 76%;
+        width: 70%;
         float: left;
         padding-right: 5px;
 
-        .breadcrumb-small{
+        .breadcrumb-small {
             font-size: 18px;
             margin-top: 5px !important;
             margin-bottom: 30px !important;
 
-            a{
+            a {
                 font-size: 18px;
                 color: #87b83b;
                 text-decoration: none;
@@ -41,31 +39,25 @@ span{
                 display: inline-block;
             }
         }
-        
-        .title-content{
-            padding-left: 25px;
-        }
 
-        .content{
+        .content {
             margin-top: 60px;
-            padding-left: 25px;
             float: left;
             text-align: justify;
         }
 
-        .content-img{
+        .content-img {
             margin-top: 35px;
-            padding-left: 40px;
             padding-right: 10px;
 
-            .img-one{
+            .img-one {
                 height: 730px;
                 width: 100%;
                 margin-top: 15px;
             }
         }
 
-        .title-img{
+        .title-img {
             margin-top: 25px;
             text-align: center;
             font-size: 16px;
@@ -73,41 +65,39 @@ span{
             margin-bottom: 45px;
         }
 
-        .content-bottom{
-            padding-left: 25px;
+        .content-bottom {
             margin-bottom: 50px;
             float: left;
             text-align: justify;
         }
 
-        .content-question{
-            padding-left: 25px;
+        .content-question {
             float: left;
             text-align: justify;
 
-            .title-q{
+            .title-q {
                 margin-bottom: 35px;
-                h2{
+
+                h2 {
                     font-weight: bold;
                     font-size: 20px;
                 }
             }
         }
 
-        .like-comment{
+        .like-comment {
             margin-top: 60px;
-            padding-left: 25px;
         }
     }
-    
+
     #SECTION2 {
-        width: 24%;
+        width: 30%;
         height: 471.449px;
         min-height: 471.449px;
         float: left;
         padding-left: 5px;
 
-        .contact{
+        .contact {
             margin-top: 120px;
 
             .regis-contact {
@@ -138,13 +128,13 @@ span{
                 }
             }
 
-            .img-right{
+            .img-right {
                 border-radius: 10px;
                 margin-top: 15px;
                 height: 654px;
 
-                img{
-                    width: 100%; 
+                img {
+                    width: 100%;
                     height: 654px;
                 }
             }

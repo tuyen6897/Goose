@@ -78,6 +78,13 @@
     transition: all 0.3s ease;
 }
 
+.box-stick {
+    width: 366px;
+    position: absolute;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
 img,
 iframe {
     max-width: 100%;

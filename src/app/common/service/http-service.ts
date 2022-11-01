@@ -52,12 +52,15 @@ export class HttpService {
                 url = `${this._url}/product_categories`;
                 break;
             case 'posts':
-                url = `${this._url}/posts?menuCode=chuyen-ngong&pageIndex=1&pageSize=10`;
+                url = `${this._url}/posts?${params}`;
+                break;
+            case 'newest-sale':
+                url = `${this._url}/products/newest-sale?${params}`;
                 break;
             default:
                 break;
         }
-        return this._httpClient.get(url, { headers: header, params: params }).pipe(catchError(this.handleError));
+        return this._httpClient.get(url, { headers: header }).pipe(catchError(this.handleError));
     }
 
     private handleError(error: HttpErrorResponse) {
@@ -67,6 +70,8 @@ export class HttpService {
         } else {
             console.log(error);
         }
+        const dialog: any = document.body.querySelector('#printLoadMask');
+        dialog['style'].display = 'none';
         // Return an observable with a user-facing error message.
         return throwError(() => new Error('Something bad happened; please try again later.'));
     }
