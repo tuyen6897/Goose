@@ -5,18 +5,16 @@
         <span aria-hidden="true">/</span>
         <span>Giỏ Hàng</span>
     </div>
-    <div>
-        <label class="lbl-h1">Giỏ hàng ( {{soluong}} sản phẩm)</label>
-    </div>
     <div class="cart-container">
         <div class="main-content-cart">
             <div class="table-cart">
                 <div class="header-cart">
                     <div class="header-check-all">
-                        <p-checkbox [(ngModel)]="checked" [binary]="true" inputId="group"></p-checkbox>
+                        <p-checkbox [(ngModel)]="checked" [binary]="true" inputId="group" styleClass=""></p-checkbox>
                         <span>Tất cả</span>
                     </div>
                     <div class="header-product">
+                        <input type="checkbox" class="checkboxSP">
                         <span>Sản phẩm</span>
                     </div>
                     <div class="header-price">
@@ -74,19 +72,18 @@
             </div>
         </div>
 
-        <div class="sidebox-order">
+        <div class="sidebox-ft">
             <div class="voucher">
-                <span class="p-float-label">
-                    <input id="float-input" type="text" pInputText [(ngModel)]="voucher" cher>
-                    <label for="float-input">Mã giản giá</label>
-                </span>
-                <p-button label="Sử dụng"></p-button>
+                <label>Lời nhắn:</label>
+                <input type="text" id="loinhan" placeholder="Lưu ý cho Người bán...">
+                <label class="voucher-shop">Voucher Shop</label>
+                <button (click)="openDialog()" class="inputcode">Chọn Hoặc Nhập Mã</button>
             </div>
-            <div class="order">
-                <span>Tổng thanh toán: </span>
-                <span class="total"> {{formatCash(total)}} ₫</span>
+            <div class="thanhtoan">
                 <button pButton pRipple (click)="onBuyNow()" type="button" label="Mua Hàng"
                     [disabled]=" +(total) ? false: true" class="p-button-danger"></button>
+                <span class="total"> {{formatCash(total)}} ₫</span>
+                <span>Tổng thanh toán: <label class="">( {{soluong}} sản phẩm)</label></span>
             </div>
         </div>
     </div>

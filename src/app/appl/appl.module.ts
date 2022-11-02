@@ -55,6 +55,7 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 import { RatingModule } from 'primeng/rating';
+import { VoucherComponent } from '../common/voucher/voucher.component';
 @NgModule({
     imports: [
         BrowserModule,
@@ -114,7 +115,8 @@ import { RatingModule } from 'primeng/rating';
         DuAnKhacComponent,
         HeThongDoiTacNewComponent,
         TuyenDungNewComponent,
-        ComponentBaseComponent
+        ComponentBaseComponent,
+        VoucherComponent
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA
@@ -149,7 +151,8 @@ import { RatingModule } from 'primeng/rating';
         DuAnKhacComponent,
         HeThongDoiTacNewComponent,
         TuyenDungNewComponent,
-        ComponentBaseComponent
+        ComponentBaseComponent,
+        VoucherComponent
     ]
 })
 export class ApplModule { }

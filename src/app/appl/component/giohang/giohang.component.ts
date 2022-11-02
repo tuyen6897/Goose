@@ -1,22 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Renderer2, ElementRef, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Utils } from 'src/app/common/util/utils';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { VoucherComponent } from 'src/app/common/voucher/voucher.component';
+import { FileModel } from 'src/app/common/model/file.model';
+import { ProductDialogComponent } from 'src/app/common/productDialog/productDialog.component';
 
 @Component({
     selector: 'app-giohang',
     templateUrl: './giohang.component.html',
-    styleUrls: ['./giohang.component.scss']
+    styleUrls: ['./giohang.component.scss'],
+    providers: [DialogService]
 })
 export class GiohangComponent implements OnInit {
 
     soluong = '';
     total = '';
     product: any;
-    constructor(private router: Router) { }
+    constructor(private dialogService: DialogService, private router: Router) { }
     checked: boolean = true;
+    checkedProduct: boolean = false;
     itemCheck: boolean = true;
     quantity = 0;
     voucher = '';
+    ref!: DynamicDialogRef;
     ngOnInit() {
 
         this.product = JSON.parse(sessionStorage.getItem("productList") as any);
@@ -80,5 +87,12 @@ export class GiohangComponent implements OnInit {
             sessionStorage.clear();
             sessionStorage.setItem('productList', JSON.stringify(this.product));
         }
+    }
+
+    openDialog(): void {
+        this.ref = this.dialogService.open(VoucherComponent, {
+            width: '40%',
+            height: '690px'
+        });
     }
 }
