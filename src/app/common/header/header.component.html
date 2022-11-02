@@ -21,7 +21,7 @@
                 <div>Tài Khoản</div>
             </div>
             <!-- <a (click)="visibleSidebar = true"><img src="../../../../assets/image/main/gio-hang.png" /></a> -->
-            <a (click)="onClick()"><img src="../../../../assets/image/main/gio-hang.png" /></a>
+            <a (click)="onClick()" (mouseout)="visibleSidebar = true"><img src="../../../../assets/image/main/gio-hang.png" /></a>
         </div>
     </div>
     <div #menu class="header-desktop" [class]="banner ? 'banner' : ''">
