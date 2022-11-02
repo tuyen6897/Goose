@@ -223,7 +223,8 @@
                         <div class="gradient-border">
                             <div class="content-left">
                                 <span>
-                                    <i>Cường tiếp tục sang Hà Lan du học về phát triển bền vững với mong muốn nông dân Việt
+                                    <i>Cường tiếp tục sang Hà Lan du học về phát triển bền vững với mong muốn nông dân
+                                        Việt
                                         Nam có thể sản xuất công nghiệp hóa.</i>
                                 </span>
                                 <div class="stars">
@@ -249,7 +250,8 @@
                         <div class="gradient-border">
                             <div class="content-left">
                                 <span>
-                                    <i>Sau đó, Cường tiếp tục sang Hà Lan du học về phát triển bền vững với mong muốn nông
+                                    <i>Sau đó, Cường tiếp tục sang Hà Lan du học về phát triển bền vững với mong muốn
+                                        nông
                                         dân Việt Nam có thể sản xuất công nghiệp hóa.</i>
                                 </span>
                                 <div class="stars">
@@ -296,14 +298,15 @@
                     <div class="regis-contact">
                         <div class="child-regis-contact">
                             <h1 style="color: #ffffff; font-weight: bold; margin-bottom: 40px;">Đăng ký chuyến đi</h1>
-                            <input name="name" class="regis-name" type="text" placeholder="Họ & tên*" value="">
-                            <input name="phone" class="regis-phone" type="number" placeholder="Số điện thoại*" value="">
-                            <input name="email" class="regis-email" type="email" placeholder="Email" value="">
-                            <input name="name" class="regis-name" type="text" placeholder="Địa chỉ" value="">
-                            <textarea name="message" class="ladi-form-control"
+                            <input #name name="name" class="regis-name" type="text" placeholder="Họ & tên*" value="">
+                            <input #phone name="phone" class="regis-phone" type="tel" placeholder="Số điện thoại*"
+                                value="">
+                            <input #email name="email" class="regis-email" type="email" placeholder="Email" value="">
+                            <input #addr name="name" class="regis-name" type="text" placeholder="Địa chỉ" value="">
+                            <textarea #message name="message" class="ladi-form-control"
                                 placeholder="Bạn quan tâm đến chuyến đi nào?"></textarea>
                             <div class="article-schedule">
-                                <button class="btn-kp">Đăng ký</button>
+                                <button class="btn-kp" (click)="registOnClick()">Đăng ký</button>
                             </div>
                         </div>
                     </div>
@@ -316,7 +319,7 @@
                     <h2 style="font-weight: bold; margin-top: 50px; font-family: initial;">TIN MỚI NHẤT</h2>
                 </div>
                 <div class="partner-box">
-                    <app-carousel [latestnews]="true" [numVisible]="4" [datas]="images"
+                    <app-carousel [latestnews]="true" [numVisible]="4" [datas]="postsNewList"
                         [responsiveOptions]="responsiveOptions">
                     </app-carousel>
                 </div>

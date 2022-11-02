@@ -26,14 +26,16 @@
         </div>
     </div>
     <div class="paging">
-        <span *ngIf="isShowButton">Xem thêm</span>
+        <span *ngIf="isShowButton" (click)="showOnClick()">Xem thêm</span>
     </div>
     <div>
         <div class="group">
             <div class="content">
                 <div class="ToggleContent__Wrapper-sc-1dbmfaw-1 cqXrJr">
                     <div class="ToggleContent__View-sc-1dbmfaw-0 wyACs">
-                        <p><span><strong style="color: rgb(17, 90, 226);">Quạt thông gió âm trần TFV-D15
+                        <div #showDescription></div>
+                        <div #hideDescription *ngIf="isShow"></div>
+                        <!-- <p><span><strong style="color: rgb(17, 90, 226);">Quạt thông gió âm trần TFV-D15
                                     ZPD:</strong>hút thông gió không gian tĩnh phòng
                                 khách, phòng ngủ, nhà bếp, phòng vệ sinh, nhà tắm, văn phòng, phòng hút thuốc... thông
                                 gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p>
@@ -46,11 +48,12 @@
                         <p *ngIf="isShow"><span><strong>Quạt thông gió âm trần TFV-D15 ZPD:</strong>hút thông gió không
                                 gian tĩnh phòng
                                 khách, phòng ngủ, nhà bếp, phòng vệ sinh, nhà tắm, văn phòng, phòng hút thuốc... thông
-                                gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p>
+                                gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p> -->
                         <div *ngIf="!isShow" class="gradient"></div>
-                    </div><button class="btn-more" (click)="isShow = !isShow"
-                        data-view-id="pdp_view_description_button">{{!isShow ? 'Xem thêm mô tả' : 'Thu gọn mô
-                        tả'}}</button>
+                    </div>
+                    <button class="btn-more" *ngIf="hideDescription.nativeElement.innerHTML" (click)="isShow = !isShow"
+                        data-view-id="pdp_view_description_button">{{!isShow ? 'Xem thêm mô tả' : 'Thu gọn
+                        môtả'}}</button>
                 </div>
             </div>
         </div>

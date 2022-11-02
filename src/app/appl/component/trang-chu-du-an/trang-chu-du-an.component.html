@@ -30,90 +30,36 @@
             </p>
 
             <!-- Cánh đồng sẻ chia -->
-            <div>
-                <div class="gradient-border">
+            <div *ngFor="let item of projectList; let i = index">
+                <div *ngIf="i % 2 === 0" class="gradient-border">
                     <div class="img-right-1">
-                        <a target="_self" href="#"><img class="img-left"
-                            src="https://file.hstatic.net/200000170631/file/canhngongdonghanhcungnongdansinhthai__12__5b1dc0e746084e3e9b8a9ad6ee545100_grande.jpg"
-                            alt=""></a>
-                    </div>
-                    <div class="content-left">
-                        <a style="margin-left:-2px; " href="#">Cánh đồng sẻ chia</a>
-                        <span style="font-size: 16px;">
-                            <i>Với đam mê nông nghiệp và truyền truyền thống gia đình gắn bó với nông nghiệp được tiếp
-                                xúc nhiều với nông dân, anh <b>Bùi Ngọc Cường founder</b> của Ngỗng quyết tâm theo học
-                                nông nghiệp tại Học Viện Nông Nghiệp Việt
-                                Nam. Sau đó, Cường tiếp tục sang Hà Lan du học về phát triển bền vững với mong muốn nông
-                                dân Việt Nam có thể sản xuất công nghiệp hóa , đưa khoa học kỹ thuật công nghệ vào sản
-                                xuất giúp nông dân đỡ vất vả thoát cảnh
-                                bán mặt cho đất bán lưng cho trời.</i>
-                        </span>
-                        <button class="btn-kp">Tìm hiểu dự án</button>
-                    </div>
-                </div>
-
-                <!-- Chuyến đi của ngỗng -->
-                <div class="gradient-border">
-                    <div class="content-right">
-                        <a href="/chuyen-di-cua-ngong">Chuyến đi của ngỗng</a>
-                        <span style="font-size: 16px;">
-                            <i>Với đam mê nông nghiệp và truyền truyền thống gia đình gắn bó với nông nghiệp được tiếp
-                                xúc nhiều với nông dân, anh <b>Bùi Ngọc Cường founder</b> của Ngỗng quyết tâm theo học
-                                nông nghiệp tại Học Viện Nông Nghiệp Việt
-                                Nam. Sau đó, Cường tiếp tục sang Hà Lan du học về phát triển bền vững với mong muốn nông
-                                dân Việt Nam có thể sản xuất công nghiệp hóa , đưa khoa học kỹ thuật công nghệ vào sản
-                                xuất giúp nông dân đỡ vất vả thoát cảnh
-                                bán mặt cho đất bán lưng cho trời.</i>
-                        </span>
-                        <button class="btn-kp">Tìm hiểu dự án</button>
-                    </div>
-                    <a target="_self" href="#"><img class="img-right"
-                            src="https://file.hstatic.net/200000170631/file/canhngongdonghanhcungnongdansinhthai__12__5b1dc0e746084e3e9b8a9ad6ee545100_grande.jpg"
-                            alt=""></a>
-                </div>
-
-                <!-- Vườn đồng hành -->
-                <div class="gradient-border">
-                    <div class="img-right-1">
-                        <a target="_self" href="#"><img class="img-left"
-                                src="https://file.hstatic.net/200000170631/file/chatluongnongsan-nanglucsanxuat__4__2fa8a750c2854db1a31de717fbfac80d_grande.jpg"
+                        <a target="_self" [href]="item.url"><img class="img-left"
+                                src="https://file.hstatic.net/200000170631/file/canhngongdonghanhcungnongdansinhthai__12__5b1dc0e746084e3e9b8a9ad6ee545100_grande.jpg"
                                 alt=""></a>
                     </div>
                     <div class="content-left">
-                        <a style="margin-left:-2px;" href="#">Vườn đồng hành</a>
+                        <a target="_self" style="margin-left:-2px; " [href]="item.url">{{item.name}}</a>
                         <span style="font-size: 16px;">
-                            <i>Với đam mê nông nghiệp và truyền truyền thống gia đình gắn bó với nông nghiệp được tiếp
-                                xúc nhiều với nông dân, anh <b>Bùi Ngọc Cường founder</b> của Ngỗng quyết tâm theo học
-                                nông nghiệp tại Học Viện Nông Nghiệp Việt
-                                Nam. Sau đó, Cường tiếp tục sang Hà Lan du học về phát triển bền vững với mong muốn nông
-                                dân Việt Nam có thể sản xuất công nghiệp hóa , đưa khoa học kỹ thuật công nghệ vào sản
-                                xuất giúp nông dân đỡ vất vả thoát cảnh
-                                bán mặt cho đất bán lưng cho trời.</i>
+                            <i>{{item.description}}</i>
                         </span>
-                        <button class="btn-kp">Tìm hiểu dự án</button>
+                        <button class="btn-kp" (click)="goToProject(item.url)">Tìm hiểu dự án</button>
                     </div>
                 </div>
-
-                <!-- Dự án trứng vàng -->
-                <div class="gradient-border">
+                <!-- Chuyến đi của ngỗng -->
+                <div *ngIf="i % 2 !== 0" class="gradient-border">
                     <div class="content-right">
-                        <a target="_self" href="#">Dự án trứng vàng</a>
+                        <a target="_self" [href]="item.url">{{item.name}}</a>
                         <span style="font-size: 16px;">
-                            <i>Với đam mê nông nghiệp và truyền truyền thống gia đình gắn bó với nông nghiệp được tiếp
-                                xúc nhiều với nông dân, anh <b>Bùi Ngọc Cường founder</b> của Ngỗng quyết tâm theo học
-                                nông nghiệp tại Học Viện Nông Nghiệp Việt
-                                Nam. Sau đó, Cường tiếp tục sang Hà Lan du học về phát triển bền vững với mong muốn nông
-                                dân Việt Nam có thể sản xuất công nghiệp hóa , đưa khoa học kỹ thuật công nghệ vào sản
-                                xuất giúp nông dân đỡ vất vả thoát cảnh
-                                bán mặt cho đất bán lưng cho trời.</i>
+                            <i>{{item.description}}</i>
                         </span>
-                        <button class="btn-kp">Tìm hiểu dự án</button>
+                        <button class="btn-kp" (click)="goToProject(item.url)">Tìm hiểu dự án</button>
                     </div>
-                    <a target="_self" href="#"><img class="img-right"
-                            src="https://ketoanviettin.com/wp-content/uploads/2019/09/ngong-de-trung-vang-2.jpg"
+                    <a target="_self" [href]="item.url"><img class="img-right"
+                            src="https://file.hstatic.net/200000170631/file/canhngongdonghanhcungnongdansinhthai__12__5b1dc0e746084e3e9b8a9ad6ee545100_grande.jpg"
                             alt=""></a>
                 </div>
-
+            </div>
+            <div>
                 <!-- Tin tức về dự án của Ngỗng -->
                 <div class="news-project ladi-element">
                     <h3 class="ladi-headline">Tin tức về dự án của Ngỗng<br></h3>

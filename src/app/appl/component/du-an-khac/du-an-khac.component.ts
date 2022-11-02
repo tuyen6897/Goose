@@ -1,18 +1,25 @@
 import { ViewportScroller } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBase.component';
 import { HttpService } from 'src/app/common/service/http-service';
 import { MessageService } from 'primeng/api';
+import { HeaderComponent } from "src/app/common/header/header.component";
 
 @Component({
     selector: 'du-an-khac',
     templateUrl: 'du-an-khac.component.html',
     styleUrls: ['du-an-khac.component.scss']
 })
-export class DuAnKhacComponent extends ComponentBaseComponent implements OnInit{
-    isShow = true;
+export class DuAnKhacComponent extends ComponentBaseComponent implements OnInit {
 
-    images = [1, 2, 3, 4];
+    @ViewChild('header', { static: false }) header!: HeaderComponent;
+    @ViewChild('name', { static: false }) name!: ElementRef;
+    @ViewChild('phone', { static: false }) phone!: ElementRef;
+    @ViewChild('email', { static: false }) email!: ElementRef;
+    @ViewChild('message', { static: false }) message!: ElementRef;
+    @ViewChild('project', { static: false }) project!: ElementRef;
+
+    postsNewList: any[] = [1, 2, 3, 4];
 
     postList = [];
 
@@ -47,18 +54,31 @@ export class DuAnKhacComponent extends ComponentBaseComponent implements OnInit{
     }
 
     ngOnInit() {
-        // this.showDialog('on');
-        // this.httpService.reqeustApiget('posts').subscribe((response: any) => {
-        //     this.postList = response.postList;
-        //     console.log(response.postList);
-        //     this.postList.forEach((item: any) => {
-        //         item.postImage = 'https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png';
-        //     });
-        //     // if (this.postList.length <= 12) {
-        //     //     this.isShowButton = true;
-        //     // }
-        //     // this.isShowButton = this.postList.length <= 12 ? false : true;
-        //     this.showDialog('off');
-        // });
+        this.httpService.reqeustApiPost('posts', 'menuCode=chuyen-di-cua-ngong&pageIndex=1&pageSize=1000').subscribe((data: any) => {
+            if (data.postList) {
+            }
+        });
+
+        this.httpService.reqeustApiPost('posts', 'menuCode=tin-tuc&pageIndex=1&pageSize=10').subscribe((data: any) => {
+            if (data.postList) {
+                this.postsNewList = data.postList;
+            }
+        });
+    }
+
+    registOnClick() {
+        const params = {
+            "name": this.name.nativeElement.value,
+            "phone": this.phone.nativeElement.value,
+            "email": this.email.nativeElement.value,
+            "projectId": this.project.nativeElement.value,
+            "feedback": this.message.nativeElement.value
+        };
+
+        this.httpService.reqeustApiPost('register-project', params).subscribe((data: any) => {
+            if (data) {
+                this.header.showMessage('success', '', 'Đăng ký thành công.');
+            }
+        });
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBase.component';
 import { HttpService } from 'src/app/common/service/http-service';
@@ -10,9 +10,13 @@ import { HttpService } from 'src/app/common/service/http-service';
 })
 export class MuctintucComponent extends ComponentBaseComponent implements OnInit {
 
+
+    @ViewChild('showDescription', { static: true }) showDescription!: ElementRef;
+    @ViewChild('hideDescription', { static: true }) hideDescription!: ElementRef;
     isShow: boolean = false;
     isShowButton: boolean = false;
     postName = '';
+    postDescription: any = '';
     tintucList = [
         'https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png',
         'https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png',
@@ -27,7 +31,7 @@ export class MuctintucComponent extends ComponentBaseComponent implements OnInit
         'https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png',
         'https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png'
     ];
-
+    postAllList = [];
     postList = [];
 
 
@@ -47,20 +51,29 @@ export class MuctintucComponent extends ComponentBaseComponent implements OnInit
         this.showDialog('on');
 
         this.postName = window.location.pathname.split('/')[1];
-        const param = `menuCode=${this.postName}&pageIndex=1&pageSize=10`;
+        const param = `menuCode=${this.postName}&pageIndex=1&pageSize=1000`;
         this.httpService.reqeustApiget('posts', param).subscribe((response: any) => {
-            this.postList = response.postList;
             if (response.postList) {
-                this.postList.forEach((item: any) => {
-                    item.postImage = 'https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png';
-                });
-                if (this.postList.length <= 12) {
-                    this.isShowButton = true;
+                this.postAllList = response.postList;
+                this.postList = response.postList.slice(0, 12);
+                this.showDescription.nativeElement.innerHTML = response.description;
+                this.hideDescription.nativeElement.innerHTML = response.description;
+                if (response.postList) {
+                    this.postList.forEach((item: any) => {
+                        item.postImage = 'https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png';
+                    });
+                    if (this.postList.length <= 12) {
+                        this.isShowButton = true;
+                    }
+                    this.isShowButton = this.postList.length <= 12 ? false : true;
                 }
-                this.isShowButton = this.postList.length <= 12 ? false : true;
             }
             this.showDialog('off');
         });
+    }
+
+    showOnClick() {
+        this.postList = this.postAllList;
     }
 
     detailPost(id: string) {

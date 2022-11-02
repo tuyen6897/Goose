@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { HeaderComponent } from 'src/app/common/header/header.component';
+import { HttpService } from 'src/app/common/service/http-service';
 
 @Component({
     selector: 'he-thong-doi-tac-new',
@@ -11,8 +13,15 @@ export class HeThongDoiTacNewComponent {
     @ViewChild('homefood', { static: false }) homefood!: ElementRef;
     @ViewChild('saphang', { static: false }) saphang!: ElementRef;
     @ViewChild('tamdat', { static: false }) tamdat!: ElementRef;
+    @ViewChild('header', { static: false }) header!: HeaderComponent;
+    @ViewChild('name', { static: false }) name!: ElementRef;
+    @ViewChild('phone', { static: false }) phone!: ElementRef;
+    @ViewChild('email', { static: false }) email!: ElementRef;
+    @ViewChild('addr', { static: false }) addr!: ElementRef;
+    @ViewChild('message', { static: false }) message!: ElementRef;
     constructor(
-        private rend: Renderer2
+        private rend: Renderer2,
+        private httpService: HttpService
     ) { }
 
     ngOnInit() {
@@ -48,5 +57,20 @@ export class HeThongDoiTacNewComponent {
         this.rend.setStyle(this.foodmap.nativeElement, 'display', 'none');
         this.rend.setStyle(this.homefood.nativeElement, 'display', 'none');
         this.rend.setStyle(this.saphang.nativeElement, 'display', 'none');
+    }
+
+    registOnClick() {
+        const params = {
+            "name": this.name.nativeElement.value,
+            "phone": this.phone.nativeElement.value,
+            "email": this.email.nativeElement.value,
+            "description": this.message.nativeElement.value
+        };
+
+        this.httpService.reqeustApiPost('register-agent-ctv', params).subscribe((data: any) => {
+            if (data) {
+                this.header.showMessage('success', '', 'Đăng ký thành công.');
+            }
+        });
     }
 }

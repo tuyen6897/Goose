@@ -145,7 +145,6 @@ a {
     border-color: #87b93b !important;
     background: #87b93b !important;
 }
-
 @media (max-width: 768px) {
     .lbl-title {
         font-size: 18px;
@@ -161,41 +160,6 @@ a {
 
     .lbl-h3 {
         font-size: 12px;
-    }
-}
-
-@media (min-width: 576px) {
-
-    .container {
-        max-width: 540px !important;
-    }
-}
-
-@media (min-width: 768px) {
-
-    .container {
-        max-width: 740px !important;
-    }
-}
-
-@media (min-width: 992px) {
-
-    .container {
-        max-width: 980px !important;
-    }
-}
-
-@media (min-width: 1200px) {
-
-    .container {
-        max-width: 1150px !important;
-    }
-}
-
-@media (min-width: 1400px) {
-
-    .container {
-        max-width: 1400px !important;
     }
 }
 

@@ -39,8 +39,9 @@
                 </div>
             </article>
             <div style="display: flex; justify-content: flex-end;">
-                <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width=""
-                    data-layout="button" data-action="like" data-size="small" data-share="true"></div>
+                <div class="fb-like"
+                    data-href="https://ngong.vn/blogs/chuyen-ngong/ruong-ruoi-va-chuyen-chon-giong-thuan-viet-st25"
+                    data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
             </div>
             <div style="width: 100%;">
                 <div class="fb-comments"
@@ -52,18 +53,8 @@
                     <label class="lbl-h2" style="margin-left: -20px; margin-bottom: 20px;">CÁC BÀI VIẾT LIÊN
                         QUAN</label>
                     <ul class="no-bullets">
-                        <li>
-                            <a target="_self" href="">Gạo ST25 Lúa Tôm Vụ Tân Xuân</a>
-                        </li>
-                        <li>
-                            <a target="_self" href="">Khi Khách Hàng Đóng Vai Trò Quan Trọng Trong Sản Xuất Nông Sản Bền
-                                Vững</a>
-                        </li>
-                        <li>
-                            <a target="_self" href="">Lịch Thười Vụ Trồng Lúa Năm 2022 của Ngỗng</a>
-                        </li>
-                        <li>
-                            <a target="_self" href="">Vườn Đồng Hành Và Giải Pháp Ngỗng Mang Đến Cho Người Nông Dân</a>
+                        <li *ngFor="let item of postRelated">
+                            <a target="_self" [href]="item.url">{{item?.postTitle}}</a>
                         </li>
                     </ul>
                 </div>
@@ -75,14 +66,14 @@
                     <div style="border-bottom: 2px solid #790505; margin-bottom: 10px;">
                         <label style="font-size: 22px; font-weight: bold;">BÀI VIẾT XEM NHIỀU</label>
                     </div>
-                    <div *ngFor="let item of listTinTuc; let i = index"
+                    <div *ngFor="let item of topPost; let i = index"
                         style="display: flex;margin-bottom: 10px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
                         <div class="ribbon down" style="--color: #fd9c2e;">
                             <div class="content">
                                 {{i + 1}}
                             </div>
                         </div>
-                        <a>{{item?.postTitle}}</a>
+                        <a [href]="item.url">{{item?.postTitle}}</a>
                     </div>
                     <img style="width: 98%;" src="../../../../assets/image/main/new4.png" />
                 </div>

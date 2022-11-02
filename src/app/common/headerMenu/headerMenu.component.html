@@ -37,10 +37,9 @@
                 <a target="_self" href="/trang-chu-du-an">dự án<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                 <ul class="no-bullets dropdown-menu">
                     <li>
-                        <a target="_self" href="/chuyen-di-cua-ngong">chuyến đi của ngỗng</a>
-                    </li>
-                    <li>
-                        <a target="_self" href="/du-an-khac">dự án khác</a>
+                        <a target="_self" href="/chuyen-di-cua-ngong">chuyến đi của ngỗng</a>                    </li>
+                    <li *ngFor="let item of projectsList">
+                        <a target="_self" href="/du-an-khac">{{item.name}}</a>
                     </li>
                 </ul>
             </li>

@@ -1,5 +1,5 @@
 <!--component html goes here -->
-<app-header></app-header>
+<app-header #header></app-header>
 <div id="LADI-WRAPER">
     <div class="container">
         <div id="SECTION1">
@@ -216,10 +216,10 @@
                 <div class="regis-contact">
                     <div class="child-regis-contact">
                         <h1>Đăng kí làm đại lý - ctv</h1>
-                        <input name="name" class="regis-name" type="text" placeholder="Họ và tên" value="">
-                        <input name="phone" class="regis-phone" type="number" placeholder="Số điện thoại" value="">
-                        <input name="email" class="regis-email" type="email" placeholder="Email" value="">
-                        <textarea name="message" class="ladi-form-control"
+                        <input #name name="name" class="regis-name" type="text" placeholder="Họ và tên" value="">
+                        <input #phone name="phone" class="regis-phone" type="tel" placeholder="Số điện thoại" value="">
+                        <input #email name="email" class="regis-email" type="email" placeholder="Email" value="">
+                        <textarea #message name="message" class="ladi-form-control"
                             placeholder="Bạn quan tâm đến chuyến đi nào?"></textarea>
                     </div>
                 </div>

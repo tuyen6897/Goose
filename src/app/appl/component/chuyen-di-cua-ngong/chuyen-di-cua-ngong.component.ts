@@ -1,6 +1,8 @@
 import { ViewportScroller } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { HeaderComponent } from 'src/app/common/header/header.component';
+import { HttpService } from 'src/app/common/service/http-service';
 declare let $: any;
 
 @Component({
@@ -10,8 +12,14 @@ declare let $: any;
 })
 export class ChuyenDiCuaNgongComponent {
 
+    @ViewChild('header', { static: false }) header!: HeaderComponent;
+    @ViewChild('name', { static: false }) name!: ElementRef;
+    @ViewChild('phone', { static: false }) phone!: ElementRef;
+    @ViewChild('email', { static: false }) email!: ElementRef;
+    @ViewChild('addr', { static: false }) addr!: ElementRef;
+    @ViewChild('message', { static: false }) message!: ElementRef;
     images = [1, 2, 3, 4];
-    
+    postsNewList: any[] = [1, 2, 3, 4];
     responsiveOptions = [
         {
             breakpoint: '1024px',
@@ -29,13 +37,22 @@ export class ChuyenDiCuaNgongComponent {
             numScroll: 1
         }
     ];
-    
+
     constructor(
-        private scroller: ViewportScroller
+        private scroller: ViewportScroller,
+        private httpService: HttpService
     ) {
     }
     ngOnInit() {
-
+        this.httpService.reqeustApiPost('posts', 'menuCode=chuyen-di-cua-ngong&pageIndex=1&pageSize=1000').subscribe((data: any) => {
+            if (data.postList) {
+            }
+        });
+        this.httpService.reqeustApiPost('posts', 'menuCode=tin-tuc&pageIndex=1&pageSize=10').subscribe((data: any) => {
+            if (data.postList) {
+                this.postsNewList = data.postList;
+            }
+        });
     }
 
     imagesProductWatch = [
@@ -80,11 +97,11 @@ export class ChuyenDiCuaNgongComponent {
         }
     ]
 
-    onScroll(){
+    onScroll() {
         this.scroller.scrollToAnchor("SECTION6");
     }
 
-    addNewElement(){
+    addNewElement() {
         var cointainer = $('#btntest').closest('.add-dele');
         var counts = cointainer.children('.gradient-border').length;
         var content = $('#btntest').prev();
@@ -94,22 +111,38 @@ export class ChuyenDiCuaNgongComponent {
             $('#btntest').hide();
         }
 
-        content.clone(true,true).insertAfter(content);
+        content.clone(true, true).insertAfter(content);
         cointainer.find('.removeBtn').show();
     }
 
-    deleteNewElement(){
+    deleteNewElement() {
         var cointainer = $(this).closest('.add-dele');
         var counts = cointainer.children('.gradient-border').length;
 
         counts--;
-        if(counts < 4) {
+        if (counts < 4) {
             cointainer.children('.addBtn').show();
             if (counts == 1) {
                 cointainer.find('.removeBtn').hide();
             }
         }
-        
+
         $(this).parent().remove();
+    }
+
+    registOnClick() {
+        const params = {
+            "name": this.name.nativeElement.value,
+            "phone": this.phone.nativeElement.value,
+            "email": this.email.nativeElement.value,
+            "address": this.addr.nativeElement.value,
+            "description": this.message.nativeElement.value
+        };
+
+        this.httpService.reqeustApiPost('register-trip', params).subscribe((data: any) => {
+            if (data) {
+                this.header.showMessage('success', '', 'Đăng ký thành công.');
+            }
+        });
     }
 }

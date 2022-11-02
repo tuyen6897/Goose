@@ -1,5 +1,5 @@
 <!--component html goes here -->
-<app-header></app-header>
+<app-header #header></app-header>
 <div id="LADI-WRAPER">
     <div id="SECTION1">
         <div class="title-common">
@@ -120,27 +120,28 @@
                                 alt="">
                         </div>
                     </div>
-                    <div *ngIf="isShow" class="regis-contact">
+                    <div class="regis-contact">
                         <div class="child-regis-contact">
                             <p class="titleRergister">
                                 Bạn đang quan tâm đến dự án nào của Ngỗng? Vui lòng để lại thông tin để Ngỗng liên hệ
                                 với bạn nhé!</p>
-                            <input name="name" class="regis-name" type="text" placeholder="Họ và tên*" value="">
-                            <input name="phone" class="regis-phone" type="number" placeholder="Số điện thoại*" value="">
-                            <input name="email" class="regis-email" type="email" placeholder="Email" value="">
-                            <select>
+                            <input #name name="name" class="regis-name" type="text" placeholder="Họ và tên*" value="">
+                            <input #phone name="phone" class="regis-phone" type="tel" placeholder="Số điện thoại*"
+                                value="">
+                            <input #email name="email" class="regis-email" type="email" placeholder="Email" value="">
+                            <select #project>
                                 <option value="0">Select Project</option>
                                 <option value="1">Audi</option>
                                 <option value="2">BMW</option>
                             </select>
-                            <textarea name="message" class="ladi-form-control"
+                            <textarea #message name="message" class="ladi-form-control"
                                 placeholder="Góp ý hoặc thắc mắc của bạn?"></textarea>
                             <div class="article-schedule">
-                                <button class="btn-kp">Đăng ký</button>
+                                <button class="btn-kp" (click)="registOnClick()">Đăng ký</button>
                             </div>
                         </div>
                     </div>
-                    <div *ngIf="!isShow" class="regis-contact">
+                    <!-- <div *ngIf="!isShow" class="regis-contact">
                         <div class="child-regis-contact">
                             <h1 style="color: #ffffff; font-weight: bold; margin-bottom: 40px;">Đăng ký chuyến đi</h1>
                             <input name="name" class="regis-name" type="text" placeholder="Họ & tên*" value="">
@@ -153,7 +154,7 @@
                                 <button class="btn-kp">Đăng ký</button>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -163,7 +164,7 @@
                     <h2 style="font-weight: bold; margin-top: 50px; font-family: initial;">TIN MỚI NHẤT</h2>
                 </div>
                 <div class="partner-box">
-                    <app-carousel [latestnews]="true" [numVisible]="4" [datas]="images"
+                    <app-carousel [latestnews]="true" [numVisible]="4" [datas]="postsNewList"
                         [responsiveOptions]="responsiveOptions">
                     </app-carousel>
                 </div>

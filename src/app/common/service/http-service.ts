@@ -16,20 +16,35 @@ export class HttpService {
             'accept': 'application/json',
             'Content-Type': 'application/json',
         });
-        if (api === 'login') {
-            url = `${this._url}/login`;
-        }
-        if (api === 'regisAccount') {
-            url = `${this._url}/register`;
+        switch (api) {
+            case 'login':
+                url = `${this._url}/login`;
+                break;
+            case 'regisAccount':
+                url = `${this._url}/register`;
+                break;
+            case 'products':
+                url = `${this._url}/products`;
+                break;
+            case 'carts':
+                url = `${this._url}/carts`;
+                break;
+            case 'shippingFee':
+                url = `${this._url}/utility/shippingFee`;
+                break;
+            case 'register-trip':
+                url = `${this._url}/utility/register-trip`;
+                break;
+            case 'register-project':
+                url = `${this._url}/utility/register-project`;
+                break;
+            case 'register-agent-ctv':
+                url = `${this._url}/utility/register-agent-ctv`;
+                break;
+            default:
+                break;
         }
 
-        if (api === 'products') {
-            url = `${this._url}/products`;
-        }
-
-        if (api === 'carts') {
-            url = `${this._url}/carts`;
-        }
 
         return this._httpClient.post(url, params, { headers: header });
     }
@@ -54,8 +69,14 @@ export class HttpService {
             case 'posts':
                 url = `${this._url}/posts?${params}`;
                 break;
+            case 'topPost':
+                url = `${this._url}/topPost?size=10`;
+                break;
             case 'newest-sale':
                 url = `${this._url}/products/newest-sale?${params}`;
+                break;
+            case 'projects':
+                url = `${this._url}/utility/projects`;
                 break;
             default:
                 break;
