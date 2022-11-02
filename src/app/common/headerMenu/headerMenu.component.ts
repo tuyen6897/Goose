@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-headerMenu',
@@ -12,7 +13,9 @@ export class HeaderMenuComponent implements OnInit {
     @Output() cartClick: EventEmitter<any> = new EventEmitter<any>();
     @Output() accountClick: EventEmitter<any> = new EventEmitter<any>();
     searchBox: boolean = false;
-    constructor() { }
+    constructor(
+        private router: Router,
+    ) { }
 
     ngOnInit() {
     }
@@ -23,5 +26,9 @@ export class HeaderMenuComponent implements OnInit {
 
     onAccountClick(event: any) {
         this.accountClick.emit(event);
+    }
+
+    onClick(){
+        this.router.navigate(['gio-hang']);
     }
 }

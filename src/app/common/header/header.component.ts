@@ -149,4 +149,8 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
             return ((index % 3) ? next : (next + ',')) + prev
         })
     }
+
+    onClick(){
+        this.router.navigate(['gio-hang']);
+    }
 }
