@@ -19,6 +19,7 @@ export class GiohangComponent implements OnInit {
     product: any;
     constructor(private dialogService: DialogService, private router: Router) { }
     checked: boolean = true;
+    checked1: boolean = false;
     checkedProduct: boolean = false;
     itemCheck: boolean = true;
     quantity = 0;
