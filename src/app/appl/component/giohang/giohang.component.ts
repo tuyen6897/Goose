@@ -21,7 +21,7 @@ export class GiohangComponent implements OnInit {
     checked: boolean = true;
     checked1: boolean = false;
     checkedProduct: boolean = false;
-    itemCheck: boolean = true;
+    itemCheck: boolean = false;
     quantity = 0;
     voucher = '';
     ref!: DynamicDialogRef;

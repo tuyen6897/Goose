@@ -183,21 +183,49 @@ export class DanhmucsanphamComponent implements OnInit {
         });
     }
 
-    product: any[] = [];
+    // product: any[] = [];
 
     addCart(event: any) {
-        this.product.push({
-            id: 'new8938521954248',
-            title: 'Mật Trà Kombucha Thảo Mộc',
-            image: '',
-            price: '210000',
-            variant: '500ml',
-            totalPrice: 210000 * 1,
-            quantity: 1
-        });
 
-        sessionStorage.setItem('productList', JSON.stringify(this.product));
+        let product: any[] = [];
+        let insertFlag = false;
+        product = JSON.parse(sessionStorage.getItem("productList") as any);
+        // if (product && product.length) {
+        //     product.forEach(element => {
+        //         if (element.id === 'new8938521954248') {
+        //             insertFlag = true;
+        //             element.quantity = +(element.quantity) + 1;
+        //             element.totalPrice = 210000 * element.quantity;
+        //         }
+        //     });
+        // }
+        // if (!insertFlag || (product && !product.length)) {
+        //     product = [];
+            product.push({
+                id: 'new8938521954248',
+                title: 'Mật Trà Kombucha Thảo Mộc',
+                image: '',
+                price: '210000',
+                variant: '500ml',
+                totalPrice: 210000 * 1,
+                quantity: 1
+            });
+        // }
+        sessionStorage.setItem('productList', JSON.stringify(product));
         this.header.visibleSidebar = true;
+
+        // this.product.push({
+        //     id: 'new8938521954248',
+        //     title: 'Mật Trà Kombucha Thảo Mộc',
+        //     image: '',
+        //     price: '210000',
+        //     variant: '500ml',
+        //     totalPrice: 210000 * 1,
+        //     quantity: 1
+        // });
+
+        // sessionStorage.setItem('productList', JSON.stringify(this.product));
+        // this.header.visibleSidebar = true;
     }
 
     selectFileChange(event: any) {

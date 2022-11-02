@@ -14,7 +14,7 @@
                         <span>Tất cả</span>
                     </div>
                     <div class="header-product">
-                        <p-checkbox [(ngModel)]="checked1" [binary]="true" inputId="group" styleClass=""></p-checkbox>
+                        <p-checkbox [(ngModel)]="checked1" [binary]="true" inputId="group" styleClass="" [disabled]="true"></p-checkbox>
                         <span style="margin-left: 5px;">Sản phẩm</span>
                     </div>
                     <div class="header-price">
@@ -30,7 +30,7 @@
                 <div class="body-cart">
                     <div class="tr-cart" *ngFor="let item of product; let i = index">
                         <div class="product-check-box">
-                            <p-checkbox [(ngModel)]="itemCheck" [binary]="true" inputId="item"></p-checkbox>
+                            <p-checkbox [(ngModel)]="itemCheck" [binary]="true" [inputId]="item.id"></p-checkbox>
                             <span (click)="onRemove(i)">Xóa</span>
                         </div>
 
