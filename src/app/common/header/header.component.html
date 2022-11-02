@@ -20,7 +20,8 @@
                 <div><img class="tai-khoan" src="../../../../assets/image/main/tai-khoan.png" /></div>
                 <div>Tài Khoản</div>
             </div>
-            <a (click)="visibleSidebar = true"><img src="../../../../assets/image/main/gio-hang.png" /></a>
+            <!-- <a (click)="visibleSidebar = true"><img src="../../../../assets/image/main/gio-hang.png" /></a> -->
+            <a (click)="onClick()" (mouseout)="visibleSidebar = true"><img src="../../../../assets/image/main/gio-hang.png" /></a>
         </div>
     </div>
     <div #menu class="header-desktop" [class]="banner ? 'banner' : ''">
@@ -42,8 +43,7 @@
 
     <p-sidebar [(visible)]="visibleSidebar" position="right" [baseZIndex]="10000" [style]="{width:'30%'}">
         <div class="product-cart" *ngIf="this.product && this.product.length">
-            <h1 style="font-weight:normal">Giỏ hàng</h1>
-            <div style="width: 100%; border-bottom: 1px solid #ccc;"></div>
+            <h1 style="font-weight:normal; font-size:16px;">Sản phẩm mới thêm</h1>
             <div class="product">
                 <div class="product_image" *ngFor="let item of product; let i = index">
                     <a target="_self" href="/chi-tiet-san-pham" (click)="visibleSidebar = false">
@@ -60,26 +60,11 @@
                             <span class="total-price">{{item ? formatCash(item.totalPrice) :
                                 ''}} ₫</span>
                         </div>
-                        <div class="quantity">
-                            <p-inputNumber [(ngModel)]="item.quantity" [showButtons]="true" [size]="3" [min]="0"
-                                (onInput)="onChange($event, i)" buttonLayout="horizontal" spinnerMode="horizontal"
-                                inputId="horizontal" decrementButtonClass="btn-input-number"
-                                incrementButtonClass="btn-input-number" incrementButtonIcon="pi pi-plus"
-                                decrementButtonIcon="pi pi-minus">
-                            </p-inputNumber>
-                        </div>
-                        <div><a style="cursor: default;" (click)="onRemove(i)">Xóa</a></div>
                     </div>
                 </div>
-
-                <div class="total">
-                    <span>TỔNG TIỀN</span>
-                    <span>{{total ? formatCash(total) :
-                        ''}} ₫</span>
-                </div>
             </div>
-            <a target="_self" href="gio-hang">Giỏ hàng</a>
-            <button type="button" (click)="onClickCart($event)" styleClass="p-button-success">THANH TOÁN</button>
+            {{this.product.length}}<span style="margin-left: 5px;">Thêm Hàng Vào Giỏ</span>
+            <button type="button" (click)="onClickBuyNew($event)">Xem Giỏ Hàng</button>
         </div>
         <div *ngIf="(this.product && !this.product.length) || !this.product">
             <h1 style="font-weight:normal">Giỏ hàng</h1>

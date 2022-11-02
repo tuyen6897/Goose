@@ -217,6 +217,8 @@
 .product-cart .product_image {
     display: flex;
     padding: 10px;
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 .product-cart .product_image a {
@@ -255,11 +257,13 @@
 }
 
 .product-cart button {
-    height: 40px;
-    width: 100%;
-    background-color: #000;
+    width: 35%;
+    background-color: rgb(235, 78, 50);
+    border: 1px solid rgb(235, 78, 50);
+    border-radius: 3px;
+    float: right;
     color: #fff;
-    border-radius: 5px;
+    height: 40px;
 }
 
 /* button-account */

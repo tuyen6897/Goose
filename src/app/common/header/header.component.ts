@@ -5,6 +5,8 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { OverlayPanel } from 'primeng/overlaypanel';
 import { LoginComponent } from 'src/app/appl/component/login/login.component';
 import { ComponentBaseComponent } from '../componentBase/componentBase.component';
+
+
 import { Utils } from '../util/utils';
 
 @Component({
@@ -97,7 +99,8 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
             this.product.forEach((item: any, i: any) => {
                 if (i === index) {
                     item.quantity = event.value;
-                    item.totalPrice = String(+(item.price) * item.quantity);
+                    // item.totalPrice = String(+(item.price) * item.quantity);
+                    item.totalPrice =item.price;
                     totalNumber += +(item.price) * item.quantity;
                 }
             });
@@ -148,5 +151,13 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
         return str.split('').reverse().reduce((prev, next, index) => {
             return ((index % 3) ? next : (next + ',')) + prev
         })
+    }
+
+    onClick(){
+        this.router.navigate(['gio-hang']);
+    }
+
+    onClickBuyNew(event: any) {
+        this.router.navigate(['gio-hang']);
     }
 }
