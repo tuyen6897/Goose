@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, Renderer2 } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBase.component';
 import { HttpService } from 'src/app/common/service/http-service';
@@ -43,12 +43,12 @@ export class MuctintucComponent extends ComponentBaseComponent implements OnInit
         'https://file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885.jpg',
     ]
 
-    constructor(private httpService: HttpService) {
-        super(new MessageService);
+    constructor(private httpService: HttpService, private render2: Renderer2) {
+        super(new MessageService, render2);
     }
 
     ngOnInit() {
-        this.showDialog('on');
+        this.showLoadingDialog('on');
 
         this.postName = window.location.pathname.split('/')[1];
         const param = `menuCode=${this.postName}&pageIndex=1&pageSize=1000`;
@@ -56,19 +56,16 @@ export class MuctintucComponent extends ComponentBaseComponent implements OnInit
             if (response.postList) {
                 this.postAllList = response.postList;
                 this.postList = response.postList.slice(0, 12);
-                this.showDescription.nativeElement.innerHTML = response.description;
-                this.hideDescription.nativeElement.innerHTML = response.description;
+                // this.showDescription.nativeElement.innerHTML = response.description;
+                // this.hideDescription!.nativeElement.innerHTML = response.description;
                 if (response.postList) {
-                    this.postList.forEach((item: any) => {
-                        item.postImage = 'https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png';
-                    });
                     if (this.postList.length <= 12) {
                         this.isShowButton = true;
                     }
                     this.isShowButton = this.postList.length <= 12 ? false : true;
                 }
             }
-            this.showDialog('off');
+            this.showLoadingDialog('off');
         });
     }
 

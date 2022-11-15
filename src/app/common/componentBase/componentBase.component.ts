@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -9,7 +9,7 @@ import { MessageService } from 'primeng/api';
 })
 export class ComponentBaseComponent {
 
-    constructor(private messageService: MessageService) { }
+    constructor(private messageService: MessageService, private render: Renderer2) { }
 
     showMessage(severity: string = 'info', summary: string = 'Info', message: string = 'Message') {
         this.messageService.add({
@@ -21,7 +21,7 @@ export class ComponentBaseComponent {
     }
 
     showDialog(flag: string = '') {
-        const dialog: any = document.body.querySelector('#printLoadMask');
+        const dialog: any = document.querySelector('#printLoadMask');
         if (dialog) {
             switch (flag) {
                 case 'on':
@@ -32,6 +32,29 @@ export class ComponentBaseComponent {
                     break;
                 default:
                     dialog.style.display = 'none'
+                    break;
+            }
+        }
+    }
+
+    showLoadingDialog(flag: string = '') {
+        const dialog: any = document.querySelector('#printLoadMask');
+        if (dialog) {
+            switch (flag) {
+                case 'on':
+                    dialog.style.display = 'flex';
+                    this.render.addClass(dialog, 'loading_mask_init');
+                    this.render.setStyle(document.body, 'overflow', 'hidden');
+                    break;
+                case 'off':
+                    dialog['style'].display = 'none';
+                    this.render.removeClass(dialog, 'loading_mask_init');
+                    this.render.removeStyle(document.body, 'overflow');
+                    break;
+                default:
+                    dialog.style.display = 'none';
+                    this.render.removeClass(dialog, 'loading_mask_init');
+                    this.render.removeStyle(document.body, 'overflow');
                     break;
             }
         }

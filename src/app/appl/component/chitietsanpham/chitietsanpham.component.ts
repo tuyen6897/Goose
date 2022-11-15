@@ -1,8 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Renderer2, ElementRef, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { CommentDialogComponent } from 'src/app/common/commentDialog/commentDialog.component';
+import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBase.component';
 import { HeaderComponent } from 'src/app/common/header/header.component';
 import { FileModel } from 'src/app/common/model/file.model';
 import { HttpService } from 'src/app/common/service/http-service';
@@ -14,7 +16,7 @@ import { HttpService } from 'src/app/common/service/http-service';
     encapsulation: ViewEncapsulation.None,
     providers: [DialogService]
 })
-export class ChitietsanphamComponent implements OnInit {
+export class ChitietsanphamComponent extends ComponentBaseComponent implements OnInit {
 
     @ViewChild('header', { static: false }) header!: HeaderComponent;
     @ViewChild('productFix', { static: true }) productFix!: ElementRef;
@@ -294,24 +296,26 @@ export class ChitietsanphamComponent implements OnInit {
     ];
 
     constructor(private router: Router
-        , private render: Renderer2
+        , private render2: Renderer2
         , private httpService: HttpService
         , private dialogService: DialogService
-        , private sanitizen: DomSanitizer) { }
+        , private sanitizen: DomSanitizer) {
+        super(new MessageService, render2);
+    }
 
     ngOnInit() {
+        this.showLoadingDialog('on');
         this.httpService.reqeustApiget('productDetails', window.location.search.split('?code=')[1]).subscribe((response: any) => {
-            console.log(response);
             this.product = response;
+            this.showLoadingDialog('off');
         });
-        this.render.listen(document, 'scroll', (e) => {
+        this.render2.listen(document, 'scroll', (e) => {
             const scrollTop = (window.pageYOffset || document.documentElement.scrollTop) - (document.documentElement.clientTop || 0);
-            console.log(scrollTop);
             if (scrollTop >= 890) {
-                this.render.addClass(this.productFix.nativeElement, 'scroll-product');
+                this.render2.addClass(this.productFix.nativeElement, 'scroll-product');
                 this.isSlide = true;
             } else {
-                this.render.removeClass(this.productFix.nativeElement, 'scroll-product');
+                this.render2.removeClass(this.productFix.nativeElement, 'scroll-product');
                 this.isSlide = false;
             }
         });

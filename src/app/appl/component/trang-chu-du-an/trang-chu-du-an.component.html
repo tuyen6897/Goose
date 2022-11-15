@@ -67,14 +67,14 @@
                 <div style="text-align: center; display: inline-block;">
                     <div *ngFor="let item of tintucList" class="article-item article-item-list">
                         <div class="article-image">
-                            <a target="_self" href="/chi-tiet-tin-tuc"><img [src]="item"></a>
+                            <a target="_self" [href]="item.url"><img [src]="item!.menuImage"></a>
                         </div>
                         <div class="article-info">
-                            <a target="_self" href="/chi-tiet-tin-tuc" class="article-title">
-                                Tin nông nghiệp VN số 1 ruộng rươi
+                            <a target="_self" [href]="item.url" class="article-title">
+                                {{item.postTitle}}
                             </a>
                             <div class="article-title-content">
-                                Gạo ST25 sát trắng ruộng rươi nguyên cám 100%
+                                {{item.description}}
                             </div>
                         </div>
                     </div>
@@ -82,14 +82,14 @@
                     <ng-container *ngIf="isShow">
                         <div *ngFor="let item of tintucList" class="article-item article-item-list">
                             <div class="article-image">
-                                <a target="_self" href="/chi-tiet-tin-tuc"><img [src]="item"></a>
+                                <a target="_self" [href]="item.url"><img [src]="item!.menuImage"></a>
                             </div>
                             <div class="article-info">
-                                <a target="_self" href="/chi-tiet-tin-tuc" class="article-title">
-                                    Tin nông nghiệp VN số 1 ruộng rươi
+                                <a target="_self" [href]="item.url" class="article-title">
+                                    {{item.postTitle}}
                                 </a>
                                 <div class="article-title-content">
-                                    Gạo ST25 sát trắng ruộng rươi nguyên cám 100%
+                                    {{item.description}}
                                 </div>
                             </div>
                         </div>

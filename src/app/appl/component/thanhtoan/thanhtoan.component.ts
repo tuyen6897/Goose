@@ -44,25 +44,25 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
         phone: ''
     };
     ref!: DynamicDialogRef;
-    constructor(private render: Renderer2, private router: Router, private http: HttpClient, private dialogService: DialogService
+    constructor(private render2: Renderer2, private router: Router, private http: HttpClient, private dialogService: DialogService
         , private messageService1: MessageService) {
-        super(messageService1);
+        super(messageService1, render2);
     }
 
     ngOnInit() {
-        this.showDialog('on');
+        this.showLoadingDialog('on');
         const account = JSON.parse(sessionStorage.getItem("account") as any);
         if (account) {
             this.account = account;
         }
         if (account) {
-            this.render.setAttribute(this.name.nativeElement, 'readonly', 'true');
-            this.render.setAttribute(this.tel.nativeElement, 'readonly', 'true');
-            this.render.setAttribute(this.email.nativeElement, 'readonly', 'true');
+            this.render2.setAttribute(this.name.nativeElement, 'readonly', 'true');
+            this.render2.setAttribute(this.tel.nativeElement, 'readonly', 'true');
+            this.render2.setAttribute(this.email.nativeElement, 'readonly', 'true');
         } else {
-            this.render.removeAttribute(this.name.nativeElement, 'readonly');
-            this.render.removeAttribute(this.tel.nativeElement, 'readonly');
-            this.render.removeAttribute(this.email.nativeElement, 'readonly');
+            this.render2.removeAttribute(this.name.nativeElement, 'readonly');
+            this.render2.removeAttribute(this.tel.nativeElement, 'readonly');
+            this.render2.removeAttribute(this.email.nativeElement, 'readonly');
         }
         console.log(this.account);
         const ecode = window.location.search.split('?code=')[1];;
@@ -78,7 +78,7 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
             console.log(datas);
             datas.forEach((data: any) => {
                 this.cities.push({ name: data.name, code: data.code, districts: data.districts });
-                this.showDialog('off');
+                this.showLoadingDialog('off');
             });
         })
     }
@@ -102,13 +102,13 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
             this.account = account;
         }
         if (account) {
-            this.render.setAttribute(this.name.nativeElement, 'readonly', 'true');
-            this.render.setAttribute(this.tel.nativeElement, 'readonly', 'true');
-            this.render.setAttribute(this.email.nativeElement, 'readonly', 'true');
+            this.render2.setAttribute(this.name.nativeElement, 'readonly', 'true');
+            this.render2.setAttribute(this.tel.nativeElement, 'readonly', 'true');
+            this.render2.setAttribute(this.email.nativeElement, 'readonly', 'true');
         } else {
-            this.render.removeAttribute(this.name.nativeElement, 'readonly');
-            this.render.removeAttribute(this.tel.nativeElement, 'readonly');
-            this.render.removeAttribute(this.email.nativeElement, 'readonly');
+            this.render2.removeAttribute(this.name.nativeElement, 'readonly');
+            this.render2.removeAttribute(this.tel.nativeElement, 'readonly');
+            this.render2.removeAttribute(this.email.nativeElement, 'readonly');
         }
         this.showMessage(severity, summary, message);
     }

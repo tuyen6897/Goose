@@ -1,4 +1,7 @@
-import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild, ElementRef, Renderer2, ViewEncapsulation } from '@angular/core';
+import { MessageService } from 'primeng/api';
+import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBase.component';
+import { HttpService } from 'src/app/common/service/http-service';
 
 @Component({
     selector: 'app-introduce',
@@ -6,10 +9,15 @@ import { Component, HostListener, OnInit, ViewEncapsulation } from '@angular/cor
     styleUrls: ['./introduce.component.css'],
     encapsulation: ViewEncapsulation.None
 })
-export class IntroduceComponent implements OnInit {
+export class IntroduceComponent extends ComponentBaseComponent implements OnInit {
 
+    @ViewChild('content', { static: false }) content!: ElementRef;
     isMobile: boolean = false;
-    images = [1, 2, 3, 4];
+    awardList: any = [];
+    banner: any = {
+        imageUrl: '../../../../assets/image/main/gat-lua-ruoi-hai-phong-vu-thang-6.jpg'
+    }
+    introduce: any = null;
 
     formData = [
         {
@@ -74,7 +82,32 @@ export class IntroduceComponent implements OnInit {
         }
     ];
 
+    constructor(private httpService: HttpService, private rend: Renderer2) {
+        super(new MessageService, rend);
+    }
+
     ngOnInit() {
+        this.showLoadingDialog('on');
+        this.httpService.reqeustApiget('aboutNgong').subscribe((data: any) => {
+            if (data) {
+                this.introduce = data;
+                this.content.nativeElement.innerHTML = this.introduce.soLuocVeNgong.moDau;
+            }
+            this.showLoadingDialog('off');
+        });
+
+        this.httpService.reqeustApiget('banner').subscribe((data: any) => {
+            if (data.bannerList) {
+                this.banner = data.bannerList[0];
+            }
+        });
+
+        this.httpService.reqeustApiget('award').subscribe((data: any) => {
+            if (data.awards) {
+                this.awardList = data.awards;
+            }
+        });
+
         if (window.innerWidth <= 991) {
             this.isMobile = true;
         } else {

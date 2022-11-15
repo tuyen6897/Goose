@@ -110,23 +110,21 @@
             <div class="picsum-img">
                 <div class="article-item">
                     <div class="article-img">
-                        <a
-                            href="/blogs/bao-chi-noi-gi-ve-ngong/chang-trai-dat-mua-tieu-ban-so-gao-cho-hang-van-dan-viet">
+                        <a target="_self" [href]="data.url">
                             <img [src]="data.menuImage" alt="Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt">
                             <div class="overlay">
                             </div>
                         </a>
                     </div>
                     <div class="article-info">
-                        <a href="/blogs/bao-chi-noi-gi-ve-ngong/chang-trai-dat-mua-tieu-ban-so-gao-cho-hang-van-dan-viet"
-                            class="article-title">
+                        <a target="_self" [href]="data.url" class="article-title">
                             {{data.postTitle}}
                         </a>
                         <div class="article-desc">
                             {{data.description}}
                         </div>
-                        <a href="/blogs/bao-chi-noi-gi-ve-ngong/chang-trai-dat-mua-tieu-ban-so-gao-cho-hang-van-dan-viet"
-                            class="article-readmore">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a>
+                        <a target="_self" [href]="data.url" class="article-readmore">Xem thêm <i
+                                class="fas fa-long-arrow-alt-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -138,11 +136,11 @@
     [circular]="true" [showIndicators]="false" [autoplayInterval]="3500" [responsiveOptions]="responsiveOptions">
     <ng-template let-data pTemplate="item">
         <div class="prize-content">
-            <div class="achievement-content">
+            <div class="achievement-content" [ngStyle]="{ 'background-image': 'url(' + data.imageUrl + ')'}">
                 <div class="achievement">
-                    Doanh nghiệp tạo tác động trong dự án EFD của Oxfarm CSIP
+                    {{data.content}}
                 </div>
-                <div class="tag-year">2018</div>
+                <div class="tag-year">{{data.time}}</div>
             </div>
         </div>
     </ng-template>
@@ -153,13 +151,13 @@
     <ng-template let-data pTemplate="item">
         <div class="betaviet-content">
             <div style="display: flex;">
-                <div class="betaviet" [class]="data.sub === '2' ? 'sub' : ''">
+                <div class="betaviet" [class]="data.order%2 !== 0 ? 'sub' : ''">
                     <div
                         style="height: 90px;font-size: 28px;border-bottom: 1px solid #ccc;margin-bottom: 10px;padding: 10px; display: flex;">
                         <div class="arrow"></div>
                         <div
                             style="display: flex; align-items: center; height: 100%; color: #790505; font-weight: bold;">
-                            {{data.date}}</div>
+                            {{data.time}}</div>
                     </div>
                     <div style="padding: 10px; font-size: 18px;">
                         <span style="font-weight: bold; font-size: 18px;">{{data.title}}</span><br>
@@ -190,17 +188,16 @@
         <div class="latestnewss">
             <div class="article-item article-item-list">
                 <div class="article-image">
-                    <a [routerLink]="['/chi-tiet-tin-tuc']">
-                        <img
-                            src="https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png">
+                    <a target="_self" [href]="data.url">
+                        <img [src]="data.menuImage">
                     </a>
                 </div>
                 <div class="article-info">
-                    <a [routerLink]="['/chi-tiet-tin-tuc']" class="article-title">
-                        Tin nông nghiệp VN số 1 ruộng rươi
+                    <a [href]="data.url" class="article-title">
+                        {{data.postTitle}}
                     </a>
                     <div>
-                        Gạo ST25 sát trắng ruộng rươi nguyên cám 100%
+                        {{data.description}}
                     </div>
                 </div>
             </div>

@@ -19,26 +19,20 @@
         <div id="SECTION2">
             <div class="address-content">
                 <div class="address-map">
-                    <select name="change-tinh" class="change-tinh">
+                    <select #tinh name="change-tinh" class="change-tinh" (change)="tinhChange($event)">
                         <option value="tat-ca-tinh-thanh">Tất cả tỉnh/thành</option>
                         <option value="ha-noi">Hà Nội</option>
-                        <option value="vinh-phuc">Vĩnh Phúc</option>
-                        <option value="da-nang">Đà Nẵng</option>
                         <option value="tp-ho-chi-minh">TP Hồ Chí Minh</option>
-                        <option value="05c69cc8-87d0-4758-846a-4b9b71902811">Lào Cai</option>
-                        <option value="all" class="hide">Tất cả</option>
                     </select>
-                    <select name="change-quan" class="change-quan">
-                        <option data-tinh="tat-ca-tinh-thanh" value="8b4b5a30-73fb-4d50-8ba1-b20439355ed0"
-                            style="display: block;">Đại lý</option>
-                        <option data-tinh="tat-ca-tinh-thanh" value="518f1a55-08e6-4b15-89b5-25ed3837b613"
-                            style="display: block;">Công tác viên</option>
+                    <select #quan name="change-quan" class="change-quan" (change)="quanChange($event)">
+                        <option data-tinh="tat-ca-tinh-thanh">Đại lý</option>
+                        <option data-tinh="tat-ca-tinh-thanh">Cộng tác viên</option>
                     </select>
                     <div class="address-cont">
                         <div class="address-detail">
                             <ul>
-                                <li data-tinh="tat-ca-tinh-thanh" data-quan="8b4b5a30-73fb-4d50-8ba1-b20439355ed0"
-                                    style="display: list-item;">
+                                <li *ngIf="isSg" data-tinh="tat-ca-tinh-thanh"
+                                    data-quan="8b4b5a30-73fb-4d50-8ba1-b20439355ed0" style="display: list-item;">
                                     <div>
                                         <a (click)="onChangeFoodmap()">
                                             <p>
@@ -64,16 +58,16 @@
                                         </div>
                                     </div>
                                     <a (click)="onChangeFoodmap()" style="
-                          margin-bottom: 15px;
-                          display: block;
-                          padding-left: 15px;
-                          color: #333333;
-                          font-weight: 500;
-                          letter-spacing: 1.5px;
-                        ">CHỈ ĐƯỜNG <i class="fa fa-angle-right"></i></a>
+                              margin-bottom: 15px;
+                              display: block;
+                              padding-left: 15px;
+                              color: #333333;
+                              font-weight: 500;
+                              letter-spacing: 1.5px;
+                            ">CHỈ ĐƯỜNG <i class="fa fa-angle-right"></i></a>
                                 </li>
-                                <li data-tinh="tat-ca-tinh-thanh" data-quan="8b4b5a30-73fb-4d50-8ba1-b20439355ed0"
-                                    style="display: list-item;">
+                                <li *ngIf="isHn" data-tinh="tat-ca-tinh-thanh"
+                                    data-quan="8b4b5a30-73fb-4d50-8ba1-b20439355ed0" style="display: list-item;">
                                     <div>
                                         <a (click)="onChangeHomefood()">
                                             <p>
@@ -97,16 +91,16 @@
                                         </div>
                                     </div>
                                     <a (click)="onChangeHomefood()" style="
-                          margin-bottom: 15px;
-                          display: block;
-                          padding-left: 15px;
-                          color: #333333;
-                          font-weight: 500;
-                          letter-spacing: 1.5px;
-                        ">CHỈ ĐƯỜNG <i class="fa fa-angle-right"></i></a>
+                              margin-bottom: 15px;
+                              display: block;
+                              padding-left: 15px;
+                              color: #333333;
+                              font-weight: 500;
+                              letter-spacing: 1.5px;
+                            ">CHỈ ĐƯỜNG <i class="fa fa-angle-right"></i></a>
                                 </li>
-                                <li data-tinh="tat-ca-tinh-thanh" data-quan="8b4b5a30-73fb-4d50-8ba1-b20439355ed0"
-                                    style="display: list-item;">
+                                <li *ngIf="isHn" data-tinh="tat-ca-tinh-thanh"
+                                    data-quan="8b4b5a30-73fb-4d50-8ba1-b20439355ed0" style="display: list-item;">
                                     <div>
                                         <a (click)="onChangeSaphang()">
                                             <p>
@@ -133,16 +127,16 @@
                                         </div>
                                     </div>
                                     <a (click)="onChangeSaphang()" style="
-                          margin-bottom: 15px;
-                          display: block;
-                          padding-left: 15px;
-                          color: #333333;
-                          font-weight: 500;
-                          letter-spacing: 1.5px;
-                        ">CHỈ ĐƯỜNG <i class="fa fa-angle-right"></i></a>
+                              margin-bottom: 15px;
+                              display: block;
+                              padding-left: 15px;
+                              color: #333333;
+                              font-weight: 500;
+                              letter-spacing: 1.5px;
+                            ">CHỈ ĐƯỜNG <i class="fa fa-angle-right"></i></a>
                                 </li>
-                                <li data-tinh="tat-ca-tinh-thanh" data-quan="8b4b5a30-73fb-4d50-8ba1-b20439355ed0"
-                                    style="display: list-item;">
+                                <li *ngIf="isHn" data-tinh="tat-ca-tinh-thanh"
+                                    data-quan="8b4b5a30-73fb-4d50-8ba1-b20439355ed0" style="display: list-item;">
 
                                     <div>
                                         <a (click)="onChangeTamdat()">
@@ -166,13 +160,13 @@
                                         </div>
                                     </div>
                                     <a (click)="onChangeTamdat()" style="
-                          margin-bottom: 15px;
-                          display: block;
-                          padding-left: 15px;
-                          color: #333333;
-                          font-weight: 500;
-                          letter-spacing: 1.5px;
-                        ">CHỈ ĐƯỜNG <i class="fa fa-angle-right"></i></a>
+                              margin-bottom: 15px;
+                              display: block;
+                              padding-left: 15px;
+                              color: #333333;
+                              font-weight: 500;
+                              letter-spacing: 1.5px;
+                            ">CHỈ ĐƯỜNG <i class="fa fa-angle-right"></i></a>
                                 </li>
                             </ul>
                         </div>

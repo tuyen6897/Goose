@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, Renderer2 } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { HeaderComponent } from 'src/app/common/header/header.component';
 import { ProductDialogComponent } from 'src/app/common/productDialog/productDialog.component';
@@ -6,6 +6,8 @@ import { FileModel } from 'src/app/common/model/file.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CommentDialogComponent } from 'src/app/common/commentDialog/commentDialog.component';
 import { HttpService } from 'src/app/common/service/http-service';
+import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBase.component';
+import { MessageService } from 'primeng/api';
 
 @Component({
     selector: 'app-danhmucsanpham',
@@ -13,12 +15,14 @@ import { HttpService } from 'src/app/common/service/http-service';
     styleUrls: ['./danhmucsanpham.component.scss'],
     providers: [DialogService]
 })
-export class DanhmucsanphamComponent implements OnInit {
+export class DanhmucsanphamComponent extends ComponentBaseComponent implements OnInit {
     isShow = false;
     isShowbutton = false;
     imageList: FileModel[] = [];
     productList: any[] = [];
-    constructor(private dialogService: DialogService, private sanitizen: DomSanitizer, private httpService: HttpService) { }
+    constructor(private dialogService: DialogService, private sanitizen: DomSanitizer, private httpService: HttpService, private render2: Renderer2) {
+        super(new MessageService, render2);
+    }
     @ViewChild('header', { static: false }) header!: HeaderComponent;
     @ViewChild('comment', { static: false }) comment!: ElementRef;
     ref!: DynamicDialogRef;
@@ -148,12 +152,20 @@ export class DanhmucsanphamComponent implements OnInit {
         }
     ];
 
+    rightBanner: any = null;
+
     ngOnInit() {
+        this.showLoadingDialog('on');
         this.httpService.reqeustApiget('products', {
             "categoryId": 0,
-
         }).subscribe((data: any) => {
-            console.log(data);
+            this.httpService.reqeustApiget('rightBanner').subscribe((data: any) => {
+                if (data.banner) {
+                    this.rightBanner = data.banner;
+                    this.showLoadingDialog('off');
+                }
+
+            });
         });
         this.productList = [...this.imagesProduct.slice(0, 12)];
         this.isShowbutton = this.imagesProduct.length > 12 ? true : false;
@@ -183,10 +195,7 @@ export class DanhmucsanphamComponent implements OnInit {
         });
     }
 
-    // product: any[] = [];
-
     addCart(event: any) {
-
         let product: any[] = [];
         let insertFlag = false;
         product = JSON.parse(sessionStorage.getItem("productList") as any);

@@ -1,7 +1,8 @@
 <app-header [banner]="true"></app-header>
 <div>
-    <img style="width: 100%; max-height: 700px; border-bottom: 1px solid #790505;"
-        src="../../../../assets/image/main/gat-lua-ruoi-hai-phong-vu-thang-6.jpg" alt="">
+    <a target="_self" [href]="banner.targetUrl"><img
+            style="width: 100%; max-height: 700px; border-bottom: 1px solid #790505;" [src]="banner.imageUrl"
+            alt=""></a>
 </div>
 <div class="container introduce" style="text-align: left">
     <div class="breadcrumb-small">
@@ -9,37 +10,15 @@
         <span aria-hidden="true">/</span>
         <span>Về chúng tôi</span>
     </div>
-    <label class="lbl-title lbl-h1" style="margin-top: 0;">SƠ LƯỢC VỀ NGỖNG</label><br>
-    Công ty cổ phần thực phẩm An Biên (Tên tiếng Anh: An Bien Food JSC) với tên thương hiệu Ngỗng được thành lập ngày
-    31/03/2018 bởi
-    CEO & Founder Bùi Ngọc Cường. Ngỗng - An Biên là doanh nghiệp được xây dựng trên triết lý “doanh nghiệp xã hội”
-    với mục tiêu kết nối, đồng hành cùng nông dân, chuyên gia và khách hàng xây dựng hệ sinh thái nông nghiệp bền vững
-    nhằm mang đến những sản phẩm
-    nông nghiệp an toàn, tự nhiên, hữu ích cho cộng đồng và xã hội.<br><br>
-    Ở Ngỗng, chúng tôi tin rằng, Ngỗng cũng như mỗi thành viên trong team là một hạt mầm, mỗi cây cỏ nhỏ sẽ sinh
-    trưởng phát triển tốt nhất trong một khu vường hữu cơ, sinh thái. Trong khu vườn đó không chỉ có mình Ngỗng
-    , mỗi cây, mỗi con, mỗi cá thể
-    đều sinh trưởng,
-    phát triển bình đẳng và được tôn trọng được trao quyền và tạo ra giá trị.<br><br>
-    Ngỗng không được "sở hữu" được "tạo nên" từ một cá nhậm mà từ một tập thể đa dạng tính cách, năng lực, tiềm năng
-    trong cùng một hệ sinh
-    thái. Hệ sinh thái của Ngỗng không bao gồm tất cả các hợp phần "của Ngỗng" thuộc sở hữu bởi Ngỗng, mà mỗi thành
-    viên, mỗi sản phẩm,
-    mỗi đối tác và cả môi trường, thiên nhiên cũng là một phần trong hệ sinh tháy đấy.
-    Nếu xã hộ đó, khu vườn đó, tập thể đó không có sẵn chúng ta sẽ cùng kết nỗi cùng xây dựng, cùng tạo ra. Đó chính
-    là
-    hành trình của Ngỗng.
-    <div *ngIf="!isMobile" class="box-future">
+    <label class="lbl-title lbl-h1" style="margin-top: 0;">{{introduce?.postTitle}}</label><br>
+    <div #content></div>
+    <div class="box-future"
+        [ngStyle]="{ 'background': 'linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url(' + introduce?.soLuocVeNgong.tamNhinSuMenhGTCL.imageUrl + ')'}">
         <div class="box-content">
             <div style="margin-top: 30px; width: 50%; text-align: center;">
                 <label class="lbl-h1 lbl-title">TẦM NHÌNH - SỨ MỆNH</label>
                 <div style="text-align: left; padding-left: 10px; padding-right: 10px;">
-                    Ngỗng không được "sở hữu" được "tạo nên" từ một cá nhậm mà từ một
-                    tập thể đa dạng tính cách, năng lực, tiềm năng trong cùng một hệ sinh
-                    thái. Hệ sinh thái của Ngỗng không bao gồm tất cả các hợp phần "của
-                    Ngỗng" thuộc sở hữu bởi Ngỗng, mà mỗi thành viên, mỗi sản phẩm,
-                    mỗi đối tác và cả môi trường, thiên nhiên cũng là một phần trong hệ
-                    sinh tháy đấy.
+                    {{introduce?.soLuocVeNgong.tamNhinSuMenhGTCL.vision}}
                 </div>
             </div>
             <div style="width: 50%;">
@@ -54,7 +33,7 @@
                         GÍA TRỊ CỐT LÕI
                     </label><br>
                     <span>
-                        Nội dung
+                        {{introduce?.soLuocVeNgong.tamNhinSuMenhGTCL.coreValue}}
                     </span>
                 </div>
             </div>
@@ -79,43 +58,28 @@
     </div>
 
     <div class="story">
-        <div class="story-image"><img style="width: 100%;" src="../../../../assets/image/main/canhdong.png" /></div>
-        <div style="margin-left: 20px;">
+        <div class="story-image"><img style="width: 100%;"
+                [src]="introduce?.soLuocVeNgong.cauChuyenThuongHieu.imageUrl" /></div>
+        <div style="margin-left: 20px; width: 100%;">
             <strong class="lbl-h1">CÂU CHUYỆN THƯƠNG HIỆU</strong><br><br>
-            <p style="font-size: 18px;">Ở Ngỗng, chúng tôi tin rằng, Ngỗng cũng như mỗi thành viên trong
-                team là một hạt mầm, mỗi cây cỏ nhỏ sẽ sinh trưởng phát triển tốt
-                nhất trong một khu vường hữu cơ, sinh thái. Trong khu vườn đó không
-                chỉ có mình Ngỗng, mỗi cây, mỗi con, mỗi cá thể đều sinh trưởng,
-                phát triển bình đẳng và được tôn trọng được trao quyền và tạo ra giá
-                trị.<br><br>
-                Ngỗng không được "sở hữu" được "tạo nên" từ một cá nhậm mà từ một
-                tập thể đa dạng tính cách, năng lực, tiềm năng trong cùng một hệ sinh
-                thái. Hệ sinh thái của Ngỗng không bao gồm tất cả các hợp phần "của
-                Ngỗng" thuộc sở hữu bởi Ngỗng, mà mỗi thành viên, mỗi sản phẩm,
-                mỗi đối tác và cả môi trường, thiên nhiên cũng là một phần trong hệ
-                sinh tháy đấy.<br><br>
-                Nếu xã hộ đó, khu vườn đó, tập thể đó không có sẵn chúng ta sẽ cùng
-                kết nỗi cùng xây dựng, cùng tạo ra. Đó chính là hành trình của Ngỗng.</p>
+            <p style="font-size: 18px;">{{introduce?.soLuocVeNgong.cauChuyenThuongHieu.brandStory}}</p>
         </div>
     </div>
     <div style="width: 100%; text-align: center;margin: 20px 0 30px 0;">
         <label class="lbl-h1 lbl-title">QUÁ TRÌNH HÌNH THÀNH VÀ PHÁT TRIỂN</label>
         <div style="width: 100%;">
-            <app-carousel [form]="true" [numVisible]="4" [datas]="formData" [responsiveOptions]="responsiveOptions">
+            <app-carousel [form]="true" [numVisible]="4" [datas]="introduce?.soLuocVeNgong.qtHinhThanhPhatTrien"
+                [responsiveOptions]="responsiveOptions">
             </app-carousel>
         </div>
         <div>
             <div *ngIf="!isMobile" class="box-future">
-                <div class="box-content">
+                <div class="box-content"
+                    [ngStyle]="{ 'background': 'linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url(' + introduce?.soLuocVeNgong.tamNhinSuMenhGTCL.imageUrl + ')'}">
                     <div style="margin-top: 30px; width: 50%; text-align: center;">
                         <label class="lbl-h1 lbl-title"> ĐỊNH HƯỚNG PHÁT TRIỂN</label>
                         <div style="text-align: left; padding-left: 10px; padding-right: 10px;">
-                            Ngỗng không được "sở hữu" được "tạo nên" từ một cá nhậm mà từ một
-                            tập thể đa dạng tính cách, năng lực, tiềm năng trong cùng một hệ sinh
-                            thái. Hệ sinh thái của Ngỗng không bao gồm tất cả các hợp phần "của
-                            Ngỗng" thuộc sở hữu bởi Ngỗng, mà mỗi thành viên, mỗi sản phẩm,
-                            mỗi đối tác và cả môi trường, thiên nhiên cũng là một phần trong hệ
-                            sinh tháy đấy.
+                            {{introduce?.soLuocVeNgong.dinhHuongLinhVuc.orientDevelopment}}
                         </div>
                     </div>
                     <div style="width: 50%;">
@@ -130,7 +94,7 @@
                                 LĨNH VỰC HOẠT ĐỘNG
                             </label><br>
                             <span>
-                                Nội dung
+                                {{introduce?.soLuocVeNgong.dinhHuongLinhVuc.fieldOperation}}
                             </span>
                         </div>
                     </div>
@@ -178,12 +142,12 @@
                                                     <ol>
                                                         <li>
                                                             <div>
-                                                                <label>Bộ phận thiết kế kiến trúc</label>
+                                                                <label>{{introduce?.soLuocVeNgong.soDoToChuc.khoiThietKeVaThiCong.phongThietKe[0]}}</label>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div>
-                                                                <label>Bộ phận thiết kế nội thất</label>
+                                                                <label>{{introduce?.soLuocVeNgong.soDoToChuc.khoiThietKeVaThiCong.phongThietKe[1]}}</label>
                                                             </div>
                                                         </li>
                                                     </ol>
@@ -195,19 +159,19 @@
                                                     <ol>
                                                         <li>
                                                             <div>
-                                                                <label>Bộ phận dự toán</label>
+                                                                <label>{{introduce?.soLuocVeNgong.soDoToChuc.khoiThietKeVaThiCong.phongThiCong[0]}}</label>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div>
                                                                 <label>
-                                                                    Bộ phận giám sát thi công
+                                                                    {{introduce?.soLuocVeNgong.soDoToChuc.khoiThietKeVaThiCong.phongThiCong[1]}}
                                                                 </label>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div>
-                                                                <label>Các tổ đội thị công</label>
+                                                                <label>{{introduce?.soLuocVeNgong.soDoToChuc.khoiThietKeVaThiCong.phongThiCong[2]}}</label>
                                                             </div>
                                                         </li>
                                                     </ol>
@@ -221,17 +185,17 @@
                                             <ol>
                                                 <li>
                                                     <div>
-                                                        <label>Nhà máy nội thất rời Galaxy Centre</label>
+                                                        <label>{{introduce?.soLuocVeNgong.soDoToChuc.khoiSanXuat[0]}}</label>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div>
-                                                        <label>Nhà máy Nội thất gỗ liền tường Beta Decor</label>
+                                                        <label>{{introduce?.soLuocVeNgong.soDoToChuc.khoiSanXuat[1]}}</label>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div>
-                                                        <label>Nhà máy nhôm đúc Beta Beta Phú Thịnh</label>
+                                                        <label>{{introduce?.soLuocVeNgong.soDoToChuc.khoiSanXuat[2]}}</label>
                                                     </div>
                                                 </li>
                                             </ol>
@@ -243,17 +207,17 @@
                                             <ol>
                                                 <li>
                                                     <div>
-                                                        <label>Phong kế toán</label>
+                                                        <label>{{introduce?.soLuocVeNgong.soDoToChuc.khoiHanhChinhKeToan[0]}}</label>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div>
-                                                        <label>Phòng Xuất - Nhập khẩu</label>
+                                                        <label>{{introduce?.soLuocVeNgong.soDoToChuc.khoiHanhChinhKeToan[1]}}</label>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div>
-                                                        <label>Phòng Hành chính - Nhân sự</label>
+                                                        <label>{{introduce?.soLuocVeNgong.soDoToChuc.khoiHanhChinhKeToan[2]}}</label>
                                                     </div>
                                                 </li>
                                             </ol>
@@ -265,12 +229,12 @@
                                             <ol>
                                                 <li>
                                                     <div>
-                                                        <label>Phong kinh doanh</label>
+                                                        <label>{{introduce?.soLuocVeNgong.soDoToChuc.khoiHanhChinhKeToan[0]}}</label>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div>
-                                                        <label>Phòn Marketing</label>
+                                                        <label>{{introduce?.soLuocVeNgong.soDoToChuc.khoiHanhChinhKeToan[1]}}</label>
                                                     </div>
                                                 </li>
                                             </ol>
@@ -282,17 +246,17 @@
                                             <ol>
                                                 <li>
                                                     <div>
-                                                        <label>Showroom Nội Thất</label>
+                                                        <label>{{introduce?.soLuocVeNgong.soDoToChuc.heThongShowroom[0]}}</label>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div>
-                                                        <label>Showroom Gạch nhập khẩu</label>
+                                                        <label>{{introduce?.soLuocVeNgong.soDoToChuc.heThongShowroom[1]}}</label>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div>
-                                                        <label>Showroom vật liệu mẫu</label>
+                                                        <label>{{introduce?.soLuocVeNgong.soDoToChuc.heThongShowroom[2]}}</label>
                                                     </div>
                                                 </li>
                                             </ol>
@@ -304,89 +268,32 @@
                     </div>
                 </div>
             </div>
-            <div style="width: 100%;
-            text-align: center;">
+            <div style="width: 100%; text-align: center;">
                 <label class="lbl-h1 lbl-title">CAM KẾT VỚI KHÁC HÀNG</label>
                 <div class="content">
-                    <div class="div-content">
+                    <div class="div-content"
+                        *ngFor="let item of introduce?.soLuocVeNgong.camKetKhachHang; let i = index">
                         <div style=" font-size: xxx-large;">
-                            01
+                            0{{i}}
                         </div>
                         <div style="transform: rotate(15deg);height: 100%;border: 1px solid #ccc;margin-right: 20px;">
                         </div>
                         <div
                             style="word-break: break-word;text-align: left; font-size: 16px; margin-left: 10px; display: flex;flex-direction: column;">
                             <strong style="font-size: 18px;margin-bottom: 15px;">
-                                THIẾT KẾ TINH XẢO
+                                {{item.title}}
                             </strong>
-                            Cùng với khát vọng đưa những giá trị Việt, tự hào Việt vào tr gỗ nội thất cao cấp mà iền
-                            phog
-                            góp
-                            phần thau đổi cá sống chất lượng cho khách hàng và cộng đồng.
-                        </div>
-                    </div>
-                    <div class="div-content">
-                        <div style=" font-size: xxx-large;">
-                            01
-                        </div>
-                        <div style="transform: rotate(15deg);height: 100%;border: 1px solid #ccc;margin-right: 20px;">
-                        </div>
-                        <div
-                            style="word-break: break-word;text-align: left; font-size: 16px; margin-left: 10px; display: flex;flex-direction: column;">
-                            <strong style="font-size: 18px;margin-bottom: 15px;">
-                                THIẾT KẾ TINH XẢO
-                            </strong>
-                            Cùng với khát vọng đưa những giá trị Việt, tự hào Việt vào tr gỗ nội thất cao cấp mà iền
-                            phog
-                            góp
-                            phần thau đổi cá sống chất lượng cho khách hàng và cộng đồng.
+                            {{item.content}}
                         </div>
                     </div>
                 </div>
-                <div class="content">
-                    <div class="div-content">
-                        <div style=" font-size: xxx-large;">
-                            02
-                        </div>
-                        <div style="transform: rotate(15deg);height: 100%;border: 1px solid #ccc;margin-right: 20px;">
-                        </div>
-                        <div
-                            style="word-break: break-word;text-align: left; font-size: 16px; margin-left: 10px; display: flex;flex-direction: column;">
-                            <strong style="font-size: 18px; margin-bottom: 15px;">
-                                CHẤT LƯỢNG ĐẲNG CẤP
-                            </strong>
-                            Giá trị cốt lõi của GALAXY-CENTER là con người, Mỗi thành viên ngộn mới tạo ra những sản
-                            phẩm
-                            mang
-                            tính nghệ thuật,
-                            tinh minh 4.0 và tạo dựng hệ sinh thái riêng trog lĩnh vực sản xuất nghiêp và xác hội
-                        </div>
-                    </div>
-                    <div class="div-content">
-                        <div style=" font-size: xxx-large;">
-                            02
-                        </div>
-                        <div style="transform: rotate(15deg);height: 100%;border: 1px solid #ccc;margin-right: 20px;">
-                        </div>
-                        <div
-                            style="word-break: break-word;text-align: left; font-size: 16px; margin-left: 10px; display: flex;flex-direction: column;">
-                            <strong style="font-size: 18px;margin-bottom: 15px;">
-                                CHẤT LƯỢNG ĐẲNG CẤP
-                            </strong>
-                            Giá trị cốt lõi của GALAXY-CENTER là con người, Mỗi thành viên ngộn mới tạo ra những sản
-                            phẩm
-                            mang
-                            tính nghệ thuật,
-                            tinh minh 4.0 và tạo dựng hệ sinh thái riêng trog lĩnh vực sản xuất nghiêp và xác hội
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
             <div class="member" style="margin-bottom: 20px; width: 100%;text-align: center;margin: 20px 0 30px 0;">
                 <label class="lbl-h1 lbl-title">THÀNH TỰU VÀ GIẢI THƯỞNG</label>
                 <div style="width: 100%; background-color: #87b83b; height: 350px; padding-top: 15px;">
-                    <app-carousel [prize]="true" [numVisible]="3" [datas]="images"
+                    <app-carousel [prize]="true" [numVisible]="3" [datas]="awardList"
                         [responsiveOptions]="responsiveOptions">
                     </app-carousel>
                 </div>

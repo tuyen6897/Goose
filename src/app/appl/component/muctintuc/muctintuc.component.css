@@ -22,6 +22,7 @@
     float: left;
     margin: 20px 0 20px 20px;
     border: 1px solid #ccc;
+    min-height: 310px;
 }
 
 .article-item-list a,
@@ -35,7 +36,7 @@
 
 .article-item-list .article-info {
     width: 100%;
-    padding: 0 0 0 15px;
+    padding: 5px 0 0 0;
 }
 
 .article-item-list .article-info .article-title {
@@ -44,10 +45,19 @@
     line-height: 20px;
 }
 
+.article-item-list .article-info .article-title:hover {
+    color: #87b83b;
+}
+
 .article-item .article-info .article-title {
     color: #000;
     font-weight: bold;
-    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
 }
 
 a,

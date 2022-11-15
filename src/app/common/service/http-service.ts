@@ -69,8 +69,14 @@ export class HttpService {
             case 'posts':
                 url = `${this._url}/posts?${params}`;
                 break;
+            case 'award':
+                url = `${this._url}/utility/award`;
+                break;
+            case 'aboutNgong':
+                url = `${this._url}/posts/aboutNgong`;
+                break;
             case 'topPost':
-                url = `${this._url}/topPost?size=10`;
+                url = `${this._url}/posts/topPost?size=10`;
                 break;
             case 'newest-sale':
                 url = `${this._url}/products/newest-sale?${params}`;
@@ -78,6 +84,19 @@ export class HttpService {
             case 'projects':
                 url = `${this._url}/utility/projects`;
                 break;
+            case 'banner':
+                url = `${this._url}/utility/banner`;
+                break;
+            case 'rightBanner':
+                url = `${this._url}/utility/rightBanner`;
+                break;
+            case 'bannerMiddlePage':
+                url = `${this._url}/utility/bannerMiddlePage`;
+                break;
+            case 'imageSoGao':
+                url = `${this._url}/utility/imageSoGao`;
+                break;
+
             default:
                 break;
         }
@@ -91,7 +110,7 @@ export class HttpService {
         } else {
             console.log(error);
         }
-        const dialog: any = document.body.querySelector('#printLoadMask');
+        const dialog: any = document.querySelector('#printLoadMask');
         dialog['style'].display = 'none';
         // Return an observable with a user-facing error message.
         return throwError(() => new Error('Something bad happened; please try again later.'));

@@ -1,4 +1,5 @@
-import { Component, OnInit, HostListener, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
+import { HttpService } from 'src/app/common/service/http-service';
 
 @Component({
     selector: 'app-produdctionSystem',
@@ -7,18 +8,20 @@ import { Component, OnInit, HostListener, ViewEncapsulation } from '@angular/cor
     encapsulation: ViewEncapsulation.None
 })
 export class ProdudctionSystemComponent implements OnInit {
+
+    @ViewChild('content', { static: false }) content!: ElementRef;
     isMobile: boolean = false;
-    rewardList = [
-        'Giải thưởng 1',
-        'Giải thưởng 1',
-        'Giải thưởng 1',
-        'Giải thưởng 1',
-    ];
+    produdctionSystem: any;
+    awardList = [];
     images = [
         "../../../../assets/image/main/ms_banner_img1.jpg",
         "../../../../assets/image/main/ms_banner_img2.jpg",
         "../../../../assets/image/main/ms_banner_img4.jpg"
     ]
+
+    banner: any = {
+        image: '../../../../assets/image/main/gat-lua-ruoi-hai-phong-vu-thang-6.jpg'
+    }
 
     responsiveOptions = [
         {
@@ -38,9 +41,29 @@ export class ProdudctionSystemComponent implements OnInit {
         }
     ];
 
-    constructor() { }
+    constructor(private httpService: HttpService) { }
 
     ngOnInit() {
+
+        this.httpService.reqeustApiget('banner').subscribe((data: any) => {
+            if (data.bannerList) {
+                this.banner = data.bannerList[0];
+            }
+        });
+
+        this.httpService.reqeustApiget('award').subscribe((data: any) => {
+            if (data.awards) {
+                this.awardList = data.awards;
+            }
+        });
+
+        this.httpService.reqeustApiget('posts', 'menuCode=he-thong-san-xuat-va-quan-ly&pageIndex=1&pageSize=1').subscribe((data: any) => {
+            if (data.postList) {
+                this.produdctionSystem = data.postList[0];
+                this.content.nativeElement.innerHTML = this.produdctionSystem.postContent;
+            }
+        });
+
         if (window.innerWidth <= 991) {
             this.isMobile = true;
         } else {

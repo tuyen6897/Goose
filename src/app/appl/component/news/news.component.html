@@ -8,258 +8,33 @@
     <label class="lbl-h1" style="margin-top: 20px;">BÁO CHÍ VIẾT GÌ VỀ NGỖNG</label>
     <div style="margin-left: -30px">
         <div class="box-bao-chi grid__item">
-            <div class="grid__item large--one-half medium--one-whole small--one-whole">
-                <div class="article-item article-item-half">
-                    <div class="article-img">
-                        <a target="_self" href="">
-                            <img src="//file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885_large.jpg"
-                                alt="Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt">
-                            <div class="overlay">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="article-info">
-                        <a href="" class="article-title">
-                            Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt
-                        </a>
-                        <div class="article-desc">
-
-                            Tấm sổ gạo của Bùi Ngọc Cường - Giám đốc Công ty CP Thực Phẩm An Biên (489 đường
-                            Hoàng Quốc Việt, TP Hà
-                            Nội) có sự kết nối với quá khứ bằng bức tranh cổ động các nhân vật đại di...
-
+            <div>
+                <div *ngFor="let item of newsList"
+                    class="grid__item large--one-half medium--one-whole small--one-whole">
+                    <div class="article-item article-item-half">
+                        <div class="article-img">
+                            <a target="_self" [href]="item.url">
+                                <img [src]="item.menuImage"
+                                    alt="Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt">
+                                <div class="overlay">
+                                </div>
+                            </a>
                         </div>
-                        <a href="" class="article-readmore">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a>
+                        <div class="article-info">
+                            <a [href]="item.url" class="article-title">
+                                {{item.postTitle}}
+                            </a>
+                            <div class="article-desc">
+                                {{item.description}}
+                            </div>
+                            <a [href]="item.url" class="article-readmore">Xem thêm <i
+                                    class="fas fa-long-arrow-alt-right"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="grid__item large--one-half medium--one-whole small--one-whole">
-                <div class="article-item article-item-half">
-                    <div class="article-img">
-                        <a target="_self" href="">
-                            <img src="//file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885_large.jpg"
-                                alt="Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt">
-                            <div class="overlay">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="article-info">
-                        <a href="" class="article-title">
-                            Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt
-                        </a>
-                        <div class="article-desc">
-
-                            Tấm sổ gạo của Bùi Ngọc Cường - Giám đốc Công ty CP Thực Phẩm An Biên (489 đường
-                            Hoàng Quốc Việt, TP Hà
-                            Nội) có sự kết nối với quá khứ bằng bức tranh cổ động các nhân vật đại di...
-
-                        </div>
-                        <a href="" class="article-readmore">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="grid__item large--one-half medium--one-whole small--one-whole">
-                <div class="article-item article-item-half">
-                    <div class="article-img">
-                        <a target="_self" href="">
-                            <img src="//file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885_large.jpg"
-                                alt="Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt">
-                            <div class="overlay">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="article-info">
-                        <a href="" class="article-title">
-                            Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt
-                        </a>
-                        <div class="article-desc">
-
-                            Tấm sổ gạo của Bùi Ngọc Cường - Giám đốc Công ty CP Thực Phẩm An Biên (489 đường
-                            Hoàng Quốc Việt, TP Hà
-                            Nội) có sự kết nối với quá khứ bằng bức tranh cổ động các nhân vật đại di...
-
-                        </div>
-                        <a href="" class="article-readmore">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="grid__item large--one-half medium--one-whole small--one-whole">
-                <div class="article-item article-item-half">
-                    <div class="article-img">
-                        <a target="_self" href="">
-                            <img src="//file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885_large.jpg"
-                                alt="Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt">
-                            <div class="overlay">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="article-info">
-                        <a href="" class="article-title">
-                            Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt
-                        </a>
-                        <div class="article-desc">
-
-                            Tấm sổ gạo của Bùi Ngọc Cường - Giám đốc Công ty CP Thực Phẩm An Biên (489 đường
-                            Hoàng Quốc Việt, TP Hà
-                            Nội) có sự kết nối với quá khứ bằng bức tranh cổ động các nhân vật đại di...
-
-                        </div>
-                        <a href="" class="article-readmore">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="grid__item large--one-half medium--one-whole small--one-whole">
-                <div class="article-item article-item-half">
-                    <div class="article-img">
-                        <a target="_self" href="">
-                            <img src="//file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885_large.jpg"
-                                alt="Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt">
-                            <div class="overlay">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="article-info">
-                        <a href="" class="article-title">
-                            Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt
-                        </a>
-                        <div class="article-desc">
-
-                            Tấm sổ gạo của Bùi Ngọc Cường - Giám đốc Công ty CP Thực Phẩm An Biên (489 đường
-                            Hoàng Quốc Việt, TP Hà
-                            Nội) có sự kết nối với quá khứ bằng bức tranh cổ động các nhân vật đại di...
-
-                        </div>
-                        <a href="" class="article-readmore">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="grid__item large--one-half medium--one-whole small--one-whole">
-                <div class="article-item article-item-half">
-                    <div class="article-img">
-                        <a target="_self" href="">
-                            <img src="//file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885_large.jpg"
-                                alt="Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt">
-                            <div class="overlay">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="article-info">
-                        <a href="" class="article-title">
-                            Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt
-                        </a>
-                        <div class="article-desc">
-
-                            Tấm sổ gạo của Bùi Ngọc Cường - Giám đốc Công ty CP Thực Phẩm An Biên (489 đường
-                            Hoàng Quốc Việt, TP Hà
-                            Nội) có sự kết nối với quá khứ bằng bức tranh cổ động các nhân vật đại di...
-
-                        </div>
-                        <a href="" class="article-readmore">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="grid__item large--one-half medium--one-whole small--one-whole">
-                <div class="article-item article-item-half">
-                    <div class="article-img">
-                        <a target="_self" href="">
-                            <img src="//file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885_large.jpg"
-                                alt="Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt">
-                            <div class="overlay">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="article-info">
-                        <a href="" class="article-title">
-                            Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt
-                        </a>
-                        <div class="article-desc">
-
-                            Tấm sổ gạo của Bùi Ngọc Cường - Giám đốc Công ty CP Thực Phẩm An Biên (489 đường
-                            Hoàng Quốc Việt, TP Hà
-                            Nội) có sự kết nối với quá khứ bằng bức tranh cổ động các nhân vật đại di...
-
-                        </div>
-                        <a href="" class="article-readmore">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="grid__item large--one-half medium--one-whole small--one-whole">
-                <div class="article-item article-item-half">
-                    <div class="article-img">
-                        <a target="_self" href="">
-                            <img src="//file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885_large.jpg"
-                                alt="Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt">
-                            <div class="overlay">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="article-info">
-                        <a href="" class="article-title">
-                            Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt
-                        </a>
-                        <div class="article-desc">
-
-                            Tấm sổ gạo của Bùi Ngọc Cường - Giám đốc Công ty CP Thực Phẩm An Biên (489 đường
-                            Hoàng Quốc Việt, TP Hà
-                            Nội) có sự kết nối với quá khứ bằng bức tranh cổ động các nhân vật đại di...
-
-                        </div>
-                        <a href="" class="article-readmore">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="grid__item large--one-half medium--one-whole small--one-whole">
-                <div class="article-item article-item-half">
-                    <div class="article-img">
-                        <a target="_self" href="">
-                            <img src="//file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885_large.jpg"
-                                alt="Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt">
-                            <div class="overlay">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="article-info">
-                        <a href="" class="article-title">
-                            Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt
-                        </a>
-                        <div class="article-desc">
-
-                            Tấm sổ gạo của Bùi Ngọc Cường - Giám đốc Công ty CP Thực Phẩm An Biên (489 đường
-                            Hoàng Quốc Việt, TP Hà
-                            Nội) có sự kết nối với quá khứ bằng bức tranh cổ động các nhân vật đại di...
-
-                        </div>
-                        <a href="" class="article-readmore">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="grid__item large--one-half medium--one-whole small--one-whole">
-                <div class="article-item article-item-half">
-                    <div class="article-img">
-                        <a target="_self" href="">
-                            <img src="//file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885_large.jpg"
-                                alt="Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt">
-                            <div class="overlay">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="article-info">
-                        <a href="" class="article-title">
-                            Chàng Trai Đặt Mục Tiêu Bán Sổ Gạo Cho Hàng Vạn Dân Việt
-                        </a>
-                        <div class="article-desc">
-
-                            Tấm sổ gạo của Bùi Ngọc Cường - Giám đốc Công ty CP Thực Phẩm An Biên (489 đường
-                            Hoàng Quốc Việt, TP Hà
-                            Nội) có sự kết nối với quá khứ bằng bức tranh cổ động các nhân vật đại di...
-
-                        </div>
-                        <a href="" class="article-readmore">Xem thêm <i class="fas fa-long-arrow-alt-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align: center;">
-                <span class="show-news article-readmore">Xem thêm</span>
+            <div *ngIf="isShow" style="text-align: center;">
+                <span (click)="showNews()" class="show-news article-readmore">Xem thêm</span>
             </div>
         </div>
         <div #boxtintuc class="box-tin-tuc grid__item">
@@ -275,12 +50,13 @@
                                 {{i + 1}}
                             </div>
                         </div>
-                        <span>
+                        <span (click)="onClicktintuc(item!.slug)">
                             {{item!.postTitle}}
                         </span>
                     </div>
                 </div>
-                <img style="width: 98%;" src="../../../../assets/image/main/new4.png" />
+                <a target="_self" [href]="rightBanner!.targetUrl"><img style="width: 98%;"
+                        [src]="rightBanner!.imageUrl" /></a>
             </div>
         </div>
     </div>

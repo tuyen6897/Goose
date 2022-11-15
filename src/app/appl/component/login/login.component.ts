@@ -30,7 +30,7 @@ export class LoginComponent extends ComponentBaseComponent implements OnInit {
         public httpService: HttpService,
         messageService2: MessageService,
         private rer: Renderer2) {
-        super(messageService2);
+        super(messageService2, rer);
     }
     ngOnInit() {
         this.data = this.config.data;
@@ -68,7 +68,7 @@ export class LoginComponent extends ComponentBaseComponent implements OnInit {
             errorMessage['innerText'] = error.error.desc;
         }
         // Return an observable with a user-facing error message.
-        const dialog: any = document.body.querySelector('#printLoadMask');
+        const dialog: any = document.querySelector('#printLoadMask');
         dialog['style'].display = 'none';
         return throwError(() => new Error('Something bad happened; please try again later.'));
     }

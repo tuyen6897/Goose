@@ -21,7 +21,8 @@
                 <div>Tài Khoản</div>
             </div>
             <!-- <a (click)="visibleSidebar = true"><img src="../../../../assets/image/main/gio-hang.png" /></a> -->
-            <a (click)="onClick()" (mouseout)="visibleSidebar = true"><img src="../../../../assets/image/main/gio-hang.png" /></a>
+            <a (click)="onClick()" (mouseover)="onMouseOver(); cart.show($event)"><img
+                    src="../../../../assets/image/main/gio-hang.png" /></a>
         </div>
     </div>
     <div #menu class="header-desktop" [class]="banner ? 'banner' : ''">
@@ -29,7 +30,7 @@
             <a *ngIf="!isSlide"><img src="../../../../assets/image/main/logo.webp" /></a>
             <a *ngIf="isSlide"><img src="../../../../assets/image/main/Logo-trang.png" /></a>
         </div>
-        <app-headerMenu [slide]="isSlide" (cartClick)="visibleSidebar = true" (accountClick)="op.toggle($event)"
+        <app-headerMenu [slide]="isSlide" (cartClick)="cart.toggle($event)" (accountClick)="op.toggle($event)"
             style="width: 100%;">
         </app-headerMenu>
     </div>
@@ -63,8 +64,10 @@
                     </div>
                 </div>
             </div>
-            {{this.product.length}}<span style="margin-left: 5px;">Thêm Hàng Vào Giỏ</span>
-            <button type="button" (click)="onClickBuyNew($event)">Xem Giỏ Hàng</button>
+            <div style="display: flex;justify-content: space-between;align-items: center;">
+                <span style="margin-left: 5px;">{{totalProduct}} Thêm Hàng Vào Giỏ</span>
+                <button type="button" (click)="onClickBuyNew($event)">Xem Giỏ Hàng</button>
+            </div>
         </div>
         <div *ngIf="(this.product && !this.product.length) || !this.product">
             <h1 style="font-weight:normal">Giỏ hàng</h1>
@@ -72,6 +75,39 @@
             <span>Giỏ hàng trống</span>
         </div>
     </p-sidebar>
+
+    <p-overlayPanel #cart [style]="{width: '400px', top: '0px'}">
+        <ng-template pTemplate>
+            <div class="product-cart-alert" *ngIf="this.product && this.product.length">
+                <h1 style="font-weight:normal; font-size:16px;">Sản phẩm mới thêm</h1>
+                <div class="product">
+                    <div class="product_image" *ngFor="let item of product; let i = index">
+                        <a target="_self" href="/chi-tiet-san-pham" (click)="visibleSidebar = false">
+                            <img src="  //product.hstatic.net/200000170631/product/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_medium.jpg"
+                                alt="Mật Trà Kombucha Cốt Chuối">
+                        </a>
+                        <div class="item-content">
+                            <div class="content">
+                                <div><a (click)="visibleSidebar = false" class="title" href="/chi-tiet-san-pham">
+                                        {{item?item.title:''}}
+                                    </a></div>
+                                <span class="total-price">{{item ? formatCash(item.totalPrice) : ''}} ₫</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex;justify-content: space-between;align-items: center;">
+                    <span style="margin-left: 5px;">{{totalProduct}} Thêm Hàng Vào Giỏ</span>
+                    <button type="button" (click)="onClickBuyNew($event)">Xem Giỏ Hàng</button>
+                </div>
+            </div>
+            <div *ngIf="(this.product && !this.product.length) || !this.product">
+                <h1 style="font-weight:normal">Giỏ hàng</h1>
+                <div style="width: 100%; border-bottom: 1px solid #ccc;"></div>
+                <span>Giỏ hàng trống</span>
+            </div>
+        </ng-template>
+    </p-overlayPanel>
 
     <p-overlayPanel #op [style]="{width: '250px', top: '0px'}">
         <ng-template pTemplate>

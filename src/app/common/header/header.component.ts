@@ -18,9 +18,12 @@ import { Utils } from '../util/utils';
 export class HeaderComponent extends ComponentBaseComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
     @ViewChild('op', { static: false }) op!: OverlayPanel;
+
+    @ViewChild('cart', { static: false }) cart!: OverlayPanel;
     isSlide: boolean = false;
     product: any;
     total = '0';
+    totalProduct = 0;
     ref!: DynamicDialogRef;
     account: any = null;
     isaccount = false;
@@ -31,9 +34,11 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
             this.product = JSON.parse(sessionStorage.getItem("productList") as any);
             if (this.product && this.product.length) {
                 let totalNumber = 0;
+                this.totalProduct = 0;
                 this.product.forEach((item: any) => {
                     totalNumber += +(item.price) * item.quantity;
                     item.totalPrice = String(+(item.price) * item.quantity);
+                    this.totalProduct += item.quantity;
                 });
                 this.total = String(totalNumber);
             }
@@ -46,28 +51,28 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
     @Input() banner: boolean = false;
     @ViewChild('menu', { static: false }) menu!: ElementRef;
     constructor(
-        private render: Renderer2,
+        private render2: Renderer2,
         private router: Router,
         private dialogService: DialogService,
         private messageService1: MessageService
     ) {
-        super(messageService1);
+        super(messageService1, render2);
     }
 
     ngOnInit() {
     }
 
     ngAfterViewInit() {
-        this.render.listen(document, 'scroll', (e) => {
+        this.render2.listen(document, 'scroll', (e) => {
             if (window.innerWidth <= 991) {
                 return;
             }
             const scrollTop = (window.pageYOffset || document.documentElement.scrollTop) - (document.documentElement.clientTop || 0);
             if (scrollTop >= 140) {
-                this.render.addClass(this.menu.nativeElement, 'scrolling');
+                this.render2.addClass(this.menu.nativeElement, 'scrolling');
                 this.isSlide = true;
             } else {
-                this.render.removeClass(this.menu.nativeElement, 'scrolling');
+                this.render2.removeClass(this.menu.nativeElement, 'scrolling');
                 this.isSlide = false;
             }
         });
@@ -75,6 +80,20 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
 
     ngAfterViewChecked(): void {
         this.account = JSON.parse(sessionStorage.getItem("account") as any);
+    }
+
+    onMouseOver() {
+        this.product = JSON.parse(sessionStorage.getItem("productList") as any);
+        this.totalProduct = 0;
+        if (this.product && this.product.length) {
+            let totalNumber = 0;
+            this.product.forEach((item: any) => {
+                totalNumber += +(item.price) * item.quantity;
+                item.totalPrice = String(+(item.price) * item.quantity);
+                this.totalProduct += item.quantity;
+            });
+            this.total = String(totalNumber);
+        }
     }
 
     onLogOut() {
@@ -100,7 +119,7 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
                 if (i === index) {
                     item.quantity = event.value;
                     // item.totalPrice = String(+(item.price) * item.quantity);
-                    item.totalPrice =item.price;
+                    item.totalPrice = item.price;
                     totalNumber += +(item.price) * item.quantity;
                 }
             });
@@ -138,13 +157,15 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
     }
 
     @HostListener('window: resize', ['$event'])
-    resizeable(event: any) {
+    resizeableHeader(event: any) {
         this.op.hide();
+        this.cart.hide();
     }
 
     @HostListener('window: scroll', ['$event'])
-    onScroll(event: any) {
+    onScrollHeader(event: any) {
         this.op.hide();
+        this.cart.hide();
     }
 
     formatCash(str: string) {
@@ -153,11 +174,14 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
         })
     }
 
-    onClick(){
-        this.router.navigate(['gio-hang']);
+    onClick() {
+        window.open(`${window.location.origin}/gio-hang`, "_self");
     }
 
     onClickBuyNew(event: any) {
-        this.router.navigate(['gio-hang']);
+        this.cart.hide();
+        if (window.location.href !== `${window.location.origin}/gio-hang`) {
+            window.open(`${window.location.origin}/gio-hang`, "_self");
+        }
     }
 }

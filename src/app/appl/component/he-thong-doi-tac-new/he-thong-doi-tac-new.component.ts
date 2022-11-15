@@ -1,4 +1,6 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, Renderer2, ViewChild } from '@angular/core';
+import { MessageService } from 'primeng/api';
+import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBase.component';
 import { HeaderComponent } from 'src/app/common/header/header.component';
 import { HttpService } from 'src/app/common/service/http-service';
 
@@ -7,7 +9,7 @@ import { HttpService } from 'src/app/common/service/http-service';
     templateUrl: 'he-thong-doi-tac-new.component.html',
     styleUrls: ['he-thong-doi-tac-new.component.scss']
 })
-export class HeThongDoiTacNewComponent {
+export class HeThongDoiTacNewComponent extends ComponentBaseComponent implements AfterViewInit {
     @ViewChild('home', { static: false }) home!: ElementRef;
     @ViewChild('foodmap', { static: false }) foodmap!: ElementRef;
     @ViewChild('homefood', { static: false }) homefood!: ElementRef;
@@ -19,12 +21,59 @@ export class HeThongDoiTacNewComponent {
     @ViewChild('email', { static: false }) email!: ElementRef;
     @ViewChild('addr', { static: false }) addr!: ElementRef;
     @ViewChild('message', { static: false }) message!: ElementRef;
+    @ViewChild('tinh', { static: false }) tinh!: ElementRef;
+    @ViewChild('quan', { static: false }) quan!: ElementRef;
+    isHn = false;
+    isSg = false;
     constructor(
         private rend: Renderer2,
         private httpService: HttpService
-    ) { }
+    ) {
+        super(new MessageService, rend);
+    }
 
-    ngOnInit() {
+    ngAfterViewInit(): void {
+        if (!this.tinh.nativeElement.selectedIndex && !this.quan.nativeElement.selectedIndex) {
+            this.isHn = true;
+            this.isSg = true;
+        }
+    }
+
+    tinhChange(event: any) {
+        if (!this.quan.nativeElement.selectedIndex) {
+            if (!event.target.selectedIndex) {
+                this.isHn = true;
+                this.isSg = true;
+            } else if (event.target.selectedIndex === 1) {
+                this.isHn = true;
+                this.isSg = false;
+            } else {
+                this.isHn = false;
+                this.isSg = true;
+            }
+        } else {
+            this.isHn = false;
+            this.isSg = false;
+        }
+
+    }
+
+    quanChange(event: any) {
+        if (!this.quan.nativeElement.selectedIndex) {
+            if (!event.target.selectedIndex) {
+                this.isHn = true;
+                this.isSg = true;
+            } else if (event.target.selectedIndex === 1) {
+                this.isHn = true;
+                this.isSg = false;
+            } else {
+                this.isHn = false;
+                this.isSg = true;
+            }
+        } else {
+            this.isHn = false;
+            this.isSg = false;
+        }
     }
 
     onChangeFoodmap() {
@@ -66,11 +115,12 @@ export class HeThongDoiTacNewComponent {
             "email": this.email.nativeElement.value,
             "description": this.message.nativeElement.value
         };
-
+        this.showDialog('on');
         this.httpService.reqeustApiPost('register-agent-ctv', params).subscribe((data: any) => {
             if (data) {
                 this.header.showMessage('success', '', 'Đăng ký thành công.');
             }
+            this.showDialog('off');
         });
     }
 }

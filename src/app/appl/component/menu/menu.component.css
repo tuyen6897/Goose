@@ -331,23 +331,13 @@ code {
 }
 
 .trung-vang {
-    background-image: url('../../../../assets/image/main/edge.png');
     height: 750px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.dong-hanh {
-    background-image: url('../../../../assets/image/main/canva1.png');
-}
-
-.canh-dong {
-    background-image: url('../../../../assets/image/main/canva2.png');
-}
-
 .chuyen-di {
-    background-image: url('../../../../assets/image/main/canva3.png');
     height: 380px;
     display: flex;
     justify-content: center;
@@ -355,7 +345,6 @@ code {
 }
 
 .nong-san {
-    background-image: url('../../../../assets/image/main/canva4.png');
     background-repeat: no-repeat;
     background-size: cover;
     height: 620px;
@@ -376,7 +365,7 @@ code {
 }
 
 .nong-san .title-nong-san {
-    font-size: 50px !important;
+    font-size: 40px !important;
     font-weight: bold;
 }
 

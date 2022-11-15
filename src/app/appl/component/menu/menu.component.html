@@ -1,9 +1,9 @@
 <app-header #header [banner]="true"></app-header>
 <div class="home-slide">
-    <ngb-carousel *ngIf="imagesHome">
-        <ng-template ngbSlide interval="1000" *ngFor="let image of imagesHome">
-            <div class="picsum-img-wrapper" (click)="onClick(image.url)">
-                <img [src]="image.img" alt="">
+    <ngb-carousel *ngIf="bannerList">
+        <ng-template ngbSlide interval="1000" *ngFor="let item of bannerList">
+            <div class="picsum-img-wrapper" (click)="onClick(item.targetUrl)">
+                <img [src]="item.imageUrl" alt="">
             </div>
         </ng-template>
     </ngb-carousel>
@@ -30,7 +30,7 @@
         <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
     </div>
     <div class="image">
-        <img src="../../../../assets/image/main/rice.png" alt="">
+        <a target="_self" [href]="bannerMiddlePage!.targetUrl"><img [src]="bannerMiddlePage!.imageUrl" alt=""></a>
     </div>
     <div class="image so-gao-mobile" style="width: 80%; margin-top: 10px;">
         <div>
@@ -72,21 +72,18 @@
     </div>
     <div class="image so-gao-desktop"
         style="margin-top: 30px;margin-bottom: -100px;justify-content: center;height: auto;">
-        <div style="position: relative; z-index: 2; left: 15px; top: -30px;"><img
-                src="../../../../assets/image/main/so-gao_compressed.jpg" alt=""
+        <div style="position: relative; z-index: 2; left: 15px; top: -30px;"><img [src]="sogao!.imgSoGao" alt=""
                 style="width: 255px;transform: rotate(355deg);"></div>
         <div style="width: 62%;position: relative;">
             <div style="position: relative; ">
                 <div style="display: flex; justify-content: space-around; margin-bottom: 25px;">
-                    <div style="font-weight: bold; text-align: center;"><img
-                            src="../../../../assets/image/main/money.png" alt="" style="width: 80px;"><br> Ưu Đãi<br>22%
-                        - 35% </div>
-                    <div style="font-weight: bold; text-align: center;"><img
-                            src="../../../../assets/image/main/money2.png" alt="" style="width: 80px;"><br> Luôn<br>Tươi
-                        Ngon </div>
-                    <div style="font-weight: bold; text-align: center;"><img
-                            src="../../../../assets/image/main/money3.png" alt=""
-                            style="width: 80px; margin-bottom: 6px;"><br> Luôn<br>Tươi Ngon </div>
+                    <div style="font-weight: bold; text-align: center;"><img [src]="sogao!.feature[0].imageUrl" alt=""
+                            style="width: 80px;"><br> {{sogao!.feature[0].title}}<br>{{sogao!.feature[0].content}}</div>
+                    <div style="font-weight: bold; text-align: center;"><img [src]="sogao!.feature[1].imageUrl" alt=""
+                            style="width: 80px;"><br> {{sogao!.feature[1].title}}<br>{{sogao!.feature[1].content}}</div>
+                    <div style="font-weight: bold; text-align: center;"><img [src]="sogao!.feature[2].imageUrl" alt=""
+                            style="width: 80px; margin-bottom: 6px;"><br>
+                        {{sogao!.feature[2].title}}<br>{{sogao!.feature[2].content}} </div>
                 </div>
                 <div class="dat-hang-so-gao">
                     <div style="display: flex; margin: 15px 0px; width: 90%; margin-left: 30px;">
@@ -101,12 +98,8 @@
                     </div>
                     <div
                         style="font-size: 20px; padding-left: 60px; text-align: left; padding-right: 15px; word-break: break-word;">
-                        Sổ gạo là
-                        hình thức "Mua trước trả sau" nằm trong dự án "Cánh Đồng Sẻ Chia" do NGỗng triển khai nhằm mang
-                        lại
-                        lợi ích cân bằng cho cả khác hàng và người nông dân.<br>
-                        ............................................................<br>
-                        ............................................................<br></div>
+                        {{sogao.content}}
+                    </div>
                 </div>
                 <div style="
         position: relative; 
@@ -124,30 +117,33 @@
     <div class="w100" style="margin-top: 20px; margin-bottom: 50px;">
         <div class="w100" style="width: 95%; margin-left: 27px;">
             <div class="w100 project">
-                <div class="w100" style="margin-right: 25px;">
+                <div *ngIf="projectOther[0]" class="w100" style="margin-right: 25px;">
                     <a href="/du-an-trung-vang">
-                        <div class="trung-vang">
-                            <div>Dự Án Trứng Vàng</div>
+                        <div class="trung-vang"
+                            [ngStyle]="{ 'background-image': 'url(' + projectOther[0].imageUrl + ')'}">
+                            <div>{{projectOther[0].name}}</div>
                         </div>
                     </a>
                 </div>
-                <div class="w100 canva">
-                    <a href="/vuon-dong-hanh">
-                        <div class="dong-hanh">
-                            <div>Vườn Đồng Hành</div>
+                <div *ngIf="projectOther[1]" class="w100 canva">
+                    <a *ngIf="projectOther[1]" href="/vuon-dong-hanh">
+                        <div class="dong-hanh"
+                            [ngStyle]="{ 'background-image': 'url(' + projectOther[1].imageUrl + ')'}">
+                            <div>{{projectOther[1].name}}</div>
                         </div>
                     </a>
-                    <a href="/canh-dong-chia-se">
-                        <div class="canh-dong">
-                            <div>Cánh Đồng Chia Sẻ</div>
+                    <a *ngIf="projectOther[2]" href="/canh-dong-chia-se">
+                        <div class="canh-dong"
+                            [ngStyle]="{ 'background-image': 'url(' + projectOther[2].imageUrl + ')'}">
+                            <div>{{projectOther[2].name}}</div>
                         </div>
                     </a>
                 </div>
             </div>
             <div class="w100" style="width: 100%;">
                 <a href="/chuyen-di-cua-ngong">
-                    <div class="chuyen-di">
-                        <div>Chuyến Đi Của Ngỗng</div>
+                    <div class="chuyen-di" [ngStyle]="{ 'background-image': 'url(' + projectChuyenDi.imageUrl + ')'}">
+                        <div>{{projectChuyenDi.name}}</div>
                     </div>
                 </a>
             </div>
@@ -161,12 +157,11 @@
             <div class="w100 news-content">
                 <div class="w100 news-content-left">
                     <a target="_self" href="/chi-tiet-tin-tuc">
-                        <div class="nong-san">
+                        <div class="nong-san"
+                            [ngStyle]="{ 'background-image': 'url(' + postNewsList![0].menuImage + ')'}">
                             <div>
-                                <span class="title-nong-san">Nông Sản Việt Nam 2022</span><br>
-                                <span>Sau khi kim ngạch xuất khẩu kim ngạch sụt giảm mạnh trong tháng 1, thì sang tháng
-                                    2 đã
-                                    thăng trưởng 2 con số</span>
+                                <span class="title-nong-san">{{postNewsList![0].postTitle}}</span><br>
+                                <span>{{postNewsList![0].description}}</span>
                             </div>
                         </div>
                     </a>
@@ -175,42 +170,30 @@
                     <div class="w100 news-content-right-img">
                         <a target="_self" href="/chi-tiet-tin-tuc"><img *ngIf="!isMobile"
                                 style="width: 194px;height: 194px; border-radius: 20px; border: 5px solid #87b83b; "
-                                src="../../../../assets/image/main/canva5.png" alt=""></a>
+                                [src]="postNewsList![1].menuImage" alt=""></a>
                         <div class="txt-news">
-                            <div><a target="_self" href="/chi-tiet-tin-tuc">Bột Sữa Hạt Dinh Dưỡng Vui Khỏe Đẹp Vị Cacao
-                                    Hạnh Bột Sữa
-                                    Hạt Dinh Dưỡng Vui Khỏe Đẹp Vị Cacao Hạnh
-                                    Nhân</a></div>
-                            <span>Bột sữa hạt Vui Khỏe Đẹp làm ra từ các loại đậu hạt ưu tiên tuyển chọn từ những vùng
-                                nguyên Bột sữa hạt Vui Khỏe Đẹp làm ra từ các loại đậu hạt ưu tiên tuyển chọn từ những
-                                vùng
-                                nguyên</span>
+                            <div><a target="_self" href="/chi-tiet-tin-tuc">{{postNewsList![1].postTitle}}</a></div>
+                            <span>{{postNewsList![1].description}}</span>
                         </div>
                     </div>
                     <div class="w100 news-content-right-img" style="height: 30%;">
                         <a target="_self" href="/chi-tiet-tin-tuc"><img *ngIf="!isMobile"
                                 style="width: 194px;height: 194px; border-radius: 20px; border: 5px solid #87b83b;"
-                                src="../../../../assets/image/main/PNG-0000002201-png-bong-lua.png" alt=""></a>
+                                [src]="postNewsList![2].menuImage" alt=""></a>
                         <div class="txt-news">
-                            <div style="font-size: 20px;"><a target="_self" href="/chi-tiet-tin-tuc">Thành phần dinh
-                                    dưỡng
-                                    của gạo có gì? Nên ưu tiên sử
-                                    dụng</a></div>
-                            <span>Bột sữa hạt Vui Khỏe Đẹp làm ra từ các loại đậu hạt ưu tiên tuyển chọn từ những vùng
-                                nguyên</span>
+                            <div style="font-size: 20px;"><a target="_self"
+                                    href="/chi-tiet-tin-tuc">{{postNewsList![2].postTitle}}</a></div>
+                            <span>{{postNewsList![2].description}}</span>
                         </div>
                     </div>
                     <div class="w100 news-content-right-img" style="height: 30%;">
                         <a target="_self" href="/chi-tiet-tin-tuc"><img *ngIf="!isMobile"
                                 style="width: 194px;height: 194px; border-radius: 20px; border: 5px solid #87b83b;"
-                                src="../../../../assets/image/main/canva7.png" alt=""></a>
+                                [src]="postNewsList![3].menuImage" alt=""></a>
                         <div class="txt-news">
-                            <div style="font-size: 20px;"><a target="_self" href="/chi-tiet-tin-tuc">Thành phần dinh
-                                    dưỡng
-                                    của gạo có gì? Nên ưu tiên sử
-                                    dụng</a></div>
-                            <span>Bột sữa hạt Vui Khỏe Đẹp làm ra từ các loại đậu hạt ưu tiên tuyển chọn từ những vùng
-                                nguyên</span>
+                            <div style="font-size: 20px;"><a target="_self"
+                                    href="/chi-tiet-tin-tuc">{{postNewsList![3].postTitle}}</a></div>
+                            <span>{{postNewsList![3].description}}</span>
                         </div>
                     </div>
                 </div>

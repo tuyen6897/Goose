@@ -50,7 +50,7 @@
             </div>
             <div>
                 <div class="related-articles-body">
-                    <label class="lbl-h2" style="margin-left: -20px; margin-bottom: 20px;">CÁC BÀI VIẾT LIÊN
+                    <label class="lbl-h2" style="margin-bottom: 20px;">CÁC BÀI VIẾT LIÊN
                         QUAN</label>
                     <ul class="no-bullets">
                         <li *ngFor="let item of postRelated">
@@ -75,7 +75,8 @@
                         </div>
                         <a [href]="item.url">{{item?.postTitle}}</a>
                     </div>
-                    <img style="width: 98%;" src="../../../../assets/image/main/new4.png" />
+                    <a target="_self" [href]="rightBanner!.targetUrl"><img style="width: 98%;"
+                            [src]="rightBanner!.imageUrl" /></a>
                 </div>
             </div>
         </div>

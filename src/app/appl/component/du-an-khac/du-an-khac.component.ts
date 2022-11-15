@@ -1,5 +1,4 @@
-import { ViewportScroller } from "@angular/common";
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild, Renderer2 } from "@angular/core";
 import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBase.component';
 import { HttpService } from 'src/app/common/service/http-service';
 import { MessageService } from 'primeng/api';
@@ -49,20 +48,23 @@ export class DuAnKhacComponent extends ComponentBaseComponent implements OnInit 
         }
     ];
 
-    constructor(private httpService: HttpService) {
-        super(new MessageService);
+    constructor(private httpService: HttpService, private render2: Renderer2) {
+        super(new MessageService, render2);
     }
 
     ngOnInit() {
+        this.showLoadingDialog('on');
         this.httpService.reqeustApiPost('posts', 'menuCode=chuyen-di-cua-ngong&pageIndex=1&pageSize=1000').subscribe((data: any) => {
             if (data.postList) {
             }
+            this.showLoadingDialog('off');
         });
 
-        this.httpService.reqeustApiPost('posts', 'menuCode=tin-tuc&pageIndex=1&pageSize=10').subscribe((data: any) => {
+        this.httpService.reqeustApiget('posts', 'menuCode=tin-tuc&pageIndex=1&pageSize=10').subscribe((data: any) => {
             if (data.postList) {
                 this.postsNewList = data.postList;
             }
+            this.showLoadingDialog('off');
         });
     }
 
@@ -74,11 +76,12 @@ export class DuAnKhacComponent extends ComponentBaseComponent implements OnInit 
             "projectId": this.project.nativeElement.value,
             "feedback": this.message.nativeElement.value
         };
-
+        this.showDialog('on');
         this.httpService.reqeustApiPost('register-project', params).subscribe((data: any) => {
             if (data) {
                 this.header.showMessage('success', '', 'Đăng ký thành công.');
             }
+            this.showDialog('off');
         });
     }
 }

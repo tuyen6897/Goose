@@ -13,10 +13,10 @@
     <div style="text-align: center;">
         <div *ngFor="let item of postList" class="article-item article-item-list">
             <div class="article-image">
-                <a (click)="detailPost(item['id'])" target="_self"><img [src]="item['postImage']"></a>
+                <a (click)="detailPost(item['slug'])" target="_self"><img [src]="item['menuImage']"></a>
             </div>
             <div class="article-info">
-                <a (click)="detailPost(item['id'])" target="_self" class="article-title">
+                <a (click)="detailPost(item['slug'])" target="_self" class="article-title">
                     {{item['postTitle']}}
                 </a>
                 <div>
@@ -51,7 +51,7 @@
                                 gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p> -->
                         <div *ngIf="!isShow" class="gradient"></div>
                     </div>
-                    <button class="btn-more" *ngIf="hideDescription.nativeElement.innerHTML" (click)="isShow = !isShow"
+                    <button class="btn-more" *ngIf="hideDescription?.nativeElement.innerHTML" (click)="isShow = !isShow"
                         data-view-id="pdp_view_description_button">{{!isShow ? 'Xem thêm mô tả' : 'Thu gọn
                         môtả'}}</button>
                 </div>

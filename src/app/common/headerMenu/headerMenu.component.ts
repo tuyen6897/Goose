@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpService } from '../service/http-service';
 import { Router } from '@angular/router';
+import { Utils } from '../util/utils';
 @Component({
     selector: 'app-headerMenu',
     templateUrl: './headerMenu.component.html',
@@ -18,6 +19,11 @@ export class HeaderMenuComponent implements OnInit {
     ngOnInit() {
         this.httpService.reqeustApiget('projects').subscribe((data: any) => {
             if (data.projectList) {
+                data.projectList.forEach((item: any) => {
+                    let path = '';
+                    path = `du-an?name=${Utils.removeAccents(String(item.name)).toLowerCase().split(' ').join('-')}`;
+                    item.url = `${window.location.origin}/${path}`;
+                });
                 this.projectsList = data.projectList.filter((x: any) => String(x.name).toUpperCase() !== 'CHUYẾN ĐI CỦA NGỖNG').slice(0, 3);
             }
         })
@@ -30,8 +36,8 @@ export class HeaderMenuComponent implements OnInit {
     onAccountClick(event: any) {
         this.accountClick.emit(event);
     }
-    
-    onClick(){
+
+    onClick() {
         this.router.navigate(['gio-hang']);
     }
 }

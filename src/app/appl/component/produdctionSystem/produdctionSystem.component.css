@@ -17,6 +17,11 @@
     display: flex;
 }
 
+.produdction-system .produdctionSystem-content img {
+    width: 100%;
+}
+
+
 .reward {
     width: 250px;
     height: 250px;

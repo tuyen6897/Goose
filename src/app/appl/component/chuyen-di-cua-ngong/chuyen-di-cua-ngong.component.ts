@@ -1,6 +1,7 @@
 import { ViewportScroller } from '@angular/common';
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ViewChild, ElementRef, Renderer2, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
+import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBase.component';
 import { HeaderComponent } from 'src/app/common/header/header.component';
 import { HttpService } from 'src/app/common/service/http-service';
 declare let $: any;
@@ -10,7 +11,7 @@ declare let $: any;
     templateUrl: 'chuyen-di-cua-ngong.component.html',
     styleUrls: ['chuyen-di-cua-ngong.component.scss']
 })
-export class ChuyenDiCuaNgongComponent {
+export class ChuyenDiCuaNgongComponent extends ComponentBaseComponent implements OnInit {
 
     @ViewChild('header', { static: false }) header!: HeaderComponent;
     @ViewChild('name', { static: false }) name!: ElementRef;
@@ -40,17 +41,24 @@ export class ChuyenDiCuaNgongComponent {
 
     constructor(
         private scroller: ViewportScroller,
-        private httpService: HttpService
+        private httpService: HttpService,
+        private render2: Renderer2
     ) {
+        super(new MessageService, render2);
     }
     ngOnInit() {
-        this.httpService.reqeustApiPost('posts', 'menuCode=chuyen-di-cua-ngong&pageIndex=1&pageSize=1000').subscribe((data: any) => {
+        this.showLoadingDialog('on');
+        // this.httpService.reqeustApiPost('posts', 'menuCode=chuyen-di-cua-ngong&pageIndex=1&pageSize=1000').subscribe((data: any) => {
+        //     if (data.postList) {
+        //     }
+        // });
+        this.httpService.reqeustApiget('posts', 'menuCode=tin-tuc&pageIndex=1&pageSize=10').subscribe((data: any) => {
             if (data.postList) {
-            }
-        });
-        this.httpService.reqeustApiPost('posts', 'menuCode=tin-tuc&pageIndex=1&pageSize=10').subscribe((data: any) => {
-            if (data.postList) {
+                data.postList.forEach((item: any) => {
+                    item.url = `${window.location.origin}/blogs?tin-tuc=${item.slug}`;
+                });
                 this.postsNewList = data.postList;
+                this.showLoadingDialog('off');
             }
         });
     }
