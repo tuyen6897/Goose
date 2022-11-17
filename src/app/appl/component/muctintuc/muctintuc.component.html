@@ -63,14 +63,15 @@
         <div>
             <div *ngFor="let item of baochiList" class="article-item article-item-list">
                 <div class="article-image">
-                    <a target="_self" href="/chi-tiet-tin-tuc" target="_self"><img [src]="item"></a>
+                    <a target="_self" [href]="item!.url" target="_self"><img [src]="item.menuImage"></a>
                 </div>
                 <div class="article-info">
-                    <a target="_self" href="/chi-tiet-tin-tuc" target="_self" class="article-title">
-                        Bản tin thị trường Nông Lâm Thủy sản
+                    <a target="_self" [href]="item!.url" target="_self" class="article-title">
+                        {{item.postTitle}}
                     </a>
-                    <div>
-                        mô tả ngắng mô tả ngắng mô tả ngắng
+                    <div
+                        style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+                        {{item.description}}
                     </div>
                 </div>
             </div>

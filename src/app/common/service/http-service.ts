@@ -41,6 +41,9 @@ export class HttpService {
             case 'register-agent-ctv':
                 url = `${this._url}/utility/register-agent-ctv`;
                 break;
+            case 'ask-question':
+                url = `${this._url}/utility/ask-question`;
+                break;
             default:
                 break;
         }
@@ -96,7 +99,12 @@ export class HttpService {
             case 'imageSoGao':
                 url = `${this._url}/utility/imageSoGao`;
                 break;
-
+            case 'partner':
+                url = `${this._url}/utility/partner`;
+                break;
+            case 'tuyenDungNews':
+                url = `${this._url}/posts/tuyenDungNews`;
+                break;
             default:
                 break;
         }

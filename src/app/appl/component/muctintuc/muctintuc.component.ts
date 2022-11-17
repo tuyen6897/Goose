@@ -36,11 +36,7 @@ export class MuctintucComponent extends ComponentBaseComponent implements OnInit
 
 
 
-    baochiList = [
-        'https://file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885.jpg',
-        'https://file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885.jpg',
-        'https://file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885.jpg',
-        'https://file.hstatic.net/200000170631/article/ngong-tren-bao-nong-nghiep-viet-nam_784163604a1a4abcab95470302e0c885.jpg',
+    baochiList: any = [
     ]
 
     constructor(private httpService: HttpService, private render2: Renderer2) {
@@ -65,7 +61,15 @@ export class MuctintucComponent extends ComponentBaseComponent implements OnInit
                     this.isShowButton = this.postList.length <= 12 ? false : true;
                 }
             }
-            this.showLoadingDialog('off');
+            this.httpService.reqeustApiget('posts', 'menuCode=bao-chi-noi-gi-ve-ngong&pageIndex=1&pageSize=4').subscribe((data: any) => {
+                if (data.postList) {
+                    this.baochiList = data.postList;
+                    this.baochiList.forEach((item: any) => {
+                        item.url = `${window.location.origin}/blogs?bao-chi-noi-gi-ve-ngong=${item.slug}`;
+                    })
+                }
+                this.showLoadingDialog('off');
+            });
         });
     }
 

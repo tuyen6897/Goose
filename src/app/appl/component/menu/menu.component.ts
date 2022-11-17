@@ -110,34 +110,8 @@ export class MenuComponent extends ComponentBaseComponent implements OnInit {
         }
     ]
 
-    imagetrademark = [
-        {
-            image: "../../../../assets/image/icons/hteamus_3.webp"
-        },
-        {
-            image: "../../../../assets/image/icons/hteamus_2.webp"
-        },
-        {
-            image: "../../../../assets/image/icons/hteamus_5.png"
-        },
-        {
-            image: "../../../../assets/image/icons/hteamus_7.webp"
-        },
-        {
-            image: "../../../../assets/image/icons/hteamus_9.webp"
-        },
-        {
-            image: "../../../../assets/image/icons/hteamus_3.webp"
-        },
-        {
-            image: "../../../../assets/image/icons/hteamus_2.webp"
-        },
-        {
-            image: "../../../../assets/image/icons/hteamus_5.png"
-        },
-        {
-            image: "../../../../assets/image/icons/hteamus_7.webp"
-        }
+    partnerList: any[] = [
+
     ]
 
     imagesProduct = [
@@ -165,17 +139,20 @@ export class MenuComponent extends ComponentBaseComponent implements OnInit {
         this.showLoadingDialog('on');
         this.httpService.reqeustApiPost('products', {
             "categoryId": 0,
+            "brandName": "",
             "minPrice": 0,
             "maxPrice": -1,
-            "pageIndex": 1,
+            "productName": "",
+            "orderType": 0,
+            "pageIndex": 0,
             "pageSize": 8
         }).subscribe((data: any) => {
-            if (data.detailProduct) {
-                this.productList = data.detailProduct;
+            if (data.products.length) {
+                this.productList = data.products;
             }
             this.httpService.reqeustApiget('newest-sale', 'limit=10').subscribe((data: any) => {
-                if (data.detailProduct) {
-                    this.datasSale = data.detailProduct;
+                if (data.product.length) {
+                    this.datasSale = data.products;
                 }
             });
             this.httpService.reqeustApiget('projects').subscribe((data: any) => {
@@ -204,7 +181,12 @@ export class MenuComponent extends ComponentBaseComponent implements OnInit {
                         this.bannerMiddlePage = data.banner;
                     }
                 });
-                this.showLoadingDialog('off');
+                this.httpService.reqeustApiget('partner').subscribe((data: any) => {
+                    if (data.partnerList) {
+                        this.partnerList = [...data.partnerList, ...data.partnerList];
+                    }
+                    this.showLoadingDialog('off');
+                });
             });
         });
 

@@ -18,14 +18,12 @@
             <div class="ladi-container">
                 <section class="timeline">
                     <ol>
-                        <li>
+                        <li *ngFor="let item of tuyenDungNews.journeyList">
                             <div>
-                                <time>1934</time> At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                                blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                                blanditiis praesentium
+                                <time>{{item.time}}</time>{{item.content}}
                             </div>
                         </li>
-                        <li>
+                        <!-- <li>
                             <div>
                                 <time>1937</time> Proin quam velit, efficitur vel neque vitae, rhoncus commodo mi.
                                 Suspendisse finibus mauris et bibendum molestie. Aenean ex augue, varius et pulvinar in,
@@ -92,7 +90,7 @@
                                 Suspendisse varius volutpat mattis. Vestibulum id magna est.
                             </div>
                         </li>
-                        <li></li>
+                        <li></li> -->
                     </ol>
                     <div class="arrows">
                         <button class="arrow arrow__prev disabled" disabled>

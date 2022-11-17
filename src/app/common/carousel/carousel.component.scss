@@ -291,6 +291,11 @@
                         color: #000;
                         font-weight: bold;
                         margin-bottom: 15px;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
 
                     .article-readmore {
@@ -383,7 +388,7 @@
 
             .article-info {
                 width: 100%;
-                padding: 0 0 0 15px;
+                padding: 5px 0 0 15px;
 
                 .article-title {
                     min-height: initial;
@@ -393,6 +398,11 @@
                     font-weight: bold;
                     display: block;
                     text-align: center;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
 
                 div {

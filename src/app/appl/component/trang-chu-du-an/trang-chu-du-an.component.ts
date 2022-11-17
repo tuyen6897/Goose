@@ -13,9 +13,8 @@ export class TrangChuDuAnComponent extends ComponentBaseComponent implements OnI
     isShow: boolean = false;
     isShowBtn: boolean = true;
     projectList: any[] = [];
-    tintucList: any[] = [
-
-    ]
+    tintucList: any[] = [];
+    tintucListDisplay: any[] = [];
 
     constructor(private httpService: HttpService, private render2: Renderer2) {
         super(new MessageService, render2)
@@ -43,10 +42,19 @@ export class TrangChuDuAnComponent extends ComponentBaseComponent implements OnI
                     this.tintucList.forEach((item: any) => {
                         item.url = `${window.location.origin}/blogs?tin-tuc=${item.slug}`;
                     });
+                    this.tintucListDisplay = this.tintucList.slice(0, 12);
+                    if (this.tintucList.length > 12) {
+                    }
+                    this.isShowBtn = this.tintucList.length > 12 ? true : false;
                 }
                 this.showLoadingDialog('off');
             });
         })
+    }
+
+    onShow() {
+        this.isShowBtn = false;
+        this.tintucListDisplay = this.tintucList;
     }
 
     goToProject(url: any) {

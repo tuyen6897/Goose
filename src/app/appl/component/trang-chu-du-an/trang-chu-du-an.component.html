@@ -65,22 +65,8 @@
                     <h3 class="ladi-headline">Tin tức về dự án của Ngỗng<br></h3>
                 </div>
                 <div style="text-align: center; display: inline-block;">
-                    <div *ngFor="let item of tintucList" class="article-item article-item-list">
-                        <div class="article-image">
-                            <a target="_self" [href]="item.url"><img [src]="item!.menuImage"></a>
-                        </div>
-                        <div class="article-info">
-                            <a target="_self" [href]="item.url" class="article-title">
-                                {{item.postTitle}}
-                            </a>
-                            <div class="article-title-content">
-                                {{item.description}}
-                            </div>
-                        </div>
-                    </div>
-
-                    <ng-container *ngIf="isShow">
-                        <div *ngFor="let item of tintucList" class="article-item article-item-list">
+                    <ng-container>
+                        <div *ngFor="let item of tintucListDisplay" class="article-item article-item-list">
                             <div class="article-image">
                                 <a target="_self" [href]="item.url"><img [src]="item!.menuImage"></a>
                             </div>
@@ -94,10 +80,10 @@
                             </div>
                         </div>
                     </ng-container>
-                    <div *ngIf="!isShow" class="gradient"></div>
                 </div>
-                <button *ngIf="isShowBtn" class="btn-more" (click)="isShow = true; isShowBtn=false"
-                    data-view-id="pdp_view_description_button">Xem thêm 42 sản phẩm</button>
+                <button *ngIf="isShowBtn" class="btn-more" (click)="onShow()"
+                    data-view-id="pdp_view_description_button">Xem thêm {{tintucList.length - tintucListDisplay.length}}
+                    sản phẩm</button>
             </div>
         </div>
     </div>

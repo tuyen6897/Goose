@@ -307,6 +307,8 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
         this.showLoadingDialog('on');
         this.httpService.reqeustApiget('productDetails', window.location.search.split('?code=')[1]).subscribe((response: any) => {
             this.product = response;
+
+
             this.showLoadingDialog('off');
         });
         this.render2.listen(document, 'scroll', (e) => {

@@ -20,14 +20,7 @@
     <div class="line"></div>
     <div class="line"></div>
     <div class="products">
-        <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-        <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-        <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-        <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-        <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-        <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-        <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
-        <app-img-product [imgSrc]="image" (eventClick)="addCart()"></app-img-product>
+        <app-img-product *ngFor="let item of productList" [data]="item" (eventClick)="addCart()"></app-img-product>
     </div>
     <div class="image">
         <a target="_self" [href]="bannerMiddlePage!.targetUrl"><img [src]="bannerMiddlePage!.imageUrl" alt=""></a>
@@ -211,13 +204,8 @@
     <div class="title-color">
         <label class="lbl-title">Đối Tác Chiến Lược Của Ngỗng</label>
     </div>
-    <!-- <div class="partner-box">
-        <app-carousel prod="image" [size]="!isMobile ? 6 : 2" className="partner" [slideItems]="imagetrademark">
-        </app-carousel>
-    </div> -->
-
     <div class="partner-box">
-        <app-carousel [i_con]="true" [numVisible]="numVisible" [datas]="imagetrademark"
+        <app-carousel [i_con]="true" [numVisible]="numVisible" [datas]="partnerList"
             [responsiveOptions]="responsiveOptions">
         </app-carousel>
     </div>

@@ -8,6 +8,7 @@ import { CommentDialogComponent } from 'src/app/common/commentDialog/commentDial
 import { HttpService } from 'src/app/common/service/http-service';
 import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBase.component';
 import { MessageService } from 'primeng/api';
+import { Utils } from 'src/app/common/util/utils';
 
 @Component({
     selector: 'app-danhmucsanpham',
@@ -26,7 +27,7 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
     @ViewChild('header', { static: false }) header!: HeaderComponent;
     @ViewChild('comment', { static: false }) comment!: ElementRef;
     ref!: DynamicDialogRef;
-    imagesProductSale = [
+    datasSale: any[] = [
         '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
         '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
         '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
@@ -34,7 +35,7 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
         '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
     ]
 
-    imagesProduct = [
+    productDisplayList: any[] = [
         { 'id': 'SP000001', image: '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp' },
         { 'id': 'SP000001', image: '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp' },
         { 'id': 'SP000001', image: '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp' },
@@ -156,23 +157,47 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
 
     ngOnInit() {
         this.showLoadingDialog('on');
-        this.httpService.reqeustApiget('products', {
+        this.httpService.reqeustApiPost('products', {
             "categoryId": 0,
+            "brandName": "",
+            "minPrice": 0,
+            "maxPrice": -1,
+            "productName": "",
+            "orderType": 0,
+            "pageIndex": 0,
+            "pageSize": 1000
         }).subscribe((data: any) => {
-            this.httpService.reqeustApiget('rightBanner').subscribe((data: any) => {
-                if (data.banner) {
-                    this.rightBanner = data.banner;
-                    this.showLoadingDialog('off');
-                }
+            if (data.products) {
+                this.productList = data.products;
+                this.productDisplayList = [...this.productList.slice(0, 12)];
+                this.isShowbutton = this.productList.length > 12 ? true : false;
+            }
+            this.httpService.reqeustApiget('newest-sale', 'limit=10').subscribe((data: any) => {
+                if (data.products.length) {
+                    this.datasSale = data.products;
 
+                }
+                this.httpService.reqeustApiget('rightBanner').subscribe((data: any) => {
+                    if (data.banner) {
+                        this.rightBanner = data.banner;
+                        this.showLoadingDialog('off');
+                    }
+
+                });
             });
         });
-        this.productList = [...this.imagesProduct.slice(0, 12)];
-        this.isShowbutton = this.imagesProduct.length > 12 ? true : false;
+    }
+
+    formatCashProduct(value: any) {
+        return Utils.formatCash(String(value));
+    }
+
+    createURL(name: string) {
+        return `chi-tiet-san-pham?name=${Utils.removeAccents(String(name)).toLowerCase().split(' ').join('-')}`
     }
 
     show() {
-        this.productList = [...this.imagesProduct];
+        this.productDisplayList = [...this.productList];
         this.isShowbutton = false;
     }
 
@@ -256,5 +281,32 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
     detailProduct(id: string) {
         window.open(`${window.location.origin}/chi-tiet-san-pham?code=${id}`, "_self");
     }
+
+    thOnChange(event: any) {
+        if (event.target.checker) {
+            this.productDisplayList = this.productList.filter(x => x.branchname === event.target.id);
+        }
+    }
+
+    kgOnChange(event: any) {
+        if (event.target.checker) {
+            const values = event.target.value.split('-');
+            this.productDisplayList = this.productList.filter(x => this.checkPrice(x.price, values));
+        }
+    }
+
+    checkPrice(price: any, values: any[]) {
+        if (values.length === 1) {
+            if (values[0] === '100000') {
+                return price < values[0];
+            } else {
+                return price > values[0];
+            }
+        } else {
+            return (price >= values[0] && price <= values[0]);
+        }
+    }
+
+
 
 }

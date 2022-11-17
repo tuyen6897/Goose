@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header #header></app-header>
 <div class="container">
     <div class="breadcrumb-small">
         <a href="/introduce" title="Quay trở về trang chủ">Trang chủ</a>
@@ -41,19 +41,19 @@
             Nếu bạn có bất kỳ câu hỏi, yêu cầu cần hỗ trợ nào hãy gửi thông tin cho
             <b>Ngỗng</b> theo mẫu bên dưới nhé!
             <div class="h-box">
-                <input type="text" placeholder="Họ và tên *" />
+                <input #name type="text" placeholder="Họ và tên *" />
             </div>
             <div class="h-box">
-                <input type="email" placeholder="Email *" />
+                <input #email type="email" placeholder="Email *" />
             </div>
             <div class="h-box">
-                <input type="tel" placeholder="Số điện thoại *" />
+                <input #phone type="tel" placeholder="Số điện thoại *" />
             </div>
             <div class="h-box">
-                <textarea placeholder="Nội dung"></textarea>
+                <textarea #note placeholder="Nội dung"></textarea>
             </div>
             <div style="display: flex; justify-content: end;">
-                <button>Gửi</button>
+                <button (click)="registOnClick()">Gửi</button>
             </div>
         </div>
     </div>

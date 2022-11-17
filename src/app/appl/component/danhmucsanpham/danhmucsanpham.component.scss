@@ -276,6 +276,9 @@ a:hover,
     vertical-align: top;
     max-width: 256px;
     margin-bottom: 30px;
+    margin-bottom: 125px;
+    min-height: 267px;
+    max-height: 267px;
 }
 
 .product-item-countdown {
@@ -359,7 +362,13 @@ a:hover,
 }
 
 .product-item .product-info .product-title {
-    min-height: 50px;
+    min-height: 54px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
 }
 
 .product-item .product-info .product-title a {
