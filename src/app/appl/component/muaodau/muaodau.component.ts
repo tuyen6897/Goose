@@ -1,102 +1,60 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { MessageService } from 'primeng/api';
+import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBase.component';
+import { HttpService } from 'src/app/common/service/http-service';
 
 @Component({
     selector: 'app-muaodau',
     templateUrl: './muaodau.component.html',
     styleUrls: ['./muaodau.component.css']
 })
-export class MuaodauComponent implements OnInit, AfterViewInit {
+export class MuaodauComponent extends ComponentBaseComponent implements OnInit, AfterViewInit {
 
-    @ViewChild('home', { static: false }) home!: ElementRef;
-    @ViewChild('foodmap', { static: false }) foodmap!: ElementRef;
-    @ViewChild('homefood', { static: false }) homefood!: ElementRef;
-    @ViewChild('saphang', { static: false }) saphang!: ElementRef;
-    @ViewChild('tamdat', { static: false }) tamdat!: ElementRef;
     @ViewChild('tinh', { static: false }) tinh!: ElementRef;
     @ViewChild('quan', { static: false }) quan!: ElementRef;
-    isHn = false;
-    isSg = false;
+    cityAgentCTVList: any[] = [];
+    agentCTVList: any[] = [];
+    agentCTVListDisp: any[] = [];
+    mapFlag = 0;
     constructor(
-        private rend: Renderer2
-    ) { }
+        private rend: Renderer2,
+        private httpService: HttpService
+    ) {
+        super(new MessageService, rend);
+    }
 
     ngOnInit() {
+        this.httpService.reqeustApiget('agent').subscribe((data: any) => {
+            if (data.cityAgentCTVList) {
+                this.cityAgentCTVList = data.cityAgentCTVList;
+                this.cityAgentCTVList.unshift({ id: 0, name: 'Tất cả tỉnh/thành' });
+            }
+            this.httpService.reqeustApiget('agentcity', '0').subscribe((data: any) => {
+                if (data.agentCTVList) {
+                    this.agentCTVList = data.agentCTVList;
+                    this.agentCTVListDisp = [...this.agentCTVList];
+                }
+            });
+        });
     }
 
     ngAfterViewInit() {
-        if (!this.tinh.nativeElement.selectedIndex && !this.quan.nativeElement.selectedIndex) {
-            this.isHn = true;
-            this.isSg = true;
-        }
     }
 
-    onChangeFoodmap() {
-        this.rend.removeStyle(this.foodmap.nativeElement, 'display');
-        this.rend.setStyle(this.home.nativeElement, 'display', 'none');
-        this.rend.setStyle(this.homefood.nativeElement, 'display', 'none');
-        this.rend.setStyle(this.saphang.nativeElement, 'display', 'none');
-        this.rend.setStyle(this.tamdat.nativeElement, 'display', 'none');
-    }
-
-    onChangeHomefood() {
-        this.rend.removeStyle(this.homefood.nativeElement, 'display');
-        this.rend.setStyle(this.home.nativeElement, 'display', 'none');
-        this.rend.setStyle(this.foodmap.nativeElement, 'display', 'none');
-        this.rend.setStyle(this.saphang.nativeElement, 'display', 'none');
-        this.rend.setStyle(this.tamdat.nativeElement, 'display', 'none');
-    }
-
-    onChangeSaphang() {
-        this.rend.removeStyle(this.saphang.nativeElement, 'display');
-        this.rend.setStyle(this.home.nativeElement, 'display', 'none');
-        this.rend.setStyle(this.foodmap.nativeElement, 'display', 'none');
-        this.rend.setStyle(this.homefood.nativeElement, 'display', 'none');
-        this.rend.setStyle(this.tamdat.nativeElement, 'display', 'none');
-    }
-
-    onChangeTamdat() {
-        this.rend.removeStyle(this.tamdat.nativeElement, 'display');
-        this.rend.setStyle(this.home.nativeElement, 'display', 'none');
-        this.rend.setStyle(this.foodmap.nativeElement, 'display', 'none');
-        this.rend.setStyle(this.homefood.nativeElement, 'display', 'none');
-        this.rend.setStyle(this.saphang.nativeElement, 'display', 'none');
+    onChangemap(value: any) {
+        this.mapFlag = value;
     }
 
     tinhChange(event: any) {
-        if (!this.quan.nativeElement.selectedIndex) {
-            if (!event.target.selectedIndex) {
-                this.isHn = true;
-                this.isSg = true;
-            } else if (event.target.selectedIndex === 1) {
-                this.isHn = true;
-                this.isSg = false;
-            } else {
-                this.isHn = false;
-                this.isSg = true;
-            }
+        const index = event.target.selectedIndex;
+        if (index === 0) {
+            this.agentCTVListDisp = [...this.agentCTVList];
         } else {
-            this.isHn = false;
-            this.isSg = false;
+            this.agentCTVListDisp = [...this.agentCTVList.filter(x => x.cityAgenCTVId === index)];
         }
-
     }
 
     quanChange(event: any) {
-        if (!this.quan.nativeElement.selectedIndex) {
-            if (!event.target.selectedIndex) {
-                this.isHn = true;
-                this.isSg = true;
-            } else if (event.target.selectedIndex === 1) {
-                this.isHn = true;
-                this.isSg = false;
-            } else {
-                this.isHn = false;
-                this.isSg = true;
-            }
-        } else {
-            this.isHn = false;
-            this.isSg = false;
-        }
     }
 
 }

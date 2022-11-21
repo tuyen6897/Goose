@@ -166,4 +166,12 @@ export class AccountComponent implements OnInit {
         })
     }
 
+    onLogOut() {
+        setTimeout(() => {
+            sessionStorage.removeItem("account");
+            sessionStorage.removeItem('productList');
+            location.reload();
+        }, 100);
+    }
+
 }

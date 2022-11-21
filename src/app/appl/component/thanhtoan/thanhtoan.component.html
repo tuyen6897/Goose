@@ -21,7 +21,8 @@
                         <input #email type="email" [(ngModel)]="account.email" pInputText placeholder="Email" />
                         <input #tel type="tel" [(ngModel)]="account.phone" pInputText placeholder="Điện thoại" />
                     </div>
-                    <div class="address"><input type="text" pInputText placeholder="Địa chỉ" /></div>
+                    <div class="address"><input type="text" [(ngModel)]="account.address" pInputText
+                            placeholder="Địa chỉ" /></div>
                     <div class="city">
                         <p-dropdown [options]="cities" [(ngModel)]="selectedCity1" placeholder="Thành Phố/Tỉnh"
                             (onChange)="citiesChange(selectedCity1)" optionLabel="name"
@@ -31,11 +32,12 @@
                             (onChange)="districtChange(selectedCity2)"
                             [style]="{'width': '100%', 'border-radius': '20px'}" optionLabel="name" [showClear]="false">
                         </p-dropdown>
-                        <p-dropdown [options]="wards" [(ngModel)]="selectedCity3" placeholder="Phường"
-                            [style]="{'width': '100%', 'border-radius': '20px'}" optionLabel="name" [showClear]="false">
+                        <p-dropdown [options]="wardList" (onChange)="wardListChange()" [(ngModel)]="selectedCity3"
+                            placeholder="Phường" [style]="{'width': '100%', 'border-radius': '20px'}" optionLabel="name"
+                            [showClear]="false">
                         </p-dropdown>
                     </div>
-                    <div class="note"><input type="text" pInputText
+                    <div class="note"><input type="text" pInputText [(ngModel)]="note"
                             placeholder="Ghi chú thêm(Ví dụ: Giao hàng giờ hành chính)" /></div>
                 </div>
             </div>
@@ -113,8 +115,8 @@
                 <span>Tôi đã thanh toán</span>
             </div>
             <div class="button-box">
-                <button pButton pRipple type="button" label="Thanh toán" class="p-button-danger"
-                    href="/dat-hang"></button>
+                <button pButton pRipple type="button" label="Thanh toán" class="p-button-danger" href="/dat-hang"
+                    (click)="onPay()"></button>
             </div>
         </div>
         <div class="order-bar">
@@ -122,12 +124,12 @@
                 <div class="image">
                     <div class="product_image" *ngFor="let item of product">
                         <a target="_self" href="/chi-tiet-san-pham">
-                            <img src="//product.hstatic.net/200000170631/product/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_medium.jpg"
-                                alt="Mật Trà Kombucha Cốt Chuối">
+                            <img [src]="item.image" alt="">
+                            <div class="gio-hang-total">{{item.quantity}}</div>
                         </a>
                         <div class="item-content">
                             <div>
-                                <a target="_self" href="/chi-tiet-san-pham">{{item.title}}
+                                <a target="_self" href="/chi-tiet-san-pham">{{item.name}}
                                 </a><br>
                                 <span class="variant_title">{{item.variant}}</span>
                             </div>
@@ -150,16 +152,16 @@
             <div class="order-pay">
                 <div>
                     <span>Tạm tính</span>
-                    <span class="total-now"> {{formatCash(total)}} ₫</span>
+                    <span class="total-now"> {{formatCash(+(total))}} ₫</span>
                 </div>
                 <div>
                     <span>Phí ship</span>
-                    <span>{{ship}}₫</span>
+                    <span>{{formatCash(shipPrice)}}₫</span>
                 </div>
             </div>
             <div class="order-total">
                 <span>Tổng tiền</span>
-                <span class="total"> {{formatCash(total)}} ₫</span>
+                <span class="total"> {{formatCash(totalOrder)}} ₫</span>
             </div>
         </div>
     </div>

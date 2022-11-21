@@ -50,11 +50,11 @@
                 </div>
                 <div class="product-content">
                     <div class="pro-content-head">
-                        <h2 itemprop="name">Mật Trà Kombucha Thảo Mộc</h2>
+                        <h2 itemprop="name">{{product.name}}</h2>
                         <div class="review-sold">
                             <div class="starbaprv-widget">
                                 <span>Xuất xứ:</span>
-                                <span class="origin">Hàn Quốc</span>
+                                <span class="origin">{{product.origin}}</span>
                                 <span>Tình trạng:</span>
                                 <span class="status">Còn hàng</span>
                                 <div class="starbap-prev-badge" data-average-rating="5.0" data-number-of-reviews="83">
@@ -74,10 +74,10 @@
                         </div>
                     </div>
                     <div class="pro-price">
-                        <span style="margin-right: 20px;">Giá bán:</span>
-                        <span class="product-price">250,000 ₫</span>
-                        <span class="product-orifinnal">250,000 ₫</span>
-                        <span class="product-sale">(-10%)</span>
+                        <span style="margin-right: 24px;">Giá bán:</span>
+                        <span class="product-price">{{formatCashProduct(productVariant.price)}} ₫</span>
+                        <span class="product-orifinnal">{{formatCashProduct(productVariant.price)}} ₫</span>
+                        <span class="product-sale" *ngIf="productVariant.salePrice">(-10%)</span>
                     </div>
                     <div class="product-variants-wrapper">
                         <div id="product-select-watch" class="select-swatch">
@@ -85,45 +85,22 @@
                                 data-option-index="0">
                                 <div class="header">Loại</div>
                                 <div class="select-swap">
-                                    <div data-value="500 ml" class="n-sd swatch-element 500-ml">
-                                        <input class="variant-0 input-product" id="swatch-0-500-ml" type="radio"
-                                            name="option1" value="500" (click)="onCheck($event)">
-                                        <label for="swatch-0-500-ml" class="sp" #option500>
-                                            500 ml
-                                            <!-- <img class="crossed-out"
-                                                src="//theme.hstatic.net/200000170631/1000660112/14/soldout.png?v=3075"> -->
-                                            <img class="img-check"
+                                    <div *ngFor="let item of productVariants" data-value="500 ml"
+                                        class="n-sd swatch-element 500-ml" (click)="onCheck(item)">
+                                        <input class="variant-0 input-product" id="item.code" type="radio"
+                                            name="option1" value="500">
+                                        <label [class.sp]="item.check">
+                                            {{item.size}} {{item.unit}}
+                                            <img *ngIf="item.check" class="img-check"
                                                 src="//theme.hstatic.net/200000170631/1000660112/14/select-pro.png?v=3075">
                                         </label>
                                     </div>
-                                    <div data-value="100 ml" class="n-sd swatch-element 100-ml">
-                                        <input class="variant-0 input-product" id="swatch-0-100-ml" type="radio"
-                                            name="option1" value="100" (click)="onCheck($event)">
-                                        <label for="swatch-0-100-ml" #option100>
-                                            100 ml
-                                            <!-- <img class="crossed-out"
-                                                src="//theme.hstatic.net/200000170631/1000660112/14/soldout.png?v=3075"> -->
-                                            <img class="img-check" style="display: none;"
-                                                src="//theme.hstatic.net/200000170631/1000660112/14/select-pro.png?v=3075">
-                                        </label>
-                                    </div>
-                                    <!-- <div data-value="5 lít" class="n-sd swatch-element 5-lit soldout">
-                                        <input class="variant-0 input-product" id="swatch-0-5-lit" type="radio"
-                                            name="option1" value="5 lít">
-                                        <label for="swatch-0-5-lit">
-                                            5 lít
-                                            <img class="crossed-out"
-                                                src="//theme.hstatic.net/200000170631/1000660112/14/soldout.png?v=3075">
-                                            <img class="img-check"
-                                                src="//theme.hstatic.net/200000170631/1000660112/14/select-pro.png?v=3075">
-                                        </label>
-                                    </div> -->
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="quantity">
-                        <span style="margin-right: 10px;">Số lượng </span>
+                        <span style="margin-right: 14px;">Số lượng</span>
                         <p-inputNumber [(ngModel)]="inputQuantity" [showButtons]="true" [size]="1" [min]="1"
                             buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
                             decrementButtonClass="btn-input-number" incrementButtonClass="btn-input-number"
@@ -178,10 +155,10 @@
                 </div>
                 <div class="product-fix" #productFix>
                     <div class="product-fix-title">
-                        <h2 itemprop="name">Mật Trà Kombucha Thảo Mộc</h2>
+                        <h2 itemprop="name">{{product.name}}</h2>
                     </div>
                     <div class="product-fix-reviews">
-                        <span>Xuất xứ: Hàn Quốc |</span>
+                        <span>Xuất xứ: {{product.origin}} |</span>
                         <span>Tình trạng: Còn hàng |</span>
                         <div class="starbap-rev-total">
                             <span class="starbap-rev-total-point">Đánh giá</span>
@@ -197,10 +174,12 @@
                         </div>
                         <div class="pro-price">
                             <span style="margin-right: 10px;">Giá bán:</span>
-                            <span class="current-price ProductPrice">210,000 ₫</span>
-                            <span class="original-price ComparePrice"><s style="display: inline;">265,000 ₫</s></span>
-                            <div class="sale-percentage"><span class="PriceSaving" style="display: inline;">(-10
-                                    %)</span></div>
+                            <span class="current-price ProductPrice">{{formatCashProduct(productVariant.price)}}
+                                ₫</span>
+                            <span class="original-price ComparePrice"><s
+                                    style="display: inline;">{{formatCashProduct(productVariant.price)}} ₫</s></span>
+                            <div class="sale-percentage"><span class="PriceSaving" style="display: inline;"
+                                    *ngIf="productVariant.salePrice">(-10%)</span></div>
                         </div>
                         <div class="product-quantity">
                             <div class="qty-addcart">
@@ -283,8 +262,8 @@
         <div class="group" style="border-top: 2px solid #ccc;">
             <div class="content">
                 <div class="ToggleContent__Wrapper-sc-1dbmfaw-1 cqXrJr">
-                    <div class="ToggleContent__View-sc-1dbmfaw-0 wyACs">
-                        <p><span><strong style="color: rgb(17, 90, 226);">Quạt thông gió âm trần TFV-D15
+                    <div class="ToggleContent__View-sc-1dbmfaw-0 wyACs" #description>
+                        <!-- <p><span><strong style="color: rgb(17, 90, 226);">Quạt thông gió âm trần TFV-D15
                                     ZPD:</strong>hút thông gió không gian tĩnh phòng
                                 khách, phòng ngủ, nhà bếp, phòng vệ sinh, nhà tắm, văn phòng, phòng hút thuốc... thông
                                 gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p>
@@ -293,15 +272,15 @@
                                     <img src="https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png"
                                         alt="" class="WebpImg__StyledImg-sc-h3ozu8-0 fWjUGo">
                                 </picture><br>
-                            </em></p>
-                        <p *ngIf="isShow"><span><strong>Quạt thông gió âm trần TFV-D15 ZPD:</strong>hút thông gió không
+                            </em></p> -->
+                        <!-- <p *ngIf="isShow"><span><strong>Quạt thông gió âm trần TFV-D15 ZPD:</strong>hút thông gió không
                                 gian tĩnh phòng
                                 khách, phòng ngủ, nhà bếp, phòng vệ sinh, nhà tắm, văn phòng, phòng hút thuốc... thông
                                 gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p>
-                        <div *ngIf="!isShow" class="gradient"></div>
+                        <div *ngIf="!isShow" class="gradient"></div> -->
                     </div>
-                    <button class="btn-more" (click)="isShow = !isShow" data-view-id="pdp_view_description_button">
-                        {{!isShow ? 'Xem thêm mô tả' : 'Thu gọn mô tả'}}</button>
+                    <!-- <button class="btn-more" (click)="isShow = !isShow" data-view-id="pdp_view_description_button">
+                        {{!isShow ? 'Xem thêm mô tả' : 'Thu gọn mô tả'}}</button> -->
                 </div>
             </div>
         </div>

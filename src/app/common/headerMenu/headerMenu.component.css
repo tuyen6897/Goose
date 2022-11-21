@@ -207,10 +207,24 @@
     -webkit-font-smoothing: antialiased;
 }
 
+.gio-hang-total {
+    width: 15px;
+    font-weight: bold;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 22px;
+    right: 23px;
+    font-size: 10px;
+    text-align: center;
+    color: #fff;
+}
+
 /* hd-menu-mobile */
 .hd-menu-mobile {
     display: none;
 }
+
 
 @media screen and (max-width: 768px) {
 
@@ -348,6 +362,5 @@
     .hd-menu-mobile #menuToggle .menu ul li a {
         color: #87b83b;
     }
-
 
 }

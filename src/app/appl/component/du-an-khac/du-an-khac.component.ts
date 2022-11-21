@@ -16,10 +16,10 @@ export class DuAnKhacComponent extends ComponentBaseComponent implements OnInit 
     @ViewChild('phone', { static: false }) phone!: ElementRef;
     @ViewChild('email', { static: false }) email!: ElementRef;
     @ViewChild('message', { static: false }) message!: ElementRef;
-    @ViewChild('project', { static: false }) project!: ElementRef;
+    @ViewChild('projectSelect', { static: false }) projectSelect!: ElementRef;
 
     postsNewList: any[] = [1, 2, 3, 4];
-
+    project: any = null;
     postList = [];
 
     tintucList = [
@@ -54,6 +54,10 @@ export class DuAnKhacComponent extends ComponentBaseComponent implements OnInit 
 
     ngOnInit() {
         this.showLoadingDialog('on');
+        this.httpService.reqeustApiget('postsproject', 'canhDongSeChia').subscribe((data: any) => {
+            this.project = data['canhDongSeChia'];
+            this.showLoadingDialog('off');
+        });
         this.httpService.reqeustApiPost('posts', 'menuCode=chuyen-di-cua-ngong&pageIndex=1&pageSize=1000').subscribe((data: any) => {
             if (data.postList) {
             }
@@ -73,7 +77,7 @@ export class DuAnKhacComponent extends ComponentBaseComponent implements OnInit 
             "name": this.name.nativeElement.value,
             "phone": this.phone.nativeElement.value,
             "email": this.email.nativeElement.value,
-            "projectId": this.project.nativeElement.value,
+            "projectId": this.projectSelect.nativeElement.value,
             "feedback": this.message.nativeElement.value
         };
         this.showDialog('on');

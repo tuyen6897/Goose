@@ -14,7 +14,8 @@
                         <span>Tất cả</span>
                     </div>
                     <div class="header-product">
-                        <p-checkbox [(ngModel)]="checked1" [binary]="true" inputId="group" styleClass="" [disabled]="true"></p-checkbox>
+                        <p-checkbox [(ngModel)]="checked1" [binary]="true" inputId="group" styleClass=""
+                            [disabled]="true"></p-checkbox>
                         <span style="margin-left: 5px;">Sản phẩm</span>
                     </div>
                     <div class="header-price">
@@ -30,19 +31,19 @@
                 <div class="body-cart">
                     <div class="tr-cart" *ngFor="let item of product; let i = index">
                         <div class="product-check-box">
-                            <p-checkbox name="group1" [value]="item" [(ngModel)]="itemCheck" [inputId]="item.id" ></p-checkbox>
-                            <span (click)="onRemove(i)">Xóa</span>
+                            <p-checkbox name="group1" [value]="item" [(ngModel)]="itemCheck" [inputId]="item.id">
+                            </p-checkbox>
+                            <span (click)="onRemove(item)"><a>Xóa</a></span>
                         </div>
 
                         <div class="image">
                             <div class="product_image">
                                 <a target="_self" href="/chi-tiet-san-pham">
-                                    <img src="  //product.hstatic.net/200000170631/product/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_medium.jpg"
-                                        alt="Mật Trà Kombucha Cốt Chuối">
+                                    <img [src]="item.image" alt="">
                                 </a>
                                 <div class="item-content">
                                     <a target="_self" href="/chi-tiet-san-pham">{{item ?
-                                        item.title:
+                                        item.name:
                                         ''}}
                                     </a><br>
                                     <span class="variant_title">{{item ? item.variant : ''}}</span>
@@ -54,11 +55,11 @@
                                 ''}} ₫</span>
                         </div>
                         <div class="quantity">
-                            <p-inputNumber [(ngModel)]="item.quantity" [showButtons]="true" [size]="3" [min]="0"
-                                (onInput)="onChange($event, i)" buttonLayout="horizontal" spinnerMode="horizontal"
-                                inputId="horizontal" decrementButtonClass="btn-input-number"
-                                incrementButtonClass="btn-input-number" incrementButtonIcon="pi pi-plus"
-                                decrementButtonIcon="pi pi-minus">
+                            <p-inputNumber [(ngModel)]="item.quantity" (onBlur)="quantityBlur(item)"
+                                [showButtons]="true" [size]="3" [min]="0" (onInput)="onChange($event, i)"
+                                buttonLayout="horizontal" spinnerMode="horizontal" inputId="horizontal"
+                                decrementButtonClass="btn-input-number" incrementButtonClass="btn-input-number"
+                                incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
                             </p-inputNumber>
                         </div>
                         <div class="total">

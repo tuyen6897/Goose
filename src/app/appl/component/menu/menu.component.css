@@ -407,15 +407,33 @@ code {
     margin-bottom: 40px;
 }
 
+@media (max-width: 1366px) {
+    app-img-product .product-content {
+        width: 25%;
+        padding: 11px;
+    }
+}
+
+@media (max-width: 998px) {
+    app-img-product .product-content {
+        width: 33.333333333%;
+        padding: 11px;
+    }
+}
+
+@media (max-width: 680px) {
+    app-img-product .product-content {
+        width: 50%;
+        padding: 11px;
+    }
+}
+
 @media (max-width: 991px) {
 
     .so-gao-mobile {
         display: block;
     }
 
-    .so-gao-desktop {
-        display: none;
-    }
 
     .news-content {
         display: block;

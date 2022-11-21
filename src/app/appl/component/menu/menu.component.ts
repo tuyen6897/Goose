@@ -3,7 +3,6 @@ import { MessageService } from 'primeng/api';
 import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBase.component';
 import { HeaderComponent } from 'src/app/common/header/header.component';
 import { HttpService } from 'src/app/common/service/http-service';
-import { Utils } from 'src/app/common/util/utils';
 @Component({
     selector: 'app-menu',
     templateUrl: './menu.component.html',
@@ -49,6 +48,29 @@ export class MenuComponent extends ComponentBaseComponent implements OnInit {
         {
             breakpoint: '1400px',
             numVisible: 4,
+            numScroll: 1
+        },
+        {
+            breakpoint: '1000px',
+            numVisible: 3,
+            numScroll: 1
+        },
+        {
+            breakpoint: '680px',
+            numVisible: 2,
+            numScroll: 1
+        }
+    ];
+
+    responsivefeedback = [
+        {
+            breakpoint: '1400px',
+            numVisible: 3,
+            numScroll: 1
+        },
+        {
+            breakpoint: '1366px',
+            numVisible: 3,
             numScroll: 1
         },
         {
@@ -151,7 +173,7 @@ export class MenuComponent extends ComponentBaseComponent implements OnInit {
                 this.productList = data.products;
             }
             this.httpService.reqeustApiget('newest-sale', 'limit=10').subscribe((data: any) => {
-                if (data.product.length) {
+                if (data.products.length) {
                     this.datasSale = data.products;
                 }
             });

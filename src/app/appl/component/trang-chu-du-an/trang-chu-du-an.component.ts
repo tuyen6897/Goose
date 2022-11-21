@@ -13,30 +13,34 @@ export class TrangChuDuAnComponent extends ComponentBaseComponent implements OnI
     isShow: boolean = false;
     isShowBtn: boolean = true;
     projectList: any[] = [];
+    project: any = null;
     tintucList: any[] = [];
     tintucListDisplay: any[] = [];
-
     constructor(private httpService: HttpService, private render2: Renderer2) {
         super(new MessageService, render2)
     }
 
     ngOnInit() {
         this.showLoadingDialog('on');
-        this.httpService.reqeustApiget('projects').subscribe((data: any) => {
-            if (data.projectList) {
-                data.projectList.forEach((item: any) => {
-                    let path = '';
-                    if (String(item.name).toLowerCase() !== 'chuyến đi của ngỗng') {
-                        path = `du-an?name=${Utils.removeAccents(String(item.name)).toLowerCase().split(' ').join('-')}`;
-                    } else {
-                        path = `chuyen-di-cua-ngong`;
-                    }
-                    item.url = `${window.location.origin}/${path}`;
-                });
+        this.httpService.reqeustApiget('postsproject', 'trangChu').subscribe((data: any) => {
+            if (data) {
+                this.project = data;
+                if (data.trangChuDuAn.projectList) {
+                    data.trangChuDuAn.projectList.forEach((item: any) => {
+                        let path = '';
+                        if (String(item.name).toLowerCase() !== 'chuyến đi của ngỗng') {
+                            path = `du-an?name=${Utils.removeAccents(String(item.name)).toLowerCase().split(' ').join('-')}`;
+                        } else {
+                            path = `chuyen-di-cua-ngong`;
+                        }
+                        item.url = `${window.location.origin}/${path}`;
+                    });
 
-                this.projectList = data.projectList;
+                    this.projectList = data.trangChuDuAn.projectList;
+                }
             }
-            this.httpService.reqeustApiget('posts', 'menuCode=tin-tuc&pageIndex=1&pageSize=1000').subscribe((data: any) => {
+
+            this.httpService.reqeustApiget('posts', 'menuCode=tin-tuc-du-an&pageIndex=1&pageSize=1000').subscribe((data: any) => {
                 if (data.postList) {
                     this.tintucList = data.postList;
                     this.tintucList.forEach((item: any) => {

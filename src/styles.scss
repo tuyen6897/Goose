@@ -146,6 +146,12 @@ a {
     background: #87b93b !important;
 }
 
+@media (max-width: 1200px) {
+    .container {
+        max-width: 100% !important;
+    }
+}
+
 @media (max-width: 768px) {
     .lbl-title {
         font-size: 18px;

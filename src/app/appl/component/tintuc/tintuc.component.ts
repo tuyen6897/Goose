@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBase.component';
 import { HttpService } from 'src/app/common/service/http-service';
+import { Utils } from 'src/app/common/util/utils';
 @Component({
     selector: 'app-tintuc',
     templateUrl: './tintuc.component.html',
@@ -65,6 +66,7 @@ export class TintucComponent extends ComponentBaseComponent implements OnInit {
             if (response.postList) {
                 response.postList.forEach((item: any) => {
                     item.url = `${window.location.origin}/blogs?tin-tuc=${item.slug}`;
+                    item.postDate = Utils.timeStempToDateFormat(item.postDate);
                 })
                 this.featuredNews = response.postList;
                 this.showLoadingDialog('off');

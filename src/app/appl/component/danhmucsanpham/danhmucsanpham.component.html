@@ -9,9 +9,9 @@
         <label class="lbl-h1 collection-title">Tất Cả Sản Phẩm</label>
         <div class="collection-head-content">
             <span>Sắp xếp theo</span>
-            <button>Bán chạy</button>
-            <button>Giá cao đến thấp</button>
-            <button>Giá thấp đến cao</button>
+            <button (click)="onSort('')">Bán chạy</button>
+            <button (click)="onSort('desc')">Giá cao đến thấp</button>
+            <button (click)="onSort('asc')">Giá thấp đến cao</button>
         </div>
     </div>
     <div style="width: 100%;">
@@ -22,12 +22,12 @@
                     <div class="product-item">
                         <div class="product-img">
                             <div class="product-item-countdown"></div><a target="_self"
-                                [href]="createURL(product.name)"><img id="1026970643" alt="Bột Sắn Dây Ông Hòa 700gr"
-                                    [src]="product.image"></a>
+                                [href]="createURL(product.name, product.id)"><img id="1026970643"
+                                    alt="Bột Sắn Dây Ông Hòa 700gr" [src]="product.image"></a>
                         </div>
                         <div class="product-info">
                             <div class="product-title"><a target="_self"
-                                    [href]="createURL(product.name)">{{product.name}}</a></div>
+                                    [href]="createURL(product.name, product.id)">{{product.name}}</a></div>
                             <div data-id="1026970643" data-url="bot-san-day-ong-hoa-700gr"
                                 class="starbaprv-widget starbaprv-preview-badge starbaprv-preview-badge--with-link">
                             </div>
@@ -37,7 +37,7 @@
                             </div>
                             <div class="product-actions text-center clearfix">
                                 <div style="margin: -5px;padding: 0;">
-                                    <button class="btn-add" (click)="addCart($event)">Thêm vào giỏ hàng</button>
+                                    <button class="btn-add" (click)="addCart(product)">Thêm vào giỏ hàng</button>
                                     <button (click)="openDialog()" class="btn-buy">Mua Ngay</button>
                                 </div>
                             </div>
@@ -45,7 +45,9 @@
                     </div>
                 </div>
                 <div class="box-show-products"><button *ngIf="isShowbutton" class="btn-show-products"
-                        (click)="show()">Xem thêm ({{productList.length - productDisplayList.length}}) sản phẩm</button>
+                        (click)="show()">Xem thêm ({{productFilter.length ? productFilter.length -
+                        productDisplayList.length
+                        : productList.length - productDisplayList.length}}) sản phẩm</button>
                 </div>
             </div>
             <div class="pro-tabcontent" style="display: block;">
@@ -121,10 +123,10 @@
                 </div>
             </div>
         </div>
-        <div class="collection-sidebar">
+        <div #collectionsidebar class="collection-sidebar">
             <div class="grid__item">
                 <div style="margin: 10px 0 10px 0;border: 1px solid #ccc;padding: 5px;">
-                    <div style="position: sticky; height: 440px; top: 80px; background: #fff; z-index: 3;">
+                    <div #order>
                         <div class="grid__item large--one-whole medium--one-half small--one-whole">
                             <div class="collection-filter-price">
                                 <button class="accordion cs-title col-sb-trigger panel-sort active">
@@ -132,52 +134,11 @@
                                 </button>
                                 <div class="panel  sidebar-sort" style="max-height: 228px;">
                                     <ul class="no-bullets filter-price clearfix">
-                                        <li>
+                                        <li *ngFor="let item of princeList">
                                             <label>
-                                                <input (change)="kgOnChange($event)" type="radio" name="price-filter">
-                                                <span>Tất cả</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label>
-                                                <input value="100000" (change)="kgOnChange($event)" type="radio"
+                                                <input (change)="kgOnChange($event)" [value]="item.value" type="radio"
                                                     name="price-filter">
-                                                <span>Nhỏ hơn 100,000₫</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label>
-                                                <input value="100000-200000" (change)="kgOnChange($event)" type="radio"
-                                                    name="price-filter">
-                                                <span>Từ 100,000₫ - 200,000₫</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label>
-                                                <input value="200000-300000" (change)="kgOnChange($event)" type="radio"
-                                                    name="price-filter">
-                                                <span>Từ 200,000₫ - 300,000₫</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label>
-                                                <input value="300000-400000" (change)="kgOnChange($event)" type="radio"
-                                                    name="price-filter">
-                                                <span>Từ 300,000₫ - 400,000₫</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label>
-                                                <input value="400000-500000" (change)="kgOnChange($event)" type="radio"
-                                                    name="price-filter">
-                                                <span>Từ 400,000₫ - 500,000₫</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label>
-                                                <input value="500000" (change)="kgOnChange($event)" type="radio"
-                                                    name="price-filter">
-                                                <span>Lớn hơn 500,000₫</span>
+                                                <span>{{item.name}}</span>
                                             </label>
                                         </li>
                                     </ul>
@@ -193,33 +154,32 @@
                                     <ul class="no-bullets filter-vendor clearfix">
                                         <li class="">
                                             <label data-filter="NGỖNG" class="filter-vendor__item ngong">
-                                                <input id="ngong" name="th" type="checkbox">
+                                                <input id="ngong" name="th" type="radio">
                                                 <span>NGỖNG</span>
                                             </label>
                                         </li>
                                         <li class="">
                                             <label data-filter="Karose" class="filter-vendor__item karose">
-                                                <input id="karose" name="th" type="checkbox">
+                                                <input id="karose" name="th" type="radio">
                                                 <span>Karose</span>
                                             </label>
                                         </li>
                                         <li class="">
                                             <label data-filter="Ngỗng" class="filter-vendor__item ngong">
-                                                <input id="ngong2" name="th" type="checkbox">
+                                                <input id="ngong2" name="th" type="radio">
                                                 <span>Ngỗng</span>
                                             </label>
                                         </li>
                                         <li class="">
                                             <label data-filter="Tôi Là Thảo Mộc - Tuệ Viên"
                                                 class="filter-vendor__item toi-la-thao-moc-tue-vien">
-                                                <input id="thaomoc" name="th" type="checkbox">
+                                                <input id="thaomoc" name="th" type="radio">
                                                 <span>Tôi Là Thảo Mộc - Tuệ Viên</span>
                                             </label>
                                         </li>
                                         <li class="">
                                             <label data-filter="Cô Cà Chua" class="filter-vendor__item co-ca-chua">
-                                                <input id="coca" name="th" type="checkbox"
-                                                    (change)="thOnChange($event)">
+                                                <input id="coca" name="th" type="radio" (change)="thOnChange($event)">
                                                 <span>Cô Cà Chua</span>
                                             </label>
                                         </li>
@@ -259,7 +219,7 @@
         </div>
 
     </div>
-    <div class="collection-head" style="width: 100%;">
+    <div #seenProduct class="collection-head" style="width: 100%;">
         <label class="lbl-h1 collection-title">Sản Phẩm Đã Xem</label>
     </div>
     <div style="width: 100%;" class="product-watch">

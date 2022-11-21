@@ -3,8 +3,8 @@
 <div id="LADI-WRAPER">
     <div id="SECTION1">
         <div class="title-common">
-            <a target="_self" href="#"><img class="img-title" style="height: 400px;"
-                    src="http://bizweb.dktcdn.net/100/021/951/files/d6.jpg?v=1465295653547" alt=""></a>
+            <a target="_self" [href]="project.banner.targetUrl"><img class="img-title" style="height: 400px;"
+                    [src]="project.banner.imageUrl" alt=""></a>
         </div>
     </div>
     <div class="container">
@@ -13,36 +13,8 @@
         </div>
         <div id="SECTION3">
             <ul>
-                <li>
-                    Tiết kiệm đến 35% so với giá bán lẻ, không phải lo giá cả lên xuống, lạm phát, bão giá
-                </li>
-                <li>
-                    Được nhận gạo luôn tươi ngon và xát mới theo yêu cầu thay vì phải lưu trữ gạo số lượng lớn vừa mất
-                    công
-                    bảo quản, vừa làm gạo bị mối mọt, nấm mốc - Được giao hàng tận tay: Mỗi khi hết gạo, khách chỉ cần
-                    gọi
-                    cho Ngỗng, Ngỗng sẽ giao gạo đúng địa chỉ khách mong muốn.
-                </li>
-                <li>
-                    Được nhận gạo luôn tươi ngon và xát mới theo yêu cầu thay vì phải lưu trữ gạo số lượng lớn vừa mất
-                    công
-                    bảo quản, vừa làm gạo bị mối mọt, nấm mốc - Được giao hàng tận tay: Mỗi khi hết gạo, khách chỉ cần
-                    gọi
-                    cho Ngỗng, Ngỗng sẽ giao gạo đúng địa chỉ khách mong muốn.
-                </li>
-                <li>
-                    Được nhận gạo luôn tươi ngon và xát mới theo yêu cầu thay vì phải lưu trữ gạo số lượng lớn vừa mất
-                    công
-                    bảo quản, vừa làm gạo bị mối mọt, nấm mốc - Được giao hàng tận tay: Mỗi khi hết gạo, khách chỉ cần
-                    gọi
-                    cho Ngỗng, Ngỗng sẽ giao gạo đúng địa chỉ khách mong muốn.
-                </li>
-                <li>
-                    Được nhận gạo luôn tươi ngon và xát mới theo yêu cầu thay vì phải lưu trữ gạo số lượng lớn vừa mất
-                    công
-                    bảo quản, vừa làm gạo bị mối mọt, nấm mốc - Được giao hàng tận tay: Mỗi khi hết gạo, khách chỉ cần
-                    gọi
-                    cho Ngỗng, Ngỗng sẽ giao gạo đúng địa chỉ khách mong muốn.
+                <li *ngFor="let item of project.moDau">
+                    {{item}}
                 </li>
             </ul>
         </div>
@@ -87,23 +59,20 @@
                 <div style="width: 33.3%; margin-top: 20px; margin-left: 30px;">
                     <div class="div-con-img-1">
                     </div>
-                    <div><img class="img1"
-                            src="//product.hstatic.net/200000170631/product/so-gao-st25-100-kg-gao-nha-ngong_9f929f441327472c8d260b8ffc45505d_large.jpg"
-                            alt="Sổ Gạo Ngỗng"></div>
+                    <div><a target="_self" [href]="project?.soGao[0].targetUrl"><img class="img1"
+                                [src]="project?.soGao[0].imageUrl" alt="Sổ Gạo Ngỗng"></a></div>
                 </div>
                 <div style="width: 33.3%; margin-top: 20px; ">
                     <div class="div-con-img-1">
                     </div>
-                    <div><img class="img1"
-                            src="//product.hstatic.net/200000170631/product/so-gao-st25-100-kg-gao-nha-ngong_9f929f441327472c8d260b8ffc45505d_large.jpg"
-                            alt="Sổ Gạo Ngỗng"></div>
+                    <div><a target="_self" [href]="project?.soGao[0].targetUrl"><img class="img1"
+                                [src]="project?.soGao[1].imageUrl" alt="Sổ Gạo Ngỗng"></a></div>
                 </div>
                 <div style="width: 33.3%; margin-top: 20px; margin-right: 30px;">
                     <div class="div-con-img-1">
                     </div>
-                    <div><img class="img1"
-                            src="//product.hstatic.net/200000170631/product/so-gao-st25-100-kg-gao-nha-ngong_9f929f441327472c8d260b8ffc45505d_large.jpg"
-                            alt="Sổ Gạo Ngỗng"></div>
+                    <div><a target="_self" [href]="project?.soGao[0].targetUrl"><img class="img1"
+                                [src]="project?.soGao[2].imageUrl" alt="Sổ Gạo Ngỗng"></a></div>
                 </div>
             </div>
         </div>
@@ -115,9 +84,7 @@
                 <div class="img-contact">
                     <div class="regis-img">
                         <div class="child-regis-img">
-                            <img class="child-img"
-                                src="https://file.hstatic.net/200000170631/file/canhngongdonghanhcungnongdansinhthai__12__5b1dc0e746084e3e9b8a9ad6ee545100_grande.jpg"
-                                alt="">
+                            <img class="child-img" [src]="project?.imageRegisTrip.imageUrl" alt="">
                         </div>
                     </div>
                     <div class="regis-contact">
@@ -129,7 +96,7 @@
                             <input #phone name="phone" class="regis-phone" type="tel" placeholder="Số điện thoại*"
                                 value="">
                             <input #email name="email" class="regis-email" type="email" placeholder="Email" value="">
-                            <select #project>
+                            <select #projectSelect>
                                 <option value="0">Select Project</option>
                                 <option value="1">Audi</option>
                                 <option value="2">BMW</option>
@@ -141,20 +108,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div *ngIf="!isShow" class="regis-contact">
-                        <div class="child-regis-contact">
-                            <h1 style="color: #ffffff; font-weight: bold; margin-bottom: 40px;">Đăng ký chuyến đi</h1>
-                            <input name="name" class="regis-name" type="text" placeholder="Họ & tên*" value="">
-                            <input name="phone" class="regis-phone" type="number" placeholder="Số điện thoại*" value="">
-                            <input name="email" class="regis-email" type="email" placeholder="Email" value="">
-                            <input name="name" class="regis-name" type="text" placeholder="Địa chỉ" value="">
-                            <textarea name="message" class="ladi-form-control"
-                                placeholder="Bạn quan tâm đến chuyến đi nào?"></textarea>
-                            <div class="article-schedule">
-                                <button class="btn-kp">Đăng ký</button>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>

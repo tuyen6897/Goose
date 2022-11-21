@@ -16,80 +16,19 @@
                 </div>
                 <div class="line"></div>
                 <div class="line"></div>
-                <div class="content">
-                    <p style="margin-bottom: 8px;">
-                        <span class="content-top">
-                            Hơn nữa <b>GẠO</b> cũng là sản phẩm thiết yếu, có mặt trong mọi bữa ăn gia
-                            đình Việt, diện tích sản xuất lúa thì rất lớn trong khi thu nhập của người
-                            nông dân trồng lúa thì bấp bênh. Bốn năm làm anh “hàng sáo "bán
-                            gạo cũng lên bờ xuống ruộng đồng hành với nông dân càng thấm, càng hiểu tại
-                            sao nông dân không bán được và chính bản thân <b>Ngỗng</b> là những người
-                            trẻ nhiệt huyết và năng động được đào tạo bài bản cũng gặp rất
-                            nhiều khó khăn như biến đổi khí hậu, sâu hại dịch bệnh, thiếu vốn sản xuất,
-                            không ổn định đầu ra trong khi giá bán, chi phí sản xuất cao, vận chuyển,
-                            hàng hỏng hủy nhiều khiến giá thành sản phẩm đội nên cao. khách
-                            hàng khó tiyên gia, chính quyền, đơn vị chế biến, thương mại, bán hàng...
-                            đến khách hàng chứ không chỉ riêng mình Ngỗng.
-                        </span>
-                    </p>
+                <div class="content" #content>
                 </div>
             </div>
         </div>
         <div id="SECTION3" class="ladi-section">
             <div class="ladi-container">
-                <div class="article-item article-item-left">
+                <div *ngFor="let item of project.thongDiepList" class="article-item article-item-left">
                     <div class="gradient-border">
-                        <a target="_self" href="#"><img class="img-left"
-                                src="https://file.hstatic.net/200000170631/file/canhngongdonghanhcungnongdansinhthai__12__5b1dc0e746084e3e9b8a9ad6ee545100_grande.jpg"
-                                alt=""></a>
+                        <img class="img-left" [src]="item.imageUrl" alt="">
                         <div class="content-left">
-                            <a class="title2" href="#">Trải nghiệm chân thực</a>
+                            <a class="title2">{{item.title}}</a>
                             <span>
-                                Gặp gỡ, lắng nghe câu chuyện người thật, việc thật tại các vùng sản xuất nông nghiệp bên
-                                vững.<br>
-                                Trải nghiệm "làm nông" cùng nông hộ.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="article-item article-item-right">
-                    <div class="gradient-border">
-                        <a target="_self" href="#"><img class="img-left"
-                                src="https://file.hstatic.net/200000170631/file/canhngongdonghanhcungnongdansinhthai__12__5b1dc0e746084e3e9b8a9ad6ee545100_grande.jpg"
-                                alt=""></a>
-                        <div class="content-left">
-                            <a class="title2" href="#">Khám phá mới lạ</a>
-                            <span>
-                                Góc nhìn mới lạ về nông nghiệp và sinh thái đa dạng của vùng nguyên liệu.<br>
-                                Khám phá các địa điểm du lịch, lịch sử, văn hóa thú vị lân cận vùng nguyên liệu.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="article-item article-item-left">
-                    <div class="gradient-border">
-                        <a target="_self" href="#"><img class="img-left"
-                                src="https://file.hstatic.net/200000170631/file/canhngongdonghanhcungnongdansinhthai__12__5b1dc0e746084e3e9b8a9ad6ee545100_grande.jpg"
-                                alt=""></a>
-                        <div class="content-left">
-                            <a class="title2" href="#">Kết nối và yêu thương</a>
-                            <span>
-                                Tạm gác những bồn bệ ở phố thị để kết nối tự nhiên, với các thành viên trong gia đình,
-                                và với chính bản thân.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="article-item article-item-right">
-                    <div class="gradient-border">
-                        <a target="_self" href="#"><img class="img-left"
-                                src="https://file.hstatic.net/200000170631/file/canhngongdonghanhcungnongdansinhthai__12__5b1dc0e746084e3e9b8a9ad6ee545100_grande.jpg"
-                                alt=""></a>
-                        <div class="content-left">
-                            <a class="title2" href="#">Hiểu sẻ chia</a>
-                            <span>
-                                Hiểu hơn về Nông nghiệp bền vững cũng như tác động của nông nghiệp bền vững tới môi
-                                trường và cộng đồng.
+                                {{item.content}}
                             </span>
                         </div>
                     </div>
@@ -106,81 +45,43 @@
                 </div>
                 <div class="line"></div>
                 <div class="line" style="margin-bottom: 80px;"></div>
-                <div class="gradient-border">
-                    <a target="_self" href="#"><img class="img-left"
-                            src="https://file.hstatic.net/200000170631/file/canhngongdonghanhcungnongdansinhthai__12__5b1dc0e746084e3e9b8a9ad6ee545100_grande.jpg"
-                            alt=""></a>
-                    <div class="content-left">
-                        <a class="title2" href="#">Cung đường Gạo Ngỗng, Đảo Bầu (Hải Phòng)</a>
-                        <div class="child-content child-content-left">
-                            <div class="checkmark"></div><span>Tìm hiểu về ruộng rươi</span>
-                            <div class="checkmark"></div><span>Thực hành trồng cấy lúa ruộng rươi</span>
-                            <div class="checkmark"></div><span>Khám phá đa dạng sinh thái ruộng rươi</span>
-                        </div>
-                        <div class="child-content child-content-right">
-                            <div class="checkmark"></div><span>Tìm hiểu về ruộng rươi</span>
-                            <div class="checkmark"></div><span>Thực hành trồng cấy lúa ruộng rươi</span>
-                            <div class="checkmark"></div><span>Khám phá đa dạng sinh thái ruộng rươi</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="gradient-border">
-                    <div class="content-right">
-                        <a class="title2" target="_self" href="#">Cung đường Diêm Dân</a>
-                        <div class="child-content child-content-left">
-                            <div class="checkmark"></div><span>Tìm hiểu về ruộng rươi</span>
-                            <div class="checkmark"></div><span>Thực hành trồng cấy lúa ruộng rươi</span>
-                            <div class="checkmark"></div><span>Khám phá đa dạng sinh thái ruộng rươi</span>
-                        </div>
-                        <div class="child-content child-content-right">
-                            <div class="checkmark"></div><span>Tìm hiểu về ruộng rươi</span>
-                            <div class="checkmark"></div><span>Thực hành trồng cấy lúa ruộng rươi</span>
-                            <div class="checkmark"></div><span>Khám phá đa dạng sinh thái ruộng rươi</span>
+                <div *ngFor="let item of project.khamPhaTraiNghiemList; let i = index">
+                    <div *ngIf="i%2 === 0" class="gradient-border">
+                        <a target="_self" href="#"><img class="img-left" [src]="item.imageUrl" alt=""></a>
+                        <div class="content-left">
+                            <a class="title2" href="#">{{item.title}}</a>
+                            <div *ngFor="let content of item.content; let i = index">
+                                <div *ngIf="i%2 === 0" class="child-content child-content-left">
+                                    <div *ngFor="let item of content.desc" style="display: flex;">
+                                        <div class="checkmark"></div><span>{{item}}</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="i%2 !== 0" class="child-content child-content-right">
+                                    <div *ngFor="let item of content.desc" style="display: flex;">
+                                        <div class="checkmark"></div><span>{{item}}</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <a target="_self" href="#"><img class="img-right"
-                            src="https://file.hstatic.net/200000170631/file/canhngongdonghanhcungnongdansinhthai__12__5b1dc0e746084e3e9b8a9ad6ee545100_grande.jpg"
-                            alt=""></a>
-                </div>
-                <div class="gradient-border">
-                    <a target="_self" href="#"><img class="img-left"
-                            src="https://file.hstatic.net/200000170631/file/canhngongdonghanhcungnongdansinhthai__12__5b1dc0e746084e3e9b8a9ad6ee545100_grande.jpg"
-                            alt=""></a>
-                    <div class="content-left">
-                        <a class="title2" href="#">Cam Chú Phúc - Vườn Quốc Gia Xuân Sơn</a>
-                        <div class="child-content child-content-left">
-                            <div class="checkmark"></div><span>Tìm hiểu về ruộng rươi</span>
-                            <div class="checkmark"></div><span>Thực hành trồng cấy lúa ruộng rươi</span>
-                            <div class="checkmark"></div><span>Khám phá đa dạng sinh thái ruộng rươi</span>
+                    <div *ngIf="i%2 !== 0" class="gradient-border">
+                        <div class="content-right">
+                            <a class="title2" target="_self" href="#">{{item.title}}</a>
+                            <div *ngFor="let content of item.content; let i = index">
+                                <div *ngIf="i%2 === 0" class="child-content child-content-left">
+                                    <div *ngFor="let item of content.desc" style="display: flex;">
+                                        <div class="checkmark"></div><span>{{item}}</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="i%2 !== 0" class="child-content child-content-right">
+                                    <div *ngFor="let item of content.desc" style="display: flex;">
+                                        <div class="checkmark"></div><span>{{item}}</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="child-content child-content-right">
-                            <div class="checkmark"></div><span>Tìm hiểu về ruộng rươi</span>
-                            <div class="checkmark"></div><span>Thực hành trồng cấy lúa ruộng rươi</span>
-                            <div class="checkmark"></div><span>Khám phá đa dạng sinh thái ruộng rươi</span>
-                        </div>
+                        <a target="_self" href="#"><img class="img-right" [src]="item.imageUrl" alt=""></a>
                     </div>
-                </div>
-                <!-- <div class="add-dele"> -->
-                <div class="gradient-border">
-                    <!-- <button id="remove-btn" class="removeBtn hide" (click)="deleteNewElement()">x</button> -->
-                    <div class="content-right">
-                        <a class="title2" target="_self" href="#">Vường rau hữu cơ - Vường hồng Karose</a>
-                        <div class="child-content child-content-left">
-                            <div class="checkmark"></div><span>Tìm hiểu về ruộng rươi</span>
-                            <div class="checkmark"></div><span>Thực hành trồng cấy lúa ruộng rươi</span>
-                            <div class="checkmark"></div><span>Khám phá đa dạng sinh thái ruộng rươi</span>
-                        </div>
-                        <div class="child-content child-content-right">
-                            <div class="checkmark"></div><span>Tìm hiểu về ruộng rươi</span>
-                            <div class="checkmark"></div><span>Thực hành trồng cấy lúa ruộng rươi</span>
-                            <div class="checkmark"></div><span>Khám phá đa dạng sinh thái ruộng rươi</span>
-                        </div>
-                    </div>
-                    <a target="_self" href="#"><img class="img-right"
-                            src="https://file.hstatic.net/200000170631/file/canhngongdonghanhcungnongdansinhthai__12__5b1dc0e746084e3e9b8a9ad6ee545100_grande.jpg"
-                            alt=""></a>
-                    <!-- </div>
-                    <button id="btntest" class="addBtn" (click)="addNewElement()">Add</button> -->
                 </div>
             </div>
         </div>

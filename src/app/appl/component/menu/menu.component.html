@@ -23,60 +23,24 @@
         <app-img-product *ngFor="let item of productList" [data]="item" (eventClick)="addCart()"></app-img-product>
     </div>
     <div class="image">
-        <a target="_self" [href]="bannerMiddlePage!.targetUrl"><img [src]="bannerMiddlePage!.imageUrl" alt=""></a>
-    </div>
-    <div class="image so-gao-mobile" style="width: 80%; margin-top: 10px;">
-        <div>
-            <img src="../../../../assets/image/main/so-gao_compressed.jpg" alt="" style="width: 250px;">
-        </div>
-        <div>
-            <div style="margin-bottom: 20px;">
-                <div style="display: flex;/* justify-content: e;width: 83%;;3%; */justify-content: space-around;">
-                    <div style=" font-weight: bold;"><img src="../../../../assets/image/main/money.png" alt=""
-                            style="width: 80px;"><br> Ưu Đãi<br>22% - 35% </div>
-                    <div style="font-weight: bold; "><img src="../../../../assets/image/main/money2.png" alt=""
-                            style="width: 80px;"><br> Luôn<br>Tươi Ngon </div>
-                    <div style="font-weight: bold;"><img src="../../../../assets/image/main/money3.png" alt=""
-                            style="width: 80px;margin-bottom: 6px;"><br>
-                        Luôn<br>Tươi
-                        Ngon </div>
-                </div>
-                <div style=" border: 1px solid;border-radius: 10px;">
-                    <div style="align-items: center;align-content: center;">
-                        <div
-                            style="display: flex;flex-direction: column;justify-content: center;text-align: center;font-weight: bold;">
-                            Sổ Gạo <div class="line" style="width: 100%;"></div>
-                            <div class="line" style=" width: 100%;"></div>
-                        </div>
-                        <div><button
-                                style="background: red;width: 200px;border: 2px solid #fff;border-radius: 15px;color: #fff;font-weight: bold;align-items: center;">ĐẶT
-                                NGAY</button></div>
-                    </div>
-                    <div style="font-size: 12px;padding-left: 15px;text-align: left;padding-right: 15px;"> Sổ gạo là
-                        hình thức "Mua trước trả sau" nằm trong dự án "Cánh Đồng Sẻ
-                        Chia" do Ngỗng triển khai nhằm mang lại
-                        lợi
-                        ích cân bằng cho cả khác hàng và người nông dân.<br>
-                        ............................................................<br>
-                        ............................................................<br></div>
-                </div>
-            </div>
-        </div>
+        <a target="_self" [href]="bannerMiddlePage!.targetUrl"><img [src]="bannerMiddlePage?.imageUrl" alt=""></a>
     </div>
     <div class="image so-gao-desktop"
         style="margin-top: 30px;margin-bottom: -100px;justify-content: center;height: auto;">
-        <div style="position: relative; z-index: 2; left: 15px; top: -30px;"><img [src]="sogao!.imgSoGao" alt=""
+        <div style="position: relative; z-index: 2; left: 15px; top: -30px;"><img [src]="sogao?.imgSoGao" alt=""
                 style="width: 255px;transform: rotate(355deg);"></div>
         <div style="width: 62%;position: relative;">
             <div style="position: relative; ">
                 <div style="display: flex; justify-content: space-around; margin-bottom: 25px;">
-                    <div style="font-weight: bold; text-align: center;"><img [src]="sogao!.feature[0].imageUrl" alt=""
-                            style="width: 80px;"><br> {{sogao!.feature[0].title}}<br>{{sogao!.feature[0].content}}</div>
-                    <div style="font-weight: bold; text-align: center;"><img [src]="sogao!.feature[1].imageUrl" alt=""
-                            style="width: 80px;"><br> {{sogao!.feature[1].title}}<br>{{sogao!.feature[1].content}}</div>
-                    <div style="font-weight: bold; text-align: center;"><img [src]="sogao!.feature[2].imageUrl" alt=""
+                    <div style="font-weight: bold; text-align: center;"><img [src]="sogao?.feature[0]?.imageUrl" alt=""
+                            style="width: 80px;"><br> {{sogao?.feature[0].title}}<br>{{sogao?.feature[0]?.content}}
+                    </div>
+                    <div style="font-weight: bold; text-align: center;"><img [src]="sogao?.feature[1]?.imageUrl" alt=""
+                            style="width: 80px;"><br> {{sogao?.feature[1].title}}<br>{{sogao?.feature[1]?.content}}
+                    </div>
+                    <div style="font-weight: bold; text-align: center;"><img [src]="sogao?.feature[2]?.imageUrl" alt=""
                             style="width: 80px; margin-bottom: 6px;"><br>
-                        {{sogao!.feature[2].title}}<br>{{sogao!.feature[2].content}} </div>
+                        {{sogao?.feature[2].title}}<br>{{sogao?.feature[2].content}} </div>
                 </div>
                 <div class="dat-hang-so-gao">
                     <div style="display: flex; margin: 15px 0px; width: 90%; margin-left: 30px;">
@@ -91,7 +55,9 @@
                     </div>
                     <div
                         style="font-size: 20px; padding-left: 60px; text-align: left; padding-right: 15px; word-break: break-word;">
-                        {{sogao.content}}
+                        {{sogao?.content}}<br>
+                        .......................................<br>
+                        .......................................
                     </div>
                 </div>
                 <div style="
@@ -114,7 +80,7 @@
                     <a href="/du-an-trung-vang">
                         <div class="trung-vang"
                             [ngStyle]="{ 'background-image': 'url(' + projectOther[0].imageUrl + ')'}">
-                            <div>{{projectOther[0].name}}</div>
+                            <div>{{projectOther[0]?.name}}</div>
                         </div>
                     </a>
                 </div>
@@ -122,21 +88,21 @@
                     <a *ngIf="projectOther[1]" href="/vuon-dong-hanh">
                         <div class="dong-hanh"
                             [ngStyle]="{ 'background-image': 'url(' + projectOther[1].imageUrl + ')'}">
-                            <div>{{projectOther[1].name}}</div>
+                            <div>{{projectOther[1]?.name}}</div>
                         </div>
                     </a>
                     <a *ngIf="projectOther[2]" href="/canh-dong-chia-se">
                         <div class="canh-dong"
                             [ngStyle]="{ 'background-image': 'url(' + projectOther[2].imageUrl + ')'}">
-                            <div>{{projectOther[2].name}}</div>
+                            <div>{{projectOther[2]?.name}}</div>
                         </div>
                     </a>
                 </div>
             </div>
             <div class="w100" style="width: 100%;">
                 <a href="/chuyen-di-cua-ngong">
-                    <div class="chuyen-di" [ngStyle]="{ 'background-image': 'url(' + projectChuyenDi.imageUrl + ')'}">
-                        <div>{{projectChuyenDi.name}}</div>
+                    <div class="chuyen-di" [ngStyle]="{ 'background-image': 'url(' + projectChuyenDi?.imageUrl + ')'}">
+                        <div>{{projectChuyenDi?.name}}</div>
                     </div>
                 </a>
             </div>
@@ -161,7 +127,7 @@
                 </div>
                 <div class="w100 news-content-right">
                     <div class="w100 news-content-right-img">
-                        <a target="_self" href="/chi-tiet-tin-tuc"><img *ngIf="!isMobile"
+                        <a target="_self" href="/chi-tiet-tin-tuc"><img
                                 style="width: 194px;height: 194px; border-radius: 20px; border: 5px solid #87b83b; "
                                 [src]="postNewsList![1].menuImage" alt=""></a>
                         <div class="txt-news">
@@ -170,7 +136,7 @@
                         </div>
                     </div>
                     <div class="w100 news-content-right-img" style="height: 30%;">
-                        <a target="_self" href="/chi-tiet-tin-tuc"><img *ngIf="!isMobile"
+                        <a target="_self" href="/chi-tiet-tin-tuc"><img
                                 style="width: 194px;height: 194px; border-radius: 20px; border: 5px solid #87b83b;"
                                 [src]="postNewsList![2].menuImage" alt=""></a>
                         <div class="txt-news">
@@ -180,7 +146,7 @@
                         </div>
                     </div>
                     <div class="w100 news-content-right-img" style="height: 30%;">
-                        <a target="_self" href="/chi-tiet-tin-tuc"><img *ngIf="!isMobile"
+                        <a target="_self" href="/chi-tiet-tin-tuc"><img
                                 style="width: 194px;height: 194px; border-radius: 20px; border: 5px solid #87b83b;"
                                 [src]="postNewsList![3].menuImage" alt=""></a>
                         <div class="txt-news">
@@ -197,7 +163,8 @@
         <label class="lbl-title">Feedback Từ Khách Hàng</label>
     </div>
     <div style="width: 100%;" class="member">
-        <app-carousel [feedback]="true" [numVisible]="3" [datas]="imagesMember" [responsiveOptions]="responsiveOptions">
+        <app-carousel [feedback]="true" [numVisible]="3" [datas]="imagesMember"
+            [responsiveOptions]="responsivefeedback">
         </app-carousel>
 
     </div>

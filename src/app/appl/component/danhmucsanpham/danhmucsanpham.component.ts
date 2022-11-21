@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, Renderer2, HostListener } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { HeaderComponent } from 'src/app/common/header/header.component';
 import { ProductDialogComponent } from 'src/app/common/productDialog/productDialog.component';
@@ -26,6 +26,13 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
     }
     @ViewChild('header', { static: false }) header!: HeaderComponent;
     @ViewChild('comment', { static: false }) comment!: ElementRef;
+    @ViewChild('order', { static: false }) order!: ElementRef;
+    @ViewChild('seenProduct', { static: false }) seenProduct!: ElementRef;
+    @ViewChild('collectionsidebar', { static: false }) collectionsidebar!: ElementRef;
+
+    isPrince = false;
+    isTrademark = false;
+
     ref!: DynamicDialogRef;
     datasSale: any[] = [
         '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
@@ -33,7 +40,19 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
         '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
         '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
         '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
+    ];
+
+    princeList = [
+        { value: '0', name: 'Tất cả' },
+        { value: '100000', name: 'Nhỏ hơn 100,000₫' },
+        { value: '100000-200000', name: 'Từ 100,000₫ - 200,000₫' },
+        { value: '200000-300000', name: 'Từ 200,000₫ - 300,000₫' },
+        { value: '300000-400000', name: 'Từ 300,000₫ - 400,000₫' },
+        { value: '400000-500000', name: 'Từ 400,000₫ - 500,000₫' },
+        { value: '500000', name: 'Lớn hơn 500,000₫' },
     ]
+
+    productFilter: any[] = [];
 
     productDisplayList: any[] = [
         { 'id': 'SP000001', image: '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp' },
@@ -188,16 +207,38 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
         });
     }
 
+    @HostListener('window: scroll', ['$event'])
+    onScroll(event: any) {
+        const collectionsidebarBound = this.collectionsidebar.nativeElement.getBoundingClientRect();
+        const orderBound = this.order.nativeElement.getBoundingClientRect();
+        const seenPrd = this.seenProduct.nativeElement.getBoundingClientRect();
+        if ((collectionsidebarBound.top + collectionsidebarBound.height) <= 100) {
+            this.render2.setStyle(this.order.nativeElement, 'position', 'absolute');
+            this.render2.setStyle(this.order.nativeElement, 'top', `${window.scrollY + 100}px`);
+            this.render2.addClass(this.order.nativeElement, 'box-stick');
+        } else {
+            this.render2.removeStyle(this.order.nativeElement, 'position');
+            this.render2.removeClass(this.order.nativeElement, 'box-stick');
+        }
+
+        if (seenPrd.top < orderBound.height + 100) {
+            this.render2.removeStyle(this.order.nativeElement, 'position');
+            this.render2.removeClass(this.order.nativeElement, 'box-stick');
+        }
+    }
+
     formatCashProduct(value: any) {
         return Utils.formatCash(String(value));
     }
 
-    createURL(name: string) {
-        return `chi-tiet-san-pham?name=${Utils.removeAccents(String(name)).toLowerCase().split(' ').join('-')}`
+    createURL(name: string, id: string) {
+        return `chi-tiet-san-pham?name=${Utils.removeAccents(String(name)).toLowerCase().split(' ').join('-')}&id=${id}`;
     }
 
     show() {
-        this.productDisplayList = [...this.productList];
+        let products = [];
+        products = this.productFilter.length ? [...this.productFilter] : [...this.productList];
+        this.productDisplayList = [...products];
         this.isShowbutton = false;
     }
 
@@ -220,32 +261,35 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
         });
     }
 
-    addCart(event: any) {
+    addCart(item: any) {
+        const account = this.getAccount();
         let product: any[] = [];
-        let insertFlag = false;
-        product = JSON.parse(sessionStorage.getItem("productList") as any);
+        let insertFlag = true;
+        product = JSON.parse(sessionStorage.getItem("productList") as any) ? JSON.parse(sessionStorage.getItem("productList") as any) : [];
         if (product && product.length) {
             product.forEach(element => {
-                if (element.id === 'new8938521954248') {
-                    insertFlag = true;
+                if (element.code === item.code) {
+                    insertFlag = false;
                     element.quantity = +(element.quantity) + 1;
-                    element.totalPrice = 210000 * element.quantity;
+                    element.totalPrice = item.price * element.quantity;
                 }
             });
         }
-        if (!insertFlag || (product && !product.length)) {
-            product = [];
-            product.push({
-                id: 'new8938521954248',
-                title: 'Mật Trà Kombucha Thảo Mộc',
-                image: '',
-                price: '210000',
-                variant: '500ml',
-                totalPrice: 210000 * 1,
-                quantity: 1
-            });
+        if (insertFlag) {
+            item.quantity = 1;
+            item.totalPrice = item.price;
+            product.push(item);
         }
         sessionStorage.setItem('productList', JSON.stringify(product));
+        if (account) {
+            const params = {
+                "userId": account.id,
+                "productVariantId": item.id,
+                "quantity": 1
+            }
+            this.httpService.reqeustApiPost('carts', params, true).subscribe((data: any) => {
+            });
+        }
         this.header.visibleSidebar = true;
     }
 
@@ -283,15 +327,22 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
     }
 
     thOnChange(event: any) {
-        if (event.target.checker) {
+        if (event.currentTarget.checked) {
             this.productDisplayList = this.productList.filter(x => x.branchname === event.target.id);
         }
     }
 
     kgOnChange(event: any) {
-        if (event.target.checker) {
+        if (event.currentTarget.checked) {
+            this.isPrince = true;
             const values = event.target.value.split('-');
-            this.productDisplayList = this.productList.filter(x => this.checkPrice(x.price, values));
+            if (this.isTrademark) {
+                this.productFilter = this.productFilter.filter(x => this.checkPrice(x.price, values));
+            } else {
+                this.productFilter = this.productList.filter(x => this.checkPrice(x.price, values));
+            }
+            this.productDisplayList = this.productFilter.slice(0, 12);
+            this.isShowbutton = this.productFilter.length > 12 ? true : false;
         }
     }
 
@@ -299,12 +350,30 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
         if (values.length === 1) {
             if (values[0] === '100000') {
                 return price < values[0];
+            } else if (!+(values[0])) {
+                return true;
             } else {
                 return price > values[0];
             }
         } else {
             return (price >= values[0] && price <= values[0]);
         }
+    }
+
+    onSort(value: any) {
+        let products = this.productFilter.length ? this.productFilter : this.productList;
+        let data: any[] = [];
+        if (value === 'asc') {
+            products = this.getSortedData(products, 'price', true);
+        } else if (value === 'desc') {
+            products = this.getSortedData(products, 'price', false);
+        };
+        this.productDisplayList = this.isShowbutton ? products.slice(0, 12) : products;
+    }
+    getSortedData(data: any[], prop: any, isAsc: any) {
+        return data.sort((a, b) => {
+            return (a[prop] < b[prop] ? -1 : 1) * (isAsc ? 1 : -1)
+        });
     }
 
 

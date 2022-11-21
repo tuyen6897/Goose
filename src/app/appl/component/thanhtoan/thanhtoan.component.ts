@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBase.component';
+import { HttpService } from 'src/app/common/service/http-service';
 import { LoginComponent } from '../login/login.component';
 
 @Component({
@@ -17,34 +18,38 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
     @ViewChild('name', { static: true }) name!: ElementRef;
     @ViewChild('tel', { static: true }) tel!: ElementRef;
     @ViewChild('email', { static: true }) email!: ElementRef;
+    note: string = '';
     voucher = '';
     checked = false;
     isCard = false;
     ismomo = false;
     iszalo = false;
-    selectedCity1 = { name: '', code: '', districts: null };
-    selectedCity2 = { name: '', code: '', wards: null };
-    selectedCity3 = { name: '', code: '' };
+    selectedCity1 = { name: '', id: '', districtList: null };
+    selectedCity2 = { name: '', id: '', wardList: null };
+    selectedCity3 = { name: '', id: '' };
     cities = [
-        { name: 'Chọn tỉnh thành', code: '0', districts: null },
+        { name: 'Chọn tỉnh thành', id: 0, districtList: null },
     ];
 
     district = [
-        { name: 'Chọn Quận/Huyện', code: '0', wards: null },
+        { name: 'Chọn Quận/Huyện', id: 0, wardList: null },
     ];
-    wards = [
-        { name: 'Chọn Phường', code: '' },
+    wardList = [
+        { name: 'Chọn Phường', id: 0 },
     ]
     product: any;
     total = '';
-    ship = '30,000';
+    shipPrice = 0;
+    totalOrder = +(this.total) + this.shipPrice;
     account: any = {
         username: '',
         email: '',
-        phone: ''
+        phone: '',
+        address: ''
     };
+    paymentMethodList: any[] = [];
     ref!: DynamicDialogRef;
-    constructor(private render2: Renderer2, private router: Router, private http: HttpClient, private dialogService: DialogService
+    constructor(private render2: Renderer2, private router: Router, private httpService: HttpService, private dialogService: DialogService
         , private messageService1: MessageService) {
         super(messageService1, render2);
     }
@@ -73,13 +78,20 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
                 totalNumber += +(item.price) * item.quantity;
             });
             this.total = String(totalNumber);
+            this.totalOrder = +(this.total) + this.shipPrice;
         }
-        this.http.get('https://provinces.open-api.vn/api/?depth=3').subscribe((datas: any) => {
-            console.log(datas);
-            datas.forEach((data: any) => {
-                this.cities.push({ name: data.name, code: data.code, districts: data.districts });
+        this.httpService.reqeustApiget('city').subscribe((data: any) => {
+            console.log(data.cityList);
+            data.cityList.forEach((data: any) => {
+                this.cities.push({ name: data.name, id: data.id, districtList: data.districtList });
                 this.showLoadingDialog('off');
             });
+        })
+
+        this.httpService.reqeustApiget('paymentlist').subscribe((data: any) => {
+            if (data.paymentMethodList) {
+                this.paymentMethodList = data.paymentMethodList;
+            }
         })
     }
 
@@ -94,6 +106,68 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
                 func: this.onLogin.bind(this)
             }
         });
+    }
+
+    onPay() {
+        if (this.checked) {
+
+            let productList: any[] = [];
+            this.product.forEach((item: any) => {
+                productList.push({
+                    "productCode": item.productCode,
+                    "quantity": item.quantity,
+                    "attribute": item.attribute,
+                    "price": item.price,
+                    "priceDiscount": item.totalPrice,
+                    "gaoFlag": item.gaoFlag
+                });
+            });
+
+            const params = {
+                "Customer": {
+                    "cusName": this.account.username,
+                    "cusEmail": this.account.email,
+                    "cusPhone": this.account.phone,
+                    "cusCity": this.selectedCity1.id,
+                    "cusDistrict": this.selectedCity2.id,
+                    "cusWard": this.selectedCity3.id,
+                    "cusNote": this.note
+                },
+                "productList": productList,
+                "soGaoList": [
+                    {
+                        "productCode": "string",
+                        "quantity": 0,
+                        "attribute": {
+                            "key": "string",
+                            "name": "string",
+                            "value": [
+                                "string"
+                            ]
+                        },
+                        "price": 0,
+                        "priceDiscount": 0
+                    }
+                ],
+                "promotionCode": "string",
+                "paymentMethodId": "string",
+                "originAmount": "string",
+                "amountDiscount": "string",
+                "shippingFee": String(this.shipPrice),
+                "totalAmount": "string",
+                "User": {
+                    "id": this.account.id,
+                    "name": this.account.username,
+                    "phone": this.account.phone,
+                    "email": this.account.email,
+                    "address": this.account.address,
+                    "password": "string",
+                    "passwordPlainText": "string",
+                    "actived": 0,
+                    "createdDate": "2022-11-20T16:04:26.338Z"
+                }
+            }
+        }
     }
 
     onLogin(severity: string = 'info', summary: string = 'Info', message: string = 'Message') {
@@ -115,23 +189,29 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
 
     citiesChange(selectedCity1: any) {
         this.district = [
-            { name: 'Chọn Quận/Huyện', code: '0', wards: null },
+            { name: 'Chọn Quận/Huyện', id: 0, wardList: null },
         ];
-        this.wards = [
-            { name: 'Chọn Phường', code: '' },
+        this.wardList = [
+            { name: 'Chọn Phường', id: 0 },
         ]
-        selectedCity1.districts.forEach((data: any) => {
-            this.district.push({ name: data.name, code: data.code, wards: data.wards });
+        selectedCity1.districtList.forEach((data: any) => {
+            this.district.push({ name: data.name, id: data.id, wardList: data.wardList });
         });
     }
 
     districtChange(selectedCity2: any) {
-        this.wards = [
-            { name: 'Chọn Phường', code: '' },
+        this.wardList = [
+            { name: 'Chọn Phường', id: 0 },
         ]
-        selectedCity2.wards.forEach((data: any) => {
-            this.wards.push({ name: data.name, code: data.code });
+        selectedCity2.wardList.forEach((data: any) => {
+            this.wardList.push({ name: data.name, id: data.id });
         });
+    }
+
+    wardListChange() {
+        this.httpService.reqeustApiget('ship-price', `cityCode=${this.selectedCity1.id}&districtCode=${this.selectedCity2.id}&weight=10&totalPrice=${this.total}`).subscribe((data: any) => {
+            this.shipPrice = data.shipPrice;
+        })
     }
 
 
@@ -159,8 +239,8 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
         this.isCard = false;
     }
 
-    formatCash(str: string) {
-        str = String(str);
+    formatCash(value: number) {
+        const str = String(value);
         return str.split('').reverse().reduce((prev, next, index) => {
             return ((index % 3) ? next : (next + ',')) + prev
         })

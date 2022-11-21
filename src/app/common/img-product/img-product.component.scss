@@ -128,11 +128,31 @@
 
 }
 
+@media (max-width: 1366px) {
+    .product-content {
+        .product-item {
+            .product-info {
+                .product-title {
+                    a {
+                        font-size: 16px;
+                    }
+                }
+
+                .product-actions {
+                    div {
+                        button {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 @media (max-width: 991px) {
     .product-content {
-        width: 180px;
-        padding-left: 5px;
-
         .product-item {
             .product-info {
                 .product-actions {

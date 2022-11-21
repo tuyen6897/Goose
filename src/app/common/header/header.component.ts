@@ -24,6 +24,7 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
     product: any;
     total = '0';
     totalProduct = 0;
+    totalCartProduct = 0;
     ref!: DynamicDialogRef;
     account: any = null;
     isaccount = false;
@@ -80,9 +81,16 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
 
     ngAfterViewChecked(): void {
         this.account = JSON.parse(sessionStorage.getItem("account") as any);
+        const product = JSON.parse(sessionStorage.getItem("productList") as any);
+        if (product && product.length) {
+            this.totalCartProduct = 0;
+            product.forEach((item: any) => {
+                this.totalCartProduct += item.quantity;
+            });
+        }
     }
 
-    onMouseOver() {
+    onMouseOver(event: any) {
         this.product = JSON.parse(sessionStorage.getItem("productList") as any);
         this.totalProduct = 0;
         if (this.product && this.product.length) {
@@ -94,12 +102,14 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
             });
             this.total = String(totalNumber);
         }
+        this.cart.show(event);
     }
 
     onLogOut() {
         this.op.hide();
         setTimeout(() => {
             sessionStorage.removeItem("account");
+            sessionStorage.removeItem('productList');
             location.reload();
         }, 100);
     }

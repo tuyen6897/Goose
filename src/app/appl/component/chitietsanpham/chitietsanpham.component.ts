@@ -8,6 +8,7 @@ import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBa
 import { HeaderComponent } from 'src/app/common/header/header.component';
 import { FileModel } from 'src/app/common/model/file.model';
 import { HttpService } from 'src/app/common/service/http-service';
+import { Utils } from 'src/app/common/util/utils';
 
 @Component({
     selector: 'app-chitietsanpham',
@@ -20,8 +21,8 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
 
     @ViewChild('header', { static: false }) header!: HeaderComponent;
     @ViewChild('productFix', { static: true }) productFix!: ElementRef;
-    @ViewChild('option100', { static: false }) option100!: ElementRef;
-    @ViewChild('option500', { static: false }) option500!: ElementRef;
+    @ViewChild('description', { static: true }) description!: ElementRef;
+    // @ViewChild('option500', { static: false }) option500!: ElementRef;
     @ViewChild('comment', { static: false }) comment!: ElementRef;
     @ViewChild('commentTitle', { static: false }) commentTitle!: ElementRef;
     @ViewChild('reviews', { static: true }) reviews!: ElementRef;
@@ -35,6 +36,8 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
     imageList: FileModel[] = [];
     imageList2: number = 10;
     product: any;
+    productVariant: any;
+    productVariants: any[] = [];
     images: { previewImageSrc: string; thumbnailImageSrc: string; }[] = [{
         "previewImageSrc": '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
         "thumbnailImageSrc": '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
@@ -305,8 +308,14 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
 
     ngOnInit() {
         this.showLoadingDialog('on');
-        this.httpService.reqeustApiget('productDetails', window.location.search.split('?code=')[1]).subscribe((response: any) => {
-            this.product = response;
+        this.httpService.reqeustApiget('productDetails', window.location.search.split('id=')[1]).subscribe((response: any) => {
+            if (response.detailProduct) {
+                this.product = response.detailProduct;
+                this.productVariant = this.product.productVariants[0];
+                this.product.productVariants[0].check = true;
+                this.productVariants = this.product.productVariants;
+                this.description.nativeElement.innerHTML = this.product.description;
+            }
 
 
             this.showLoadingDialog('off');
@@ -323,23 +332,20 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
         });
     }
 
-    onCheck(event: any) {
-        console.log(event);
-        if (event.target.value === '100') {
-            this.option100.nativeElement.classList.add('sp');
-            const img100 = this.option100.nativeElement.querySelector('.img-check');
-            img100.style.display = 'block';
-            this.option500.nativeElement.classList.remove('sp');
-            const img500 = this.option500.nativeElement.querySelector('.img-check');
-            img500.style.display = 'none';
-        } else {
-            this.option500.nativeElement.classList.add('sp');
-            const img500 = this.option500.nativeElement.querySelector('.img-check');
-            img500.style.display = 'block';
-            this.option100.nativeElement.classList.remove('sp');
-            const img100 = this.option100.nativeElement.querySelector('.img-check');
-            img100.style.display = 'none';
-        }
+    formatCashProduct(value: any) {
+        return Utils.formatCash(String(value));
+    }
+
+    onCheck(item: any) {
+        item.check = true;
+        this.productVariants.forEach((product: any) => {
+            product.check = false;
+            if (item.code === product.code) {
+            }
+        });
+
+        this.productVariants.find(x => x.code === item.code).check = true;
+        this.productVariant = item;
     }
 
     onActive(index: number) {
@@ -347,31 +353,43 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
     }
 
     addCart(event: any) {
+        const account = this.getAccount();
         let product: any[] = [];
         let insertFlag = false;
-        product = JSON.parse(sessionStorage.getItem("productList") as any);
+        product = JSON.parse(sessionStorage.getItem("productList") as any) ? JSON.parse(sessionStorage.getItem("productList") as any) : [];
         if (product && product.length) {
             product.forEach(element => {
-                if (element.id === 'new8938521954248') {
+                if (element.code === this.product.code && element.idVariant === this.productVariant.id) {
                     insertFlag = true;
                     element.quantity = +(element.quantity) + this.inputQuantity;
-                    element.totalPrice = 210000 * element.quantity;
+                    element.totalPrice = this.productVariant.price * element.quantity;
                 }
             });
         }
-        if (!insertFlag || (product && !product.length)) {
-            product = [];
+        if (!insertFlag) {
             product.push({
-                id: 'new8938521954248',
-                title: 'Mật Trà Kombucha Thảo Mộc',
-                image: '',
-                price: '210000',
-                variant: '500ml',
-                totalPrice: 210000 * this.inputQuantity,
+                idVariant: this.productVariant.id,
+                code: this.product.code,
+                id: this.product.id,
+                name: this.product.name,
+                image: this.product.image,
+                price: this.productVariant.price,
+                size: this.productVariant.size,
+                unit: this.productVariant.unit,
+                variant: `${this.productVariant.size}${this.productVariant.unit}`,
+                totalPrice: this.productVariant.price * this.inputQuantity,
                 quantity: this.inputQuantity
             });
+            sessionStorage.setItem('productList', JSON.stringify(product));
+            if (account) {
+                const params = {
+                    "userId": account.id,
+                    "productVariantId": this.productVariant.id,
+                    "quantity": this.inputQuantity
+                }
+                this.httpService.reqeustApiPost('carts', params, true);
+            }
         }
-        sessionStorage.setItem('productList', JSON.stringify(product));
         this.header.visibleSidebar = true;
     }
 

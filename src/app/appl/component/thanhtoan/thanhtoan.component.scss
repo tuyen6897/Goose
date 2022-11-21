@@ -152,10 +152,15 @@
                 .image {
                     .product_image {
                         display: flex;
+                        margin-bottom: 10px;
 
                         a {
+                            position: relative;
+
                             img {
                                 height: 100px;
+                                min-height: 100px;
+                                min-width: 100px;
                                 border: 1px solid #ccc;
                                 border-radius: 10px;
                                 margin-right: 10px;
@@ -227,5 +232,18 @@
             }
         }
     }
+}
 
+.gio-hang-total {
+    width: 25px;
+    height: 25px;
+    font-weight: bold;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    font-size: 15px;
+    text-align: center;
+    color: #fff;
 }

@@ -21,8 +21,10 @@
                 <div>Tài Khoản</div>
             </div>
             <!-- <a (click)="visibleSidebar = true"><img src="../../../../assets/image/main/gio-hang.png" /></a> -->
-            <a (click)="onClick()" (mouseover)="onMouseOver(); cart.show($event)"><img
-                    src="../../../../assets/image/main/gio-hang.png" /></a>
+            <a (click)="onClick()" (mouseover)="onMouseOver($event)">
+                <img src="../../../../assets/image/main/gio-hang.png" />
+                <div class="gio-hang-total" *ngIf="totalCartProduct > 0">{{totalCartProduct}}</div>
+            </a>
         </div>
     </div>
     <div #menu class="header-desktop" [class]="banner ? 'banner' : ''">
@@ -30,8 +32,8 @@
             <a *ngIf="!isSlide"><img src="../../../../assets/image/main/logo.webp" /></a>
             <a *ngIf="isSlide"><img src="../../../../assets/image/main/Logo-trang.png" /></a>
         </div>
-        <app-headerMenu [slide]="isSlide" (cartClick)="cart.toggle($event)" (accountClick)="op.toggle($event)"
-            style="width: 100%;">
+        <app-headerMenu [slide]="isSlide" [totalCartProduct]="totalCartProduct" (cartHover)="onMouseOver($event)"
+            (cartClick)="cart.toggle($event)" (accountClick)="op.toggle($event)" style="width: 100%;">
         </app-headerMenu>
     </div>
     <div class="header-top-mobile">
@@ -48,14 +50,14 @@
             <div class="product">
                 <div class="product_image" *ngFor="let item of product; let i = index">
                     <a target="_self" href="/chi-tiet-san-pham" (click)="visibleSidebar = false">
-                        <img src="  //product.hstatic.net/200000170631/product/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_medium.jpg"
-                            alt="Mật Trà Kombucha Cốt Chuối">
+                        <img [src]="item.image" alt="">
+                        <div class="gio-hang-total-cart">{{item.quantity}}</div>
                     </a>
                     <div class="item-content">
                         <div class="content">
                             <a (click)="visibleSidebar = false" class="title" href="/chi-tiet-san-pham">{{item
                                 ?
-                                item.title:
+                                item.name:
                                 ''}}
                             </a><br>
                             <span class="total-price">{{item ? formatCash(item.totalPrice) :
@@ -83,13 +85,14 @@
                 <div class="product">
                     <div class="product_image" *ngFor="let item of product; let i = index">
                         <a target="_self" href="/chi-tiet-san-pham" (click)="visibleSidebar = false">
-                            <img src="  //product.hstatic.net/200000170631/product/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_medium.jpg"
-                                alt="Mật Trà Kombucha Cốt Chuối">
+                            <img [src]="item.image" alt="">
+                            <div class="gio-hang-total-alert">{{item.quantity}}</div>
                         </a>
+
                         <div class="item-content">
                             <div class="content">
                                 <div><a (click)="visibleSidebar = false" class="title" href="/chi-tiet-san-pham">
-                                        {{item?item.title:''}}
+                                        {{item?item.name:''}}
                                     </a></div>
                                 <span class="total-price">{{item ? formatCash(item.totalPrice) : ''}} ₫</span>
                             </div>

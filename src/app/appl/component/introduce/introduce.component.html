@@ -39,24 +39,6 @@
             </div>
         </div>
     </div>
-    <div *ngIf="isMobile" class="box-future">
-        <div style="margin-top: 10px;width: 100%;text-align: center;height: 50%;">
-            <label class="lbl-h1">TẦM NHÌNH - SỨ MỆNH</label>
-            Ngỗng không được "sở hữu" được "tạo nên" từ một cá nhậm mà từ một
-            tập thể đa dạng tính cách, năng lực, tiềm năng trong cùng một hệ sinh
-            thái. Hệ sinh thái của Ngỗng không bao gồm tất cả các hợp phần "của
-            Ngỗng" thuộc sở hữu bởi Ngỗng, mà mỗi thành viên, mỗi sản phẩm,
-            mỗi đối tác và cả môi trường, thiên nhiên cũng là một phần trong hệ
-            sinh tháy đấy.
-        </div>
-        <div style="width: 100%; display: flex;justify-content: center;height: 40%;">
-            <div
-                style="width: 90%; background-color: #bc7026; height: 80%; margin-top: 28px; padding: 20px; border-radius: 27px; color: #fff; text-align: center;">
-                <label class="lbl-h1 lbl-title"> GÍA TRỊ CỐT LÕI </label><br><span> Nội dung </span>
-            </div>
-        </div>
-    </div>
-
     <div class="story">
         <div class="story-image"><img style="width: 100%;"
                 [src]="introduce?.soLuocVeNgong.cauChuyenThuongHieu.imageUrl" /></div>
@@ -73,7 +55,7 @@
             </app-carousel>
         </div>
         <div>
-            <div *ngIf="!isMobile" class="box-future">
+            <div class="box-future">
                 <div class="box-content"
                     [ngStyle]="{ 'background': 'linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url(' + introduce?.soLuocVeNgong.tamNhinSuMenhGTCL.imageUrl + ')'}">
                     <div style="margin-top: 30px; width: 50%; text-align: center;">
@@ -97,25 +79,6 @@
                                 {{introduce?.soLuocVeNgong.dinhHuongLinhVuc.fieldOperation}}
                             </span>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div *ngIf="isMobile" class="box-future">
-                <div style="margin-top: 10px;width: 100%;text-align: center;height: 50%;">
-                    <label class="lbl-h1">ĐỊNH HƯỚNG PHÁT TRIỂN</label>
-                    <div style="text-align: left; padding-left: 10px;">
-                        Ngỗng không được "sở hữu" được "tạo nên" từ một cá nhậm mà từ một
-                        tập thể đa dạng tính cách, năng lực, tiềm năng trong cùng một hệ sinh
-                        thái. Hệ sinh thái của Ngỗng không bao gồm tất cả các hợp phần "của
-                        Ngỗng" thuộc sở hữu bởi Ngỗng, mà mỗi thành viên, mỗi sản phẩm,
-                        mỗi đối tác và cả môi trường, thiên nhiên cũng là một phần trong hệ
-                        sinh tháy đấy.
-                    </div>
-                </div>
-                <div style="width: 100%; display: flex;justify-content: center;height: 40%;">
-                    <div style="width: 90%; background-color: #bc7026; height: 80%; margin-top: 15px;
-                                        padding: 15px; border-radius: 27px; color: #fff; text-align: center;">
-                        <label class="lbl-h1">LĨNH VỰC HOẠT ĐỘNG</label><br><span> Nội dung </span>
                     </div>
                 </div>
             </div>

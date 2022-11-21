@@ -49,7 +49,7 @@ const routes: Routes = [
     { path: 'chi-tiet-tuyen-dung', component: ChiTietTuyenDungComponent, title: 'Chi tiết tuyển dụng', pathMatch: 'full' },
     { path: 'chinh-sach-dai-ly-ctv', component: ChinhSachDaiLyCtvComponent, title: 'Chính sách đại lý' },
     { path: 'du-an', component: DuAnKhacComponent, title: 'Dự án khác' },
-    { path: 'he-thong-doi-tac-new', component: HeThongDoiTacNewComponent, title: 'Hệ thống đối tác new' },
+    { path: 'he-thong-doi-tac', component: HeThongDoiTacNewComponent, title: 'Hệ thống đối tác' },
     { path: 'tuyen-dung-new', component: TuyenDungNewComponent, title: 'Tuyển dụng new' },
 ];
 

@@ -60,4 +60,13 @@ export class ComponentBaseComponent {
         }
     }
 
+    addCartAccount(item: any) {
+
+    }
+
+    getAccount() {
+        const account = JSON.parse(sessionStorage.getItem("account") as any);
+        return account;
+    }
+
 }

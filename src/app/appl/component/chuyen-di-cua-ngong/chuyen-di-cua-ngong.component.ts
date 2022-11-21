@@ -19,8 +19,10 @@ export class ChuyenDiCuaNgongComponent extends ComponentBaseComponent implements
     @ViewChild('email', { static: false }) email!: ElementRef;
     @ViewChild('addr', { static: false }) addr!: ElementRef;
     @ViewChild('message', { static: false }) message!: ElementRef;
+    @ViewChild('content', { static: true }) content!: ElementRef;
     images = [1, 2, 3, 4];
     postsNewList: any[] = [1, 2, 3, 4];
+    project: any = null;
     responsiveOptions = [
         {
             breakpoint: '1024px',
@@ -48,18 +50,20 @@ export class ChuyenDiCuaNgongComponent extends ComponentBaseComponent implements
     }
     ngOnInit() {
         this.showLoadingDialog('on');
-        // this.httpService.reqeustApiPost('posts', 'menuCode=chuyen-di-cua-ngong&pageIndex=1&pageSize=1000').subscribe((data: any) => {
-        //     if (data.postList) {
-        //     }
-        // });
-        this.httpService.reqeustApiget('posts', 'menuCode=tin-tuc&pageIndex=1&pageSize=10').subscribe((data: any) => {
-            if (data.postList) {
-                data.postList.forEach((item: any) => {
-                    item.url = `${window.location.origin}/blogs?tin-tuc=${item.slug}`;
-                });
-                this.postsNewList = data.postList;
-                this.showLoadingDialog('off');
+        this.httpService.reqeustApiget('postsproject', 'chuyenDiCuaNgong').subscribe((data: any) => {
+            if (data.chuyenDiCuaNgong) {
+                this.project = data.chuyenDiCuaNgong;
+                this.content.nativeElement.innerHTML = this.project.moDau;
             }
+            this.httpService.reqeustApiget('posts', 'menuCode=tin-tuc&pageIndex=1&pageSize=10').subscribe((data: any) => {
+                if (data.postList) {
+                    data.postList.forEach((item: any) => {
+                        item.url = `${window.location.origin}/blogs?tin-tuc=${item.slug}`;
+                    });
+                    this.postsNewList = data.postList;
+                    this.showLoadingDialog('off');
+                }
+            });
         });
     }
 

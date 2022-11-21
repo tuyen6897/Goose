@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 import { Utils } from 'src/app/common/util/utils';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { VoucherComponent } from 'src/app/common/voucher/voucher.component';
-import { FileModel } from 'src/app/common/model/file.model';
-import { ProductDialogComponent } from 'src/app/common/productDialog/productDialog.component';
+import { MessageService } from 'primeng/api';
+import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBase.component';
+import { HttpService } from 'src/app/common/service/http-service';
 
 @Component({
     selector: 'app-giohang',
@@ -12,12 +13,14 @@ import { ProductDialogComponent } from 'src/app/common/productDialog/productDial
     styleUrls: ['./giohang.component.scss'],
     providers: [DialogService]
 })
-export class GiohangComponent implements OnInit {
+export class GiohangComponent extends ComponentBaseComponent implements OnInit {
 
     soluong = '';
     total = '';
     product: any;
-    constructor(private dialogService: DialogService, private router: Router) { }
+    constructor(private dialogService: DialogService, private router: Router, private rend: Renderer2, private httpService: HttpService) {
+        super(new MessageService, rend);
+    }
     checked: boolean = true;
     checked1: boolean = false;
     checkedProduct: boolean = false;
@@ -25,7 +28,16 @@ export class GiohangComponent implements OnInit {
     quantity = 0;
     voucher = '';
     ref!: DynamicDialogRef;
+    account = null;
     ngOnInit() {
+        this.account = this.getAccount();
+        if (this.account) {
+            this.httpService.reqeustApiget('carts', null, true).subscribe((data: any) => {
+                if (data) {
+                    console.log(data);
+                }
+            });
+        }
 
         this.product = JSON.parse(sessionStorage.getItem("productList") as any);
         if (this.product && this.product.length) {
@@ -69,15 +81,14 @@ export class GiohangComponent implements OnInit {
             });
             this.soluong = String(totalQ);
             this.total = String(totalNumber);
-            sessionStorage.clear();
             sessionStorage.setItem('productList', JSON.stringify(this.product));
         }
     }
 
-    onRemove(index: number) {
+    onRemove(item: any) {
         let totalQ = 0;
         if (this.product && this.product.length) {
-            this.product = this.product.slice(1, index);
+            this.product = this.product.filter((x: any) => x.code !== item.code);
             let totalNumber = 0;
             this.product.forEach((item: any, i: any) => {
                 totalNumber += +(item.price) * item.quantity;
@@ -87,6 +98,22 @@ export class GiohangComponent implements OnInit {
             this.soluong = String(totalQ);
             sessionStorage.clear();
             sessionStorage.setItem('productList', JSON.stringify(this.product));
+        }
+    }
+
+    quantityBlur(item: any) {
+        console.log('a');
+        if (this.account) {
+            const params = {
+                "userId": this.account['id'],
+                "productVariantId": item.id,
+                "quantity": item.quantity
+            }
+            this.httpService.reqeustApiput('carts', params).subscribe((data: any) => {
+                if (data) {
+                    console.log(data);
+                }
+            });
         }
     }
 

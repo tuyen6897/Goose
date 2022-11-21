@@ -79,15 +79,20 @@ export class LoginComponent extends ComponentBaseComponent implements OnInit {
             "username": this.accountLogin.nativeElement.value,
             "password": this.passLogin.nativeElement.value
         }).pipe(catchError(this.handleError)).subscribe((response: any) => {
+            console.log(response);
             const user = response.user;
             sessionStorage.setItem('account', JSON.stringify({
+                'id': user.id,
                 'username': user.name,
                 'phone': user.phone,
                 'email': user.email,
+                'address': user.address,
+                'jwttoken': response.jwttoken
             }));
             this.message.nativeElement.innerText = '';
             this.ref.close();
             this.data.func('success', '', 'Đăng nhập thành công.');
+            sessionStorage.removeItem('productList');
             this.showDialog('off');
         });
         this.isLogin = true;
