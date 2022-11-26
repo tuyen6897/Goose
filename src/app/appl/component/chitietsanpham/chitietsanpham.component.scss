@@ -153,6 +153,8 @@
                         border-radius: 5px;
                         border-color: #c2650f;
                         font-size: 16px;
+                        position: relative;
+                        top: -1px;
 
                         img {
                             height: 24px;
@@ -199,6 +201,9 @@
                     text-align: center;
                     padding-top: 5px;
                     height: 40px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
 
                 .product-group-cotent {
@@ -684,4 +689,121 @@
 
 .p-inputnumber-input {
     text-align: center;
+}
+
+.grid-nogutter img {
+    height: 55px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.previewImageSrc {
+    width: 100%;
+    max-height: 300px;
+    border: 3px solid #87b83b;
+}
+
+@media (max-width: 1366px) {
+    .header-chi-tiet {
+        font-size: 14px;
+        height: 60px !important;
+    }
+
+    .buy-now,
+    .btnHome,
+    .btnCall {
+        font-size: 13px !important;
+    }
+
+    .btnAddToCart img {
+        height: 20px !important;
+    }
+
+    .btnCall {
+        padding: 6px !important
+    }
+
+    .selector-buyxgety {
+        font-size: 15px !important;
+    }
+
+    .product-group-title label {
+        font-size: 18px !important;
+    }
+
+    .product-fix {
+        width: 400px !important;
+        right: 100px !important;
+    }
+
+}
+
+@media (max-width: 1020px) {
+    .header-chi-tiet {
+        font-size: 13px !important;
+    }
+
+    .img-header {
+        width: 35px !important;
+    }
+
+    .product-fix {
+        width: 380px !important;
+        right: 15px !important;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .header-chi-tiet {
+        height: 80px !important;
+    }
+
+    .product-single-content .product-image {
+        width: 100% !important;
+        padding-right: 0 !important;
+    }
+
+    .product-single-content,
+    .product-content {
+        width: 100% !important;
+    }
+
+    .grid-nogutter img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .p-component {
+        max-width: 100% !important;
+    }
+
+    .product-fix,
+    .product-group-container {
+        display: none;
+    }
+
+    .previewImageSrc {
+        max-height: 400px !important;
+    }
+
+    .product-single-content .product-content {
+        margin-bottom: 40px;
+    }
+
+    .product-description-wrapper {
+        width: 100% !important;
+        font-size: 16px !important;
+    }
+
+    .starbap-rev-widg__summary {
+        margin-right: 0 !important;
+        padding-right: 0 !important;
+        border-right: none !important;
+    }
+
+    .startbap_product_content {
+        display: block !important;
+    }
 }

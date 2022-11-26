@@ -18,7 +18,7 @@ export class GiohangComponent extends ComponentBaseComponent implements OnInit {
     soluong = '';
     total = '';
     product: any;
-    check = false;
+    checkitem = false;
     constructor(private dialogService: DialogService, private router: Router, private rend: Renderer2, private httpService: HttpService) {
         super(new MessageService, rend);
     }
@@ -79,14 +79,13 @@ export class GiohangComponent extends ComponentBaseComponent implements OnInit {
         });
     }
 
-    // checkProduct(item: any) {
-    //     console.log(event);
-    //     this.product.forEach((x: any) => {
-    //         if (item.id === x.id) {
-    //             x.check = item.check;
-    //         }
-    //     })
-    // }
+    checkProduct(item: any) {
+        this.product.forEach((x: any) => {
+            if (item.id === x.id) {
+                x.check = item.check;
+            }
+        })
+    }
 
     onChange(event: any, index: number) {
         if (this.product && this.product.length) {

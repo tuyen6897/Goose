@@ -31,9 +31,9 @@
                 <div class="body-cart">
                     <div class="tr-cart" *ngFor="let item of product; let i = index">
                         <div class="product-check-box">
-                            <!-- <p-checkbox name="group1" [(ngModel)]="item.check" (onChange)="checkProduct(item)"
+                            <p-checkbox name="group1" [(ngModel)]="checkitem" (onChange)="checkProduct(item)"
                                 [inputId]="item.id">
-                            </p-checkbox> -->
+                            </p-checkbox>
                             <span (click)="onRemove(item)"><a>Xóa</a></span>
                         </div>
 

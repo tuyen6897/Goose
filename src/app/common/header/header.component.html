@@ -33,7 +33,8 @@
             <a *ngIf="isSlide"><img src="../../../../assets/image/main/Logo-trang.png" /></a>
         </div>
         <app-headerMenu [slide]="isSlide" [totalCartProduct]="totalCartProduct" (cartHover)="onMouseOver($event)"
-            (cartClick)="cart.toggle($event)" (accountClick)="op.toggle($event)" style="width: 100%;">
+            (cartClick)="cart.toggle($event)" [account]="account" (accountClick)="op.toggle($event)"
+            style="width: 100%;">
         </app-headerMenu>
     </div>
     <div class="header-top-mobile">
@@ -113,25 +114,24 @@
             </div>
         </ng-template>
     </p-overlayPanel>
-
-    <p-overlayPanel #op [style]="{width: '250px', top: '0px'}">
-        <ng-template pTemplate>
-            <div class="button-account">
-                <span style="font-weight: bold;">{{account ? account.username : ''}}</span>
-                <button type="button" *ngIf="!account" (click)="openDialogLogin(true)" class="p-button-outlined">
-                    Đăng Nhập
-                </button>
-                <button type="button" *ngIf="!account" (click)="openDialogLogin()" class="p-button-outlined">
-                    Đăng Ký
-                </button>
-            </div>
-            <div class="account-content" *ngIf="account" style="display: flex; flex-direction: column;">
-                <div style="width: 100%; height: 1px; background-color: #ccc;"></div>
-                <a href="/tai-khoan" target="_self">Thông tin tài khoản</a>
-                <div style="width: 100%; height: 1px; background-color: #ccc;"></div>
-                <a class="logout" (click)="onLogOut()">Đăng Xuất</a>
-            </div>
-        </ng-template>
-    </p-overlayPanel>
 </header>
+<p-overlayPanel #op [style]="{width: '250px', top: '0px'}">
+    <ng-template pTemplate>
+        <div class="button-account">
+            <span style="font-weight: bold;">{{account ? account.username : ''}}</span>
+            <button type="button" *ngIf="!account" (click)="openDialogLogin(true)" class="p-button-outlined">
+                Đăng Nhập
+            </button>
+            <button type="button" *ngIf="!account" (click)="openDialogLogin()" class="p-button-outlined">
+                Đăng Ký
+            </button>
+        </div>
+        <div class="account-content" *ngIf="account" style="display: flex; flex-direction: column;">
+            <div style="width: 100%; height: 1px; background-color: #ccc;"></div>
+            <a href="/tai-khoan" target="_self">Thông tin tài khoản</a>
+            <div style="width: 100%; height: 1px; background-color: #ccc;"></div>
+            <a class="logout" (click)="onLogOut()">Đăng Xuất</a>
+        </div>
+    </ng-template>
+</p-overlayPanel>
 <p-toast position="top-center" key="tc"></p-toast>

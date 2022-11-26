@@ -5,6 +5,51 @@
         <span>Thanh toán</span>
     </div>
     <div class="checkout-content">
+        <div class="order-bar-mobile">
+            <div class="product-order">
+                <div class="image">
+                    <div class="product_image" *ngFor="let item of product">
+                        <a target="_self" [href]="createURL(item.name, item.id)">
+                            <img [src]="item.image ? item.image[0] : ''" alt="">
+                            <div class="gio-hang-total">{{item.quantity}}</div>
+                        </a>
+                        <div class="item-content">
+                            <div>
+                                <a target="_self" [href]="createURL(item.name, item.id)">{{item.name}}
+                                </a><br>
+                                <span class="variant_title">{{item.variant}}</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="price">
+                                    <span class="line-item-total">{{formatCash(item.totalPrice)}} ₫</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="order-summary">
+                <span class="p-float-label">
+                    <input id="float-input" type="text" pInputText [(ngModel)]="promotionCode" cher>
+                    <label for="float-input">Mã giản giá</label>
+                </span>
+                <p-button label="Sử dụng"></p-button>
+            </div>
+            <div class="order-pay">
+                <div>
+                    <span>Tạm tính</span>
+                    <span class="total-now"> {{formatCash(+(total))}} ₫</span>
+                </div>
+                <div>
+                    <span>Phí ship</span>
+                    <span>{{formatCash(shipPrice)}}₫</span>
+                </div>
+            </div>
+            <div class="order-total">
+                <span>Tổng tiền</span>
+                <span class="total"> {{formatCash(totalOrder)}} ₫</span>
+            </div>
+        </div>
         <div class="main-content">
             <div class="checkout-header">
                 <div>

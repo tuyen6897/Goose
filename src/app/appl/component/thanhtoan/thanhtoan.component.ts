@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
@@ -64,6 +64,7 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
     }
 
     ngOnInit() {
+        this.loginScreen();
         this.showLoadingDialog('on');
         const account = JSON.parse(sessionStorage.getItem("account") as any);
         if (account) {
@@ -119,6 +120,9 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
                 func: this.onLogin.bind(this)
             }
         });
+        setTimeout(() => {
+            this.loginScreen();
+        }, 0);
     }
 
     onPay() {
@@ -146,15 +150,6 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
                 }
 
             });
-
-            // "remainGaoProductList": [
-            //     {
-            //         "amountFixRemainGao": "",
-            //         "remainSizeGao": 0,
-            //         "amountRemainGao": ""
-            //     }
-            // ],
-
             let params: any = {
                 "Customer": {
                     "cusName": this.account.username,
@@ -319,6 +314,35 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
         if (payment.paymentType === 1) {
             payment.isShow = !item.isShow;
         }
+    }
+
+
+    loginScreen() {
+        let width = '30%';
+        if (window.innerWidth <= 1000) {
+            width = '40%';
+        }
+        if (window.innerWidth <= 800) {
+            width = '50%';
+        }
+        if (window.innerWidth <= 700) {
+            width = '60%';
+        }
+        if (window.innerWidth <= 550) {
+            width = '70%';
+        }
+        if (window.innerWidth <= 420) {
+            width = '100%';
+        }
+
+        if (window.document.querySelector('.p-dynamic-dialog')) {
+            this.render2.setStyle(window.document.querySelector('.p-dynamic-dialog'), 'width', width);
+        }
+    }
+
+    @HostListener('window: resize', ['$event'])
+    resizeableHeader(event: any) {
+        this.loginScreen();
     }
 
     formatCash(value: number) {

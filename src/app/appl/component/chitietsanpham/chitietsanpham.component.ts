@@ -41,8 +41,8 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
     productVariant: any;
     productVariants: any[] = [];
     images: { previewImageSrc: string; thumbnailImageSrc: string; }[] = [{
-        "previewImageSrc": '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
-        "thumbnailImageSrc": '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
+        "previewImageSrc": '../../../../assets/image/main/giao-hang-removebg-preview.png',
+        "thumbnailImageSrc": '../../../../assets/image/main/giao-hang-removebg-preview.png',
     },
     {
         "previewImageSrc": '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
@@ -62,8 +62,6 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
     }];
 
     imagesProductGroup = [
-        '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
-        '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
         '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
         '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
         '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
@@ -93,8 +91,12 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
 
     responsiveOptions: any[] = [
         {
+            breakpoint: '1120px',
+            numVisible: 4
+        },
+        {
             breakpoint: '1024px',
-            numVisible: 5
+            numVisible: 3
         },
         {
             breakpoint: '768px',
@@ -102,7 +104,7 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
         },
         {
             breakpoint: '560px',
-            numVisible: 1
+            numVisible: 3
         }
     ];
 
@@ -213,10 +215,13 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
         this.showLoadingDialog('on');
         this.httpService.reqeustApiget('productDetails', window.location.search.split('id=')[1]).subscribe((response: any) => {
             if (response.detailProduct) {
-                this.images = [{
-                    "previewImageSrc": response.detailProduct.productImages[0],
-                    "thumbnailImageSrc": response.detailProduct.productImages[0]
-                }];
+                this.images = [];
+                response.detailProduct.productImages.forEach((image: any) => {
+                    this.images.push({
+                        "previewImageSrc": image,
+                        "thumbnailImageSrc": image
+                    });
+                })
                 console.log(response.detailProduct);
                 this.product = response.detailProduct;
                 this.productVariant = this.product.productVariants[0];
@@ -264,8 +269,13 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
         this.productVariant = item;
     }
 
-    onActive(index: number) {
-        this.activeIndex = index;
+    onActive(thumbnailImageSrc: any) {
+        this.images.forEach((image: any, i: any) => {
+            if (image.thumbnailImageSrc === thumbnailImageSrc) {
+                this.activeIndex = i;
+                return;
+            }
+        })
     }
 
     addCart(event: any) {

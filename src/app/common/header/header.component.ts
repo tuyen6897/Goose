@@ -28,6 +28,7 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
     ref!: DynamicDialogRef;
     account: any = null;
     isaccount = false;
+    width = '';
     private _visibleSidebar = false;
     @Input() set visibleSidebar(value: any) {
         this._visibleSidebar = value;
@@ -62,6 +63,7 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
     }
 
     ngOnInit() {
+        this.loginScreen();
     }
 
     ngAfterViewInit() {
@@ -92,6 +94,10 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
             this.totalCartProduct = 0;
         }
         this.cdr.detectChanges();
+    }
+
+    accountonClick() {
+        this.op.toggle(event);
     }
 
     onMouseOver(event: any) {
@@ -159,7 +165,7 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
     openDialogLogin(login = false): void {
         this.op.hide();
         this.ref = this.dialogService.open(LoginComponent, {
-            width: '30%',
+            width: this.width,
             contentStyle: { "height": "auto", "overflow": "auto" },
             baseZIndex: 10000,
             dismissableMask: true,
@@ -174,6 +180,7 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
     resizeableHeader(event: any) {
         this.op.hide();
         this.cart.hide();
+        this.loginScreen();
     }
 
     @HostListener('window: scroll', ['$event'])
@@ -202,6 +209,31 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
     createURL(name: string, id: string) {
         if (!name || !id) return '';
         return `chi-tiet-san-pham?name=${Utils.removeAccents(String(name)).toLowerCase().split(' ').join('-')}&id=${id}`;
+    }
+
+    loginScreen() {
+        if (window.innerWidth > 1000) {
+            this.width = '30%';
+        }
+        if (window.innerWidth <= 1000) {
+            this.width = '40%';
+        }
+        if (window.innerWidth <= 800) {
+            this.width = '50%';
+        }
+        if (window.innerWidth <= 700) {
+            this.width = '60%';
+        }
+        if (window.innerWidth <= 550) {
+            this.width = '70%';
+        }
+        if (window.innerWidth <= 420) {
+            this.width = '100%';
+        }
+
+        if (window.document.querySelector('.p-dynamic-dialog')) {
+            this.render2.setStyle(window.document.querySelector('.p-dynamic-dialog'), 'width', this.width);
+        }
     }
 
 }

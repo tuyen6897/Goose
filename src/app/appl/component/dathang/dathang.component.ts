@@ -31,7 +31,6 @@ export class DathangComponent implements OnInit {
         this.paymentOrder = JSON.parse(sessionStorage.getItem("projectListOrder") as any);
         this.product = this.paymentOrder.product;
         this.payment = this.paymentOrder.payment;
-
         this.httpService.reqeustApiget('paymentlist').subscribe((data: any) => {
             if (data.paymentMethodList) {
                 for (let i = 0; i < data.paymentMethodList.length; i++) {

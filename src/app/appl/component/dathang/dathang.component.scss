@@ -171,6 +171,7 @@
             }
         }
 
+        .order-bar-mobile,
         .order-bar {
             float: left;
             width: 45%;
@@ -277,4 +278,27 @@
     font-size: 15px;
     text-align: center;
     color: #fff;
+}
+
+.order-bar-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .order-bar-mobile {
+        display: block;
+        width: 100% !important;
+        padding: 0 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .account {
+        width: 100% !important;
+        border-right: none !important;
+    }
+
+    .order-bar {
+        display: none;
+    }
 }

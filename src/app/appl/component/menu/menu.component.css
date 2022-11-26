@@ -516,7 +516,20 @@ code {
     width: 200px !important;
 }
 
+.news-content-right-img .right-img {
+    width: 194px;
+    height: 194px;
+    border-radius: 20px;
+    border: 5px solid #87b83b;
+}
+
 @media (max-width: 500px) {
+
+    .main .title-color,
+    .main .title {
+        height: 40px !important;
+        padding-top: 3px !important;
+    }
 
     .news-content-right-img .txt-news div {
         font-size: 12px;
@@ -532,6 +545,15 @@ code {
 
     .trung-vang div {
         font-size: 20px;
+        height: 100px;
+    }
+
+    .nong-san {
+        height: 500px !important;
+    }
+
+    .news-content-right-img .right-img {
+        width: 100px;
         height: 100px;
     }
 
@@ -605,7 +627,7 @@ code {
 
     .title-color,
     .main .title {
-        margin-bottom: 15px;
+        margin-bottom: 5px !important;
         width: 100%;
         height: 45px;
         display: flex;

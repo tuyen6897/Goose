@@ -84,6 +84,8 @@
         </div>
         <img src="../../../../assets/image/main/icon search.png" />
         <a (click)="onAccountClick($event)"><img src="../../../../assets/image/main/tai-khoan.png" /></a>
+        <a (click)="onAccountClick($event)"><img class="header-link" class="tai-khoan"
+                src="../../../../assets/image/main/tai-khoan.png" /></a>
         <!-- <a (click)="onCartClick($event)"><img src="../../../../assets/image/main/gio-hang.png" /></a> -->
         <a (click)="onClick()" (mouseout)="onCartClick($event)" (mouseover)="onMouseOver($event)"><img
                 src="../../../../assets/image/main/gio-hang.png" /></a>
@@ -141,10 +143,30 @@
     <div class="header-func">
         <div class="header-mobile-search"><input type="search" placeholder="Bạn đang tìm kiếm gì?"
                 style="width: 95%;border: 1px solid #ccc;border-radius: 5px;"></div>
-        <img class="header-link" class="tai-khoan" src="../../../../assets/image/main/tai-khoan.png"
-            (click)="onAccountClick($event)" />
+        <a (click)="op.toggle($event)"><img class="header-link" class="tai-khoan"
+                src="../../../../assets/image/main/tai-khoan.png" /></a>
         <!-- <a (click)="visibleSidebar2 = true"><img src="../../../../assets/image/main/gio-hang.png" /></a> -->
         <a (click)="onClick()" (mouseout)="visibleSidebar2 = true"><img
                 src="../../../../assets/image/main/gio-hang.png" /></a>
     </div>
 </div>
+
+<p-overlayPanel #op [style]="{width: '250px', top: '0px'}">
+    <ng-template pTemplate>
+        <div class="button-account">
+            <span style="font-weight: bold;">{{account ? account.username : ''}}</span>
+            <button type="button" *ngIf="!account" (click)="openDialogLogin(true)" class="p-button-outlined">
+                Đăng Nhập
+            </button>
+            <button type="button" *ngIf="!account" (click)="openDialogLogin()" class="p-button-outlined">
+                Đăng Ký
+            </button>
+        </div>
+        <div class="account-content" *ngIf="account" style="display: flex; flex-direction: column;">
+            <div style="width: 100%; height: 1px; background-color: #ccc;"></div>
+            <a href="/tai-khoan" target="_self">Thông tin tài khoản</a>
+            <div style="width: 100%; height: 1px; background-color: #ccc;"></div>
+            <a class="logout" (click)="onLogOut()">Đăng Xuất</a>
+        </div>
+    </ng-template>
+</p-overlayPanel>

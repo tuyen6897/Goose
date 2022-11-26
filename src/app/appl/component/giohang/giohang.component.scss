@@ -163,7 +163,6 @@
                 }
 
                 button {
-                    width: 15%;
                     background-color: rgb(235, 78, 50);
                     border: 1px solid rgb(235, 78, 50);
                     border-radius: 3px;
@@ -182,4 +181,57 @@
 
 .p-inputnumber-input {
     text-align: center;
+}
+
+.sidebar-sort .no-bullets li input[type="radio"] {
+    -webkit-appearance: checkbox;
+    -moz-appearance: checkbox;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: 1px solid #dedede;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.sidebar-sort .no-bullets li input[type="radio"]:checked:after {
+    content: '\2714';
+    line-height: 16px;
+    text-align: center;
+    display: block;
+    outline: none;
+    color: #87b83b;
+    outline: 1px solid #fff;
+}
+
+.sidebar-sort .no-bullets li input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+    -moz-appearance: checkbox;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: none;
+    border: 1px solid #dedede;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.sidebar-sort .no-bullets li input[type="checkbox"]:checked:after {
+    content: '\2714';
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    display: block;
+    outline: none;
+    color: #87b83b;
+    outline: 1px solid #fff;
 }

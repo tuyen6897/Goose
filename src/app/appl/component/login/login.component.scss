@@ -62,6 +62,30 @@ button {
     }
 }
 
+@media screen and (max-width: 1200px) {
+    .error-box {
+        padding: 5px;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    .h1 {
+        font-size: 18px !important;
+    }
+
+    .summit {
+        padding-top: 0px;
+
+        .p-float-label {
+            margin: 22px 10px;
+
+            input {
+                height: 38px;
+            }
+        }
+    }
+}
+
 :host ::ng-deep {
     .p-toast-message-custom {
         background-color: #E1CFE7;

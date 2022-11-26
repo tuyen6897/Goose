@@ -10,23 +10,23 @@
     <div style="width: 100%;">
         <div class="header-chi-tiet">
             <div>
-                <img src="../../../../assets/image/main/call-removebg-preview.png" />
+                <img class="img-header" src="../../../../assets/image/main/call-removebg-preview.png" />
                 <span>DỊCH VỤ TỐI ƯU</span>
             </div>
             <div>
-                <img src="../../../../assets/image/main/gio-hang1-removebg-preview.png" />
+                <img class="img-header" src="../../../../assets/image/main/gio-hang1-removebg-preview.png" />
                 <span>HÀNG HÓA ĐA DẠNG</span>
             </div>
             <div>
-                <img src="../../../../assets/image/main/san-pham-removebg-preview.png" />
+                <img class="img-header" src="../../../../assets/image/main/san-pham-removebg-preview.png" />
                 <span>SẢN PHẨM CHÍNH HÃNG</span>
             </div>
             <div>
-                <img src="../../../../assets/image/main/gia-removebg-preview.png" />
+                <img class="img-header" src="../../../../assets/image/main/gia-removebg-preview.png" />
                 <span>GIÁ CẢ CẠNH TRANH</span>
             </div>
             <div>
-                <img src="../../../../assets/image/main/giao-hang-removebg-preview.png" />
+                <img class="img-header" src="../../../../assets/image/main/giao-hang-removebg-preview.png" />
                 <span>GIAO HÀNG TOÀN QUỐC</span>
             </div>
         </div>
@@ -36,12 +36,11 @@
                     <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [(activeIndex)]="activeIndex"
                         [showThumbnailNavigators]="false" [containerStyle]="{'max-width': '640px'}" [numVisible]="5">
                         <ng-template pTemplate="item" let-item>
-                            <img [src]="item.previewImageSrc" style="width: 100%; border: 3px solid #87b83b;" />
+                            <img [src]="item.previewImageSrc" class="previewImageSrc" />
                         </ng-template>
-                        <ng-template pTemplate="thumbnail" let-item let-index>
+                        <ng-template pTemplate="thumbnail" let-item>
                             <div class="grid grid-nogutter justify-content-center">
-                                <img [src]="item.thumbnailImageSrc" (click)="onActive(index)"
-                                    style="height: 60px; border: 1px solid #ccc; border-radius: 5px;" />
+                                <img [src]="item.thumbnailImageSrc" (click)="onActive(item.thumbnailImageSrc)" />
                             </div>
                         </ng-template>
                     </p-galleria>
@@ -446,11 +445,11 @@
         <div class="collection-head" style="width: 100%;">
             <label class="lbl-h1 collection-title">SẢN PHẨM ĐÃ XEM</label>
         </div>
-        <!-- <div style="width: 100%;" class="product-watch">
+        <div style="width: 100%;" class="product-watch">
             <app-carousel [datas]="datasProductSeen" [showButton]="false" [product]="true"
                 [responsiveOptions]="responsiveOptions2">
             </app-carousel>
-        </div> -->
+        </div>
     </div>
     <div style="width: 100%;">
         <img style="width: 100%;" src="../../../../assets/image/main/ms_banner_img1.jpg">
