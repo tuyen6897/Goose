@@ -22,14 +22,16 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
     @ViewChild('header', { static: false }) header!: HeaderComponent;
     @ViewChild('productFix', { static: true }) productFix!: ElementRef;
     @ViewChild('description', { static: true }) description!: ElementRef;
-    // @ViewChild('option500', { static: false }) option500!: ElementRef;
+    @ViewChild('nutrition', { static: true }) nutrition!: ElementRef;
+
     @ViewChild('comment', { static: false }) comment!: ElementRef;
     @ViewChild('commentTitle', { static: false }) commentTitle!: ElementRef;
     @ViewChild('reviews', { static: true }) reviews!: ElementRef;
     val2: number = 5;
     @Input() value: unknown
     @Output() valueChange = new EventEmitter<unknown>();
-    isShow: boolean = false;
+    isShowD: boolean = false;
+    isShowE: boolean = false;
     isSlide: boolean = false;
     inputQuantity: number = 1;
     ref!: DynamicDialogRef;
@@ -197,106 +199,7 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
         }
     ];
 
-    datasProductSale = [
-        {
-            image: "../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp",
-            sale: '21',
-            title: 'Mật Trà Kombucha Thảo Mộc',
-            money: '155.000',
-            moneyoriginal: '196.000'
-        },
-        {
-            image: "../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp",
-            sale: '21',
-            title: 'Mật Trà Kombucha Thảo Mộc',
-            money: '200.000',
-            moneyoriginal: '255.000'
-        },
-        {
-            image: "../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp",
-            sale: '21',
-            title: 'Mật Trà Kombucha Thảo Mộc',
-            money: '250.000',
-            moneyoriginal: '316.000'
-        },
-        {
-            image: "../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp",
-            sale: '21',
-            title: 'Mật Trà Kombucha Thảo Mộc',
-            money: '155.000',
-            moneyoriginal: '196.000'
-        },
-        {
-            image: "../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp",
-            sale: '21',
-            title: 'Mật Trà Kombucha Thảo Mộc',
-            money: '155.000',
-            moneyoriginal: '196.000'
-        },
-        {
-            image: "../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp",
-            sale: '21',
-            title: 'Mật Trà Kombucha Thảo Mộc',
-            money: '155.000',
-            moneyoriginal: '196.000'
-        },
-        {
-            image: "../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp",
-            sale: '21',
-            title: 'Mật Trà Kombucha Thảo Mộc',
-            money: '155.000',
-            moneyoriginal: '196.000'
-        },
-        {
-            image: "../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp",
-            sale: '21',
-            title: 'Mật Trà Kombucha Thảo Mộc',
-            money: '155.000',
-            moneyoriginal: '196.000'
-        },
-        {
-            image: "../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp",
-            sale: '21',
-            title: 'Mật Trà Kombucha Thảo Mộc',
-            money: '155.000',
-            moneyoriginal: '196.000'
-        },
-        {
-            image: "../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp",
-            sale: '21',
-            title: 'Mật Trà Kombucha Thảo Mộc',
-            money: '155.000',
-            moneyoriginal: '196.000'
-        },
-        {
-            image: "../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp",
-            sale: '21',
-            title: 'Mật Trà Kombucha Thảo Mộc',
-            money: '155.000',
-            moneyoriginal: '196.000'
-        },
-        {
-            image: "../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp",
-            sale: '21',
-            title: 'Mật Trà Kombucha Thảo Mộc',
-            money: '155.000',
-            moneyoriginal: '196.000'
-        },
-        {
-            image: "../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp",
-            sale: '21',
-            title: 'Mật Trà Kombucha Thảo Mộc',
-            money: '155.000',
-            moneyoriginal: '196.000'
-        },
-        {
-            image: "../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp",
-            sale: '21',
-            title: 'Mật Trà Kombucha Thảo Mộc',
-            money: '155.000',
-            moneyoriginal: '196.000'
-        }
-    ];
+    datasProductSale: any[] = [];
 
     constructor(private router: Router
         , private render2: Renderer2
@@ -310,15 +213,28 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
         this.showLoadingDialog('on');
         this.httpService.reqeustApiget('productDetails', window.location.search.split('id=')[1]).subscribe((response: any) => {
             if (response.detailProduct) {
+                this.images = [{
+                    "previewImageSrc": response.detailProduct.productImages[0],
+                    "thumbnailImageSrc": response.detailProduct.productImages[0]
+                }];
+                console.log(response.detailProduct);
                 this.product = response.detailProduct;
                 this.productVariant = this.product.productVariants[0];
                 this.product.productVariants[0].check = true;
                 this.productVariants = this.product.productVariants;
                 this.description.nativeElement.innerHTML = this.product.description;
+                this.nutrition.nativeElement.innerHTML = this.product.nutrition;
             }
-
-
             this.showLoadingDialog('off');
+        });
+
+        this.httpService.reqeustApiget('newest-sale', 'limit=10').subscribe((data: any) => {
+            if (data.products.length) {
+                this.datasProductSale = data.products;
+                this.datasProductSale.forEach((data) => {
+                    data.priceDisp = data.saleRate ? data.salePrice : data.price;
+                })
+            }
         });
         this.render2.listen(document, 'scroll', (e) => {
             const scrollTop = (window.pageYOffset || document.documentElement.scrollTop) - (document.documentElement.clientTop || 0);
@@ -359,7 +275,7 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
         product = JSON.parse(sessionStorage.getItem("productList") as any) ? JSON.parse(sessionStorage.getItem("productList") as any) : [];
         if (product && product.length) {
             product.forEach(element => {
-                if (element.code === this.product.code && element.idVariant === this.productVariant.id) {
+                if (element.id === this.productVariant.productId && element.idVariant === this.productVariant.id) {
                     insertFlag = true;
                     element.quantity = +(element.quantity) + this.inputQuantity;
                     element.totalPrice = this.productVariant.price * element.quantity;
@@ -369,18 +285,17 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
         if (!insertFlag) {
             product.push({
                 idVariant: this.productVariant.id,
-                code: this.product.code,
-                id: this.product.id,
+                id: this.productVariant.productId,
                 name: this.product.name,
-                image: this.product.image,
+                image: this.product.productImages,
                 price: this.productVariant.price,
-                size: this.productVariant.size,
+                weight: this.productVariant.weight,
                 unit: this.productVariant.unit,
-                variant: `${this.productVariant.size}${this.productVariant.unit}`,
+                variant: `${this.productVariant.weight}${this.productVariant.unit}`,
                 totalPrice: this.productVariant.price * this.inputQuantity,
-                quantity: this.inputQuantity
+                quantity: this.inputQuantity,
+                soGaoFlag: this.product.soGaoFlag
             });
-            sessionStorage.setItem('productList', JSON.stringify(product));
             if (account) {
                 const params = {
                     "userId": account.id,
@@ -390,6 +305,7 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
                 this.httpService.reqeustApiPost('carts', params, true);
             }
         }
+        sessionStorage.setItem('productList', JSON.stringify(product));
         this.header.visibleSidebar = true;
     }
 
@@ -399,23 +315,26 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
         product = JSON.parse(sessionStorage.getItem("productList") as any);
         if (product && product.length) {
             product.forEach(element => {
-                if (element.id === 'new8938521954248') {
+                if (element.id === this.productVariant.productId && element.idVariant === this.productVariant.id) {
                     insertFlag = true;
                     element.quantity = +(element.quantity) + this.inputQuantity;
-                    element.totalPrice = 210000 * element.quantity;
+                    element.totalPrice = this.productVariant.price * element.quantity;
                 }
             });
         }
-        if (!insertFlag || (product && !product.length)) {
-            product = [];
+        if (!insertFlag) {
             product.push({
-                id: 'new8938521954248',
-                title: 'Mật Trà Kombucha Thảo Mộc',
-                image: '',
-                price: '210000',
-                variant: '500ml',
-                totalPrice: 210000 * this.inputQuantity,
-                quantity: this.inputQuantity
+                idVariant: this.productVariant.id,
+                id: this.productVariant.productId,
+                name: this.product.name,
+                image: this.product.productImages,
+                price: this.productVariant.price,
+                weight: this.productVariant.weight,
+                unit: this.productVariant.unit,
+                variant: `${this.productVariant.weight}${this.productVariant.unit}`,
+                totalPrice: this.productVariant.price * this.inputQuantity,
+                quantity: this.inputQuantity,
+                soGaoFlag: this.product.soGaoFlag
             });
         }
         sessionStorage.setItem('productList', JSON.stringify(product));
@@ -450,6 +369,11 @@ export class ChitietsanphamComponent extends ComponentBaseComponent implements O
 
             this.imageList.push(fileModel);
         }
+    }
+
+    createURL(name: string, id: string) {
+        if (!name || !id) return '';
+        return `chi-tiet-san-pham?name=${Utils.removeAccents(String(name)).toLowerCase().split(' ').join('-')}&id=${id}`;
     }
 
 }

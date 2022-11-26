@@ -75,6 +75,9 @@ export class HttpService {
             case 'comments':
                 url = `${this._url}/comments`;
                 break;
+            case 'postsupdate':
+                url = `${this._url}posts/update`;
+                break;
             default:
                 break;
         }
@@ -110,11 +113,11 @@ export class HttpService {
             case 'posts':
                 url = `${this._url}/posts?${params}`;
                 break;
-            case 'postsupdate':
-                url = `${this._url}posts/update?${params}`;
-                break;
             case 'postsproject':
                 url = `${this._url}/posts/project/${params}`;
+                break;
+            case 'brand-names':
+                url = `${this._url}/products/brand-names/all`;
                 break;
             case 'award':
                 url = `${this._url}/utility/award`;
@@ -126,7 +129,7 @@ export class HttpService {
                 url = `${this._url}/posts/topPost?size=10&orderBy=1`;
                 break;
             case 'newest-sale':
-                url = `${this._url}/products/newest-sale?${params}`;
+                url = `${this._url}/products/newest-sale/all?${params}`;
                 break;
             case 'projects':
                 url = `${this._url}/utility/projects?type=${params}`;
@@ -168,7 +171,7 @@ export class HttpService {
                 url = `${this._url}/products/best-seller`;
                 break;
             case 'ship-price':
-                url = `${this._url}/payment/ship-price`;
+                url = `${this._url}/payment/ship-price?${params}`;
                 break;
             case 'paymentlist':
                 url = `${this._url}/payment/list`;

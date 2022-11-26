@@ -6,13 +6,9 @@ a {
     color: black;
     display: block;
 
-    &:hover{
+    &:hover {
         color: black;
     }
-}
-
-span{
-    font-size: 18px;
 }
 
 #LADI-WRAPER {
@@ -32,8 +28,7 @@ span{
     }
 
     #SECTION1 {
-        height: 471.449px;
-        min-height: 471.449px;
+        min-height: 290px;
 
         .ladi-section-background {
             background-size: 100%;
@@ -53,7 +48,7 @@ span{
             width: 100%;
             height: 100%;
 
-            .line{
+            .line {
                 border: 1px solid #87b83b;
                 width: 40%;
                 margin: 0 auto;
@@ -69,7 +64,7 @@ span{
                     font-weight: bold;
                 }
 
-                .ladi-headline{
+                .ladi-headline {
                     text-transform: uppercase;
                     font-size: 1.75rem;
                 }
@@ -79,7 +74,7 @@ span{
                 margin-top: 50px;
                 width: 100%;
 
-                .content-top{
+                .content-top {
                     font-size: 18px;
                 }
             }
@@ -129,8 +124,8 @@ span{
                         margin-left: 37%;
                         margin-right: 30px;
 
-                        .title2{
-                            margin-left:-2px;
+                        .title2 {
+                            margin-left: -2px;
                             padding-top: 30px;
                             display: flex;
                             font-weight: bold;
@@ -139,14 +134,6 @@ span{
                         }
                     }
                 }
-            }
-
-            .article-item-left{
-                padding-right: 7px;
-            }
-
-            .article-item-right{
-                padding-left: 7px;
             }
 
             .article-item-btn {
@@ -185,8 +172,6 @@ span{
     }
 
     #SECTION4 {
-        height: 1390px;
-        min-height: 1390px;
         margin-top: 90px;
         width: 100%;
 
@@ -194,13 +179,13 @@ span{
             width: 100%;
             height: 100%;
 
-            .line{
+            .line {
                 border: 1px solid #87b83b;
                 width: 40%;
                 margin: 0 auto;
                 margin-bottom: 2px;
             }
-            
+
             .news-project {
                 top: 20px;
                 width: 100%;
@@ -281,7 +266,7 @@ span{
                             display: block;
                         }
 
-                        .checkmark{
+                        .checkmark {
                             float: left;
                             transform: rotate(45deg);
                             height: 20px;
@@ -329,7 +314,7 @@ span{
                             display: block;
                         }
 
-                        .checkmark{
+                        .checkmark {
                             float: left;
                             transform: rotate(45deg);
                             height: 20px;
@@ -346,8 +331,6 @@ span{
 
     #SECTION5 {
         margin-top: 50px;
-        height: 830px;
-        min-height: 830px;
         width: 100%;
 
         .ladi-container {
@@ -355,7 +338,7 @@ span{
             height: 100%;
             margin-top: 40px;
 
-            .line{
+            .line {
                 border: 1px solid #87b83b;
                 width: 40%;
                 margin: 0 auto;
@@ -405,12 +388,12 @@ span{
                     .content-right {
                         width: 50%;
                         float: left;
-                        padding-left: 30px;
-                        padding-right: 30px;
-                        margin-top: 50px;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                        margin-top: 20px;
 
-                        .stars{
-                            margin-top: 30px;
+                        .stars {
+                            margin-top: 10px;
                         }
                     }
 
@@ -424,22 +407,22 @@ span{
 
             }
 
-            .article-item-bottom{
-                width: 100%; 
+            .article-item-bottom {
+                width: 100%;
                 display: inline-block;
 
                 .article-item {
                     width: 50%;
                     float: left;
                     margin-top: 10px;
-    
+
                     .gradient-border {
                         border: 1px solid #e5e5e5;
                         border-radius: 4px;
                         padding: 2px;
                         height: 325px;
                         min-height: 325px;
-    
+
                         &:hover {
                             background: #ffffff;
                             box-shadow: 3.5px 6px 18px 0 rgb(0 0 0 / 10%);
@@ -448,26 +431,26 @@ span{
                             box-shadow: 0px 0px 10px rgb(140 140 140 / 32%);
                             border: 1px solid #87b83b;
                         }
-    
+
                         .img-left {
                             width: 40%;
                             height: 319px;
                             min-height: 319px;
                         }
-    
+
                         .content-left {
                             float: left;
                             width: 60%;
-                            padding-left: 30px;
-                            padding-right: 30px;
-                            margin-top: 50px;
-    
+                            padding-left: 10px;
+                            padding-right: 10px;
+                            margin-top: 20px;
+
                             a {
                                 display: flex;
                                 font-weight: bold;
                             }
-    
-                            .stars{
+
+                            .stars {
                                 margin-top: 30px;
                             }
                         }
@@ -479,8 +462,6 @@ span{
 
     #SECTION6 {
         margin-top: 65px;
-        height: 930px;
-        min-height: 930px;
         width: 100%;
 
         .ladi-container {
@@ -562,7 +543,7 @@ span{
 
                     .article-schedule {
                         text-align: center;
-        
+
                         .btn-kp {
                             background-color: rgb(99, 145, 16);
                             border-radius: 15px;
@@ -575,12 +556,12 @@ span{
                             width: 80%;
                             border: none;
                             text-transform: uppercase;
-        
+
                             &:hover {
                                 box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
                                 transform: translateY(-2px);
                             }
-        
+
                             &:active {
                                 box-shadow: none;
                                 transform: translateY(0);
@@ -621,21 +602,25 @@ span{
 }
 
 @media (min-width: 576px) and (max-width: 768px) {
-    .content-top, span{
+
+    .content-top,
+    span {
         font-size: 14px !important;
     }
 
-    .title2{
+    .title2 {
         font-size: 17px !important;
     }
 
-    #SECTION4{
-        .ladi-container{
-            .gradient-border{
-                .content-left, .content-right{
+    #SECTION4 {
+        .ladi-container {
+            .gradient-border {
+
+                .content-left,
+                .content-right {
                     padding-top: 10px !important;
 
-                    a{
+                    a {
                         padding-bottom: 5px !important;
                     }
                 }
@@ -643,38 +628,38 @@ span{
         }
     }
 
-    .checkmark{
+    .checkmark {
         height: 15px !important;
         width: 7px !important;
         margin-right: 5px !important;
     }
 
-    #SECTION5{
-        .ladi-container{
-            .article-item-top{
-                .gradient-border{
-                    .content-right{
+    #SECTION5 {
+        .ladi-container {
+            .article-item-top {
+                .gradient-border {
+                    .content-right {
                         margin-top: 10px !important;
                         padding-left: 15px !important;
                         padding-right: 15px !important;
 
-                        .stars{
+                        .stars {
                             margin-top: 10px !important;
                         }
                     }
                 }
             }
 
-            .article-item-bottom{
-                .article-item{
-                    .gradient-border{
-                        .content-left{
+            .article-item-bottom {
+                .article-item {
+                    .gradient-border {
+                        .content-left {
                             margin-top: 10px !important;
                             padding-left: 15px !important;
                             padding-right: 15px !important;
                         }
 
-                        .stars{
+                        .stars {
                             margin-top: 10px !important;
                         }
                     }
@@ -683,12 +668,14 @@ span{
         }
     }
 
-    #SECTION6{
-        .ladi-container{
-            .img-contact{
-                .regis-contact{
-                    .child-regis-contact{
-                        h1{
+    #SECTION6 {
+        .ladi-container {
+            .img-contact {
+                height: auto;
+
+                .regis-contact {
+                    .child-regis-contact {
+                        h1 {
                             font-size: 18px !important;
                         }
 
@@ -698,7 +685,7 @@ span{
                             margin: 15px auto;
                             padding: 5px 10px;
                         }
-                    
+
                         textarea {
                             height: 200px;
                         }
@@ -708,78 +695,498 @@ span{
         }
     }
 
-    #SECTION7{
+    #SECTION7 {
         margin-bottom: 100px !important;
     }
 }
 
 @media (min-width: 768px) and (max-width: 992px) {
-    .content-top, span{
+
+    .content-top,
+    span {
         font-size: 14px !important;
     }
 
-    .title2{
+    .title2 {
         font-size: 16px !important;
+    }
+
+    #SECTION4 {
+        .ladi-container {
+            .gradient-border {
+                .content-left {
+                    padding-top: 20px !important;
+
+                    a {
+                        padding-bottom: 10px !important;
+                    }
+                }
+
+                .content-right {
+                    padding-top: 20px !important;
+
+                    a {
+                        padding-bottom: 10px !important;
+                    }
+                }
+            }
+        }
     }
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
-    .content-top, span{
+
+    .content-top,
+    span {
         font-size: 15px !important;
     }
 
-    .title2{
+    .title2 {
         font-size: 18px !important;
     }
 }
 
 @media (min-width: 1200px) and (max-width: 1400px) {
-    .content-top, span{
+
+    .content-top,
+    span {
         font-size: 16px !important;
     }
 
-    .title2{
-        font-size: 20px !important;
-    }
-}
-
-@media (min-width: 1400px) {
-    .content-top, span{
+    .title2 {
         font-size: 18px !important;
     }
 }
 
-@media (min-width: 576px) {
-
-    .container {
-        max-width: 540px !important;
-    }
-}
-
-@media (min-width: 768px) {
-
-    .container {
-        max-width: 740px !important;
-    }
-}
-
-@media (min-width: 992px) {
-
-    .container {
-        max-width: 980px !important;
-    }
-}
-
-@media (min-width: 1200px) {
-
-    .container {
-        max-width: 1150px !important;
-    }
-}
-
 @media (min-width: 1400px) {
 
-    .container {
-        max-width: 1400px !important;
+    .content-top {
+        font-size: 18px !important;
     }
 }
+
+@media (max-width: 768px) {
+    #SECTION5 {
+        margin-top: 30px !important;
+        width: 100%;
+
+        .ladi-container {
+            width: 100%;
+            height: 100%;
+            margin-top: 40px;
+
+            .line {
+                border: 1px solid #87b83b;
+                width: 40%;
+                margin: 0 auto;
+                margin-bottom: 2px;
+            }
+
+            .news-project {
+                top: 20px;
+                width: 100%;
+                text-align: center;
+                margin-top: 60px;
+
+                .ladi-headline {
+                    color: #8B4513;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+
+                .ladi-headline {
+                    width: 100%;
+                    display: inline-block;
+                    background-size: cover;
+                    background-position: center center;
+                }
+            }
+
+            .article-item-top {
+                width: 100%;
+                margin-top: 10px;
+
+                .gradient-border {
+                    border: 1px solid #e5e5e5;
+                    border-radius: 4px;
+                    padding: 2px;
+                    height: 330px;
+                    min-height: 330px;
+
+                    .content-right {
+                        float: left;
+                        padding-left: 30px;
+                        padding-right: 30px;
+                        margin-top: 10px !important;
+
+                        .stars {
+                            margin-top: 30px;
+                        }
+                    }
+
+                    .img-right {
+                        float: left;
+                        width: 50%;
+                        min-height: 324px;
+                    }
+                }
+
+            }
+
+            .article-item-bottom {
+                width: 100%;
+                display: inline-block;
+
+                .article-item {
+                    width: 100% !important;
+                    float: left;
+                    margin-top: 10px;
+
+                    .gradient-border {
+                        border: 1px solid #e5e5e5;
+                        border-radius: 4px;
+                        padding: 2px;
+                        height: 325px;
+                        min-height: 325px;
+
+                        &:hover {
+                            background: #ffffff;
+                            box-shadow: 3.5px 6px 18px 0 rgb(0 0 0 / 10%);
+                            -moz-box-shadow: 0px 0px 10px rgba(140, 140, 140, 0.32);
+                            -webkit-box-shadow: 0px 0px 10px rgb(140 140 140 / 32%);
+                            box-shadow: 0px 0px 10px rgb(140 140 140 / 32%);
+                            border: 1px solid #87b83b;
+                        }
+
+                        .img-left {
+                            width: 40%;
+                            height: 319px;
+                            min-height: 319px;
+                        }
+
+                        .content-left {
+                            float: left;
+                            width: 60%;
+                            padding-left: 30px;
+                            padding-right: 30px;
+                            margin-top: 50px;
+
+                            a {
+                                display: flex;
+                                font-weight: bold;
+                            }
+
+                            .stars {
+                                margin-top: 30px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #SECTION6 {
+        margin-top: 0px !important;
+        width: 100%;
+
+        .ladi-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .news-project {
+            .ladi-headline {
+                color: #8B4513;
+            }
+
+            .ladi-headline {
+                width: 100%;
+            }
+        }
+
+        .img-contact {
+            height: auto !important;
+            margin-top: 30px;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+
+            .regis-img {
+                width: 100% !important;
+
+                .child-regis-img {
+                    height: auto !important;
+
+                    .child-img {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 4px;
+                    }
+                }
+            }
+
+            .regis-contact {
+                width: 100% !important;
+                float: left;
+                padding: 5px;
+
+                .child-regis-contact {
+                    height: 400px !important;
+                    border-radius: 10px;
+                    background-color: rgba(189, 113, 37, 255);
+                    text-align: center;
+                    padding-top: 30px;
+
+                    h1 {
+                        margin-bottom: 0 !important;
+                    }
+
+                    input,
+                    textarea {
+                        height: 30px !important;
+                        width: 85%;
+                        display: block;
+                        margin: 10px auto !important;
+                        padding: 2px 5px !important;
+                        border-radius: 7px;
+                        border: none;
+                    }
+
+                    textarea {
+                        height: 100px !important;
+                        border-radius: 4px;
+                    }
+
+                    .article-schedule {
+                        text-align: center;
+
+                        .btn-kp {
+                            background-color: rgb(99, 145, 16);
+                            border-radius: 15px;
+                            box-sizing: border-box;
+                            color: rgb(255, 255, 255);
+                            font-weight: bold;
+                            cursor: pointer;
+                            padding: 10px 24px;
+                            transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+                            width: 80%;
+                            border: none;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    #LADI-WRAPER {
+        #SECTION3 {
+            height: auto;
+
+            .ladi-container {
+
+                .article-item {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    #SECTION4 {
+        margin-top: 50px !important;
+
+        .ladi-container {
+            .gradient-border {
+                .content-left {
+                    padding-top: 20px !important;
+
+                    .child-content {
+                        width: 100% !important;
+                        padding: 5px 20px !important;
+                    }
+
+                    a {
+                        padding-bottom: 10px !important;
+                    }
+                }
+
+                .content-right {
+                    padding-top: 20px !important;
+
+                    .child-content {
+                        width: 100% !important;
+                        padding: 5px 20px !important;
+                    }
+
+                    a {
+                        padding-bottom: 10px !important;
+                    }
+                }
+            }
+        }
+    }
+
+    #SECTION5 {
+        margin-top: 30px !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .ladi-container {
+        .gradient-border {
+            height: 380px !important;
+
+            .content-left {
+                padding-top: 20px !important;
+
+                .child-content {
+                    width: 100% !important;
+                    padding: 5px 20px !important;
+                    font-size: 14px !important;
+                }
+
+                a {
+                    padding-bottom: 10px !important;
+                }
+            }
+
+            .content-right {
+                padding-top: 20px !important;
+
+                .child-content {
+                    width: 100% !important;
+                    padding: 5px 20px !important;
+                    font-size: 14px !important;
+                }
+
+                a {
+                    padding-bottom: 10px !important;
+                }
+            }
+        }
+    }
+
+    #SECTION5 {
+        margin-top: 30px !important;
+        width: 100%;
+
+        .ladi-container {
+            width: 100%;
+            height: 100%;
+            margin-top: 40px;
+
+            .line {
+                border: 1px solid #87b83b;
+                width: 40%;
+                margin: 0 auto;
+                margin-bottom: 2px;
+            }
+
+            .news-project {
+                top: 20px;
+                width: 100%;
+                text-align: center;
+                margin-top: 60px;
+
+                .ladi-headline {
+                    color: #8B4513;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+
+                .ladi-headline {
+                    width: 100%;
+                    display: inline-block;
+                    background-size: cover;
+                    background-position: center center;
+                }
+            }
+
+            .article-item-top {
+                width: 100%;
+                margin-top: 10px;
+
+                .gradient-border {
+                    border: 1px solid #e5e5e5;
+                    border-radius: 4px;
+                    padding: 2px;
+                    height: 330px;
+                    min-height: 330px;
+
+                    .content-right {
+                        float: left;
+                        padding-left: 30px;
+                        padding-right: 30px;
+                        margin-top: 50px;
+
+                        .stars {
+                            margin-top: 30px;
+                        }
+                    }
+
+                    .img-right {
+                        float: left;
+                        width: 50%;
+                        min-height: 375px !important;
+                    }
+                }
+
+            }
+
+            .article-item-bottom {
+                width: 100%;
+                display: inline-block;
+
+                .article-item {
+                    width: 100% !important;
+                    float: left;
+                    margin-top: 10px;
+
+                    .gradient-border {
+                        border: 1px solid #e5e5e5;
+                        border-radius: 4px;
+                        padding: 2px;
+                        height: 325px;
+                        min-height: 325px;
+
+                        &:hover {
+                            background: #ffffff;
+                            box-shadow: 3.5px 6px 18px 0 rgb(0 0 0 / 10%);
+                            -moz-box-shadow: 0px 0px 10px rgba(140, 140, 140, 0.32);
+                            -webkit-box-shadow: 0px 0px 10px rgb(140 140 140 / 32%);
+                            box-shadow: 0px 0px 10px rgb(140 140 140 / 32%);
+                            border: 1px solid #87b83b;
+                        }
+
+                        .img-left {
+                            width: 40%;
+                            height: 319px;
+                            min-height: 375px !important;
+                        }
+
+                        .content-left {
+                            float: left;
+                            width: 60%;
+                            padding-left: 30px;
+                            padding-right: 30px;
+                            margin-top: 50px;
+
+                            a {
+                                display: flex;
+                                font-weight: bold;
+                            }
+
+                            .stars {
+                                margin-top: 30px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1400px) {}

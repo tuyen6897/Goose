@@ -49,7 +49,7 @@ export class ChitiettintucComponent extends ComponentBaseComponent implements On
             if (response.postList) {
 
                 this.post = (response.postList as []).find(x => x['slug'] === name);
-                this.httpService.reqeustApiget('postsupdate', this.post.id);
+                this.httpService.reqeustApiPost('postsupdate', this.post.id);
                 this.listTinTuc = response.postList.slice(0, 10);
                 window.document.title = this.post.postTitle;
                 this.post.postDate = Utils.timeStempToDateFormat(this.post.postDate);

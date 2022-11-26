@@ -93,23 +93,25 @@ a,
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), 50% 100%, 0 calc(100% - 8px));
 }
 
+.bvxn {
+    font-size: 22px;
+    font-weight: bold;
+}
+
 @media (min-width: 1200px) and (max-width: 1800px) {
     .container {
-        padding: 30px 5em !important;
         align-items: flex-start;
     }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
     .container {
-        padding: 30px 1em !important;
         align-items: flex-start;
     }
 }
 
 @media (max-width: 991px) {
     .container {
-        padding: 30px 10px !important;
         margin: 0 !important;
         margin: 15px 0;
     }
@@ -117,5 +119,23 @@ a,
     .grid__item {
         margin-top: 20px;
         padding-left: 30px;
+    }
+
+    .bvxn {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-content {
+        width: 100%;
+    }
+
+    .tin-tuc-content {
+        width: 100%;
+    }
+
+    .grid__item {
+        padding-left: 10px !important;
     }
 }

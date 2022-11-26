@@ -3,7 +3,7 @@
 <div id="LADI-WRAPER">
     <div id="SECTION1">
         <div class="title-common">
-            <a target="_self" [href]="project.banner.targetUrl"><img class="img-title" style="height: 400px;"
+            <a target="_self" [href]="project?.banner.targetUrl"><img class="img-title" style="height: 400px;"
                     [src]="project.banner.imageUrl" alt=""></a>
         </div>
     </div>
@@ -13,7 +13,7 @@
         </div>
         <div id="SECTION3">
             <ul>
-                <li *ngFor="let item of project.moDau">
+                <li *ngFor="let item of project?.moDau">
                     {{item}}
                 </li>
             </ul>
@@ -56,19 +56,19 @@
         </div>
         <div id="SECTION5">
             <div class="div-img3">
-                <div style="width: 33.3%; margin-top: 20px; margin-left: 30px;">
+                <div class="div-img3-1">
                     <div class="div-con-img-1">
                     </div>
                     <div><a target="_self" [href]="project?.soGao[0].targetUrl"><img class="img1"
                                 [src]="project?.soGao[0].imageUrl" alt="Sổ Gạo Ngỗng"></a></div>
                 </div>
-                <div style="width: 33.3%; margin-top: 20px; ">
+                <div class="div-img3-2">
                     <div class="div-con-img-1">
                     </div>
                     <div><a target="_self" [href]="project?.soGao[0].targetUrl"><img class="img1"
                                 [src]="project?.soGao[1].imageUrl" alt="Sổ Gạo Ngỗng"></a></div>
                 </div>
-                <div style="width: 33.3%; margin-top: 20px; margin-right: 30px;">
+                <div class="div-img3-3">
                     <div class="div-con-img-1">
                     </div>
                     <div><a target="_self" [href]="project?.soGao[0].targetUrl"><img class="img1"
@@ -97,9 +97,7 @@
                                 value="">
                             <input #email name="email" class="regis-email" type="email" placeholder="Email" value="">
                             <select #projectSelect>
-                                <option value="0">Select Project</option>
-                                <option value="1">Audi</option>
-                                <option value="2">BMW</option>
+                                <option *ngFor="let item of projectList" [value]="item.id">{{item.name}}</option>
                             </select>
                             <textarea #message name="message" class="ladi-form-control"
                                 placeholder="Góp ý hoặc thắc mắc của bạn?"></textarea>

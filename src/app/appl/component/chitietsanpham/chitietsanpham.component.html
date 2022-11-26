@@ -38,23 +38,23 @@
                         <ng-template pTemplate="item" let-item>
                             <img [src]="item.previewImageSrc" style="width: 100%; border: 3px solid #87b83b;" />
                         </ng-template>
-                        <!-- <ng-template pTemplate="thumbnail" let-item let-index>
+                        <ng-template pTemplate="thumbnail" let-item let-index>
                             <div class="grid grid-nogutter justify-content-center">
                                 <img [src]="item.thumbnailImageSrc" (click)="onActive(index)"
                                     style="height: 60px; border: 1px solid #ccc; border-radius: 5px;" />
                             </div>
-                        </ng-template> -->
+                        </ng-template>
                     </p-galleria>
-                    <app-carousel [datas]="images" [thumbnail]="true" [responsiveOptions]="responsiveOptions">
-                    </app-carousel>
+                    <!-- <app-carousel [datas]="images" [thumbnail]="true" [responsiveOptions]="responsiveOptions">
+                    </app-carousel> -->
                 </div>
                 <div class="product-content">
                     <div class="pro-content-head">
-                        <h2 itemprop="name">{{product.name}}</h2>
+                        <h2 itemprop="name">{{product?.name}}</h2>
                         <div class="review-sold">
                             <div class="starbaprv-widget">
                                 <span>Xuất xứ:</span>
-                                <span class="origin">{{product.origin}}</span>
+                                <span class="origin">{{product?.origin}}</span>
                                 <span>Tình trạng:</span>
                                 <span class="status">Còn hàng</span>
                                 <div class="starbap-prev-badge" data-average-rating="5.0" data-number-of-reviews="83">
@@ -75,9 +75,9 @@
                     </div>
                     <div class="pro-price">
                         <span style="margin-right: 24px;">Giá bán:</span>
-                        <span class="product-price">{{formatCashProduct(productVariant.price)}} ₫</span>
-                        <span class="product-orifinnal">{{formatCashProduct(productVariant.price)}} ₫</span>
-                        <span class="product-sale" *ngIf="productVariant.salePrice">(-10%)</span>
+                        <span class="product-price">{{formatCashProduct(productVariant?.price)}} ₫</span>
+                        <span class="product-orifinnal">{{formatCashProduct(productVariant?.price)}} ₫</span>
+                        <span class="product-sale" *ngIf="productVariant?.salePrice">(-10%)</span>
                     </div>
                     <div class="product-variants-wrapper">
                         <div id="product-select-watch" class="select-swatch">
@@ -90,7 +90,7 @@
                                         <input class="variant-0 input-product" id="item.code" type="radio"
                                             name="option1" value="500">
                                         <label [class.sp]="item.check">
-                                            {{item.size}} {{item.unit}}
+                                            {{item.weight}} {{item.unit}}
                                             <img *ngIf="item.check" class="img-check"
                                                 src="//theme.hstatic.net/200000170631/1000660112/14/select-pro.png?v=3075">
                                         </label>
@@ -133,19 +133,20 @@
                         <label style="font-size: 22px; font-weight: bold;">Sản Phẩm Khuyến Mãi</label>
                     </div>
                     <div class="product-group-cotent">
-                        <div *ngFor="let image of imagesProductGroup" class="article-item-list">
+                        <div *ngFor="let item of datasProductSale" class="article-item-list">
                             <div class="article-image">
-                                <a target="_self" href="/chi-tiet-san-pham"><img style="width: 90px;" [src]="image"></a>
+                                <a target="_self" [href]="createURL(item.name, item.id)"><img style="width: 90px;"
+                                        [src]="item.image"></a>
                             </div>
                             <div class="article-info">
                                 <a class="article-title">
-                                    Gạo ST25 sát trắng
+                                    {{item.name}}
                                 </a>
                                 <div style="position: relative;">
-                                    <span>30,000₫</span>
+                                    <span>{{item.priceDisp}} ₫</span>
                                     <div class="product-tags">
                                         <span class="tag-saleoff">
-                                            SALE 30%
+                                            SALE {{item.saleRate}}%
                                         </span>
                                     </div>
                                 </div>
@@ -155,10 +156,10 @@
                 </div>
                 <div class="product-fix" #productFix>
                     <div class="product-fix-title">
-                        <h2 itemprop="name">{{product.name}}</h2>
+                        <h2 itemprop="name">{{product?.name}}</h2>
                     </div>
                     <div class="product-fix-reviews">
-                        <span>Xuất xứ: {{product.origin}} |</span>
+                        <span>Xuất xứ: {{product?.origin}} |</span>
                         <span>Tình trạng: Còn hàng |</span>
                         <div class="starbap-rev-total">
                             <span class="starbap-rev-total-point">Đánh giá</span>
@@ -174,12 +175,12 @@
                         </div>
                         <div class="pro-price">
                             <span style="margin-right: 10px;">Giá bán:</span>
-                            <span class="current-price ProductPrice">{{formatCashProduct(productVariant.price)}}
+                            <span class="current-price ProductPrice">{{formatCashProduct(productVariant?.price)}}
                                 ₫</span>
                             <span class="original-price ComparePrice"><s
-                                    style="display: inline;">{{formatCashProduct(productVariant.price)}} ₫</s></span>
+                                    style="display: inline;">{{formatCashProduct(productVariant?.price)}} ₫</s></span>
                             <div class="sale-percentage"><span class="PriceSaving" style="display: inline;"
-                                    *ngIf="productVariant.salePrice">(-10%)</span></div>
+                                    *ngIf="productVariant?.salePrice">(-10%)</span></div>
                         </div>
                         <div class="product-quantity">
                             <div class="qty-addcart">
@@ -218,8 +219,8 @@
         <div class="group" style="border-top: 2px solid #ccc;">
             <div class="content">
                 <div class="ToggleContent__Wrapper-sc-1dbmfaw-1 cqXrJr">
-                    <div class="ToggleContent__View-sc-1dbmfaw-0 wyACs">
-                        <ul></ul>
+                    <div #nutrition class="ToggleContent__View-sc-1dbmfaw-0 wyACs" [class.is-hiden]="!isShowE">
+                        <!-- <ul></ul>
                         Model: LISA 25 CURVED
                         Kích thước cáp sử dụng: 940*400mm. Loại 18 thanh sấy.
                         Sử dụng nước và điện có thể option.
@@ -249,10 +250,11 @@
                                 gian tĩnh phòng
                                 khách, phòng ngủ, nhà bếp, phòng vệ sinh, nhà tắm, văn phòng, phòng hút thuốc... thông
                                 gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p>
-                        <div *ngIf="!isShow" class="gradient"></div>
+                        <div *ngIf="!isShow" class="gradient"></div> -->
                     </div>
-                    <button class="btn-more" (click)="isShow = !isShow" data-view-id="pdp_view_description_button">
-                        {{!isShow ? 'Xem thêm thông số' : 'Thu gọn thông số'}}</button>
+                    <div *ngIf="!isShowE" class="gradient"></div>
+                    <button class="btn-more" (click)="isShowE = !isShowE" data-view-id="pdp_view_description_button">
+                        {{!isShowE ? 'Xem thêm thông số' : 'Thu gọn thông số'}}</button>
                 </div>
             </div>
         </div>
@@ -262,7 +264,7 @@
         <div class="group" style="border-top: 2px solid #ccc;">
             <div class="content">
                 <div class="ToggleContent__Wrapper-sc-1dbmfaw-1 cqXrJr">
-                    <div class="ToggleContent__View-sc-1dbmfaw-0 wyACs" #description>
+                    <div class="ToggleContent__View-sc-1dbmfaw-0 wyACs" #description [class.is-hiden]="!isShowD">
                         <!-- <p><span><strong style="color: rgb(17, 90, 226);">Quạt thông gió âm trần TFV-D15
                                     ZPD:</strong>hút thông gió không gian tĩnh phòng
                                 khách, phòng ngủ, nhà bếp, phòng vệ sinh, nhà tắm, văn phòng, phòng hút thuốc... thông
@@ -279,8 +281,9 @@
                                 gió, hút bụi, hút nhiệt... đảm bảo không gian sạch sẽ, thông thoáng</span></p>
                         <div *ngIf="!isShow" class="gradient"></div> -->
                     </div>
-                    <!-- <button class="btn-more" (click)="isShow = !isShow" data-view-id="pdp_view_description_button">
-                        {{!isShow ? 'Xem thêm mô tả' : 'Thu gọn mô tả'}}</button> -->
+                    <div *ngIf="!isShowD" class="gradient"></div>
+                    <button class="btn-more" (click)="isShowD = !isShowD" data-view-id="pdp_view_description_button">
+                        {{!isShowD ? 'Xem thêm mô tả' : 'Thu gọn mô tả'}}</button>
                 </div>
             </div>
         </div>
@@ -443,11 +446,11 @@
         <div class="collection-head" style="width: 100%;">
             <label class="lbl-h1 collection-title">SẢN PHẨM ĐÃ XEM</label>
         </div>
-        <div style="width: 100%;" class="product-watch">
+        <!-- <div style="width: 100%;" class="product-watch">
             <app-carousel [datas]="datasProductSeen" [showButton]="false" [product]="true"
                 [responsiveOptions]="responsiveOptions2">
             </app-carousel>
-        </div>
+        </div> -->
     </div>
     <div style="width: 100%;">
         <img style="width: 100%;" src="../../../../assets/image/main/ms_banner_img1.jpg">

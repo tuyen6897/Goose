@@ -8,13 +8,13 @@
                 <span>về ngỗng<i class="fa fa-angle-down" aria-hidden="true"></i></span>
                 <ul class="no-bullets dropdown-menu">
                     <li>
-                        <a target="_self" href="/introduce">sơ lược về ngỗng</a>
+                        <a target="_self" href="/so-luoc-ve-ngong">sơ lược về ngỗng</a>
                     </li>
                     <li>
                         <a target="_self" href="/bao-chi-noi-gi-ve-ngong">báo chí nói gì về ngỗng</a>
                     </li>
                     <li>
-                        <a target="_self" href="/production-system">hệ thống sản xuất và quản lý</a>
+                        <a target="_self" href="/he-thong-san-xuat-va-quan-ly">hệ thống sản xuất và quản lý</a>
                     </li>
                 </ul>
             </li>
@@ -22,15 +22,7 @@
                 <a target="_self" href="/danh-muc-san-pham">sản phẩm<i class="fa fa-angle-down"
                         aria-hidden="true"></i></a>
                 <ul class="no-bullets dropdown-menu">
-                    <li>
-                        <a target="_self" href="/danh-muc-san-pham">danh mục sản phẩm 1</a>
-                    </li>
-                    <li>
-                        <a target="_self" href="/danh-muc-san-pham">danh mục sản phẩm 2</a>
-                    </li>
-                    <li>
-                        <a target="_self" href="/danh-muc-san-pham">danh mục sản phẩm 3</a>
-                    </li>
+                    <li *ngFor="let item of products"><a target="_self" [href]="item.url">{{item.name}}</a></li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -95,7 +87,7 @@
         <!-- <a (click)="onCartClick($event)"><img src="../../../../assets/image/main/gio-hang.png" /></a> -->
         <a (click)="onClick()" (mouseout)="onCartClick($event)" (mouseover)="onMouseOver($event)"><img
                 src="../../../../assets/image/main/gio-hang.png" /></a>
-        <div class="gio-hang-total" *ngIf="totalCartProduct > 0">{{totalCartProduct}}</div>
+        <div class="gio-hang-total">{{totalCartProduct}}</div>
     </div>
 </div>
 
@@ -112,17 +104,15 @@
             <li>
                 <span>Về Ngỗng</span>
                 <ul>
-                    <li><a target="_self" href="/introduce">Sơ lược về Ngỗng</a></li>
+                    <li><a target="_self" href="/so-luoc-ve-ngong">Sơ lược về Ngỗng</a></li>
                     <li><a target="_self" href="/bao-chi-noi-gi-ve-ngong">Báo chí nói gì về ngỗng</a></li>
-                    <li><a target="_self" href="/production-system">Hệ thống sản xuất và quản lý</a></li>
+                    <li><a target="_self" href="/he-thong-san-xuat-va-quan-ly">Hệ thống sản xuất và quản lý</a></li>
                 </ul>
             </li>
             <li>
                 <a target="_self" href="/danh-muc-san-pham">Sản phẩm</a>
                 <ul>
-                    <li><a target="_self" href="/danh-muc-san-pham">Danh mục sản phẩm 1</a></li>
-                    <li><a target="_self" href="/danh-muc-san-pham">Danh mục sản phẩm 2</a></li>
-                    <li><a target="_self" href="/danh-muc-san-pham">Danh mục sản phẩm 1</a></li>
+                    <li *ngFor="let item of products"><a target="_self" [href]="item.url">{{item.name}}</a></li>
                 </ul>
             </li>
             <li>

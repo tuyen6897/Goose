@@ -451,12 +451,12 @@
         display: flex;
         float: left;
         padding-top: 10px;
+        padding: 0 15px;
         width: 100%;
         text-align: justify;
 
         div {
             .betaviet {
-                width: 300px;
                 height: fit-content;
                 border: 1px solid #ccc;
                 box-shadow: 0px 2px 10px 0px rgb(145 147 150 / 75%);
@@ -465,6 +465,32 @@
 
                 &:hover {
                     transform: translateY(-5px);
+                }
+
+                .betaviet-header {
+                    height: 90px;
+                    font-size: 28px;
+                    border-bottom: 1px solid #ccc;
+                    margin-bottom: 10px;
+                    padding: 10px;
+                    display: flex;
+
+                    .betaviet-header-time {
+                        display: flex;
+                        align-items: center;
+                        height: 100%;
+                        color: #790505;
+                        font-weight: bold;
+                    }
+                }
+
+                .betaviet-body {
+                    padding: 10px;
+
+                    .betaviet-title {
+                        font-weight: bold;
+                        font-size: 18px;
+                    }
                 }
             }
 
@@ -491,24 +517,34 @@
     }
 }
 
-@media (max-width: 1366px) {
-    .p-element {
-        .product-content {
-            padding: 0 10px;
+@media (max-width: 668px) {
+    .betaviet-content {
+        height: 500px;
+    }
+}
 
-            .product-item {
-                .product-info {
-                    .product-title {
-                        a {
-                            font-size: 16px;
-                        }
+@media (max-width: 500px) {
+    .latestnewss {
+        .article-item-list {
+            margin: 0 !important;
+        }
+    }
+
+    .product-content {
+        padding: 0 10px;
+
+        .product-item {
+            .product-info {
+                .product-title {
+                    a {
+                        font-size: 16px !important;
                     }
+                }
 
-                    .product-actions {
-                        div {
-                            button {
-                                font-size: 14px;
-                            }
+                .product-actions {
+                    div {
+                        button {
+                            font-size: 11px !important;
                         }
                     }
                 }
@@ -517,10 +553,35 @@
     }
 }
 
+@media (max-width: 1366px) {
+    .product-content {
+        padding: 0 10px;
+
+        .product-item {
+            .product-info {
+                .product-title {
+                    a {
+                        font-size: 16px !important;
+                    }
+                }
+
+                .product-actions {
+                    div {
+                        button {
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
 @media (max-width: 414px) {
     .p-element {
         .product-content {
-            padding: 0 10px;
+            padding: 0 5px;
 
             .product-item {
                 .product-info {
@@ -533,9 +594,79 @@
                     .product-actions {
                         div {
                             button {
-                                font-size: 7px;
+                                font-size: 9px !important;
+                                display: inline-block;
+                                height: 25px;
+                                margin: 0px 3px;
+                                line-height: 25px;
+                                padding: 0 5px;
                             }
                         }
+                    }
+                }
+            }
+        }
+
+        .betaviet-content {
+            height: auto;
+            margin-top: 20px;
+
+            div {
+                .betaviet.sub {
+                    margin-top: 30px;
+                }
+            }
+        }
+
+        .feedback-item {
+            width: 100%;
+            padding: 24.5px;
+
+            .feedback-img {
+                position: relative;
+
+                img {
+                    width: 100%;
+                    border: 2px solid #87b83b;
+                }
+
+                div {
+                    position: absolute;
+                    bottom: 5px;
+                    height: 100px;
+                    width: 93%;
+                    background: rgba(255, 255, 255, 0.4);
+                    margin: 3.5%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0 !important;
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1366px) {
+
+    .p-element {
+        .product-content {
+            padding: 0 5px;
+
+        }
+    }
+
+    .picsum-content {
+        .picsum-img {
+            .article-item {
+                .article-info {
+                    .article-title {
+                        font-size: 16px;
+                    }
+
+                    .article-desc {
+                        font-size: 14px;
                     }
                 }
             }

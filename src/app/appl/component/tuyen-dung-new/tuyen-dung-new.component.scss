@@ -326,6 +326,7 @@
                     margin-left: 10px;
                     margin-right: 10px;
                     margin-bottom: 20px;
+                    width: 33.3333333%;
 
                     h2 {
                         text-align: left;
@@ -378,12 +379,14 @@
 
                     .button-9 {
                         font-size: 18px;
+                        -webkit-appearance: button;
                         appearance: button;
+                        -webkit-backface-visibility: hidden;
                         backface-visibility: hidden;
                         background-color: #405cf5;
                         border-radius: 6px;
                         border-width: 0;
-                        box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .1) 0 2px 5px 0, rgba(0, 0, 0, .07) 0 1px 1px 0;
+                        box-shadow: rgb(50 50 93 / 10%) 0 0 0 1px inset, rgb(50 50 93 / 10%) 0 2px 5px 0, rgb(0 0 0 / 7%) 0 1px 1px 0;
                         box-sizing: border-box;
                         color: #fff;
                         cursor: pointer;
@@ -391,7 +394,7 @@
                         height: 44px;
                         text-align: center;
                         width: 50%;
-                        margin-left: 90px;
+                        margin-left: 25%;
                         margin-top: 15px;
                         text-transform: uppercase;
                         padding: 8px;
@@ -435,51 +438,6 @@
         padding-right: 20px;
         padding-left: 20px;
         margin-bottom: 10px;
-
-        // .paging {
-        //     width: 100%;
-        //     display: flex;
-        //     justify-content: center;
-
-        //     .page {
-        //         display: flex;
-        //         justify-content: center;
-        //         align-items: center;
-        //         height: 5rem;
-        //         border-radius: 0.6rem;
-        //     }
-
-        //     .page__numbers,
-        //     .page__btn,
-        //     .page__dots {
-        //         display: flex;
-        //         justify-content: center;
-        //         align-items: center;
-        //         margin: 0.8rem;
-        //         cursor: pointer;
-        //     }
-
-        //     .page__dots {
-        //         width: 2.6rem;
-        //         height: 2.6rem;
-        //         color: #fff;
-        //         cursor: initial;
-        //         background-color: #4b4e4e;
-        //     }
-
-        //     .page__numbers {
-        //         width: 2.6rem;
-        //         height: 2.6rem;
-        //         background-color: #4b4e4e;
-        //         color: #fff;
-        //     }
-
-        //     .page__numbers.active {
-        //         color: #ffffff;
-        //         background: #ddac09;
-        //         font-weight: 600;
-        //     }
-        // }
     }
 
     .lbl-h2 {
@@ -522,9 +480,9 @@
                     min-height: 1px;
                     padding-left: 15px;
                     vertical-align: top;
-                    width: 100%;
+                    width: 50%;
                     text-align: left;
-                    margin-bottom: 30px;
+                    float: left;
                 }
 
                 .box-bao-chi {
@@ -533,7 +491,6 @@
                     height: 540px;
                     min-height: 540px;
                     padding-right: 30px;
-                    display: flex;
                 }
 
                 .box-tin-tuc {
@@ -603,6 +560,12 @@
                 .large--one-half .article-info .article-title {
                     color: white;
                     font-weight: bold;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    cursor: default;
                 }
 
                 .large--one-half .article-info .article-desc {
@@ -710,7 +673,6 @@
                             min-height: 23px;
                             min-width: 0;
                             outline: none;
-                            padding: 10px;
                             text-decoration: none;
                             transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
                             touch-action: manipulation;

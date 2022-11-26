@@ -53,6 +53,11 @@
     margin-bottom: 30px;
 }
 
+.introduce .story .story-content {
+    margin-left: 20px;
+    width: 100%;
+}
+
 .introduce .div-content {
     display: flex;
     height: 180px;
@@ -87,7 +92,7 @@
 
 #container {
     float: left;
-    padding: 1em;
+    padding: 1em 0;
     width: 100%;
 }
 
@@ -180,20 +185,18 @@ ol.organizational-chart li>div {
 /*** PRIMARY ***/
 ol.organizational-chart>li>div {
     background-color: #bc7026;
-    margin-right: 1em;
-    width: 355px;
 }
 
 ol.organizational-chart>li>div:before {
     bottom: 2em;
-    height: 3px;
+    /* height: 3px; */
     right: -1em;
     width: 1em;
 }
 
 ol.organizational-chart>li>div:first-of-type:after {
     bottom: 0;
-    height: 2em;
+    /* height: 2em; */
     right: -1em;
     width: 3px;
 }
@@ -380,21 +383,53 @@ label {
 }
 
 .box-future {
-    background-repeat: no-repeat;
-    background-size: 100%;
+    background-repeat: no-repeat !important;
+    background-size: 100% !important;
     height: 600px;
     width: 100%;
     display: flex;
     margin-top: 30px;
-    padding: 20px;
+    border-radius: 28px;
 }
 
 .box-future .box-content {
+    background-repeat: no-repeat !important;
+    background-size: 100% !important;
     height: 100%;
     width: 100%;
     display: flex;
     background-color: rgba(245, 222, 179, 0.5);
     border-radius: 28px;
+}
+
+.box-content-tam-nhin {
+    margin-top: 30px;
+    width: 50%;
+    text-align: center;
+}
+
+.box-content-linh-vuc,
+.box-content-gia-tri-cot-loi {
+    width: 50%;
+}
+
+.box-content-dinh-huong {
+    margin-top: 30px;
+    width: 50%;
+    text-align: center;
+}
+
+.cc-content {
+    word-break: break-word;
+    text-align: left;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cc-strong {
+    font-size: 18px;
+    margin-bottom: 15px;
 }
 
 .story-image {
@@ -407,16 +442,41 @@ label {
     text-align: center;
 }
 
+@media (max-width: 1366px) {
+
+    .container {
+        font-size: 16px !important;
+    }
+
+    .cc-content {
+        font-size: 16px;
+    }
+
+    .introduce .arrow:before {
+        top: 5px;
+        left: 2px;
+    }
+
+    .introduce .arrow:after {
+        top: 1px;
+        left: 1px;
+    }
+}
+
+@media (max-width: 1040px) {
+    .introduce .div-content {
+        margin: 3px;
+        padding: 9px;
+    }
+
+    .introduce .div-content {
+        max-width: 50%;
+    }
+}
+
 
 
 @media (max-width: 991px) {
-    .story-image {
-        width: auto;
-    }
-
-    .story {
-        display: block;
-    }
 
     label {
         font-size: 12px;
@@ -437,12 +497,6 @@ label {
         display: block;
     }
 
-    ol.organizational-chart>li>ol>li>div,
-    ol.organizational-chart>li>ol>li>ol>li>div,
-    ol.organizational-chart>li>ol>li>ol>li>ol>li>div {
-        width: 300px;
-    }
-
     ol.organizational-chart>li>div:first-of-type:after {
         bottom: 0;
         height: 0;
@@ -455,5 +509,49 @@ label {
         height: 0;
         right: 0;
         width: 0;
+    }
+}
+
+@media (max-width: 900px) {
+    .introduce .div-content {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .introduce .story {
+        display: block !important;
+    }
+
+    .introduce .story .story-content {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 668px) {
+    .box-future .box-content {
+        display: block;
+    }
+
+    .box-content-dinh-huong,
+    .box-content-tam-nhin {
+        width: 100%;
+    }
+
+    .box-content-linh-vuc,
+    .box-content-gia-tri-cot-loi {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .box-future .box-content {
+        padding-bottom: 30px;
+    }
+
+    .box-future {
+        height: auto;
     }
 }

@@ -23,15 +23,16 @@ export class ChuyenDiCuaNgongComponent extends ComponentBaseComponent implements
     images = [1, 2, 3, 4];
     postsNewList: any[] = [1, 2, 3, 4];
     project: any = null;
+
     responsiveOptions = [
         {
             breakpoint: '1024px',
-            numVisible: 2,
+            numVisible: 4,
             numScroll: 1
         },
         {
             breakpoint: '800px',
-            numVisible: 1,
+            numVisible: 2,
             numScroll: 1
         },
         {
@@ -52,6 +53,7 @@ export class ChuyenDiCuaNgongComponent extends ComponentBaseComponent implements
         this.showLoadingDialog('on');
         this.httpService.reqeustApiget('postsproject', 'chuyenDiCuaNgong').subscribe((data: any) => {
             if (data.chuyenDiCuaNgong) {
+                console.log(data.chuyenDiCuaNgong);
                 this.project = data.chuyenDiCuaNgong;
                 this.content.nativeElement.innerHTML = this.project.moDau;
             }

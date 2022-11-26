@@ -25,17 +25,23 @@ export class ProdudctionSystemComponent implements OnInit {
 
     responsiveOptions = [
         {
-            breakpoint: '1024px',
+            breakpoint: '1080px',
+            numVisible: 3,
+            numScroll: 1
+        },
+        {
+            breakpoint: '900px',
             numVisible: 2,
             numScroll: 1
         },
         {
-            breakpoint: '800px',
+            breakpoint: '560px',
             numVisible: 1,
             numScroll: 1
-        },
+        }
+        ,
         {
-            breakpoint: '560px',
+            breakpoint: '414px',
             numVisible: 1,
             numScroll: 1
         }

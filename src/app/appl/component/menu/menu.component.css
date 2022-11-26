@@ -8,6 +8,7 @@
 .products {
     margin-top: 20px;
     margin-bottom: 10px;
+    width: 100%;
 }
 
 app-img-product .product-content {
@@ -255,7 +256,38 @@ code {
 }
 
 .so-gao-desktop {
+    margin-top: 30px;
+    margin-bottom: -100px;
+    justify-content: center;
+    height: auto;
     display: flex;
+}
+
+.so-gao-desktop-image {
+    position: relative;
+    z-index: 2;
+    left: 15px;
+    top: -30px;
+}
+
+.so-gao-header-item {
+    font-weight: bold;
+    text-align: center;
+}
+
+.so-gao-header {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+}
+
+.so-gao-desktop-image img {
+    width: 255px !important;
+    transform: rotate(355deg);
+}
+
+.so-gao-header-img {
+    width: 80px !important;
 }
 
 .so-gao-desktop .dat-hang-so-gao {
@@ -263,6 +295,36 @@ code {
     border-radius: 7px;
     position: relative;
     border-radius: 7px;
+}
+
+.so-gao-dk {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: bold;
+    width: 40%;
+    font-size: 22px;
+    margin-right: 6px;
+}
+
+.dat-hang-so-gao-content {
+    display: flex;
+    margin: 15px 0px;
+    width: 90%;
+    margin-left: 30px;
+}
+
+.so-gao-btn {
+    background: linear-gradient(to bottom, red 0, #b32323 100%);
+    width: 200px;
+    border: 2px solid #fff;
+    border-radius: 30px;
+    font-weight: bold;
+    align-items: center;
+    height: 40px;
+    color: #fff;
+    box-shadow: 0px 2px 10px 0px rgb(145 147 150 / 75%);
 }
 
 .so-gao-desktop .dat-hang-so-gao::before {
@@ -275,6 +337,22 @@ code {
     right: -5px;
     position: absolute;
     z-index: -1;
+}
+
+.so-gao-content {
+    font-size: 20px;
+    padding-left: 60px;
+    text-align: left;
+    padding-right: 15px;
+    word-break: break-word;
+}
+
+.so-gao-bong-gao {
+    position: relative;
+    transform: rotate(18deg);
+    width: fit-content;
+    bottom: 155px;
+    left: 79%;
 }
 
 .trung-vang,
@@ -428,6 +506,73 @@ code {
     }
 }
 
+@media (max-width: 414px) {
+    app-img-product .product-content {
+        padding: 7px;
+    }
+}
+
+.so-gao-bong-gao-img {
+    width: 200px !important;
+}
+
+@media (max-width: 500px) {
+
+    .news-content-right-img .txt-news div {
+        font-size: 12px;
+    }
+
+    .nong-san .title-nong-san {
+        font-size: 20px !important;
+    }
+
+    .trung-vang {
+        height: 500px;
+    }
+
+    .trung-vang div {
+        font-size: 20px;
+        height: 100px;
+    }
+
+    .chuyen-di div {
+        font-size: 20px;
+    }
+
+    .so-gao-desktop-image img {
+        width: 150px !important;
+    }
+
+    .so-gao-header-img {
+        width: 40px !important;
+    }
+
+    .so-gao-header-item {
+        font-size: 12px;
+    }
+
+    .so-gao-bong-gao {
+        bottom: 105px;
+        left: 64%;
+    }
+
+    .so-gao-btn {
+        width: 100px;
+    }
+
+    .so-gao-content {
+        font-size: 12px;
+    }
+
+    .so-gao-bong-gao-img {
+        width: 110px !important;
+    }
+}
+
+.so-gao-bong-gao-img {
+    width: 110px;
+}
+
 @media (max-width: 991px) {
 
     .so-gao-mobile {
@@ -464,7 +609,7 @@ code {
         width: 100%;
         height: 45px;
         display: flex;
-        justify-self: center;
+        justify-content: center;
         align-items: center;
     }
 

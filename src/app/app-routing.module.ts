@@ -26,9 +26,9 @@ import { TuyenDungNewComponent } from './appl/component/tuyen-dung-new/tuyen-dun
 
 const routes: Routes = [
     { path: '', component: MenuComponent },
-    { path: 'introduce', component: IntroduceComponent, title: 'Về Ngỗng' },
+    { path: 'so-luoc-ve-ngong', component: IntroduceComponent, title: 'Sơ lược về Ngỗng' },
     { path: 'bao-chi-noi-gi-ve-ngong', component: NewsComponent, title: 'Báo chí nói gì về ngỗng' },
-    { path: 'production-system', component: ProdudctionSystemComponent, title: 'Hệ thống sản xuất và quản lý' },
+    { path: 'he-thong-san-xuat-va-quan-ly', component: ProdudctionSystemComponent, title: 'Hệ thống sản xuất và quản lý' },
     { path: 'mua-o-dau', component: MuaodauComponent, title: 'Mua ở đâu' },
     { path: 'lien-he', component: LienheComponent, title: 'Liên hệ' },
     { path: 'chuyen-cua-ngong', component: TintucComponent, title: 'Chuyện của Ngỗng' },

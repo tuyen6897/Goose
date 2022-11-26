@@ -2,13 +2,8 @@
     <div class="product-item">
         <div class="product-img">
             <a target="_self" [href]="createURL(data!.name)">
-                <img id="1026970643" class="lazyload" [src]="data!.image" [alt]="data!.name">
+                <img id="1026970643" class="lazyload" [src]="data?.image ? data?.image[0] : ''" [alt]="data?.name">
             </a>
-            <div *ngIf="data!.saleRate" class="product-tags">
-                <span class="tag-saleoff text-center">
-                    {{data!.saleRate}}
-                </span>
-            </div>
         </div>
         <div class="product-info">
             <div class="product-title">

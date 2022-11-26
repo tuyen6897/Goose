@@ -10,7 +10,7 @@
                 <div>
                     <label class="lbl-h1">Thông Tin Vận Chuyển</label>
                 </div>
-                <div class="login" *ngIf="!account.username">
+                <div class="login" *ngIf="!account.id">
                     <span>Bạn đã có tài khoản?</span>
                     <a (click)="openDialogLogin()"><span>Đặng nhập</span></a>
                 </div>
@@ -45,68 +45,22 @@
                 <div>
                     <label class="lbl-h1">Phương thức thanh toán</label>
                 </div>
-                <div>
-                    <label class="two-page" for="payment_method_id_1002478030">
+                <div *ngFor="let item of paymentMethodList">
+                    <label class="two-page">
                         <div class="radio-input payment-method-checkbox">
-                            <input type-id="2" id="payment_method_id_1002478030" class="input-radio"
-                                name="payment-method" type="radio" value="1002478030" (change)="cardCheck($event)">
+                            <input type-id="2" id="payment_method" class="input-radio" name="payment-method"
+                                type="radio" value="1002478030" (change)="cardCheck(item)">
                         </div>
 
                         <div class="radio-content-input">
-                            <img class="main-img"
-                                src="https://hstatic.net/0/0/global/design/seller/image/payment/other.svg?v=1">
+                            <img class="main-img" [src]="item.imageUrl">
                             <div class="content-wrapper">
-                                <span class="radio-label-primary">Chuyển khoản qua ngân hàng</span>
+                                <span class="radio-label-primary">{{item.name}}</span>
                             </div>
                         </div>
                     </label>
-                    <div class="blank-slate" *ngIf="isCard">
-                        Tên tài khoản: Bùi Ngọc Cường <br>
-                        Số tài khoản: 19132918746018<br>
-                        Ngân hàng Techcombank, Chi nhánh Tây Hồ, Hà Nội.
-                    </div>
-                </div>
-                <div>
-                    <label class="two-page" for="payment_method_id_1002742948">
-                        <div class="radio-input payment-method-checkbox">
-                            <input type-id="1" id="payment_method_id_1002742948" class="input-radio"
-                                name="payment-method" type="radio" value="1002742948"
-                                (change)="isCard = false; ismomo = false; iszalo = false">
-                        </div>
-
-                        <div class="radio-content-input">
-                            <img class="main-img"
-                                src="https://hstatic.net/0/0/global/design/seller/image/payment/cod.svg?v=1">
-                            <div class="content-wrapper">
-                                <span class="radio-label-primary">Thanh toán khi giao hàng (COD)</span>
-                            </div>
-                        </div>
-                    </label>
-                </div>
-                <div style="width: 100%;">
-                    <label for="payment-momo" class="payment-method__item"><span
-                            class="payment-method__item-custom-checkbox custom-radio"><input type="radio"
-                                id="payment-momo" name="payment-method" autocomplete="off" value="momo"
-                                (change)="momoCheck($event)">
-                            <span class="checkmark"></span></span> <span class="payment-method__item-icon-wrapper"><img
-                                style="height: 30px;" src="https://www.coolmate.me/images/momo-icon.png"
-                                alt="Thanh Toán MoMo"></span> <span class="payment-method__item-name">Thanh Toán
-                            MoMo</span></label>
-                    <div class="blank-slate" *ngIf="ismomo">
-                        QR code
-                    </div>
-                </div>
-                <div style="width: 100%;">
-                    <label for="payment-zalopay" class="payment-method__item"><span
-                            class="payment-method__item-custom-checkbox custom-radio"><input type="radio"
-                                (change)="zaloCheck($event)" id="payment-zalopay" name="payment-method"
-                                autocomplete="off" value="zalopay"> <span class="checkmark"></span></span> <span
-                            class="payment-method__item-icon-wrapper"><img
-                                src="https://www.coolmate.me/images/logo-zalopay.svg" alt="Ví điện tử ZaloPay"></span>
-                        <span class="payment-method__item-name">Ví điện tử ZaloPay</span></label>
-
-                    <div class="blank-slate" *ngIf="iszalo">
-                        QR code
+                    <div class="blank-slate" *ngIf="item.isShow">
+                        {{item.description}}
                     </div>
                 </div>
             </div>
@@ -115,21 +69,21 @@
                 <span>Tôi đã thanh toán</span>
             </div>
             <div class="button-box">
-                <button pButton pRipple type="button" label="Thanh toán" class="p-button-danger" href="/dat-hang"
-                    (click)="onPay()"></button>
+                <button pButton pRipple [disabled]="!checked || !isPayment" type="button" label="Thanh toán"
+                    class="p-button-danger" href="/dat-hang" (click)="onPay()"></button>
             </div>
         </div>
         <div class="order-bar">
             <div class="product-order">
                 <div class="image">
                     <div class="product_image" *ngFor="let item of product">
-                        <a target="_self" href="/chi-tiet-san-pham">
-                            <img [src]="item.image" alt="">
+                        <a target="_self" [href]="createURL(item.name, item.id)">
+                            <img [src]="item.image ? item.image[0] : ''" alt="">
                             <div class="gio-hang-total">{{item.quantity}}</div>
                         </a>
                         <div class="item-content">
                             <div>
-                                <a target="_self" href="/chi-tiet-san-pham">{{item.name}}
+                                <a target="_self" [href]="createURL(item.name, item.id)">{{item.name}}
                                 </a><br>
                                 <span class="variant_title">{{item.variant}}</span>
                             </div>
@@ -144,7 +98,7 @@
             </div>
             <div class="order-summary">
                 <span class="p-float-label">
-                    <input id="float-input" type="text" pInputText cher>
+                    <input id="float-input" type="text" pInputText [(ngModel)]="promotionCode" cher>
                     <label for="float-input">Mã giản giá</label>
                 </span>
                 <p-button label="Sử dụng"></p-button>

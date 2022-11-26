@@ -84,28 +84,28 @@
             width: 100%;
             margin: 20px 0;
         }
-        
+
         .address-map {
             width: 100%;
         }
-        
+
         .address-cont {
             height: 433px;
             overflow: auto;
             border: 1px solid #ccc;
         }
-        
+
         .social-icon {
             display: flex;
             align-items: center;
         }
-        
+
         .social-icon img {
             width: 75px;
             min-width: 75px;
             margin-left: 20px;
         }
-        
+
         .change-tinh,
         .change-quan {
             background-image: linear-gradient(to bottom, #fff 0, #e0e0e0 100%);
@@ -114,7 +114,7 @@
             border: 1px solid #ccc;
             border-radius: 3px;
         }
-        
+
         .change-tinh,
         .change-quan {
             padding: 5px;
@@ -140,38 +140,38 @@
             -moz-appearance: menulist;
             appearance: menulist;
         }
-        
+
         .address-cont a {
             color: #333;
             text-decoration: none;
             font-size: 16px;
         }
-        
+
         .address-detail ul li div li:nth-child(1):before {
             content: url(//theme.hstatic.net/200000170631/1000660112/14/icon-map.png?v=3046);
             margin-right: 10px;
             margin-top: 5px
         }
-        
+
         .vitri {
             content: url('../../../../assets/image/icons/map1.png');
             margin-top: 5px;
             width: 40px;
         }
-        
+
         .address-detail ul li div li:nth-child(2):before {
             content: url(//theme.hstatic.net/200000170631/1000660112/14/icon-phone.png?v=3046);
             margin-right: 10px;
             margin-top: 5px;
         }
-        
+
         .mota-link-fb {
             padding: 0 !important;
             display: flex;
             align-items: center;
             gap: 4px;
         }
-        
+
         .address-detail ul li,
         .address-detail2 ul li {
             line-height: 30px;
@@ -179,40 +179,40 @@
             cursor: pointer;
             border-bottom: 1px solid #ddd;
         }
-        
+
         .address-detail ul li div p,
         .address-detail2 ul li div p {
             margin: 0;
         }
-        
+
         .address-detail ul li div li,
         .address-detail2 ul li div li {
             display: flex !important;
             border: 0;
         }
-        
+
         .address-detail ul li:hover,
         .address-detail2 ul li:hover {
             background: #f9f9f9;
         }
-        
+
         .address-detail ul,
         .address-detail2 ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-        
+
         .address-detail ul li div,
         .address-detail2 ul li div {
             font-size: 12px;
             padding: 15px;
         }
-        
+
         a.hide {
             display: none;
         }
-        
+
         .grid__item {
             box-sizing: border-box;
             float: left;
@@ -225,7 +225,6 @@
 
     #SECTION3 {
         width: 100%;
-        height: 600px;
         min-width: 600px;
         float: left;
         padding-left: 50px;
@@ -245,7 +244,6 @@
                 background-color: aliceblue;
 
                 .child-regis-contact {
-                    height: 515px;
                     border-radius: 10px;
                     background-color: rgba(189, 113, 37, 255);
                     text-align: center;
@@ -272,6 +270,34 @@
                     textarea {
                         height: 200px;
                         border-radius: 4px;
+                    }
+
+                    .article-schedule {
+                        text-align: center;
+
+                        .btn-kp {
+                            background-color: rgb(99, 145, 16);
+                            border-radius: 15px;
+                            box-sizing: border-box;
+                            color: rgb(255, 255, 255);
+                            font-weight: bold;
+                            cursor: pointer;
+                            padding: 10px 24px;
+                            transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+                            width: 80%;
+                            border: none;
+                            text-transform: uppercase;
+
+                            &:hover {
+                                box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+                                transform: translateY(-2px);
+                            }
+
+                            &:active {
+                                box-shadow: none;
+                                transform: translateY(0);
+                            }
+                        }
                     }
                 }
             }
@@ -309,7 +335,7 @@
             justify-content: center;
             width: 90%;
 
-            
+
 
             .social-icon {
                 display: flex;
@@ -333,7 +359,7 @@
                     display: flex;
                     justify-content: center;
                     margin: 20px 0 20px 80px;
-    
+
                     img {
                         width: 50px;
                         min-width: 50px;

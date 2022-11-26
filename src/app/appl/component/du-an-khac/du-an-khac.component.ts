@@ -21,7 +21,7 @@ export class DuAnKhacComponent extends ComponentBaseComponent implements OnInit 
     postsNewList: any[] = [1, 2, 3, 4];
     project: any = null;
     postList = [];
-
+    projectList: any[] = [];
     tintucList = [
         'https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png',
         'https://file.hstatic.net/200000170631/article/logo_ngong__600_x_375__29344ad4b48045eea1b44ff92fc8af04_large.png',
@@ -33,12 +33,12 @@ export class DuAnKhacComponent extends ComponentBaseComponent implements OnInit 
     responsiveOptions = [
         {
             breakpoint: '1024px',
-            numVisible: 2,
+            numVisible: 4,
             numScroll: 1
         },
         {
             breakpoint: '800px',
-            numVisible: 1,
+            numVisible: 2,
             numScroll: 1
         },
         {
@@ -62,6 +62,13 @@ export class DuAnKhacComponent extends ComponentBaseComponent implements OnInit 
             if (data.postList) {
             }
             this.showLoadingDialog('off');
+        });
+
+        this.httpService.reqeustApiget('projects', '1').subscribe((data: any) => {
+            if (data.projectList) {
+                this.projectList = data.projectList;
+                console.log(this.projectList);
+            }
         });
 
         this.httpService.reqeustApiget('posts', 'menuCode=tin-tuc&pageIndex=1&pageSize=10').subscribe((data: any) => {

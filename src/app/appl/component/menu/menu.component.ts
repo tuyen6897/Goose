@@ -175,9 +175,13 @@ export class MenuComponent extends ComponentBaseComponent implements OnInit {
             this.httpService.reqeustApiget('newest-sale', 'limit=10').subscribe((data: any) => {
                 if (data.products.length) {
                     this.datasSale = data.products;
+                    console.log(data.products);
+                    this.datasSale.forEach((data) => {
+                        data.priceDisp = data.saleRate ? data.salePrice : data.price;
+                    })
                 }
             });
-            this.httpService.reqeustApiget('projects').subscribe((data: any) => {
+            this.httpService.reqeustApiget('projects', '0').subscribe((data: any) => {
                 if (data.projectList) {
                     this.projectList = data.projectList;
                     this.projectOther = this.projectList.filter(x => x.name !== 'Chuyến đi của Ngỗng');

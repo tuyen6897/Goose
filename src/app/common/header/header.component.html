@@ -23,7 +23,7 @@
             <!-- <a (click)="visibleSidebar = true"><img src="../../../../assets/image/main/gio-hang.png" /></a> -->
             <a (click)="onClick()" (mouseover)="onMouseOver($event)">
                 <img src="../../../../assets/image/main/gio-hang.png" />
-                <div class="gio-hang-total" *ngIf="totalCartProduct > 0">{{totalCartProduct}}</div>
+                <div class="gio-hang-total">{{totalCartProduct}}</div>
             </a>
         </div>
     </div>
@@ -49,13 +49,14 @@
             <h1 style="font-weight:normal; font-size:16px;">Sản phẩm mới thêm</h1>
             <div class="product">
                 <div class="product_image" *ngFor="let item of product; let i = index">
-                    <a target="_self" href="/chi-tiet-san-pham" (click)="visibleSidebar = false">
-                        <img [src]="item.image" alt="">
+                    <a target="_self" [href]="createURL(item.name, item.id)" (click)="visibleSidebar = false">
+                        <img [src]="item.image ? item.image[0] : ''" alt="">
                         <div class="gio-hang-total-cart">{{item.quantity}}</div>
                     </a>
                     <div class="item-content">
                         <div class="content">
-                            <a (click)="visibleSidebar = false" class="title" href="/chi-tiet-san-pham">{{item
+                            <a (click)="visibleSidebar = false" class="title"
+                                [href]="createURL(item.name, item.id)">{{item
                                 ?
                                 item.name:
                                 ''}}
@@ -84,14 +85,15 @@
                 <h1 style="font-weight:normal; font-size:16px;">Sản phẩm mới thêm</h1>
                 <div class="product">
                     <div class="product_image" *ngFor="let item of product; let i = index">
-                        <a target="_self" href="/chi-tiet-san-pham" (click)="visibleSidebar = false">
-                            <img [src]="item.image" alt="">
+                        <a target="_self" [href]="createURL(item.name, item.id)" (click)="visibleSidebar = false">
+                            <img [src]="item.image ? item.image[0] : ''" alt="">
                             <div class="gio-hang-total-alert">{{item.quantity}}</div>
                         </a>
 
                         <div class="item-content">
                             <div class="content">
-                                <div><a (click)="visibleSidebar = false" class="title" href="/chi-tiet-san-pham">
+                                <div><a (click)="visibleSidebar = false" class="title"
+                                        [href]="createURL(item.name, item.id)">
                                         {{item?item.name:''}}
                                     </a></div>
                                 <span class="total-price">{{item ? formatCash(item.totalPrice) : ''}} ₫</span>

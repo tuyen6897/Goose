@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DynamicDialogConfig } from 'primeng/dynamicdialog';
+import { Utils } from '../util/utils';
 
 @Component({
     selector: 'app-productDialog',
@@ -15,7 +16,7 @@ export class ProductDialogComponent implements OnInit {
     scrollableItems!: MenuItem[];
     isShow = false;
     activeItem!: MenuItem;
-
+    productVariant: any = null;
     constructor(public ref: DynamicDialogRef, public config: DynamicDialogConfig, private router: Router
     ) { }
     imagesProductWatch = [
@@ -28,8 +29,9 @@ export class ProductDialogComponent implements OnInit {
     data: any;
     inputQuantity: number = 1;
     ngOnInit() {
-        this.data = this.config.data
-        this.inputQuantity = this.data.quantity;
+        this.data = this.config.data;
+        this.productVariant = this.data.productVariants[0];
+        this.data.productVariants[0].check = true;
         this.scrollableItems = [{ label: 'Thông số kỹ thuật' }, { label: 'Chi tiết sản phẩm' }];
 
 
@@ -43,26 +45,55 @@ export class ProductDialogComponent implements OnInit {
         product = JSON.parse(sessionStorage.getItem("productList") as any);
         if (product && product.length) {
             product.forEach(element => {
-                if (element.id === 'new8938521954248') {
+                if (element.id === this.productVariant.productId && element.idVariant === this.productVariant.id) {
                     insertFlag = true;
                     element.quantity = +(element.quantity) + this.inputQuantity;
-                    element.totalPrice = 210000 * element.quantity;
+                    element.totalPrice = this.productVariant.price * element.quantity;
                 }
             });
         }
-        if (!insertFlag || (product && !product.length)) {
-            product = [];
+        if (!insertFlag) {
             product.push({
-                id: 'new8938521954248',
-                title: 'Mật Trà Kombucha Thảo Mộc',
-                image: '',
-                price: '210000',
-                variant: '500ml',
-                totalPrice: 210000 * this.inputQuantity,
-                quantity: this.inputQuantity
+                idVariant: this.productVariant.id,
+                id: this.productVariant.productId,
+                name: this.data.name,
+                image: this.data.productImages,
+                price: this.productVariant.price,
+                weight: this.productVariant.weight,
+                unit: this.productVariant.unit,
+                variant: `${this.productVariant.weight}${this.productVariant.unit}`,
+                totalPrice: this.productVariant.price * this.inputQuantity,
+                quantity: this.inputQuantity,
+                soGaoFlag: this.data.soGaoFlag
             });
         }
         sessionStorage.setItem('productList', JSON.stringify(product));
         this.router.navigate(['gio-hang']);
+    }
+
+    onCheck(item: any) {
+        item.check = true;
+        this.data.productVariants.forEach((product: any) => {
+            product.check = false;
+            if (item.code === product.code) {
+            }
+        });
+
+        this.data.productVariants.find((x: any) => x.code === item.code).check = true;
+        this.productVariant = item;
+    }
+
+    onProduct(url: any) {
+        window.open(url, "_self");
+    }
+
+    formatCashProduct(value: any) {
+        return Utils.formatCash(String(value));
+    }
+
+
+    createURL(name: string, id: string) {
+        if (!name || !id) return '';
+        return `chi-tiet-san-pham?name=${Utils.removeAccents(String(name)).toLowerCase().split(' ').join('-')}&id=${id}`;
     }
 }

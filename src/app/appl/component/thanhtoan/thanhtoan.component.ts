@@ -5,6 +5,7 @@ import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ComponentBaseComponent } from 'src/app/common/componentBase/componentBase.component';
 import { HttpService } from 'src/app/common/service/http-service';
+import { Utils } from 'src/app/common/util/utils';
 import { LoginComponent } from '../login/login.component';
 
 @Component({
@@ -21,9 +22,10 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
     note: string = '';
     voucher = '';
     checked = false;
-    isCard = false;
-    ismomo = false;
-    iszalo = false;
+    isPayment = false;
+    paymentId = 0;
+    ecode: any = null;
+    promotionCode: string = '';
     selectedCity1 = { name: '', id: '', districtList: null };
     selectedCity2 = { name: '', id: '', wardList: null };
     selectedCity3 = { name: '', id: '' };
@@ -45,9 +47,16 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
         username: '',
         email: '',
         phone: '',
-        address: ''
+        address: '',
+
     };
     paymentMethodList: any[] = [];
+    paymentImage: any[] = [
+        'https://hstatic.net/0/0/global/design/seller/image/payment/other.svg?v=1',
+        'https://hstatic.net/0/0/global/design/seller/image/payment/cod.svg?v=1',
+        'https://www.coolmate.me/images/momo-icon.png',
+        'https://www.coolmate.me/images/logo-zalopay.svg'
+    ]
     ref!: DynamicDialogRef;
     constructor(private render2: Renderer2, private router: Router, private httpService: HttpService, private dialogService: DialogService
         , private messageService1: MessageService) {
@@ -69,9 +78,8 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
             this.render2.removeAttribute(this.tel.nativeElement, 'readonly');
             this.render2.removeAttribute(this.email.nativeElement, 'readonly');
         }
-        console.log(this.account);
-        const ecode = window.location.search.split('?code=')[1];;
-        this.product = JSON.parse(sessionStorage.getItem(ecode) as any);
+        this.ecode = window.location.search.split('?code=')[1];
+        this.product = JSON.parse(sessionStorage.getItem(this.ecode) as any);
         if (this.product && this.product.length) {
             let totalNumber = 0;
             this.product.forEach((item: any) => {
@@ -81,7 +89,6 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
             this.totalOrder = +(this.total) + this.shipPrice;
         }
         this.httpService.reqeustApiget('city').subscribe((data: any) => {
-            console.log(data.cityList);
             data.cityList.forEach((data: any) => {
                 this.cities.push({ name: data.name, id: data.id, districtList: data.districtList });
                 this.showLoadingDialog('off');
@@ -91,6 +98,12 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
         this.httpService.reqeustApiget('paymentlist').subscribe((data: any) => {
             if (data.paymentMethodList) {
                 this.paymentMethodList = data.paymentMethodList;
+                for (let i = 0; i < this.paymentMethodList.length; i++) {
+                    if (this.paymentMethodList[i].paymentType === 1) {
+                        this.paymentMethodList[i].isShow = false;
+                    }
+                    this.paymentMethodList[i].imageUrl = this.paymentImage[i];
+                }
             }
         })
     }
@@ -109,64 +122,142 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
     }
 
     onPay() {
-        if (this.checked) {
-
+        if (this.checked && this.isPayment) {
             let productList: any[] = [];
+            let sogaoList: any[] = [];
             this.product.forEach((item: any) => {
-                productList.push({
-                    "productCode": item.productCode,
-                    "quantity": item.quantity,
-                    "attribute": item.attribute,
-                    "price": item.price,
-                    "priceDiscount": item.totalPrice,
-                    "gaoFlag": item.gaoFlag
-                });
+                if (!item.gaoFlag) {
+                    productList.push({
+                        "productCode": item.id,
+                        "productId": item.idVariant,
+                        "quantity": item.quantity,
+                        "price": item.price,
+                        "priceDiscount": item.totalPrice,
+                        "gaoFlag": item.gaoFlag
+                    });
+                } else {
+                    sogaoList.push({
+                        "productCode": item.id,
+                        "productId": item.idVariant,
+                        "quantity": item.quantity,
+                        "price": item.price,
+                        "priceDiscount": item.totalPrice
+                    });
+                }
+
             });
 
-            const params = {
+            // "remainGaoProductList": [
+            //     {
+            //         "amountFixRemainGao": "",
+            //         "remainSizeGao": 0,
+            //         "amountRemainGao": ""
+            //     }
+            // ],
+
+            let params: any = {
                 "Customer": {
                     "cusName": this.account.username,
                     "cusEmail": this.account.email,
                     "cusPhone": this.account.phone,
-                    "cusCity": this.selectedCity1.id,
-                    "cusDistrict": this.selectedCity2.id,
-                    "cusWard": this.selectedCity3.id,
+                    "cusCity": this.selectedCity1.name,
+                    "cusDistrict": this.selectedCity2.name,
+                    "cusWard": this.selectedCity3.name,
                     "cusNote": this.note
                 },
-                "productList": productList,
-                "soGaoList": [
-                    {
-                        "productCode": "string",
-                        "quantity": 0,
-                        "attribute": {
-                            "key": "string",
-                            "name": "string",
-                            "value": [
-                                "string"
-                            ]
-                        },
-                        "price": 0,
-                        "priceDiscount": 0
-                    }
-                ],
-                "promotionCode": "string",
-                "paymentMethodId": "string",
-                "originAmount": "string",
-                "amountDiscount": "string",
-                "shippingFee": String(this.shipPrice),
-                "totalAmount": "string",
-                "User": {
-                    "id": this.account.id,
-                    "name": this.account.username,
-                    "phone": this.account.phone,
-                    "email": this.account.email,
-                    "address": this.account.address,
-                    "password": "string",
-                    "passwordPlainText": "string",
-                    "actived": 0,
-                    "createdDate": "2022-11-20T16:04:26.338Z"
-                }
+                "promotionCode": this.promotionCode,
+                "paymentMethodId": this.paymentId,
+                "originAmount": this.total,
+                "amountDiscount": 0,
+                "shippingFee": this.shipPrice,
+                "totalAmount": this.totalOrder
+            };
+
+            if (productList.length) {
+                params['productList'] = productList;
             }
+            if (sogaoList.length) {
+                params['soGaoList'] = sogaoList;
+            }
+            const account = JSON.parse(sessionStorage.getItem("account") as any) ? true : false;
+            // const params2 = {
+            //     "customer": {
+            //         "cusName": "tuyen2",
+            //         "cusEmail": "tuyen2",
+            //         "cusPhone": "02222222222",
+            //         "cusCity": "Hà Nội",
+            //         "cusDistrict": "Bắc Từ Liêm",
+            //         "cusWard": "P. Cổ Nhuế 2",
+            //         "cusNote": "Giao hàng cẩn thận giùm mình nha"
+            //     },
+            //     "productList": [
+            //         {
+            //             "productId": 1,
+            //             "productCode": "SP000001",
+            //             "quantity": 3,
+            //             "size": 0,
+            //             "price": 50000,
+            //             "priceDiscount": 45000,
+            //             "gaoFlag": 0
+            //         }
+            //     ],
+            //     "promotionCode": "",
+            //     "paymentMethodId": "1",
+            //     "originAmount": 150000,
+            //     "amountDiscount": 135000,
+            //     "shippingFee": 30000,
+            //     "totalAmount": 165000
+            // };
+
+            // const params2 = {
+            //     "customer": {
+            //         "cusName": "tuyen23",
+            //         "cusEmail": "tuyen23",
+            //         "cusPhone": "0485768457",
+            //         "cusCity": "Hà Nội",
+            //         "cusDistrict": "Bắc Từ Liêm",
+            //         "cusWard": "P. Cổ Nhuế 2",
+            //         "cusNote": "Giao hàng cẩn thận giùm mình nha"
+            //     },
+            //     "productList": [
+            //         {
+            //             "productId": 1,
+            //             "productCode": "SP000001",
+            //             "quantity": 3,
+            //             "size": 0,
+            //             "price": 50000,
+            //             "priceDiscount": 45000,
+            //             "gaoFlag": 0
+            //         }
+            //     ],
+            //     "soGaoList": [
+            //         {
+            //             "productId": 9,
+            //             "productCode": "SG60",
+            //             "quantity": 1,
+            //             "size": 60,
+            //             "price": 3240000,
+            //             "priceDiscount": 2520000
+            //         }
+            //     ],
+            //     "promotionCode": "",
+            //     "paymentMethodId": "1",
+            //     "originAmount": 150000,
+            //     "amountDiscount": 135000,
+            //     "shippingFee": 30000,
+            //     "totalAmount": 165000
+            // };
+            // console.log(params2);
+            this.httpService.reqeustApiPost('payment', params, account).subscribe((data: any) => {
+                this.showMessage('success', '', 'Đăng ký thành công.');
+                sessionStorage.removeItem(this.ecode);
+                sessionStorage.removeItem("productList");
+                sessionStorage.setItem('projectListOrder', JSON.stringify({
+                    'product': this.product,
+                    'payment': params
+                }));
+                window.open(`${window.location.origin}/dat-hang`, "_self");
+            });
         }
     }
 
@@ -181,7 +272,7 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
             this.render2.setAttribute(this.email.nativeElement, 'readonly', 'true');
         } else {
             this.render2.removeAttribute(this.name.nativeElement, 'readonly');
-            this.render2.removeAttribute(this.tel.nativeElement, 'readonly');
+            this.render2.removeAttribute(this.tel.nativeElement, 'readonly'); 5
             this.render2.removeAttribute(this.email.nativeElement, 'readonly');
         }
         this.showMessage(severity, summary, message);
@@ -209,34 +300,25 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
     }
 
     wardListChange() {
+        console.log(`cityCode=${this.selectedCity1.id}&districtCode=${this.selectedCity2.id}&weight=10&totalPrice=${this.total}`);
         this.httpService.reqeustApiget('ship-price', `cityCode=${this.selectedCity1.id}&districtCode=${this.selectedCity2.id}&weight=10&totalPrice=${this.total}`).subscribe((data: any) => {
+            console.log(data);
             this.shipPrice = data.shipPrice;
+            this.totalOrder -= this.shipPrice;
         })
     }
 
-
-    cardCheck(event: any) {
-        if (event.target.checked) {
-            this.isCard = true;
+    cardCheck(item: any) {
+        this.isPayment = true;
+        this.paymentId = item.id;
+        let paymentOther = this.paymentMethodList.filter(x => (x.id !== item.id && x.paymentType === 1));
+        paymentOther.forEach(item => {
+            item.isShow = false;
+        });
+        let payment = this.paymentMethodList.find(x => x.id === item.id);
+        if (payment.paymentType === 1) {
+            payment.isShow = !item.isShow;
         }
-        this.ismomo = false;
-        this.iszalo = false;
-    }
-
-    momoCheck(event: any) {
-        if (event.target.checked) {
-            this.ismomo = true;
-        }
-        this.iszalo = false;
-        this.isCard = false;
-    }
-
-    zaloCheck(event: any) {
-        if (event.target.checked) {
-            this.iszalo = true;
-        }
-        this.ismomo = false;
-        this.isCard = false;
     }
 
     formatCash(value: number) {
@@ -246,4 +328,9 @@ export class ThanhtoanComponent extends ComponentBaseComponent implements OnInit
         })
     }
 
+
+    createURL(name: string, id: string) {
+        if (!name || !id) return '';
+        return `chi-tiet-san-pham?name=${Utils.removeAccents(String(name)).toLowerCase().split(' ').join('-')}&id=${id}`;
+    }
 }

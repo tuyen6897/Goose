@@ -1,7 +1,7 @@
 .footer {
     display: flex;
     padding: 3em;
-    height: 700px;
+    padding-bottom: 2em;
     font-size: 18px;
     background-color: #87b93b;
     justify-content: space-evenly;

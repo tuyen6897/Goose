@@ -15,13 +15,13 @@
     <div class="box-future"
         [ngStyle]="{ 'background': 'linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url(' + introduce?.soLuocVeNgong.tamNhinSuMenhGTCL.imageUrl + ')'}">
         <div class="box-content">
-            <div style="margin-top: 30px; width: 50%; text-align: center;">
+            <div class="box-content-tam-nhin">
                 <label class="lbl-h1 lbl-title">TẦM NHÌNH - SỨ MỆNH</label>
-                <div style="text-align: left; padding-left: 10px; padding-right: 10px;">
-                    {{introduce?.soLuocVeNgong.tamNhinSuMenhGTCL.vision}}
+                <div [innerHTML]="introduce?.soLuocVeNgong.tamNhinSuMenhGTCL.vision"
+                    style="text-align: left; padding-left: 10px; padding-right: 10px;">
                 </div>
             </div>
-            <div style="width: 50%;">
+            <div class="box-content-gia-tri-cot-loi">
                 <div style="width: 90%;
                                         background-color: #bc7026;
                                         height: 80%;
@@ -32,8 +32,7 @@
                     <label class="lbl-h1 lbl-title">
                         GÍA TRỊ CỐT LÕI
                     </label><br>
-                    <span>
-                        {{introduce?.soLuocVeNgong.tamNhinSuMenhGTCL.coreValue}}
+                    <span [innerHTML]="introduce?.soLuocVeNgong.tamNhinSuMenhGTCL.coreValue">
                     </span>
                 </div>
             </div>
@@ -42,9 +41,9 @@
     <div class="story">
         <div class="story-image"><img style="width: 100%;"
                 [src]="introduce?.soLuocVeNgong.cauChuyenThuongHieu.imageUrl" /></div>
-        <div style="margin-left: 20px; width: 100%;">
+        <div class="story-content">
             <strong class="lbl-h1">CÂU CHUYỆN THƯƠNG HIỆU</strong><br><br>
-            <p style="font-size: 18px;">{{introduce?.soLuocVeNgong.cauChuyenThuongHieu.brandStory}}</p>
+            <p>{{introduce?.soLuocVeNgong.cauChuyenThuongHieu.brandStory}}</p>
         </div>
     </div>
     <div style="width: 100%; text-align: center;margin: 20px 0 30px 0;">
@@ -58,13 +57,13 @@
             <div class="box-future">
                 <div class="box-content"
                     [ngStyle]="{ 'background': 'linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url(' + introduce?.soLuocVeNgong.tamNhinSuMenhGTCL.imageUrl + ')'}">
-                    <div style="margin-top: 30px; width: 50%; text-align: center;">
+                    <div class="box-content-dinh-huong">
                         <label class="lbl-h1 lbl-title"> ĐỊNH HƯỚNG PHÁT TRIỂN</label>
-                        <div style="text-align: left; padding-left: 10px; padding-right: 10px;">
-                            {{introduce?.soLuocVeNgong.dinhHuongLinhVuc.orientDevelopment}}
+                        <div [innerHTML]="introduce?.soLuocVeNgong.dinhHuongLinhVuc.orientDevelopment"
+                            style="text-align: left; padding-left: 10px; padding-right: 10px;">
                         </div>
                     </div>
-                    <div style="width: 50%;">
+                    <div class="box-content-linh-vuc">
                         <div style="width: 90%;
                                                     background-color: #bc7026;
                                                     height: 80%;
@@ -75,8 +74,7 @@
                             <label class="lbl-h1 lbl-title">
                                 LĨNH VỰC HOẠT ĐỘNG
                             </label><br>
-                            <span>
-                                {{introduce?.soLuocVeNgong.dinhHuongLinhVuc.fieldOperation}}
+                            <span [innerHTML]="introduce?.soLuocVeNgong.dinhHuongLinhVuc.fieldOperation">
                             </span>
                         </div>
                     </div>
@@ -241,9 +239,8 @@
                         </div>
                         <div style="transform: rotate(15deg);height: 100%;border: 1px solid #ccc;margin-right: 20px;">
                         </div>
-                        <div
-                            style="word-break: break-word;text-align: left; font-size: 16px; margin-left: 10px; display: flex;flex-direction: column;">
-                            <strong style="font-size: 18px;margin-bottom: 15px;">
+                        <div class="cc-content">
+                            <strong class="cc-strong">
                                 {{item.title}}
                             </strong>
                             {{item.content}}
@@ -257,7 +254,7 @@
                 <label class="lbl-h1 lbl-title">THÀNH TỰU VÀ GIẢI THƯỞNG</label>
                 <div style="width: 100%; background-color: #87b83b; height: 350px; padding-top: 15px;">
                     <app-carousel [prize]="true" [numVisible]="3" [datas]="awardList"
-                        [responsiveOptions]="responsiveOptions">
+                        [responsiveOptions]="responsiveOptions2">
                     </app-carousel>
                 </div>
             </div>

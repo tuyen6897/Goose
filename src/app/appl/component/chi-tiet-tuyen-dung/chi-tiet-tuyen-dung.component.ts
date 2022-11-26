@@ -18,7 +18,9 @@ export class ChiTietTuyenDungComponent extends ComponentBaseComponent implements
         '../../../../assets/image/products/mat-tra-kombucha-cot-chuoi-500ml_0d0457c2e57048c0be7305d0953ae0f2_large.webp',
 
     ];
-    rightBanner: any = null
+    rightBanner: any = null;
+    tuyenDung: any = null;
+    tuyenDungOther: any[] = [];
     constructor(private httpService: HttpService, private render2: Renderer2) {
         super(new MessageService, render2);
     }
@@ -31,6 +33,14 @@ export class ChiTietTuyenDungComponent extends ComponentBaseComponent implements
                 this.showLoadingDialog('off');
             }
 
+        });
+        this.httpService.reqeustApiget('posts', 'menuCode=tuyen-dung&pageIndex=1&pageSize=100').subscribe((data: any) => {
+            const name = window.location.search.split('=')[1];
+            if (data.postList) {
+                this.tuyenDung = data.postList.find((x: any) => x['slug'] === name);
+                this.tuyenDungOther = data.postList.filter((x: any) => x['slug'] !== name);
+            }
+            this.showLoadingDialog('off');
         });
     }
 }

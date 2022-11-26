@@ -12,6 +12,8 @@ export class TuyenDungNewComponent extends ComponentBaseComponent implements OnI
     isShow: boolean = false;
     isShowBtn: boolean = true;
     tuyenDungNews: any = null;
+    tuyenDungList: any = null;
+    listTinTuc: any[] = [];
     constructor(private httpService: HttpService, private render2: Renderer2) {
         super(new MessageService, render2)
     }
@@ -23,6 +25,20 @@ export class TuyenDungNewComponent extends ComponentBaseComponent implements OnI
                 this.tuyenDungNews = data.tuyenDungNews;
             }
             this.showLoadingDialog('off');
-        })
+        });
+        this.httpService.reqeustApiget('posts', 'menuCode=tuyen-dung&pageIndex=1&pageSize=100').subscribe((data: any) => {
+            if (data.postList) {
+                this.tuyenDungList = data.postList;
+                this.tuyenDungList.forEach((item: any) => {
+                    item.url = `/chi-tiet-tuyen-dung?name=${item.slug}`;
+                })
+            }
+            this.showLoadingDialog('off');
+        });
+        this.httpService.reqeustApiget('posts', 'menuCode=tin-tuc&pageIndex=1&pageSize=10').subscribe((data: any) => {
+            if (data.postList) {
+                this.listTinTuc = data.postList;
+            }
+        });
     }
 }

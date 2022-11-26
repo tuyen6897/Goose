@@ -18,6 +18,7 @@ export class GiohangComponent extends ComponentBaseComponent implements OnInit {
     soluong = '';
     total = '';
     product: any;
+    check = false;
     constructor(private dialogService: DialogService, private router: Router, private rend: Renderer2, private httpService: HttpService) {
         super(new MessageService, rend);
     }
@@ -40,6 +41,10 @@ export class GiohangComponent extends ComponentBaseComponent implements OnInit {
         }
 
         this.product = JSON.parse(sessionStorage.getItem("productList") as any);
+        console.log(this.product);
+        // this.product.forEach((item: any) => {
+        //     item.check = false;
+        // })
         if (this.product && this.product.length) {
             let totalQ = 0;
             let totalNumber = 0;
@@ -54,6 +59,7 @@ export class GiohangComponent extends ComponentBaseComponent implements OnInit {
     }
 
     formatCash(str: string) {
+        if (!str) return '';
         str = String(str);
         return str.split('').reverse().reduce((prev, next, index) => {
             return ((index % 3) ? next : (next + ',')) + prev
@@ -62,10 +68,25 @@ export class GiohangComponent extends ComponentBaseComponent implements OnInit {
 
     onBuyNow() {
         Utils.sha256((Math.random() + 1).toString(36).substring(7)).then(eCode => {
+            let productBuy: any[] = [];
+            // this.product.forEach((item: any) => {
+            //     if (item.check) {
+            //         productBuy.push(item);
+            //     }
+            // })
             sessionStorage.setItem(eCode, JSON.stringify(this.product));
             window.open(`${window.location.origin}/thanh-toan?code=${eCode}`, "_self");
         });
     }
+
+    // checkProduct(item: any) {
+    //     console.log(event);
+    //     this.product.forEach((x: any) => {
+    //         if (item.id === x.id) {
+    //             x.check = item.check;
+    //         }
+    //     })
+    // }
 
     onChange(event: any, index: number) {
         if (this.product && this.product.length) {
@@ -88,7 +109,7 @@ export class GiohangComponent extends ComponentBaseComponent implements OnInit {
     onRemove(item: any) {
         let totalQ = 0;
         if (this.product && this.product.length) {
-            this.product = this.product.filter((x: any) => x.code !== item.code);
+            this.product = this.product.filter((x: any) => x.id !== item.id);
             let totalNumber = 0;
             this.product.forEach((item: any, i: any) => {
                 totalNumber += +(item.price) * item.quantity;
@@ -122,5 +143,11 @@ export class GiohangComponent extends ComponentBaseComponent implements OnInit {
             width: '40%',
             height: '690px'
         });
+    }
+
+
+    createURL(name: string, id: string) {
+        if (!name || !id) return '';
+        return `chi-tiet-san-pham?name=${Utils.removeAccents(String(name)).toLowerCase().split(' ').join('-')}&id=${id}`;
     }
 }

@@ -13,12 +13,12 @@ export class TintucComponent extends ComponentBaseComponent implements OnInit {
     responsiveOptions = [
         {
             breakpoint: '1024px',
-            numVisible: 2,
+            numVisible: 4,
             numScroll: 1
         },
         {
             breakpoint: '800px',
-            numVisible: 1,
+            numVisible: 2,
             numScroll: 1
         },
         {
@@ -28,32 +28,9 @@ export class TintucComponent extends ComponentBaseComponent implements OnInit {
         }
     ];
 
-
     featuredNews: any[] = [];
     banner: any = null;
     baochiList = [
-
-    ]
-
-    tintucList = [
-        {
-            image: '//file.hstatic.net/200000170631/article/thiet_ke_khong_ten_5189ee5e2e4c4927978ca7849ff91d74_large.png'
-        },
-        {
-            image: '//file.hstatic.net/200000170631/article/thiet_ke_khong_ten_5189ee5e2e4c4927978ca7849ff91d74_large.png'
-        },
-        {
-            image: '//file.hstatic.net/200000170631/article/thiet_ke_khong_ten_5189ee5e2e4c4927978ca7849ff91d74_large.png'
-        },
-        {
-            image: '//file.hstatic.net/200000170631/article/thiet_ke_khong_ten_5189ee5e2e4c4927978ca7849ff91d74_large.png'
-        },
-        {
-            image: '//file.hstatic.net/200000170631/article/thiet_ke_khong_ten_5189ee5e2e4c4927978ca7849ff91d74_large.png'
-        },
-        {
-            image: '//file.hstatic.net/200000170631/article/thiet_ke_khong_ten_5189ee5e2e4c4927978ca7849ff91d74_large.png'
-        }
     ]
     constructor(private httpService: HttpService, private render2: Renderer2) {
         super(new MessageService, render2)

@@ -6,29 +6,29 @@
         <div *ngIf="product" class="product-content">
             <div class="product-item">
                 <div class="product-img">
-                    <a target="_self" href="/chi-tiet-san-pham">
-                        <img id="1026970643" class="lazyload" [src]="data.image">
+                    <a target="_self" [href]="createURL(data.id, data.name)">
+                        <img id="1026970643" class="lazyload" [src]="data.image[0]">
                     </a>
-                    <div *ngIf="data.sale" class="product-tags">
+                    <div *ngIf="data.saleRate" class="product-tags">
                         <img class="product-tags-img" src="../../../assets/image/main/km.png">
                         <span class="tag-saleoff">
-                            {{data.sale}}%
+                            {{data.saleRate}}%
                         </span>
                     </div>
                 </div>
                 <div class="product-info">
                     <div class="product-title">
-                        <a target="_self" href="/chi-tiet-san-pham">{{data.title}}</a>
+                        <a target="_self" [href]="createURL(data.id, data.name)">{{data.name}}</a>
                     </div>
                     <div class="product-price clearfix">
-                        <span class="current-price">{{data.money}} ₫</span>
-                        <span class="current-price-original" *ngIf="data.moneyoriginal">{{data.moneyoriginal}}₫</span>
+                        <span class="current-price">{{data.priceDisp}} ₫</span>
+                        <span class="current-price-original" *ngIf="data.saleRate">{{data.price}}₫</span>
                     </div>
                     <div class="product-actions">
                         <div>
-                            <button *ngIf="showButton" class="btn-add" (click)="addCart($event)">Thêm vào giỏ
+                            <button *ngIf="showButton" class="btn-add" (click)="addCart(data)">Thêm vào giỏ
                                 hàng</button>
-                            <button *ngIf="showButton" class="btn-buy" (click)="openDialog()">Mua Ngay</button>
+                            <button *ngIf="showButton" class="btn-buy" (click)="openDialog(data)">Mua Ngay</button>
                         </div>
                     </div>
                 </div>
@@ -152,15 +152,13 @@
         <div class="betaviet-content">
             <div style="display: flex;">
                 <div class="betaviet" [class]="data.order%2 !== 0 ? 'sub' : ''">
-                    <div
-                        style="height: 90px;font-size: 28px;border-bottom: 1px solid #ccc;margin-bottom: 10px;padding: 10px; display: flex;">
+                    <div class="betaviet-header">
                         <div class="arrow"></div>
-                        <div
-                            style="display: flex; align-items: center; height: 100%; color: #790505; font-weight: bold;">
+                        <div class="betaviet-header-time">
                             {{data.time}}</div>
                     </div>
-                    <div style="padding: 10px; font-size: 18px;">
-                        <span style="font-weight: bold; font-size: 18px;">{{data.title}}</span><br>
+                    <div class="betaviet-body">
+                        <span class="betaviet-title">{{data.title}}</span><br>
                         {{data.content}}
                     </div>
                 </div>

@@ -16,6 +16,7 @@ export class HeaderMenuComponent implements OnInit {
     @Output() cartHover: EventEmitter<any> = new EventEmitter<any>();
     @Output() accountClick: EventEmitter<any> = new EventEmitter<any>();
     searchBox: boolean = false;
+    products: any[] = [];
     constructor(private httpService: HttpService, private router: Router,) { }
     projectsList: any[] = [];
     ngOnInit() {
@@ -27,6 +28,17 @@ export class HeaderMenuComponent implements OnInit {
                     item.url = `${window.location.origin}/${path}`;
                 });
                 this.projectsList = data.projectList;
+            }
+        });
+
+        this.httpService.reqeustApiget('product_categories').subscribe((data: any) => {
+            if (data.productCategories) {
+                data.productCategories.forEach((item: any) => {
+                    let path = '';
+                    path = `danh-muc-san-pham?name=${Utils.removeAccents(String(item.name)).toLowerCase().split(' ').join('-')}&id=${item.id}`;
+                    item.url = `${window.location.origin}/${path}`;
+                });
+                this.products = data.productCategories;
             }
         })
     }

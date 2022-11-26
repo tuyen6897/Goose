@@ -6,7 +6,7 @@
         <span>Danh mục sản phẩm</span>
     </div>
     <div class="collection-head" style="width: 100%;">
-        <label class="lbl-h1 collection-title">Tất Cả Sản Phẩm</label>
+        <label class="lbl-h1 collection-title">Tất Cả Sản Phẩm {{productCategories}}</label>
         <div class="collection-head-content">
             <span>Sắp xếp theo</span>
             <button (click)="onSort('')">Bán chạy</button>
@@ -16,29 +16,69 @@
     </div>
     <div style="width: 100%;">
         <div class="product-content">
+            <div class="is-mobile">
+                <div class="is-mobile-div">
+                    <div class=" medium--one-half small--one-whole">
+                        <div class="collection-filter-price">
+                            <button class="accordion cs-title col-sb-trigger panel-sort active">
+                                <span>KHOẢNG GIÁ</span>
+                            </button>
+                            <div class="panel  sidebar-sort" style="max-height: 228px;">
+                                <ul class="no-bullets filter-price clearfix">
+                                    <li *ngFor="let item of princeList">
+                                        <label>
+                                            <input (change)="kgOnChange($event)" [value]="item.value" type="radio"
+                                                name="price-filter">
+                                            <span>{{item.name}}</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="medium--one-half small--one-whole">
+                        <div class="collection-filter-vendor">
+                            <button class="accordion cs-title col-sb-trigger active">
+                                <span>THƯƠNG HIỆU</span>
+                            </button>
+                            <div class="panel sidebar-sort" style="max-height: 286px;">
+                                <ul class="no-bullets filter-vendor clearfix">
+                                    <li *ngFor="let item of brandNames" class="">
+                                        <label>
+                                            <input id="ngong" name="th" type="radio">
+                                            <span>{{item}}</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div style="float: left;">
                 <div *ngFor="let product of productDisplayList"
                     class="grid__item large--one-whole medium--one-whole small--one-whole">
                     <div class="product-item">
                         <div class="product-img">
                             <div class="product-item-countdown"></div><a target="_self"
-                                [href]="createURL(product.name, product.id)"><img id="1026970643"
-                                    alt="Bột Sắn Dây Ông Hòa 700gr" [src]="product.image"></a>
+                                [href]="createURL(product.name, product.id)"><img id="1026970643" [alt]="product.name"
+                                    [src]="product.image ? product.image[0] : ''"></a>
                         </div>
                         <div class="product-info">
                             <div class="product-title"><a target="_self"
-                                    [href]="createURL(product.name, product.id)">{{product.name}}</a></div>
+                                    [href]="createURL(product.name, product.id)">{{product.name}}</a>
+                            </div>
                             <div data-id="1026970643" data-url="bot-san-day-ong-hoa-700gr"
                                 class="starbaprv-widget starbaprv-preview-badge starbaprv-preview-badge--with-link">
                             </div>
                             <div class="product-tag-bonus"></div>
                             <div class="product-price clearfix"><span
-                                    class="current-price">{{formatCashProduct(product.price)}} ₫</span>
+                                    class="current-price">{{formatCashProduct(product.productVariant?.price)}} ₫</span>
                             </div>
                             <div class="product-actions text-center clearfix">
                                 <div style="margin: -5px;padding: 0;">
                                     <button class="btn-add" (click)="addCart(product)">Thêm vào giỏ hàng</button>
-                                    <button (click)="openDialog()" class="btn-buy">Mua Ngay</button>
+                                    <button (click)="openDialog(product)" class="btn-buy">Mua Ngay</button>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +166,7 @@
         <div #collectionsidebar class="collection-sidebar">
             <div class="grid__item">
                 <div style="margin: 10px 0 10px 0;border: 1px solid #ccc;padding: 5px;">
-                    <div #order>
+                    <div #order class="is-desktop">
                         <div class="grid__item large--one-whole medium--one-half small--one-whole">
                             <div class="collection-filter-price">
                                 <button class="accordion cs-title col-sb-trigger panel-sort active">
@@ -152,35 +192,10 @@
                                 </button>
                                 <div class="panel sidebar-sort" style="max-height: 286px;">
                                     <ul class="no-bullets filter-vendor clearfix">
-                                        <li class="">
-                                            <label data-filter="NGỖNG" class="filter-vendor__item ngong">
+                                        <li *ngFor="let item of brandNames" class="">
+                                            <label>
                                                 <input id="ngong" name="th" type="radio">
-                                                <span>NGỖNG</span>
-                                            </label>
-                                        </li>
-                                        <li class="">
-                                            <label data-filter="Karose" class="filter-vendor__item karose">
-                                                <input id="karose" name="th" type="radio">
-                                                <span>Karose</span>
-                                            </label>
-                                        </li>
-                                        <li class="">
-                                            <label data-filter="Ngỗng" class="filter-vendor__item ngong">
-                                                <input id="ngong2" name="th" type="radio">
-                                                <span>Ngỗng</span>
-                                            </label>
-                                        </li>
-                                        <li class="">
-                                            <label data-filter="Tôi Là Thảo Mộc - Tuệ Viên"
-                                                class="filter-vendor__item toi-la-thao-moc-tue-vien">
-                                                <input id="thaomoc" name="th" type="radio">
-                                                <span>Tôi Là Thảo Mộc - Tuệ Viên</span>
-                                            </label>
-                                        </li>
-                                        <li class="">
-                                            <label data-filter="Cô Cà Chua" class="filter-vendor__item co-ca-chua">
-                                                <input id="coca" name="th" type="radio" (change)="thOnChange($event)">
-                                                <span>Cô Cà Chua</span>
+                                                <span>{{item}}</span>
                                             </label>
                                         </li>
                                     </ul>
@@ -194,26 +209,27 @@
                     <div class="product-sale">
                         <div *ngFor="let data of datasSale" class="article-item article-item-list">
                             <div class="article-image">
-                                <a target="_self" href="/chi-tiet-san-pham"><img style="width: 100px;"
+                                <a target="_self" [href]="createURL(data.name, data.id)"><img style="width: 100px;"
                                         [src]="data.image"></a>
                             </div>
                             <div class="article-info">
-                                <a class="article-title">
+                                <a class="article-title" target="_self" [href]="createURL(data.name, data.id)">
                                     {{data.name}}
                                 </a>
                                 <div style="position: relative;">
-                                    <span>{{data.price}}</span>
+                                    <span>{{formatCashProduct(data.productVariant?.price ? data.productVariant?.price :
+                                        data.price)}} ₫</span>
                                     <div class="product-tags">
                                         <span class="tag-saleoff">
-                                            SALE {{data.salePrice}}%
+                                            SALE {{data.saleRate}}%
                                         </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a target="_self" [href]="rightBanner!.targetUrl"><img style="width: 98%;"
-                            [src]="rightBanner!.imageUrl" /></a>
+                    <a target="_self" [href]="rightBanner?.targetUrl"><img style="width: 98%;"
+                            [src]="rightBanner?.imageUrl" /></a>
                 </div>
             </div>
         </div>
@@ -223,9 +239,9 @@
         <label class="lbl-h1 collection-title">Sản Phẩm Đã Xem</label>
     </div>
     <div style="width: 100%;" class="product-watch">
-        <app-carousel [datas]="datasProductSeen" [showButton]="false" [product]="true"
+        <!-- <app-carousel [datas]="datasProductSeen" [showButton]="false" [product]="true"
             [responsiveOptions]="responsiveOptions">
-        </app-carousel>
+        </app-carousel> -->
     </div>
     <div class="comment-box">
         <div class="cmt_form">

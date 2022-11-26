@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, Renderer2, ViewChild, ElementRef, AfterViewInit, EventEmitter, AfterContentInit, AfterContentChecked, HostListener, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, Output, Input, Renderer2, ViewChild, ElementRef, AfterViewInit, EventEmitter, ChangeDetectorRef, AfterContentInit, AfterContentChecked, HostListener, AfterViewChecked } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
@@ -55,7 +55,8 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
         private render2: Renderer2,
         private router: Router,
         private dialogService: DialogService,
-        private messageService1: MessageService
+        private messageService1: MessageService,
+        private cdr: ChangeDetectorRef
     ) {
         super(messageService1, render2);
     }
@@ -87,7 +88,10 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
             product.forEach((item: any) => {
                 this.totalCartProduct += item.quantity;
             });
+        } else {
+            this.totalCartProduct = 0;
         }
+        this.cdr.detectChanges();
     }
 
     onMouseOver(event: any) {
@@ -194,4 +198,10 @@ export class HeaderComponent extends ComponentBaseComponent implements OnInit, A
             window.open(`${window.location.origin}/gio-hang`, "_self");
         }
     }
+
+    createURL(name: string, id: string) {
+        if (!name || !id) return '';
+        return `chi-tiet-san-pham?name=${Utils.removeAccents(String(name)).toLowerCase().split(' ').join('-')}&id=${id}`;
+    }
+
 }

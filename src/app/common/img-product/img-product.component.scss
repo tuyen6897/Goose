@@ -9,6 +9,7 @@
         position: relative;
         border: 1px solid #ededed;
         overflow: hidden;
+        min-height: 420px;
 
         .product-img {
             position: relative;
@@ -154,6 +155,8 @@
 @media (max-width: 991px) {
     .product-content {
         .product-item {
+            min-height: auto;
+
             .product-info {
                 .product-actions {
                     button {
@@ -166,6 +169,34 @@
                     }
                 }
             }
+        }
+    }
+}
+
+@media (max-width: 414px) {
+    .product-content {
+        
+        .product-item {
+            .product-info {
+                padding: 5px;
+
+                .product-actions {
+                    div {
+                        .btn-add {
+                            font-size: 10px;
+                        }
+                    }
+                }
+
+                .product-price {
+
+                    span.current-price {
+                        font-size: 15px;
+                    }
+                }
+            }
+
+            min-height: auto;
         }
     }
 }

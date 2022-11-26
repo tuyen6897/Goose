@@ -173,11 +173,22 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
     ];
 
     rightBanner: any = null;
-
+    productCategories: string = '';
+    brandNames: any[] = [];
     ngOnInit() {
         this.showLoadingDialog('on');
+        const id = window.location.search.split('id=')[1] ? window.location.search.split('id=')[1] : 0;
+        this.httpService.reqeustApiget('product_categories').subscribe((data: any) => {
+            if (data.productCategories) {
+                data.productCategories.forEach((item: any) => {
+                    if (+(id) === item.id) {
+                        this.productCategories = item.name;
+                    }
+                });
+            }
+        })
         this.httpService.reqeustApiPost('products', {
-            "categoryId": 0,
+            "categoryId": id,
             "brandName": "",
             "minPrice": 0,
             "maxPrice": -1,
@@ -200,6 +211,12 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
                     if (data.banner) {
                         this.rightBanner = data.banner;
                         this.showLoadingDialog('off');
+                    }
+
+                });
+                this.httpService.reqeustApiget('brand-names').subscribe((data: any) => {
+                    if (data.brandNames) {
+                        this.brandNames = data.brandNames;
                     }
 
                 });
@@ -232,6 +249,7 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
     }
 
     createURL(name: string, id: string) {
+        if (!name || !id) return '';
         return `chi-tiet-san-pham?name=${Utils.removeAccents(String(name)).toLowerCase().split(' ').join('-')}&id=${id}`;
     }
 
@@ -242,22 +260,51 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
         this.isShowbutton = false;
     }
 
-    openDialog(): void {
-        this.ref = this.dialogService.open(ProductDialogComponent, {
-            header: 'Lựa Chọn Thuộc Tính',
-            width: '70%',
-            contentStyle: { "max-height": "600px", "overflow": "auto" },
-            baseZIndex: 10000,
-            dismissableMask: true,
-            data: {
-                id: 'new8938521954248',
-                title: 'Mật Trà Kombucha Thảo Mộc',
-                image: '',
-                price: '210000',
-                variant: '500ml',
-                totalPrice: 210000,
-                quantity: 1
+    openDialog(item: any): void {
+        if (item.price.split('-').length === 1) {
+            let product: any[] = [];
+            let insertFlag = false;
+            product = JSON.parse(sessionStorage.getItem("productList") as any);
+            if (product && product.length) {
+                product.forEach(element => {
+                    if (element.id === item.productVariant.productId && element.idVariant === item.productVariant.id) {
+                        insertFlag = true;
+                        element.quantity = +(element.quantity) + 1;
+                        element.totalPrice = item.productVariant.price * element.quantity;
+                    }
+                });
             }
+            if (!insertFlag) {
+                product.push({
+                    idVariant: item.productVariant.id,
+                    id: item.productVariant.productId,
+                    name: item.name,
+                    image: item.productImages,
+                    price: item.productVariant.price,
+                    weight: item.productVariant.weight,
+                    unit: item.productVariant.unit,
+                    variant: `${item.productVariant.weight}${item.productVariant.unit}`,
+                    totalPrice: item.productVariant.price,
+                    quantity: 1,
+                    soGaoFlag: item.soGaoFlag
+                });
+            }
+            sessionStorage.setItem('productList', JSON.stringify(product));
+            window.open(`${window.location.origin}/gio-hang`, "_self");
+        }
+        this.showDialog('on');
+        this.httpService.reqeustApiget('productDetails', item.id).subscribe((response: any) => {
+            if (response.detailProduct) {
+                this.ref = this.dialogService.open(ProductDialogComponent, {
+                    header: 'Lựa Chọn Thuộc Tính',
+                    width: '70%',
+                    contentStyle: { "max-height": "600px", "overflow": "auto" },
+                    baseZIndex: 10000,
+                    dismissableMask: true,
+                    data: response.detailProduct
+                });
+            }
+            this.showDialog('off');
         });
     }
 
@@ -268,19 +315,28 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
         product = JSON.parse(sessionStorage.getItem("productList") as any) ? JSON.parse(sessionStorage.getItem("productList") as any) : [];
         if (product && product.length) {
             product.forEach(element => {
-                if (element.code === item.code) {
+                if (element.id === item.id) {
                     insertFlag = false;
                     element.quantity = +(element.quantity) + 1;
-                    element.totalPrice = item.price * element.quantity;
+                    element.totalPrice = item.productVariant.price * element.quantity;
                 }
             });
         }
         if (insertFlag) {
-            item.quantity = 1;
-            item.totalPrice = item.price;
-            product.push(item);
+            product.push({
+                idVariant: item.productVariant.id,
+                id: item.id,
+                name: item.name,
+                image: item.image,
+                price: item.productVariant.price,
+                weight: item.productVariant.weight,
+                unit: item.productVariant.unit,
+                variant: `${item.productVariant.weight}${item.productVariant.unit}`,
+                totalPrice: item.productVariant.price,
+                quantity: 1,
+                soGaoFlag: item.soGaoFlag ? item.soGaoFlag : 0
+            });
         }
-        sessionStorage.setItem('productList', JSON.stringify(product));
         if (account) {
             const params = {
                 "userId": account.id,
@@ -290,6 +346,7 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
             this.httpService.reqeustApiPost('carts', params, true).subscribe((data: any) => {
             });
         }
+        sessionStorage.setItem('productList', JSON.stringify(product));
         this.header.visibleSidebar = true;
     }
 
@@ -375,7 +432,5 @@ export class DanhmucsanphamComponent extends ComponentBaseComponent implements O
             return (a[prop] < b[prop] ? -1 : 1) * (isAsc ? 1 : -1)
         });
     }
-
-
 
 }

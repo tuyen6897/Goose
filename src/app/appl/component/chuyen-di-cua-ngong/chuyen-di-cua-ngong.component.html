@@ -47,7 +47,7 @@
                 <div class="line" style="margin-bottom: 80px;"></div>
                 <div *ngFor="let item of project.khamPhaTraiNghiemList; let i = index">
                     <div *ngIf="i%2 === 0" class="gradient-border">
-                        <a target="_self" href="#"><img class="img-left" [src]="item.imageUrl" alt=""></a>
+                        <div><a target="_self" href="#"><img class="img-left" [src]="item.imageUrl" alt=""></a></div>
                         <div class="content-left">
                             <a class="title2" href="#">{{item.title}}</a>
                             <div *ngFor="let content of item.content; let i = index">
@@ -66,7 +66,7 @@
                     </div>
                     <div *ngIf="i%2 !== 0" class="gradient-border">
                         <div class="content-right">
-                            <a class="title2" target="_self" href="#">{{item.title}}</a>
+                            <div><a class="title2" target="_self" href="#">{{item.title}}</a></div>
                             <div *ngFor="let content of item.content; let i = index">
                                 <div *ngIf="i%2 === 0" class="child-content child-content-left">
                                     <div *ngFor="let item of content.desc" style="display: flex;">
