@@ -238,9 +238,9 @@ export class HttpService {
             console.error('An error occurred:', error.error);
         } else {
             console.log(error);
-            const dialog: any = document.querySelector('#printLoadMask');
-            dialog['style'].display = 'none';
         }
+        const dialog: any = document.querySelector('#printLoadMask');
+        dialog['style'].display = 'none';
         // Return an observable with a user-facing error message.
         return throwError(() => new Error('Something bad happened; please try again later.'));
     }
